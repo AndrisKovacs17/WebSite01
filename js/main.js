@@ -1412,3 +1412,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// ── Mobil sticky hívás CTA ──────────────────────────────────────────────────
+(function () {
+  'use strict';
+
+  // Ne jelenjen meg ajánlatkérő formokon (msf-container) és print/guide oldalakon
+  if (
+    document.querySelector('.msf-container') ||
+    document.querySelector('.guide')
+  ) return;
+
+  var PHONE_HREF  = 'tel:+36706258201';
+  var PHONE_LABEL = 'Hívás: +36 70 625 8201';
+
+  // Gomb létrehozása
+  var cta = document.createElement('a');
+  cta.className  = 'mobile-call-cta';
+  cta.href       = PHONE_HREF;
+  cta.setAttribute('aria-label', 'Hívjon minket: +36 70 625 8201');
+  cta.innerHTML  =
+    '<i class="fas fa-phone mcta-icon" aria-hidden="true"></i>' +
+    '<span>' + PHONE_LABEL + '</span>';
+  document.body.appendChild(cta);
+
+  // Elrejt, ha a footer látható (nem takarja a footert)
+  var footer = document.querySelector('.footer');
+  if (footer && typeof IntersectionObserver !== 'undefined') {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        cta.classList.toggle('mcta-hidden', e.isIntersecting);
+      });
+    }, { threshold: 0.04 });
+    obs.observe(footer);
+  }
+}());
