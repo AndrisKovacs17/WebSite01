@@ -96,6 +96,16 @@
       if (errEl) { errEl.style.display = 'none'; }
       self._hideBanner('msf-validation-error');
     });
+
+    // Auto-assign aria-label to inputs without an explicit label or aria-label
+    this.form.querySelectorAll(
+      'input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):not([aria-label]):not([aria-labelledby]),' +
+      'textarea:not([aria-label]):not([aria-labelledby]),' +
+      'select:not([aria-label]):not([aria-labelledby])'
+    ).forEach(function (inp) {
+      var label = MSF_FIELD_LABELS[inp.name] || (inp.placeholder ? inp.placeholder : null) || inp.name;
+      if (label) inp.setAttribute('aria-label', label);
+    });
   };
 
   /* ---- Show Step ---- */

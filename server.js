@@ -94,6 +94,14 @@ const guideConfig = {
 
 const recentRequests = new Map();
 
+const KNOWN_FORM_TYPES = new Set([
+  'baleset', 'casco', 'egeszseg', 'elet', 'eletbiztositas',
+  'kgfb', 'lakas', 'megtakaritas', 'mezogazd', 'nyugdij',
+  'onkentes', 'utas', 'vallalkozas', 'kegyeleti',
+  'ekarbejelento', 'ekarbejelento-corporate',
+  'polgaror-personal', 'polgaror-group',
+]);
+
 app.use(
   cors({
     origin(origin, callback) {
@@ -110,6 +118,7 @@ app.use((_req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
   next();
 });
 app.use(express.json({ limit: "1mb" }));
@@ -122,6 +131,11 @@ app.get("/health", (_req, res) => {
 app.post("/api/forms/:formType", async (req, res) => {
   try {
     const formType = sanitizeKey(req.params.formType);
+
+    if (!KNOWN_FORM_TYPES.has(formType)) {
+      res.status(400).json({ ok: false, message: 'Ismeretlen form típus.' });
+      return;
+    }
     const payload = normalizePayload(req.body || {});
 
     if (payload.website) {
@@ -298,7 +312,7 @@ async function sendGeneralFormEmail(formType, email, payload) {
     from,
     to: adminTo,
     replyTo: email,
-    subject: `Új ajánlatkérés - ${formType}`,
+    subject: `Új ajánlatkérés - ${formType} [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
     headers: { "X-Biztor-Template": emailTemplateVersion },
     html: buildAdminHtml({
       title: `Új ajánlatkérés: ${formType}`,

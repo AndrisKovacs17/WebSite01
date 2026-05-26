@@ -11,23 +11,20 @@
   };
   spinner();
 
-  // WOW.js – csak ha be van töltve a könyvtár
-  if (typeof WOW !== "undefined") {
+  // WOW.js – csak ha be van töltve a könyvtár és a felhasználó nem kért csökkentett mozgást
+  if (typeof WOW !== "undefined" && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     new WOW().init();
   }
 
-  // Sticky Navbar – shadow when scrolled, no top manipulation (CSS handles sticky)
+  // Sticky Navbar + Back to top button (single scroll handler)
   $(window).scroll(function () {
-    if ($(this).scrollTop() > 50) {
+    var scrollTop = $(this).scrollTop();
+    if (scrollTop > 50) {
       $(".insure-navbar").addClass("shadow-sm");
     } else {
       $(".insure-navbar").removeClass("shadow-sm");
     }
-  });
-
-  // Back to top button
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
+    if (scrollTop > 300) {
       $(".back-to-top").fadeIn("slow");
     } else {
       $(".back-to-top").fadeOut("slow");
@@ -204,10 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Form validation
+// Form validation (skip /api/forms/ forms – handled by the lead magnet handler)
 (function () {
   "use strict";
-  var forms = document.querySelectorAll(".needs-validation");
+  var forms = document.querySelectorAll('.needs-validation:not([action^="/api/forms/"])');
   Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener(
       "submit",
@@ -224,21 +221,38 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 
 // File upload validation
+function _showFileError(input, msg) {
+  var errEl = input.parentNode.querySelector('.file-error-msg');
+  if (!errEl) {
+    errEl = document.createElement('p');
+    errEl.className = 'file-error-msg text-danger small mt-1';
+    input.parentNode.insertBefore(errEl, input.nextSibling);
+  }
+  errEl.textContent = msg;
+  errEl.style.display = 'block';
+  setTimeout(function () { errEl.style.display = 'none'; }, 5000);
+}
+
 const fileInputs = document.querySelectorAll('input[type="file"]');
 if (fileInputs.length) {
   fileInputs.forEach((fileInput) => {
     fileInput.addEventListener("change", function () {
       if (this.files.length > 8) {
-        alert("Maximum 8 fájlt tölthet fel!");
+        _showFileError(this, "Maximum 8 fájlt tölthet fel!");
         this.value = "";
+        return;
       }
 
+      var sizeError = null;
       Array.from(this.files).forEach((file) => {
-        if (file.size > 4 * 1024 * 1024) {
-          alert("A fájl mérete nem lehet nagyobb 4 MB-nál: " + file.name);
-          this.value = "";
+        if (!sizeError && file.size > 4 * 1024 * 1024) {
+          sizeError = "A fájl mérete nem lehet nagyobb 4 MB-nál: " + file.name;
         }
       });
+      if (sizeError) {
+        _showFileError(this, sizeError);
+        this.value = "";
+      }
     });
   });
 }
