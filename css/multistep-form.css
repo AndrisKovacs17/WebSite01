@@ -442,6 +442,43 @@ input[type="datetime-local"].msf-input {
   text-decoration: underline;
 }
 
+/* ---- Standalone Page Section (ajanlatok/*.html) ---- */
+.msf-page-section {
+  background: linear-gradient(160deg, #f0f4f8 0%, #f8f9fb 60%, #fffaf3 100%);
+  min-height: calc(100dvh - var(--topbar-h, 40px) - var(--navbar-h, 70px));
+  padding-top: 3.5rem;
+  padding-bottom: 4rem;
+}
+
+.msf-page-section .msf-wrapper {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 32px rgba(15, 23, 42, 0.09), 0 1px 4px rgba(15, 23, 42, 0.05);
+  padding: 2.5rem 2rem 2rem;
+}
+
+@media (min-width: 576px) {
+  .msf-page-section .msf-wrapper {
+    padding: 3rem 3rem 2.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .msf-page-section .msf-wrapper {
+    padding: 3.5rem 4rem 3rem;
+  }
+}
+
+.msf-page-section .text-center.mx-auto {
+  padding-bottom: 0.5rem;
+}
+
+.msf-page-section .display-6 {
+  font-weight: 700;
+  color: var(--msf-text-dark);
+  letter-spacing: -0.01em;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 576px) {
   .msf-nav {
