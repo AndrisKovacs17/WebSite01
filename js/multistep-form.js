@@ -426,9 +426,13 @@
 
     var subBtn = this.wrapper.querySelector('.msf-btn-submit');
     if (subBtn) {
-      if (!subBtn.dataset.originalText) subBtn.dataset.originalText = subBtn.textContent;
-      subBtn.disabled = true;
-      subBtn.textContent = 'Küldés…';
+      if (!subBtn.dataset.originalText) subBtn.dataset.originalText = subBtn.textContent.trim();
+      subBtn.classList.add('msf-sending');
+      var labelEl = subBtn.querySelector('.msf-btn-label');
+      setTimeout(function () {
+        subBtn.disabled = true;
+        if (labelEl) labelEl.textContent = ' Küldés…';
+      }, 300);
     }
 
     var isEmailJS = this.form.dataset.msfType === 'emailjs';

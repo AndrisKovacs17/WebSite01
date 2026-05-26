@@ -393,13 +393,45 @@ input[type="datetime-local"].msf-input {
 
 /* Következő gomb: hoverre jobbra csúszik, árnyék mélyül */
 .msf-btn-next:hover:not(:disabled) {
-  transform: translateY(-2px) translateX(3px);
+  transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(255, 167, 38, .45);
   background: linear-gradient(135deg, #FF9800 0%, var(--msf-primary) 100%);
 }
 
+/* Arrow icon animation */
+.msf-btn-icon {
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.msf-btn-next:hover:not(:disabled) .msf-btn-icon {
+  transform: translateX(6px);
+}
+
 .msf-btn-submit {
   display: none;
+}
+
+/* Paper plane icon on submit button */
+.msf-submit-plane {
+  margin-right: 0.4rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.msf-btn-submit:hover:not(:disabled) .msf-submit-plane {
+  transform: translateX(3px) translateY(-3px) rotate(-20deg);
+}
+
+.msf-btn-submit.msf-sending .msf-submit-plane {
+  animation: msf-plane-fly 0.45s ease forwards;
+}
+
+@keyframes msf-plane-fly {
+  from { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  to   { transform: translate(50px, -50px) rotate(-45deg); opacity: 0; }
 }
 
 /* ---- API Error Banner ---- */
