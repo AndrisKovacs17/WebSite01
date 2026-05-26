@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <title>Interaktivitás Showcase – Biztor figyelemelterelési technikák</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="./../img/icon/biztorlogo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #FFA726;
+      --primary-dark: #e69300;
+      --dark: #15233C;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Open Sans', sans-serif; background: #f8f9fb; color: #333; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Nunito', sans-serif; }
+
+    /* ═══════════════════════════════════════════════════════
+       OLDAL ELEMEK
+    ═══════════════════════════════════════════════════════ */
+
+    /* 0. SCROLL PROGRESS BAR ─ tetején fut, mindig látható */
+    #scroll-progress-bar {
+      position: fixed; top: 0; left: 0; height: 4px; width: 0%;
+      background: linear-gradient(90deg, var(--primary), #ff5722);
+      z-index: 9999; transition: width .05s linear;
+      box-shadow: 0 0 8px rgba(255,167,38,.6);
+    }
+
+    /* Navbar */
+    .is-navbar {
+      position: sticky; top: 4px; z-index: 900;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      padding: .75rem 0;
+    }
+    .is-navbar .brand { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--dark); font-size: 1.1rem; text-decoration: none; }
+    .is-navbar .nav-pills .nav-link { font-size: .78rem; font-weight: 600; color: #555; padding: .3rem .75rem; border-radius: 20px; }
+    .is-navbar .nav-pills .nav-link:hover { background: rgba(255,167,38,.12); color: var(--primary); }
+
+    /* Section wrapper */
+    .is-section {
+      padding: 4rem 0 2rem;
+      border-top: 1px solid #eaedf0;
+      position: relative;
+    }
+    .is-section:first-of-type { border-top: none; }
+    .is-label {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--primary);
+      background: rgba(255,167,38,.1);
+      padding: 4px 12px; border-radius: 20px; margin-bottom: .75rem;
+    }
+    .is-label i { font-size: .75rem; }
+    .is-desc {
+      font-size: .85rem; color: #6c757d; max-width: 640px;
+      border-left: 3px solid var(--primary);
+      padding: .6rem 1rem; background: #fffbf5; border-radius: 0 8px 8px 0;
+      margin-bottom: 1.5rem;
+    }
+    .is-desc strong { color: var(--dark); }
+
+    /* Demo box */
+    .demo-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 3px 20px rgba(0,0,0,.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,167,38,.12); color: var(--primary);
+      font-size: .68rem; font-weight: 700; padding: 2px 10px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       1. TYPEWRITER / ROTATING HEADLINE
+    ═══════════════════════════════════════════════════════ */
+    .tw-wrap {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e3a6a 100%);
+      border-radius: 20px; padding: 3rem 2rem; text-align: center; color: #fff;
+      position: relative; overflow: hidden;
+    }
+    .tw-wrap::before {
+      content: ''; position: absolute; width: 300px; height: 300px;
+      background: rgba(255,167,38,.12); border-radius: 50%;
+      top: -100px; right: -80px;
+    }
+    .tw-sub { font-size: .85rem; opacity: .65; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem; }
+    .tw-static { font-size: 1.6rem; font-weight: 700; margin: 0; }
+    .tw-dynamic {
+      font-size: 2rem; font-weight: 900; color: var(--primary);
+      display: inline-block; min-width: 280px; min-height: 2.5rem;
+      position: relative;
+    }
+    .tw-cursor {
+      display: inline-block; width: 2px; height: 1.1em;
+      background: var(--primary); margin-left: 2px;
+      animation: twBlink .7s infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes twBlink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
+
+    /* ═══════════════════════════════════════════════════════
+       2. PARTICLE CANVAS HÁTTÉR
+    ═══════════════════════════════════════════════════════ */
+    .particle-hero {
+      position: relative; border-radius: 20px; overflow: hidden;
+      background: linear-gradient(135deg, #0f1e36 0%, #1a2f54 100%);
+      min-height: 300px; display: flex; align-items: center; justify-content: center;
+    }
+    #particle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .particle-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 3rem 2rem; }
+    .particle-content h3 { font-weight: 800; font-size: 1.8rem; margin-bottom: .5rem; }
+    .particle-content p { opacity: .7; margin-bottom: 1.5rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       3. 3D TILT KÁRTYÁK
+    ═══════════════════════════════════════════════════════ */
+    .tilt-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.1);
+      transform-style: preserve-3d;
+      transition: box-shadow .3s;
+      cursor: pointer;
+      position: relative;
+      will-change: transform;
+    }
+    .tilt-card .tilt-shine {
+      position: absolute; inset: 0; border-radius: 16px;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 60%);
+      pointer-events: none; opacity: 0; transition: opacity .3s;
+    }
+    .tilt-card:hover .tilt-shine { opacity: 1; }
+    .tilt-card .tc-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; display: block; }
+    .tilt-card h5 { font-weight: 800; color: var(--dark); margin-bottom: .4rem; }
+    .tilt-card p { font-size: .85rem; color: #6c757d; margin: 0; }
+
+    /* ═══════════════════════════════════════════════════════
+       4. RIPPLE GOMB
+    ═══════════════════════════════════════════════════════ */
+    .ripple-btn {
+      position: relative; overflow: hidden;
+      padding: .75rem 2rem; border-radius: 50px;
+      font-weight: 700; font-family: 'Nunito', sans-serif;
+      font-size: 1rem; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .5rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ripple-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,167,38,.4); }
+    .ripple-btn.rb-primary { background: var(--primary); color: #fff; }
+    .ripple-btn.rb-dark { background: var(--dark); color: #fff; }
+    .ripple-btn .ripple-wave {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      transform: scale(0); animation: rippleAnim .6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+    /* ═══════════════════════════════════════════════════════
+       5. MAGNETIC GOMB
+    ═══════════════════════════════════════════════════════ */
+    .mag-wrap { display: inline-block; }
+    .mag-btn {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .85rem 2.5rem; border-radius: 50px;
+      background: linear-gradient(135deg, var(--primary), #ff9800);
+      color: #fff; font-weight: 800; font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem; border: none; cursor: pointer;
+      box-shadow: 0 6px 24px rgba(255,167,38,.45);
+      transition: box-shadow .3s;
+      will-change: transform;
+    }
+    .mag-btn:hover { box-shadow: 0 12px 36px rgba(255,167,38,.55); }
+
+    /* ═══════════════════════════════════════════════════════
+       6. SPOTLIGHT KÁRTYA
+    ═══════════════════════════════════════════════════════ */
+    .spotlight-card {
+      background: var(--dark);
+      border-radius: 16px; padding: 2rem; color: #fff;
+      position: relative; overflow: hidden; cursor: crosshair;
+    }
+    .spotlight-card .sp-glow {
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,167,38,.18) 0%, transparent 70%);
+      pointer-events: none; transform: translate(-50%,-50%);
+      transition: opacity .3s;
+      top: 50%; left: 50%; opacity: 0;
+    }
+    .spotlight-card:hover .sp-glow { opacity: 1; }
+    .spotlight-card h5 { font-weight: 800; margin-bottom: .5rem; }
+    .spotlight-card p { font-size: .85rem; opacity: .7; margin: 0; }
+    .spotlight-card .sp-icon { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       7. SOCIAL PROOF TOAST (auto-pop)
+    ═══════════════════════════════════════════════════════ */
+    #sp-toast-container {
+      position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 8000;
+      display: flex; flex-direction: column; gap: .75rem;
+      pointer-events: none;
+    }
+    .sp-toast {
+      background: #fff; border-radius: 14px;
+      padding: .85rem 1.1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.16);
+      display: flex; align-items: center; gap: .75rem;
+      max-width: 300px; pointer-events: all;
+      animation: spSlideIn .4s cubic-bezier(.175,.885,.32,1.275);
+      border-left: 4px solid var(--primary);
+    }
+    .sp-toast.fade-out { animation: spSlideOut .4s ease forwards; }
+    @keyframes spSlideIn { from { opacity:0; transform: translateX(-30px) scale(.9); } to { opacity:1; transform: translateX(0) scale(1); } }
+    @keyframes spSlideOut { to { opacity:0; transform: translateX(-30px) scale(.9); } }
+    .sp-toast .sp-av {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--primary), #ff9800);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: .85rem; font-family: 'Nunito', sans-serif;
+    }
+    .sp-toast .sp-txt strong { display: block; font-size: .83rem; font-weight: 700; color: var(--dark); }
+    .sp-toast .sp-txt span { font-size: .75rem; color: #6c757d; }
+    .sp-toast .sp-time { font-size: .7rem; color: #aaa; margin-left: auto; white-space: nowrap; }
+
+    /* ═══════════════════════════════════════════════════════
+       8. CONFETTI GOMB
+    ═══════════════════════════════════════════════════════ */
+    #confetti-canvas {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       9. BEFORE / AFTER SLIDER
+    ═══════════════════════════════════════════════════════ */
+    .ba-wrap {
+      position: relative; border-radius: 16px; overflow: hidden;
+      user-select: none; cursor: ew-resize;
+      height: 280px;
+    }
+    .ba-after, .ba-before {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; padding: 2rem;
+    }
+    .ba-before {
+      background: linear-gradient(135deg, #dc3545 0%, #c0392b 100%);
+      color: #fff;
+    }
+    .ba-after {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: #fff;
+      clip-path: inset(0 50% 0 0);
+    }
+    .ba-before h4, .ba-after h4 { font-weight: 900; font-size: 1.3rem; margin: 0; }
+    .ba-before p, .ba-after p { font-size: .85rem; opacity: .9; margin: 0; text-align: center; }
+    .ba-before .ba-label { background: rgba(0,0,0,.25); border-radius: 20px; padding: 3px 12px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+    .ba-after .ba-label { background: rgba(0,0,0,.2); border-radius: 20px; padding: 3px 12px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+    .ba-divider {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 4px;
+      background: #fff; transform: translateX(-50%); z-index: 2;
+      box-shadow: 0 0 12px rgba(0,0,0,.3);
+    }
+    .ba-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); z-index: 3;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; color: var(--dark);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       10. RANGE PRICE ESTIMATOR
+    ═══════════════════════════════════════════════════════ */
+    .price-estimator {
+      background: linear-gradient(135deg, #f8f9fb 0%, #fff 100%);
+      border-radius: 20px; padding: 2rem;
+      border: 2px solid rgba(255,167,38,.2);
+    }
+    .pe-range {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 6px; border-radius: 3px;
+      background: linear-gradient(90deg, var(--primary) 0%, #f0f0f0 0%);
+      outline: none; cursor: pointer;
+    }
+    .pe-range::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--primary); cursor: pointer;
+      box-shadow: 0 3px 10px rgba(255,167,38,.5);
+      border: 3px solid #fff;
+    }
+    .pe-price-display {
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 3.5rem;
+      color: var(--primary); line-height: 1; transition: all .2s;
+    }
+    .pe-price-display.changed {
+      animation: pricePop .25s ease;
+    }
+    @keyframes pricePop { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .pe-slider-labels { display: flex; justify-content: space-between; font-size: .75rem; color: #aaa; margin-top: .3rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       11. SCROLL-DRIVEN TIMELINE
+    ═══════════════════════════════════════════════════════ */
+    .scroll-timeline { position: relative; padding-left: 2.5rem; }
+    .scroll-timeline::before {
+      content: ''; position: absolute; left: 19px; top: 0; bottom: 0;
+      width: 2px; background: #e9ecef;
+    }
+    .scroll-timeline::before { /* progress fill via JS */ }
+    .st-item {
+      position: relative; margin-bottom: 2rem;
+      opacity: .35; transition: opacity .5s, transform .5s;
+      transform: translateX(-10px);
+    }
+    .st-item.active { opacity: 1; transform: translateX(0); }
+    .st-dot {
+      position: absolute; left: -2.5rem; top: 4px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #e9ecef; border: 3px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .4s, box-shadow .4s;
+      z-index: 1;
+    }
+    .st-item.active .st-dot { background: var(--primary); box-shadow: 0 0 0 5px rgba(255,167,38,.2); }
+    .st-dot i { font-size: .55rem; color: #fff; }
+    .st-content { background: #fff; border-radius: 12px; padding: 1rem 1.25rem; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    .st-content h6 { font-weight: 700; color: var(--dark); margin-bottom: .25rem; font-size: .9rem; }
+    .st-content p { font-size: .82rem; color: #6c757d; margin: 0; }
+    .st-num { color: var(--primary); font-weight: 800; font-size: .75rem; margin-bottom: .15rem; text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ═══════════════════════════════════════════════════════
+       12. PULSE RING / RADAR ANIMÁCIÓ
+    ═══════════════════════════════════════════════════════ */
+    .pulse-wrap { display: flex; align-items: center; justify-content: center; min-height: 220px; position: relative; }
+    .pulse-center {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #ff9800);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+      box-shadow: 0 6px 24px rgba(255,167,38,.5);
+    }
+    .pulse-center i { font-size: 2rem; color: #fff; }
+    .pulse-ring {
+      position: absolute; border-radius: 50%;
+      border: 2px solid rgba(255,167,38,.5);
+      animation: pulseRing 2.4s ease-out infinite;
+    }
+    .pulse-ring:nth-child(1) { width: 110px; height: 110px; animation-delay: 0s; }
+    .pulse-ring:nth-child(2) { width: 150px; height: 150px; animation-delay: .6s; }
+    .pulse-ring:nth-child(3) { width: 200px; height: 200px; animation-delay: 1.2s; }
+    @keyframes pulseRing { 0% { transform: scale(.8); opacity: .8; } 100% { transform: scale(1.2); opacity: 0; } }
+
+    /* ═══════════════════════════════════════════════════════
+       13. MARQUEE TICKER (trust signals)
+    ═══════════════════════════════════════════════════════ */
+    .marquee-track {
+      overflow: hidden; background: var(--dark);
+      padding: .7rem 0; position: relative;
+    }
+    .marquee-inner {
+      display: flex; gap: 3rem; align-items: center;
+      white-space: nowrap;
+      animation: marqueeScroll 22s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover .marquee-inner { animation-play-state: paused; }
+    @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: rgba(255,255,255,.8); font-size: .82rem; font-weight: 600;
+    }
+    .marquee-item i { color: var(--primary); font-size: .9rem; }
+    .marquee-sep { color: rgba(255,167,38,.4); font-size: .7rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       14. ANIMATED COUNTER
+    ═══════════════════════════════════════════════════════ */
+    .anim-counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    @media (max-width: 600px) { .anim-counter-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ac-card {
+      background: #fff; border-radius: 14px; padding: 1.5rem 1rem;
+      text-align: center; box-shadow: 0 3px 18px rgba(0,0,0,.07);
+      border-top: 4px solid var(--primary);
+    }
+    .ac-num {
+      font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 2.4rem;
+      color: var(--dark); line-height: 1;
+    }
+    .ac-suffix { color: var(--primary); }
+    .ac-label { font-size: .78rem; color: #6c757d; margin-top: .3rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       15. ANIMATED SVG SHIELD
+    ═══════════════════════════════════════════════════════ */
+    .shield-wrap { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .shield-svg { width: 120px; filter: drop-shadow(0 8px 24px rgba(255,167,38,.4)); }
+    .shield-body { fill: url(#shieldGrad); }
+    .shield-check { stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: none; stroke-dasharray: 30; stroke-dashoffset: 30; animation: drawCheck 1s .5s ease forwards; }
+    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+    .shield-pulse { animation: shieldPulse 2.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes shieldPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+    /* ═══════════════════════════════════════════════════════
+       16. SHIMMER SKELETON
+    ═══════════════════════════════════════════════════════ */
+    .skel-card {
+      background: #fff; border-radius: 14px; padding: 1.5rem;
+      box-shadow: 0 3px 16px rgba(0,0,0,.07);
+    }
+    .skel-line {
+      height: 12px; border-radius: 6px; margin-bottom: .75rem;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    .skel-line.w-80 { width: 80%; }
+    .skel-line.w-60 { width: 60%; }
+    .skel-line.w-40 { width: 40%; }
+    .skel-circle { width: 52px; height: 52px; border-radius: 50%; margin-bottom: 1rem;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e4e4e4 50%, #f0f0f0 75%);
+      background-size: 200% 100%; animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* ═══════════════════════════════════════════════════════
+       17. ANIMATED GRADIENT HERO
+    ═══════════════════════════════════════════════════════ */
+    .grad-hero {
+      border-radius: 20px; padding: 3.5rem 2rem; text-align: center; color: #fff;
+      background: linear-gradient(-45deg, #15233C, #1e3a6a, #c47d00, #ff9800);
+      background-size: 400% 400%;
+      animation: gradShift 8s ease infinite;
+      position: relative; overflow: hidden;
+    }
+    @keyframes gradShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .grad-hero h3 { font-weight: 900; font-size: 1.9rem; margin-bottom: .5rem; }
+    .grad-hero p { opacity: .85; margin-bottom: 1.5rem; font-size: .95rem; }
+
+    /* ═══════════════════════════════════════════════════════
+       18. STICKY SCROLL CTA BAR
+    ═══════════════════════════════════════════════════════ */
+    #sticky-cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 7000;
+      background: var(--dark);
+      padding: .8rem 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      transform: translateY(100%); transition: transform .4s cubic-bezier(.175,.885,.32,1.275);
+      box-shadow: 0 -4px 24px rgba(0,0,0,.3);
+    }
+    #sticky-cta-bar.visible { transform: translateY(0); }
+    #sticky-cta-bar p { margin: 0; color: rgba(255,255,255,.85); font-size: .88rem; }
+    #sticky-cta-bar p strong { color: var(--primary); }
+    #sticky-cta-bar .scb-close {
+      background: none; border: none; color: rgba(255,255,255,.5); font-size: 1.2rem;
+      cursor: pointer; padding: 0; line-height: 1; margin-left: .5rem;
+    }
+    #sticky-cta-bar .scb-close:hover { color: #fff; }
+    @media (max-width: 480px) { #sticky-cta-bar { flex-wrap: wrap; gap: .5rem; padding: .75rem 1rem; } }
+
+    /* ═══════════════════════════════════════════════════════
+       19. HOVER ICON ANIMATION
+    ═══════════════════════════════════════════════════════ */
+    .icon-anim-card {
+      background: #fff; border-radius: 14px; padding: 1.75rem 1.25rem;
+      text-align: center; box-shadow: 0 3px 16px rgba(0,0,0,.07);
+      transition: box-shadow .3s;
+      cursor: default;
+    }
+    .icon-anim-card:hover { box-shadow: 0 8px 28px rgba(255,167,38,.2); }
+    .iac-icon {
+      width: 72px; height: 72px; border-radius: 20px;
+      background: rgba(255,167,38,.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-size: 1.8rem; color: var(--primary);
+      transition: transform .3s, background .3s;
+    }
+    .icon-anim-card:hover .iac-icon.bounce { animation: iconBounce .5s ease; background: var(--primary); color: #fff; }
+    .icon-anim-card:hover .iac-icon.spin { animation: iconSpin .5s ease; background: var(--primary); color: #fff; }
+    .icon-anim-card:hover .iac-icon.shake { animation: iconShake .5s ease; background: var(--primary); color: #fff; }
+    .icon-anim-card:hover .iac-icon.heartbeat { animation: iconHeart .5s ease; background: #ef4444; color: #fff; }
+    .icon-anim-card:hover .iac-icon.tada { animation: iconTada .5s ease; background: #22c55e; color: #fff; }
+    .icon-anim-card:hover .iac-icon.wobble { animation: iconWobble .6s ease; background: #3b82f6; color: #fff; }
+    @keyframes iconBounce { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-14px); } 70% { transform: translateY(-7px); } }
+    @keyframes iconSpin { to { transform: rotate(360deg); } }
+    @keyframes iconShake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
+    @keyframes iconHeart { 0%,100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+    @keyframes iconTada { 0%,100% { transform: scale(1) rotate(0); } 20% { transform: scale(.9) rotate(-3deg); } 40%,60% { transform: scale(1.1) rotate(3deg); } 80% { transform: scale(1.05) rotate(-1deg); } }
+    @keyframes iconWobble { 0%,100% { transform: translateX(0) rotate(0); } 20% { transform: translateX(-8px) rotate(-5deg); } 60% { transform: translateX(6px) rotate(3deg); } 80% { transform: translateX(-3px) rotate(-2deg); } }
+    .iac-name { font-weight: 700; font-size: .88rem; color: var(--dark); margin-bottom: .2rem; }
+    .iac-hint { font-size: .75rem; color: #aaa; }
+
+    /* ═══════════════════════════════════════════════════════
+       20. CURSOR TRAIL
+    ═══════════════════════════════════════════════════════ */
+    .cursor-trail-demo {
+      background: #0f1e36; border-radius: 16px; min-height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: none; overflow: hidden; position: relative;
+    }
+    .cursor-trail-demo p { color: rgba(255,255,255,.5); font-size: .9rem; pointer-events: none; z-index: 2; position: relative; }
+    .trail-dot {
+      position: absolute; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--primary); pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, opacity .3s;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       21. ACCORDION SMOOTH
+    ═══════════════════════════════════════════════════════ */
+    .smooth-acc-item { background: #fff; border-radius: 12px; margin-bottom: .5rem; box-shadow: 0 2px 10px rgba(0,0,0,.05); overflow: hidden; }
+    .smooth-acc-btn {
+      width: 100%; background: none; border: none;
+      padding: 1rem 1.25rem; text-align: left;
+      font-weight: 700; color: var(--dark); font-family: 'Nunito', sans-serif;
+      font-size: .95rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: color .2s;
+    }
+    .smooth-acc-btn:hover { color: var(--primary); }
+    .smooth-acc-btn .sacc-arrow { transition: transform .3s; color: var(--primary); }
+    .smooth-acc-btn.open .sacc-arrow { transform: rotate(180deg); }
+    .smooth-acc-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .smooth-acc-body-inner { padding: 0 1.25rem 1rem; font-size: .88rem; color: #6c757d; }
+
+    /* ═══════════════════════════════════════════════════════
+       22. FLOATING TOOLTIP
+    ═══════════════════════════════════════════════════════ */
+    .ft-wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; padding: 1.5rem 0; }
+    [data-ft] {
+      position: relative; display: inline-block;
+      background: var(--primary); color: #fff;
+      padding: .6rem 1.2rem; border-radius: 20px;
+      font-size: .85rem; font-weight: 700; cursor: default;
+      transition: transform .2s;
+    }
+    [data-ft]:hover { transform: translateY(-2px); }
+    [data-ft]::after {
+      content: attr(data-ft);
+      position: absolute; bottom: calc(100% + 8px); left: 50%;
+      transform: translateX(-50%) scale(.85); transform-origin: bottom center;
+      background: var(--dark); color: #fff;
+      font-size: .75rem; font-weight: 600; white-space: nowrap;
+      padding: .4rem .75rem; border-radius: 8px;
+      pointer-events: none; opacity: 0;
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    }
+    [data-ft]::before {
+      content: ''; position: absolute; bottom: calc(100% + 1px); left: 50%;
+      transform: translateX(-50%) scale(.85); transform-origin: bottom center;
+      border: 5px solid transparent; border-top-color: var(--dark);
+      pointer-events: none; opacity: 0;
+      transition: opacity .2s, transform .2s;
+    }
+    [data-ft]:hover::after, [data-ft]:hover::before {
+      opacity: 1; transform: translateX(-50%) scale(1);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       PAGE HERO
+    ═══════════════════════════════════════════════════════ */
+    .page-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e3a6a 100%);
+      padding: 4rem 0 3rem; color: #fff; position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(255,167,38,.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,167,38,.06) 0%, transparent 50%);
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero .back-link { color: rgba(255,255,255,.6); text-decoration: none; font-size: .82rem; }
+    .page-hero .back-link:hover { color: var(--primary); }
+
+    /* TOC sidebar */
+    .toc-sticky { position: sticky; top: 5rem; }
+    .toc-box { background: #fff; border-radius: 12px; padding: 1.25rem; box-shadow: 0 3px 16px rgba(0,0,0,.07); border-left: 4px solid var(--primary); }
+    .toc-box h6 { font-weight: 800; color: var(--dark); font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .75rem; }
+    .toc-box a { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: #555; padding: .35rem 0; text-decoration: none; border-bottom: 1px solid #f5f5f5; transition: all .2s; }
+    .toc-box a:last-child { border: none; }
+    .toc-box a:hover { color: var(--primary); padding-left: 6px; }
+    .toc-box a .toc-num { color: var(--primary); font-weight: 800; font-size: .7rem; min-width: 18px; }
+
+    /* FOOTER */
+    .is-footer { background: var(--dark); color: rgba(255,255,255,.6); padding: 2rem 0; text-align: center; font-size: .82rem; margin-top: 4rem; }
+    .is-footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- Social proof toasts container -->
+  <div id="sp-toast-container"></div>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sticky CTA bar -->
+  <div id="sticky-cta-bar">
+    <p><strong>Még ma</strong> kérhet díjmentes összehasonlítást &mdash; 14 biztosítótól</p>
+    <a href="/kapcsolat" class="ripple-btn rb-primary" style="font-size:.85rem;padding:.5rem 1.4rem;">
+      <i class="fa fa-file-text me-1"></i>Ajánlatkérés
+    </a>
+    <button class="scb-close" id="sticky-cta-close" aria-label="Bezárás">&times;</button>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="/design-showcase" class="back-link"><i class="fa fa-arrow-left me-1"></i>Design Showcase</a>
+      <div class="mt-3">
+        <span class="is-label" style="color:#fff;background:rgba(255,255,255,.15);"><i class="fa fa-bolt"></i>Belső referencia oldal</span>
+      </div>
+      <h1 class="mt-2 mb-3" style="font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;">Interaktivitás &amp; Figyelem Showcase</h1>
+      <p class="mb-0" style="opacity:.75;max-width:640px;font-size:.95rem;">
+        Legjobb gyakorlatok a felhasználói figyelemért: animációk, mozgó elemek, mikro-interakciók és konverzió-növelő technikák — mind egy helyen, élő demókkal.
+      </p>
+    </div>
+  </section>
+
+  <!-- Marquee trust bar – közvetlenül a hero alatt -->
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <!-- 2× ismétlés a végtelen görgetéshez -->
+      <span class="marquee-item"><i class="fa fa-check-circle"></i>MNB-engedélyes alkusz</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-shield-alt"></i>14 biztosítótól összehasonlítás</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-star"></i>Díjmentes tanácsadás</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-map-marker-alt"></i>Nyíregyháza, Liliom u. 27/A</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-users"></i>Több ezer ügyfél Szabolcs megyében</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-phone"></i>+36 70 625 8201</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-check-circle"></i>MNB-engedélyes alkusz</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-shield-alt"></i>14 biztosítótól összehasonlítás</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-star"></i>Díjmentes tanácsadás</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-map-marker-alt"></i>Nyíregyháza, Liliom u. 27/A</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-users"></i>Több ezer ügyfél Szabolcs megyében</span>
+      <span class="marquee-sep">✦</span>
+      <span class="marquee-item"><i class="fa fa-phone"></i>+36 70 625 8201</span>
+      <span class="marquee-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="container py-5">
+    <div class="row g-4">
+      <!-- TOC SIDEBAR -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="toc-sticky">
+          <div class="toc-box">
+            <h6>Tartalom</h6>
+            <a href="#sec-typewriter"><span class="toc-num">01</span>Typewriter headline</a>
+            <a href="#sec-particles"><span class="toc-num">02</span>Particle háttér</a>
+            <a href="#sec-tilt"><span class="toc-num">03</span>3D tilt kártyák</a>
+            <a href="#sec-buttons"><span class="toc-num">04</span>Ripple &amp; Magnetic gomb</a>
+            <a href="#sec-spotlight"><span class="toc-num">05</span>Spotlight kártyák</a>
+            <a href="#sec-counter"><span class="toc-num">06</span>Animált számláló</a>
+            <a href="#sec-shield"><span class="toc-num">07</span>SVG Shield animáció</a>
+            <a href="#sec-pulse"><span class="toc-num">08</span>Pulse/Radar ring</a>
+            <a href="#sec-timeline"><span class="toc-num">09</span>Scroll timeline</a>
+            <a href="#sec-ba"><span class="toc-num">10</span>Before/After slider</a>
+            <a href="#sec-price"><span class="toc-num">11</span>Ár-becslő slider</a>
+            <a href="#sec-grad"><span class="toc-num">12</span>Gradient hero</a>
+            <a href="#sec-skeleton"><span class="toc-num">13</span>Skeleton loader</a>
+            <a href="#sec-icons"><span class="toc-num">14</span>Icon animációk</a>
+            <a href="#sec-cursor"><span class="toc-num">15</span>Cursor trail</a>
+            <a href="#sec-acc"><span class="toc-num">16</span>Smooth accordion</a>
+            <a href="#sec-tooltip"><span class="toc-num">17</span>Floating tooltip</a>
+            <a href="#sec-confetti"><span class="toc-num">18</span>Confetti burst</a>
+            <a href="#sec-sp"><span class="toc-num">19</span>Social proof toast</a>
+            <a href="#sec-marquee"><span class="toc-num">20</span>Marquee ticker</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="col-lg-9">
+
+        <!-- ─── 01 TYPEWRITER ─── -->
+        <section class="is-section" id="sec-typewriter">
+          <span class="is-label"><i class="fa fa-font"></i>01 — Typewriter / Rotating Headline</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Hero szekcióban, ahol rövid, ütős üzenetekkel szeretnél forgó figyelemfelkeltést. CTA felett is jól működik. Kutatások szerint a dinamikus headline ~15% extra figyelmet kap.
+          </div>
+          <div class="demo-box">
+            <div class="demo-badge">LIVE DEMO</div>
+            <div class="tw-wrap">
+              <p class="tw-sub">Biztor Alkusz Kft.</p>
+              <p class="tw-static mb-2">Segítünk megtalálni a legjobb</p>
+              <div class="tw-dynamic" id="tw-text"></div><span class="tw-cursor" id="tw-cursor"></span>
+              <div class="mt-4">
+                <a href="/kapcsolat" class="ripple-btn rb-primary"><i class="fa fa-file-text me-1"></i>Ajánlatkérés</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 02 PARTICLES ─── -->
+        <section class="is-section" id="sec-particles">
+          <span class="is-label"><i class="fa fa-circle"></i>02 — Particle Canvas Háttér</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Dark hero szekcióban, landing page hero-ként. Mozgó pontok és összekötő vonalak megduplázhatják az oldalon töltött időt. Ne használd kevés RAM-os mobilon — ott Reduced Motion-nal csökkentsd.
+          </div>
+          <div class="demo-box" style="padding:0;border-radius:16px;overflow:hidden;">
+            <div class="particle-hero" style="min-height:280px;">
+              <canvas id="particle-canvas"></canvas>
+              <div class="particle-content">
+                <h3>Interaktív háttér</h3>
+                <p>Mozgasd az egeret a vászon felett — a pontok követik a kurzort</p>
+                <a href="#sec-tilt" class="ripple-btn rb-primary">Következő technika</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 03 3D TILT ─── -->
+        <section class="is-section" id="sec-tilt">
+          <span class="is-label"><i class="fa fa-cube"></i>03 — 3D Tilt Kártyák</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Szolgáltatás-kártyáknál, feature grideknél. A 3D parallax hover premium érzetet kelt, növeli az interakciós arányt. Mouse-t mozgasd a kártyák felett.
+          </div>
+          <div class="demo-box">
+            <div class="demo-badge">HOVER</div>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="tilt-card" data-tilt>
+                  <div class="tilt-shine"></div>
+                  <span class="tc-icon"><i class="fa fa-car"></i></span>
+                  <h5>KGFB</h5>
+                  <p>14 biztosítótól összehasonlítjuk az évfordulós ajánlatot</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="tilt-card" data-tilt>
+                  <div class="tilt-shine"></div>
+                  <span class="tc-icon"><i class="fa fa-home"></i></span>
+                  <h5>Lakásbiztosítás</h5>
+                  <p>Belvíz, napelem, alulbiztosítottság — a részleteket is megnézzük</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="tilt-card" data-tilt>
+                  <div class="tilt-shine"></div>
+                  <span class="tc-icon"><i class="fa fa-heartbeat"></i></span>
+                  <h5>Életbiztosítás</h5>
+                  <p>TKM, adójóváírás és nyugdíjcélú megtakarítás egy helyen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 04 BUTTONS ─── -->
+        <section class="is-section" id="sec-buttons">
+          <span class="is-label"><i class="fa fa-hand-pointer"></i>04 — Ripple &amp; Magnetic Gomb</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Minden CTA gombnál. A ripple effekt Material Design-alapú visszajelzés; a magnetic gomb kurzorkövetéssel premium SaaS-os érzetet ad. A/B tesztek szerint 8–12% CTR növekedés.
+          </div>
+          <div class="demo-box">
+            <div class="demo-badge">KATTINTS</div>
+            <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center" style="min-height:120px;">
+              <button class="ripple-btn rb-primary" onclick="addRipple(this, event)">
+                <i class="fa fa-file-text me-1"></i>Ripple gomb
+              </button>
+              <button class="ripple-btn rb-dark" onclick="addRipple(this, event)">
+                <i class="fa fa-phone me-1"></i>Ripple (sötét)
+              </button>
+              <div class="mag-wrap">
+                <button class="mag-btn" id="mag-btn-1">
+                  <i class="fa fa-shield-alt me-1"></i>Magnetic gomb
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 05 SPOTLIGHT ─── -->
+        <section class="is-section" id="sec-spotlight">
+          <span class="is-label"><i class="fa fa-lightbulb"></i>05 — Spotlight / Cursor Glow Kártyák</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Dark hátterű feature kártyáknál. A fényfolt a kurzort követi a kártyán belül — elegáns, prémium hatás, egyetlen JavaScript esemény.
+          </div>
+          <div class="demo-box" style="background:#0f1e36;">
+            <div class="demo-badge" style="background:rgba(255,255,255,.1);color:#fff;">MOZGASD AZ EGERET</div>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="spotlight-card" data-spotlight>
+                  <div class="sp-glow"></div>
+                  <div class="sp-icon"><i class="fa fa-car"></i></div>
+                  <h5>Gépjármű</h5>
+                  <p>KGFB és CASCO összehasonlítása 14 biztosítótól</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="spotlight-card" data-spotlight>
+                  <div class="sp-glow"></div>
+                  <div class="sp-icon"><i class="fa fa-building"></i></div>
+                  <h5>Vállalkozás</h5>
+                  <p>Felelősség, vagyon, géptörés, flotta</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="spotlight-card" data-spotlight>
+                  <div class="sp-glow"></div>
+                  <div class="sp-icon"><i class="fa fa-plane"></i></div>
+                  <h5>Utasbiztosítás</h5>
+                  <p>Egyéni, csoportos, éves bérlet ajánlatok</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 06 COUNTER ─── -->
+        <section class="is-section" id="sec-counter">
+          <span class="is-label"><i class="fa fa-sort-numeric-up"></i>06 — Animált Számláló</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Statisztika szekcióknál. Scroll-aktivált: csak akkor indul, mikor látható. Növeli a social proof hatást és több másodpercet tart a figyelmen.
+          </div>
+          <div class="demo-box">
+            <div class="anim-counter-grid" id="counter-grid">
+              <div class="ac-card">
+                <div class="ac-num" data-target="14" data-suffix="+">0</div>
+                <div class="ac-label">biztosítótársaság</div>
+              </div>
+              <div class="ac-card">
+                <div class="ac-num" data-target="2800" data-suffix="+">0</div>
+                <div class="ac-label">aktív ügyfél</div>
+              </div>
+              <div class="ac-card">
+                <div class="ac-num" data-target="98" data-suffix="%">0</div>
+                <div class="ac-label">elégedett ügyfél</div>
+              </div>
+              <div class="ac-card">
+                <div class="ac-num" data-target="15" data-suffix=" év">0</div>
+                <div class="ac-label">szakmai tapasztalat</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 07 SHIELD SVG ─── -->
+        <section class="is-section" id="sec-shield">
+          <span class="is-label"><i class="fa fa-shield-alt"></i>07 — Animált SVG Pajzs</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Hero kiegészítőként, CTA mellett, "Miért válasszon minket?" szekció ikonjaként. A rajzolt pipa és pulzáló animáció bizalmat sugároz.
+          </div>
+          <div class="demo-box text-center">
+            <div class="row align-items-center justify-content-center g-4">
+              <div class="col-auto">
+                <div class="shield-wrap">
+                  <svg class="shield-svg shield-pulse" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#FFA726"/>
+                        <stop offset="100%" stop-color="#ff9800"/>
+                      </linearGradient>
+                    </defs>
+                    <path class="shield-body" d="M50 5 L90 20 L90 55 Q90 90 50 115 Q10 90 10 55 L10 20 Z"/>
+                    <polyline class="shield-check" points="32,60 45,72 68,48"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-md-6 text-start">
+                <h4 class="fw-bold" style="color:var(--dark);">Biztonságban van minden ügyfél</h4>
+                <p class="text-muted mb-3">MNB-engedélyes, független alkuszként nem kötődünk egyetlen biztosítóhoz sem. Az Ön érdekét képviseljük, nem a biztosító profitját.</p>
+                <button class="ripple-btn rb-primary" onclick="addRipple(this, event)">
+                  <i class="fa fa-shield-alt me-1"></i>Több tudnivaló
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 08 PULSE RING ─── -->
+        <section class="is-section" id="sec-pulse">
+          <span class="is-label"><i class="fa fa-circle-notch"></i>08 — Pulse / Radar Ring Animáció</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> CTA gombok körül, "Hívjon most" szekciónál, kapcsolat ikonok mellett. A pulzáló gyűrűk sürgősséget és élénkséget kommunikálnak — 20% több kattintást hoznak CTA közelben.
+          </div>
+          <div class="demo-box">
+            <div class="row align-items-center justify-content-center g-4">
+              <div class="col-auto">
+                <div class="pulse-wrap">
+                  <div class="pulse-ring"></div>
+                  <div class="pulse-ring"></div>
+                  <div class="pulse-ring"></div>
+                  <div class="pulse-center">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <h4 class="fw-bold" style="color:var(--dark);">Hívjon most!</h4>
+                <p class="text-muted mb-3">H: 9:00–16:00 &bull; K–P: 8:00–16:00</p>
+                <a href="tel:+36706258201" class="ripple-btn rb-primary" onclick="addRipple(this, event)">
+                  <i class="fa fa-phone me-1"></i>+36 70 625 8201
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 09 SCROLL TIMELINE ─── -->
+        <section class="is-section" id="sec-timeline">
+          <span class="is-label"><i class="fa fa-list-ol"></i>09 — Scroll-aktivált Timeline</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> "Hogyan működik", folyamat-leírás, onboarding step szekcióknál. Scrollozz le a demo-hoz — a lépések sorban aktiválódnak, ahogy láthatóvá válnak.
+          </div>
+          <div class="demo-box">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="scroll-timeline" id="scroll-tl">
+                  <div class="st-item" data-st>
+                    <div class="st-dot"><i class="fa fa-check"></i></div>
+                    <div class="st-content">
+                      <div class="st-num">1. lépés</div>
+                      <h6>Ajánlatkérés kitöltése</h6>
+                      <p>Online form, kb. 5 perc. Vagy telefonon is elindíthatjuk.</p>
+                    </div>
+                  </div>
+                  <div class="st-item" data-st>
+                    <div class="st-dot"><i class="fa fa-check"></i></div>
+                    <div class="st-content">
+                      <div class="st-num">2. lépés</div>
+                      <h6>Visszahívás 1 munkanapon belül</h6>
+                      <p>Pontosítjuk az igényeket és összegyűjtjük a szükséges adatokat.</p>
+                    </div>
+                  </div>
+                  <div class="st-item" data-st>
+                    <div class="st-dot"><i class="fa fa-check"></i></div>
+                    <div class="st-content">
+                      <div class="st-num">3. lépés</div>
+                      <h6>Összehasonlítás elkészítése</h6>
+                      <p>14 biztosítótól összeállítjuk a releváns ajánlatokat.</p>
+                    </div>
+                  </div>
+                  <div class="st-item" data-st>
+                    <div class="st-dot"><i class="fa fa-check"></i></div>
+                    <div class="st-content">
+                      <div class="st-num">4. lépés</div>
+                      <h6>Kiválasztás és kötés</h6>
+                      <p>Elmagyarázzuk a különbségeket, segítünk dönteni. A kötést mi intézzük.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 d-flex align-items-center">
+                <div class="text-center w-100">
+                  <div class="shield-wrap" style="padding:1rem;">
+                    <svg class="shield-svg" style="width:90px;" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="shieldGrad2" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#22c55e"/>
+                          <stop offset="100%" stop-color="#16a34a"/>
+                        </linearGradient>
+                      </defs>
+                      <path style="fill:url(#shieldGrad2)" d="M50 5 L90 20 L90 55 Q90 90 50 115 Q10 90 10 55 L10 20 Z"/>
+                      <text x="50" y="68" text-anchor="middle" style="fill:#fff;font-family:Nunito,sans-serif;font-size:28px;font-weight:900;">4</text>
+                    </svg>
+                  </div>
+                  <p class="text-muted small">lépéses folyamat, <br>átlagosan 2 munkanapig tart</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 10 BEFORE/AFTER ─── -->
+        <section class="is-section" id="sec-ba">
+          <span class="is-label"><i class="fa fa-adjust"></i>10 — Before / After Összehasonlító Slider</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> "Alkusz nélkül vs. Alkusszal", "régi vs. új kötvény" összehasonlításoknál. Húzd a csúszkát balra-jobbra.
+          </div>
+          <div class="demo-box" style="padding:0;overflow:hidden;border-radius:16px;">
+            <div class="ba-wrap" id="ba-wrap">
+              <div class="ba-before">
+                <span class="ba-label">ALKUSZ NÉLKÜL</span>
+                <h4><i class="fa fa-times-circle me-2"></i>Egyetlen ajánlat</h4>
+                <p>Csak az ismerős biztosítója — nincs összehasonlítás, nincs valódi verseny</p>
+                <div style="font-size:2.5rem;opacity:.5;"><i class="fa fa-frown"></i></div>
+              </div>
+              <div class="ba-after" id="ba-after">
+                <span class="ba-label">BIZTORRAL</span>
+                <h4><i class="fa fa-check-circle me-2"></i>14 ajánlat egyszerre</h4>
+                <p>Összehasonlítjuk a fedezeteket, az önrészt és a kizárásokat is</p>
+                <div style="font-size:2.5rem;opacity:.8;"><i class="fa fa-smile"></i></div>
+              </div>
+              <div class="ba-divider" id="ba-div"></div>
+              <div class="ba-handle" id="ba-handle"><i class="fa fa-arrows-alt-h"></i></div>
+            </div>
+            <p class="text-center text-muted small py-2 mb-0"><i class="fa fa-hand-point-left me-1"></i>Húzd a csúszkát</p>
+          </div>
+        </section>
+
+        <!-- ─── 11 PRICE SLIDER ─── -->
+        <section class="is-section" id="sec-price">
+          <span class="is-label"><i class="fa fa-sliders-h"></i>11 — Ár-Becslő Range Slider</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Kalkulátor szekciókban, quick-quote widgetként. A real-time frissülő ár dramatikusan növeli az elkötelezettséget — az oldal közelében maradnak, amíg "játszanak" a sliderrel.
+          </div>
+          <div class="demo-box">
+            <div class="price-estimator">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                  <h5 class="fw-bold mb-1" style="color:var(--dark);">KGFB díjbecslő</h5>
+                  <p class="text-muted small mb-4">Kb. hány éves az autó?</p>
+                  <div class="mb-2 d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold" style="color:var(--dark);" id="pe-car-age-label">5 éves</span>
+                    <span class="text-muted small">~becsült éves díj:</span>
+                  </div>
+                  <input type="range" class="pe-range" id="pe-slider" min="1" max="20" value="5" step="1">
+                  <div class="pe-slider-labels"><span>1 év</span><span>10 év</span><span>20 év</span></div>
+                  <div class="mt-3">
+                    <p class="text-muted small mb-0"><i class="fa fa-info-circle text-primary me-1"></i>Ez csak tájékoztató becslés. Valódi árajánlathoz töltse ki a formot.</p>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center">
+                  <div class="pe-price-display" id="pe-price">45 600</div>
+                  <div class="text-muted" style="font-size:.85rem;">Ft / év (tájékoztató)</div>
+                  <div class="mt-3">
+                    <a href="/kotelezo-biztositas-ajanlatkeres" class="ripple-btn rb-primary" onclick="addRipple(this, event)">
+                      <i class="fa fa-file-text me-1"></i>Pontos ajánlat kérése
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 12 GRAD HERO ─── -->
+        <section class="is-section" id="sec-grad">
+          <span class="is-label"><i class="fa fa-palette"></i>12 — Animált Gradient Hero</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> CTA sávokhoz, section dividerekhez, szezonális akciókhoz. A folyamatosan mozgó gradient élő és dinamikus érzetet kelt statikus háttér helyett.
+          </div>
+          <div class="demo-box" style="padding:0;overflow:hidden;border-radius:16px;">
+            <div class="grad-hero">
+              <h3>Díjmentes összehasonlítás</h3>
+              <p>14 biztosítótól, elköteleződés nélkül. MNB-engedélyes alkusz.</p>
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <button class="ripple-btn rb-primary" onclick="addRipple(this, event)">
+                  <i class="fa fa-file-text me-1"></i>Ajánlatkérés
+                </button>
+                <button class="ripple-btn" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);" onclick="addRipple(this, event)">
+                  <i class="fa fa-phone me-1"></i>Hívjon minket
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 13 SKELETON ─── -->
+        <section class="is-section" id="sec-skeleton">
+          <span class="is-label"><i class="fa fa-spinner"></i>13 — Skeleton / Shimmer Loader</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Dinamikusan betöltött tartalomnál (ajánlatok, biztosítói logo-sor, árak). A skeleton placeholder megelőzi a "blank screen" érzetet és csökkenti a perceived load time-ot ~40%-kal.
+          </div>
+          <div class="demo-box">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="skel-card">
+                  <div class="skel-circle"></div>
+                  <div class="skel-line"></div>
+                  <div class="skel-line w-80"></div>
+                  <div class="skel-line w-60"></div>
+                  <div class="skel-line w-40"></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="skel-card">
+                  <div class="skel-circle"></div>
+                  <div class="skel-line"></div>
+                  <div class="skel-line w-80"></div>
+                  <div class="skel-line w-60"></div>
+                  <div class="skel-line w-40"></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="skel-card">
+                  <div class="skel-circle"></div>
+                  <div class="skel-line"></div>
+                  <div class="skel-line w-80"></div>
+                  <div class="skel-line w-60"></div>
+                  <div class="skel-line w-40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 14 ICON ANIMATIONS ─── -->
+        <section class="is-section" id="sec-icons">
+          <span class="is-label"><i class="fa fa-magic"></i>14 — Hover Icon Animációk</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Szolgáltatás kártyákon, feature grid ikonokon. Minden ikon más mozgást kap — hover-re aktiválódik. Könnyű, CSS-only megoldás.
+          </div>
+          <div class="demo-box">
+            <div class="row g-3">
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon bounce"><i class="fa fa-home"></i></div>
+                  <div class="iac-name">Bounce</div>
+                  <div class="iac-hint">fel-le</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon spin"><i class="fa fa-sync-alt"></i></div>
+                  <div class="iac-name">Spin</div>
+                  <div class="iac-hint">forgás</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon shake"><i class="fa fa-bell"></i></div>
+                  <div class="iac-name">Shake</div>
+                  <div class="iac-hint">rázás</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon heartbeat"><i class="fa fa-heart"></i></div>
+                  <div class="iac-name">Heartbeat</div>
+                  <div class="iac-hint">szívdobogás</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon tada"><i class="fa fa-star"></i></div>
+                  <div class="iac-name">Tada</div>
+                  <div class="iac-hint">figyelemfelhívás</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-2">
+                <div class="icon-anim-card">
+                  <div class="iac-icon wobble"><i class="fa fa-car"></i></div>
+                  <div class="iac-name">Wobble</div>
+                  <div class="iac-hint">ingadozás</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 15 CURSOR TRAIL ─── -->
+        <section class="is-section" id="sec-cursor">
+          <span class="is-label"><i class="fa fa-mouse-pointer"></i>15 — Cursor Trail (Egernyom)</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Landing page hero zónában, prémium termék oldalakon. Visszafogott pontokból álló nyom "élővé teszi" az oldalt. Mobilon automatikusan kikapcsol.
+          </div>
+          <div class="demo-box" style="padding:0;overflow:hidden;border-radius:16px;">
+            <div class="cursor-trail-demo" id="cursor-trail-area">
+              <p><i class="fa fa-mouse-pointer me-2"></i>Mozgasd ide az egered</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 16 ACCORDION ─── -->
+        <section class="is-section" id="sec-acc">
+          <span class="is-label"><i class="fa fa-chevron-down"></i>16 — Smooth Accordion</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> GYIK szekciókban Bootstrap default helyett — a max-height animáció simább és modernebb érzetet ad, nincs "ugrás" a megnyitáskor.
+          </div>
+          <div class="demo-box">
+            <div id="smooth-acc">
+              <div class="smooth-acc-item">
+                <button class="smooth-acc-btn" data-sacc="q1">
+                  Milyen biztosítóktól kérnek ajánlatot?
+                  <i class="fa fa-chevron-down sacc-arrow"></i>
+                </button>
+                <div class="smooth-acc-body" id="sacc-q1">
+                  <div class="smooth-acc-body-inner">
+                    14 biztosítótársasággal dolgozunk együtt: Allianz, Generali, Groupama, K&H, Grawe, Uniqa, Signal Iduna, MKB Életbiztosító, CIG Pannónia, és mások. A pontos lista szegmensenként változhat.
+                  </div>
+                </div>
+              </div>
+              <div class="smooth-acc-item">
+                <button class="smooth-acc-btn" data-sacc="q2">
+                  Mennyibe kerül a tanácsadás?
+                  <i class="fa fa-chevron-down sacc-arrow"></i>
+                </button>
+                <div class="smooth-acc-body" id="sacc-q2">
+                  <div class="smooth-acc-body-inner">
+                    Teljesen ingyenes. Alkuszként a biztosítóktól kapunk díjat, nem az ügyféltől. A tanácsadás, az összehasonlítás és a kötés egyaránt díjmentes.
+                  </div>
+                </div>
+              </div>
+              <div class="smooth-acc-item">
+                <button class="smooth-acc-btn" data-sacc="q3">
+                  Lehet-e személyesen is felkeresni Önöket?
+                  <i class="fa fa-chevron-down sacc-arrow"></i>
+                </button>
+                <div class="smooth-acc-body" id="sacc-q3">
+                  <div class="smooth-acc-body-inner">
+                    Igen — irodánk Nyíregyházán, a Liliom utca 27/A szám alatt található. H: 9–16, K–P: 8–16. Telefonos egyeztetés után is szívesen fogadunk.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 17 TOOLTIP ─── -->
+        <section class="is-section" id="sec-tooltip">
+          <span class="is-label"><i class="fa fa-comment-alt"></i>17 — Floating Tooltip</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Szakkifejezések magyarázatánál, form mezők mellé, badge-eken. CSS-only megoldás, JavaScript nélkül.
+          </div>
+          <div class="demo-box">
+            <div class="ft-wrap">
+              <span data-ft="Kötelező gépjármű-felelősségbiztosítás">KGFB <i class="fa fa-question-circle"></i></span>
+              <span data-ft="Terhesség Korrekciós Mutató – éves költségszint">TKM <i class="fa fa-question-circle"></i></span>
+              <span data-ft="Magyar Biztosítók Szövetsége">MABISZ <i class="fa fa-question-circle"></i></span>
+              <span data-ft="Magyar Nemzeti Bank – felügyeleti szerv">MNB <i class="fa fa-question-circle"></i></span>
+              <span data-ft="Független biztosítási alkusz – nincs biztosítói kötöttség">Alkusz <i class="fa fa-question-circle"></i></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─── 18 CONFETTI ─── -->
+        <section class="is-section" id="sec-confetti">
+          <span class="is-label"><i class="fa fa-birthday-cake"></i>18 — Confetti Burst</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Form sikeres beküldése után, kvíz befejezésekor, "Ajánlat elkészült" üzenet mellett. Azonnali, pozitív emocionális visszajelzés — csökkenti a post-submit szorongást.
+          </div>
+          <div class="demo-box text-center" style="min-height:150px;">
+            <p class="text-muted mb-4">Kattints a gombra — siker-visszajelzés demó</p>
+            <button class="ripple-btn rb-primary" id="confetti-btn" onclick="addRipple(this, event); fireConfetti();">
+              <i class="fa fa-paper-plane me-1"></i>Ajánlat elküldve!
+            </button>
+          </div>
+        </section>
+
+        <!-- ─── 19 SOCIAL PROOF ─── -->
+        <section class="is-section" id="sec-sp">
+          <span class="is-label"><i class="fa fa-users"></i>19 — Social Proof Toast (Auto-pop)</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Landing page-en, ajánlatkérő formok közelében. "X ember most kér ajánlatot" értesítések növelik a FOMO-t. Az oldal bal alsó sarkában jelennek meg.
+          </div>
+          <div class="demo-box text-center">
+            <p class="text-muted mb-4">A bal alsó sarokban automatikusan megjelennek — vagy kattints a gombra:</p>
+            <button class="ripple-btn rb-dark" onclick="addRipple(this, event); showRandomToast();">
+              <i class="fa fa-bell me-1"></i>Toast megjelenítése
+            </button>
+          </div>
+        </section>
+
+        <!-- ─── 20 MARQUEE ─── -->
+        <section class="is-section" id="sec-marquee">
+          <span class="is-label"><i class="fa fa-running"></i>20 — Marquee / Ticker Sáv</span>
+          <div class="is-desc">
+            <strong>Mikor használd:</strong> Trust signals, partnerek logói, szolgáltatáslisták folyamatos görgetéséhez. Hover-re megáll — mobil-barát CSS-only megoldás. Lásd a lap tetején futó sávot is.
+          </div>
+          <div class="demo-box" style="padding:0;overflow:hidden;border-radius:16px;">
+            <div class="marquee-track" style="padding:1rem 0;">
+              <div class="marquee-inner">
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Allianz</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Generali</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Groupama</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>K&amp;H Biztosító</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Grawe</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Uniqa</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Signal Iduna</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>MKB Életbiztosító</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>CIG Pannónia</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Allianz</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Generali</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Groupama</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>K&amp;H Biztosító</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Grawe</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Uniqa</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>Signal Iduna</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>MKB Életbiztosító</span>
+                <span class="marquee-sep">|</span>
+                <span class="marquee-item" style="color:#fff;"><i class="fa fa-shield-alt"></i>CIG Pannónia</span>
+                <span class="marquee-sep">|</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /col content -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+  <footer class="is-footer">
+    <div class="container">
+      <p class="mb-1">Biztor Alkusz Kft. &mdash; Belső showcase oldal, nem indexelt.</p>
+      <p class="mb-0"><a href="/design-showcase">Design Showcase</a> &bull; <a href="/">Főoldal</a></p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* ─── SCROLL PROGRESS BAR ─── */
+    var spbar = document.getElementById('scroll-progress-bar');
+    function updateScrollBar() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      spbar.style.width = (docH > 0 ? (scrollTop / docH * 100) : 0) + '%';
+    }
+    window.addEventListener('scroll', updateScrollBar, { passive: true });
+
+    /* ─── STICKY CTA BAR ─── */
+    var ctaBar = document.getElementById('sticky-cta-bar');
+    var ctaClose = document.getElementById('sticky-cta-close');
+    var ctaDismissed = false;
+    ctaClose.addEventListener('click', function() { ctaDismissed = true; ctaBar.classList.remove('visible'); });
+    window.addEventListener('scroll', function() {
+      if (ctaDismissed) return;
+      if (window.scrollY > 600) ctaBar.classList.add('visible');
+      else ctaBar.classList.remove('visible');
+    }, { passive: true });
+
+    /* ─── TYPEWRITER HEADLINE ─── */
+    var phrases = [
+      'KGFB biztosítást',
+      'Lakásbiztosítást',
+      'Életbiztosítást',
+      'Utasbiztosítást',
+      'Egészségbiztosítást',
+      'Nyugdíjcélú megtakarítást'
+    ];
+    var twEl = document.getElementById('tw-text');
+    if (twEl) {
+      var pIdx = 0, cIdx = 0, deleting = false, delay = 100;
+      function typeStep() {
+        var phrase = phrases[pIdx];
+        if (!deleting) {
+          twEl.textContent = phrase.slice(0, cIdx + 1);
+          cIdx++;
+          if (cIdx === phrase.length) { deleting = true; delay = 2000; }
+          else { delay = 80; }
+        } else {
+          twEl.textContent = phrase.slice(0, cIdx - 1);
+          cIdx--;
+          if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; delay = 300; }
+          else { delay = 45; }
+        }
+        setTimeout(typeStep, delay);
+      }
+      setTimeout(typeStep, 800);
+    }
+
+    /* ─── PARTICLE CANVAS ─── */
+    var pCanvas = document.getElementById('particle-canvas');
+    if (pCanvas) {
+      var pCtx = pCanvas.getContext('2d');
+      var pMouse = { x: null, y: null };
+      var particles = [];
+      function resizePC() {
+        var r = pCanvas.parentElement.getBoundingClientRect();
+        pCanvas.width = r.width; pCanvas.height = r.height;
+      }
+      resizePC();
+      window.addEventListener('resize', resizePC);
+      pCanvas.parentElement.addEventListener('mousemove', function(e) {
+        var r = pCanvas.getBoundingClientRect();
+        pMouse.x = e.clientX - r.left;
+        pMouse.y = e.clientY - r.top;
+      });
+      pCanvas.parentElement.addEventListener('mouseleave', function() { pMouse.x = null; });
+      for (var i = 0; i < 60; i++) {
+        particles.push({
+          x: Math.random() * 1000, y: Math.random() * 400,
+          vx: (Math.random() - .5) * .6, vy: (Math.random() - .5) * .6,
+          r: Math.random() * 2.5 + 1
+        });
+      }
+      function animParticles() {
+        requestAnimationFrame(animParticles);
+        pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+        var W = pCanvas.width, H = pCanvas.height;
+        particles.forEach(function(p) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          if (pMouse.x !== null) {
+            var dx = p.x - pMouse.x, dy = p.y - pMouse.y, dist = Math.sqrt(dx*dx+dy*dy);
+            if (dist < 100) { p.x += dx/dist * 1.2; p.y += dy/dist * 1.2; }
+          }
+          pCtx.beginPath();
+          pCtx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+          pCtx.fillStyle = 'rgba(255,167,38,.6)';
+          pCtx.fill();
+        });
+        for (var a = 0; a < particles.length; a++) {
+          for (var b = a + 1; b < particles.length; b++) {
+            var dx = particles[a].x - particles[b].x;
+            var dy = particles[a].y - particles[b].y;
+            var dist = Math.sqrt(dx*dx+dy*dy);
+            if (dist < 100) {
+              pCtx.beginPath();
+              pCtx.moveTo(particles[a].x, particles[a].y);
+              pCtx.lineTo(particles[b].x, particles[b].y);
+              pCtx.strokeStyle = 'rgba(255,167,38,' + (1 - dist/100) * .25 + ')';
+              pCtx.lineWidth = .8;
+              pCtx.stroke();
+            }
+          }
+        }
+      }
+      animParticles();
+    }
+
+    /* ─── 3D TILT ─── */
+    document.querySelectorAll('[data-tilt]').forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var rx = (e.clientY - cy) / (r.height / 2) * -12;
+        var ry = (e.clientX - cx) / (r.width / 2) * 12;
+        card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.04,1.04,1.04)';
+        var shine = card.querySelector('.tilt-shine');
+        if (shine) {
+          var px = ((e.clientX - r.left) / r.width * 100);
+          var py = ((e.clientY - r.top) / r.height * 100);
+          shine.style.background = 'radial-gradient(circle at ' + px + '% ' + py + '%, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%)';
+        }
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+      });
+    });
+
+    /* ─── RIPPLE ─── */
+    window.addRipple = function(btn, e) {
+      var r = btn.getBoundingClientRect();
+      var size = Math.max(r.width, r.height) * 2;
+      var x = e.clientX - r.left - size/2;
+      var y = e.clientY - r.top - size/2;
+      var wave = document.createElement('span');
+      wave.className = 'ripple-wave';
+      wave.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+x+'px;top:'+y+'px;';
+      btn.appendChild(wave);
+      wave.addEventListener('animationend', function() { wave.remove(); });
+    };
+    document.querySelectorAll('.ripple-btn').forEach(function(b) {
+      b.addEventListener('click', function(e) { addRipple(b, e); });
+    });
+
+    /* ─── MAGNETIC BUTTON ─── */
+    var magBtn = document.getElementById('mag-btn-1');
+    if (magBtn) {
+      var magWrap = magBtn.closest('.mag-wrap');
+      magWrap.addEventListener('mousemove', function(e) {
+        var r = magWrap.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var dx = (e.clientX - cx) * .35, dy = (e.clientY - cy) * .35;
+        magBtn.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
+      });
+      magWrap.addEventListener('mouseleave', function() {
+        magBtn.style.transform = 'translate(0,0)';
+      });
+    }
+
+    /* ─── SPOTLIGHT CARDS ─── */
+    document.querySelectorAll('[data-spotlight]').forEach(function(card) {
+      var glow = card.querySelector('.sp-glow');
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        glow.style.left = (e.clientX - r.left) + 'px';
+        glow.style.top = (e.clientY - r.top) + 'px';
+      });
+    });
+
+    /* ─── ANIMATED COUNTER ─── */
+    function animateCounter(el) {
+      var target = parseInt(el.dataset.target, 10);
+      var suffix = el.dataset.suffix || '';
+      var dur = 1800, start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var prog = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - prog, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (prog < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var counterDone = false;
+    var counterGrid = document.getElementById('counter-grid');
+    if (counterGrid) {
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && !counterDone) {
+          counterDone = true;
+          counterGrid.querySelectorAll('[data-target]').forEach(function(el, i) {
+            setTimeout(function() { animateCounter(el); }, i * 150);
+          });
+        }
+      }, { threshold: .4 });
+      obs.observe(counterGrid);
+    }
+
+    /* ─── SCROLL TIMELINE ─── */
+    var stItems = document.querySelectorAll('.st-item[data-st]');
+    if (stItems.length) {
+      var stObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            stObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .6 });
+      stItems.forEach(function(item, i) {
+        setTimeout(function() { stObs.observe(item); }, i * 100);
+      });
+    }
+
+    /* ─── BEFORE/AFTER SLIDER ─── */
+    var baWrap = document.getElementById('ba-wrap');
+    if (baWrap) {
+      var baAfter = document.getElementById('ba-after');
+      var baDiv = document.getElementById('ba-div');
+      var baHandle = document.getElementById('ba-handle');
+      var baDragging = false;
+      function setBA(pct) {
+        pct = Math.max(5, Math.min(95, pct));
+        baAfter.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        baDiv.style.left = pct + '%';
+        baHandle.style.left = pct + '%';
+      }
+      setBA(50);
+      function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
+      baWrap.addEventListener('mousedown', function() { baDragging = true; });
+      baWrap.addEventListener('touchstart', function() { baDragging = true; }, { passive: true });
+      window.addEventListener('mousemove', function(e) {
+        if (!baDragging) return;
+        var r = baWrap.getBoundingClientRect();
+        setBA((getX(e) - r.left) / r.width * 100);
+      });
+      window.addEventListener('touchmove', function(e) {
+        if (!baDragging) return;
+        var r = baWrap.getBoundingClientRect();
+        setBA((getX(e) - r.left) / r.width * 100);
+      }, { passive: true });
+      window.addEventListener('mouseup', function() { baDragging = false; });
+      window.addEventListener('touchend', function() { baDragging = false; });
+    }
+
+    /* ─── PRICE ESTIMATOR ─── */
+    var peSlider = document.getElementById('pe-slider');
+    var pePrice = document.getElementById('pe-price');
+    var peLabel = document.getElementById('pe-car-age-label');
+    if (peSlider) {
+      // Approx annual KGFB price vs car age (older = slightly cheaper base but higher risk category)
+      var prices = [52000,50000,48000,46500,45600,44000,42000,40000,38500,37000,36000,35500,35000,34500,34000,33500,33000,32500,32000,31500];
+      function updatePE() {
+        var v = parseInt(peSlider.value, 10);
+        var p = prices[v - 1] || 40000;
+        peLabel.textContent = v + ' éves';
+        var fmt = p.toLocaleString('hu-HU');
+        pePrice.textContent = fmt;
+        pePrice.classList.remove('changed');
+        void pePrice.offsetWidth;
+        pePrice.classList.add('changed');
+        var pct = ((v - 1) / 19 * 100);
+        peSlider.style.background = 'linear-gradient(90deg, #FFA726 ' + pct + '%, #f0f0f0 ' + pct + '%)';
+      }
+      peSlider.addEventListener('input', updatePE);
+      updatePE();
+    }
+
+    /* ─── CURSOR TRAIL ─── */
+    var trailArea = document.getElementById('cursor-trail-area');
+    if (trailArea && window.matchMedia('(pointer:fine)').matches) {
+      var trailDots = [];
+      var maxDots = 12;
+      trailArea.addEventListener('mousemove', function(e) {
+        var r = trailArea.getBoundingClientRect();
+        var x = e.clientX - r.left, y = e.clientY - r.top;
+        var dot = document.createElement('div');
+        dot.className = 'trail-dot';
+        dot.style.left = x + 'px'; dot.style.top = y + 'px';
+        dot.style.opacity = '1';
+        trailArea.appendChild(dot);
+        trailDots.push(dot);
+        if (trailDots.length > maxDots) {
+          var old = trailDots.shift();
+          old.style.opacity = '0'; old.style.width = '2px'; old.style.height = '2px';
+          setTimeout(function() { if (old.parentElement) old.remove(); }, 300);
+        }
+        trailDots.forEach(function(d, i) {
+          var alpha = (i + 1) / trailDots.length;
+          d.style.opacity = (alpha * 0.8).toString();
+          var sz = (alpha * 8) + 2 + 'px';
+          d.style.width = sz; d.style.height = sz;
+        });
+      });
+      trailArea.addEventListener('mouseleave', function() {
+        trailDots.forEach(function(d) { if (d.parentElement) d.remove(); });
+        trailDots = [];
+      });
+    }
+
+    /* ─── SMOOTH ACCORDION ─── */
+    document.querySelectorAll('.smooth-acc-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var key = btn.dataset.sacc;
+        var body = document.getElementById('sacc-' + key);
+        var inner = body.querySelector('.smooth-acc-body-inner');
+        var isOpen = btn.classList.contains('open');
+        // close all
+        document.querySelectorAll('.smooth-acc-btn.open').forEach(function(ob) {
+          ob.classList.remove('open');
+          var obKey = ob.dataset.sacc;
+          document.getElementById('sacc-' + obKey).style.maxHeight = '0';
+        });
+        if (!isOpen) {
+          btn.classList.add('open');
+          body.style.maxHeight = inner.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* ─── CONFETTI ─── */
+    var confCanvas = document.getElementById('confetti-canvas');
+    var confCtx = confCanvas.getContext('2d');
+    var confPieces = [];
+    var confRunning = false;
+    function resizeConf() { confCanvas.width = window.innerWidth; confCanvas.height = window.innerHeight; }
+    resizeConf();
+    window.addEventListener('resize', resizeConf);
+    window.fireConfetti = function() {
+      confPieces = [];
+      for (var i = 0; i < 120; i++) {
+        confPieces.push({
+          x: window.innerWidth / 2, y: window.innerHeight / 2,
+          vx: (Math.random() - .5) * 14,
+          vy: -(Math.random() * 10 + 5),
+          color: ['#FFA726','#ff9800','#15233C','#22c55e','#3b82f6','#ef4444'][Math.floor(Math.random()*6)],
+          w: Math.random() * 10 + 5, h: Math.random() * 5 + 3,
+          rot: Math.random() * 360, rv: (Math.random() - .5) * 8,
+          life: 1
+        });
+      }
+      if (!confRunning) { confRunning = true; animConf(); }
+    };
+    function animConf() {
+      confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+      confPieces = confPieces.filter(function(p) { return p.life > 0; });
+      confPieces.forEach(function(p) {
+        p.vy += .25; p.x += p.vx; p.y += p.vy; p.rot += p.rv; p.life -= .012;
+        confCtx.save();
+        confCtx.globalAlpha = Math.max(0, p.life);
+        confCtx.translate(p.x, p.y); confCtx.rotate(p.rot * Math.PI / 180);
+        confCtx.fillStyle = p.color;
+        confCtx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        confCtx.restore();
+      });
+      if (confPieces.length > 0) requestAnimationFrame(animConf);
+      else { confRunning = false; }
+    }
+
+    /* ─── SOCIAL PROOF TOASTS ─── */
+    var toastNames = ['Kovács Péter','Nagy Anna','Tóth Gábor','Szabó Mária','Horváth Zoltán','Kiss Erzsébet','Varga Péter','Farkas Ágnes'];
+    var toastActions = ['ajánlatot kért','összehasonlítást kért','visszahívást kért','KGFB-t kötött','lakásbiztosítást váltott'];
+    var toastTimes = ['1 perce','3 perce','7 perce','12 perce','éppen most'];
+    var toastContainer = document.getElementById('sp-toast-container');
+    window.showRandomToast = function() {
+      var name = toastNames[Math.floor(Math.random()*toastNames.length)];
+      var action = toastActions[Math.floor(Math.random()*toastActions.length)];
+      var time = toastTimes[Math.floor(Math.random()*toastTimes.length)];
+      var initials = name.split(' ').map(function(w){return w[0];}).join('');
+      var toast = document.createElement('div');
+      toast.className = 'sp-toast';
+      toast.innerHTML = '<div class="sp-av">' + initials + '</div><div class="sp-txt"><strong>' + name + '</strong><span>' + action + '</span></div><span class="sp-time">' + time + '</span>';
+      toastContainer.appendChild(toast);
+      setTimeout(function() {
+        toast.classList.add('fade-out');
+        toast.addEventListener('animationend', function() { toast.remove(); });
+      }, 4000);
+    };
+    // Auto-show after delays
+    [2500, 8000, 14000, 21000].forEach(function(delay) {
+      setTimeout(showRandomToast, delay);
+    });
+
+  })();
+  </script>
+</body>
+</html>

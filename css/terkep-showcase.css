@@ -1,0 +1,491 @@
+/* ─── GLOBAL ─────────────────────────────────────────────────── */
+html,
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── TAILWIND UTILITY PÓTLÁS (hiányzók output.css-ből) ─────── */
+/* z-[102] hiányzik a Tailwind build-ből → kézzel pótoljuk */
+#hero-strip-panel {
+  z-index: 102;
+}
+/* pointer-events-auto osztály szintén hiányzik */
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+/* ─── GOOGLE RATING CARD (csillagok felül, nagy szám, keret nélkül) ── */
+/* ─── JS STATE CLASSES ───────────────────────────────────────── */
+#map-wrapper.grabbing {
+  cursor: grabbing;
+}
+
+#county-panel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#loading.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─── HEADER GRADIENT ────────────────────────────────────────── */
+.hdr {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, .97) 0%,
+      rgba(255, 255, 255, .85) 65%,
+      transparent 100%);
+}
+
+/* ─── HERO SLIDE PADDING ─────────────────────────────────────── */
+.home-embed .hdr {
+  display: none;
+}
+
+.home-embed #loading {
+  display: none;
+}
+
+.hero-slide {
+  padding: 70px 220px 310px 48px;
+  pointer-events: none;
+}
+
+.hero-slide.active {
+  pointer-events: auto;
+}
+
+/* ─── HERO SZÖVEG ANIMÁCIÓ (oldalról beúszás) ───────────────── */
+.hero-eyebrow,
+.hero-title,
+.hero-desc,
+.hero-btn {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+@keyframes heroIn {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes heroOut {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateX(36px); }
+}
+
+.hero-slide.active .hero-eyebrow {
+  animation: heroIn .48s cubic-bezier(.22, 1, .36, 1) 0s both;
+}
+.hero-slide.active .hero-title {
+  animation: heroIn .52s cubic-bezier(.22, 1, .36, 1) .09s both;
+}
+.hero-slide.active .hero-desc {
+  animation: heroIn .50s cubic-bezier(.22, 1, .36, 1) .18s both;
+}
+.hero-slide.active .hero-btn {
+  animation: heroIn .50s cubic-bezier(.22, 1, .36, 1) .28s both;
+  pointer-events: auto;
+}
+.hero-slide.leaving .hero-eyebrow,
+.hero-slide.leaving .hero-title,
+.hero-slide.leaving .hero-desc,
+.hero-slide.leaving .hero-btn {
+  animation: heroOut .32s cubic-bezier(.4, 0, .6, 1) both;
+}
+
+/* ─── HERO TITLE EM ──────────────────────────────────────────── */
+.hero-title em {
+  font-style: normal;
+  color: #ffa726;
+}
+
+/* ─── HERO BTN HOVER ─────────────────────────────────────────── */
+.hero-slide.active .hero-btn {
+  translate: 0 0;
+  transition: background-color .18s, box-shadow .18s, translate .18s;
+}
+.hero-slide.active .hero-btn:hover {
+  background-color: #fb8c00;
+  box-shadow: 0 6px 28px rgba(255, 167, 38, .52);
+  translate: 0 -2px;
+}
+/* ─── NYÍREGYHÁZA "ITT VAGYUNK MI" MARKER ───────────────────── */
+@keyframes markerDraw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes markerFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#nyiregy-marker .marker-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  /* 1s delay: a zoom-animáció (~800ms) lefut, utána rajzolódik be */
+  animation: markerDraw .75s cubic-bezier(.4, 0, .2, 1) 1s both;
+  transition: stroke .35s ease;
+}
+
+#nyiregy-marker .marker-text {
+  opacity: 0;
+  /* 1.5s: a vonal már félig kész, szöveg halványan előjön */
+  animation: markerFadeIn .45s ease 1.5s both;
+  transition: fill .35s ease;
+}
+
+/* Hover: piros → narancs animálva */
+#nyiregy-marker:hover .marker-line {
+  stroke: #fb8c00;
+}
+
+#nyiregy-marker:hover .marker-text {
+  fill: #fb8c00;
+}
+
+/* ─── PERSON IMAGE STATES ────────────────────────────────────── */
+#hero-person {
+  position: fixed;
+  right: auto;
+  left: 30%;
+  bottom: -80px;
+  width: clamp(320px, 34vw, 560px);
+  height: 82vh;
+  max-height: 700px;
+z-index: 102;
+}
+
+.person-img {
+  position: absolute;
+  bottom: 0;
+  right: auto;
+  left: 0;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(18px);
+  transition: opacity .55s cubic-bezier(.4, 0, .2, 1),
+    transform .55s cubic-bezier(.4, 0, .2, 1);
+}
+
+.person-img[alt="Erika"] {
+  height: 70%;
+}
+
+.person-img.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.person-img.leaving {
+  opacity: 0;
+  transform: translateX(18px);
+}
+
+/* ─── DOT ACTIVE ─────────────────────────────────────────────── */
+.hero-dot.active {
+  background: #ffa726;
+  transform: scale(1.35);
+}
+
+
+#hero-dots {
+  bottom: 320px;
+}
+
+/* Jobb oldali panel: ne látsszon grab cursor a térkép mögül */
+#hero-text {
+  cursor: default;
+  pointer-events: auto;
+}
+
+.hc-outer {
+  position: relative;
+  cursor: default;
+}
+
+.hc-strip {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-x;
+  padding-block: .6rem 1rem;
+  gap: .7rem;
+}
+
+.hc-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.hc-strip.grabbing {
+  cursor: grabbing !important;
+}
+
+[data-hc] {
+  flex-shrink: 0;
+  transition: transform .44s cubic-bezier(.34, 1.38, .64, 1), opacity .36s ease, filter .36s ease;
+  transform: scale(0.78);
+  opacity: .36;
+  filter: brightness(.6) saturate(.28);
+}
+
+[data-hc].is-center {
+  transform: scale(1.08) !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.hc-card {
+  width: 110px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  cursor: pointer;
+}
+
+.hc-img {
+  padding-top: 190%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hc-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s;
+}
+
+.hc-card:hover .hc-img img {
+  transform: scale(1.04);
+}
+
+.hc-ov {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .05) 52%, transparent 100%);
+}
+
+.hc-cat {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: .45rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.hc-dur {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, .62);
+  color: #fff;
+  font-size: .45rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.hc-play {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, .3);
+  background: rgba(0, 0, 0, .28);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: .62rem;
+  padding-left: 2px;
+  transition: all .22s;
+}
+
+[data-hc].is-center .hc-play {
+  background: #ffa726 !important;
+  border-color: #ffa726 !important;
+}
+
+.hc-bd {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .52rem .55rem;
+}
+
+.hc-tt {
+  color: #fff;
+  font-size: .58rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: .18rem;
+}
+
+.hc-mt {
+  color: rgba(255, 255, 255, .38);
+  font-size: .48rem;
+}
+
+.hc-dots {
+  display: flex;
+  gap: .38rem;
+  justify-content: center;
+  padding: .35rem 0;
+}
+
+.hc-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #ddd;
+  transition: all .27s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hc-dot.on {
+  width: 18px;
+  border-radius: 3px;
+  background: #ffa726;
+}
+
+.hc-nav-row {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  padding: 2px 0 8px;
+}
+
+.hc-nav {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .3);
+  background: #fff;
+  color: #ffa726;
+  font-size: .78rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .18s, color .18s, transform .15s;
+  padding: 0;
+  line-height: 1;
+  box-shadow: 0 2px 10px rgba(255, 167, 38, .32);
+}
+
+.hc-nav:hover {
+  background: #fff;
+  color: #ffa726;
+  transform: scale(1.1);
+  box-shadow: 0 2px 14px rgba(255, 167, 38, .5);
+}
+
+/* ─── SPINNER BORDER COLOR ───────────────────────────────────── */
+.spinner {
+  border-top-color: #ffa726;
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nodePulse {
+
+  0%,
+  70%,
+  100% {
+    r: var(--pulse-r0);
+  }
+
+  40% {
+    r: var(--pulse-r1);
+  }
+}
+
+.node-pulse {
+  animation: nodePulse .45s ease-in-out;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  #hero-text {
+    width: 50%;
+  }
+
+  .hero-slide {
+    padding-right: 180px;
+  }
+
+  #hero-person {
+    height: 65vh;
+  }
+
+  #hero-strip-panel {
+    width: 50%;
+  }
+}
+
+@media (max-width: 860px) {
+  #hero-text {
+    width: 100%;
+    pointer-events: auto;
+    /* Frosted glass – szöveg olvasható marad a térkép felett */
+    background: linear-gradient(165deg,
+        rgba(255, 255, 255, .96) 0%,
+        rgba(255, 253, 245, .90) 50%,
+        rgba(255, 251, 240, .55) 78%,
+        transparent 100%);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+  }
+
+  .hero-slide {
+    padding: 80px 24px 100px 24px;
+  }
+
+  #hero-person {
+    display: none;
+  }
+
+  #hero-dots {
+    right: 24px;
+    bottom: 36px;
+  }
+
+  #hero-strip-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-desc {
+    font-size: .85rem;
+  }
+}

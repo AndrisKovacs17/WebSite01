@@ -1,0 +1,183 @@
+# ============================================================
+# Clean URL rewrites – /oldalcim → /sites/fajl.html
+# Működéshez szükséges: Apache mod_rewrite
+# ============================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # -------------------------------------------------------
+  # 301 redirect: /sites/fajl.html → kanonikus clean URL
+  # Megakadályozza a duplikált indexelést
+  # -------------------------------------------------------
+  RewriteCond %{THE_REQUEST} \s/+sites/kgfb\.html[\s?] [NC]
+  RewriteRule ^sites/kgfb\.html$                    /kotelezo-biztositas      [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+sites/ajanlatok/kgfb\.html[\s?] [NC]
+  RewriteRule ^sites/ajanlatok/kgfb\.html$          /kotelezo-biztositas-ajanlatkeres [R=301,L]
+  RewriteRule ^sites/casco\.html$                   /casco-biztositas         [R=301,L]
+  RewriteRule ^sites/casco-flotta\.html$            /casco-flotta             [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+sites/lakas\.html[\s?] [NC]
+  RewriteRule ^sites/lakas\.html$                   /lakasbiztositas          [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/+sites/ajanlatok/lakas\.html[\s?] [NC]
+  RewriteRule ^sites/ajanlatok/lakas\.html$         /lakasbiztositas-ajanlatkeres [R=301,L]
+  RewriteRule ^sites/elet\.html$                    /eletbiztositas           [R=301,L]
+  RewriteRule ^sites/egeszseg\.html$                /egeszsegbiztositas       [R=301,L]
+  RewriteRule ^sites/ajanlatok/egeszseg\.html$      /egeszsegbiztositas-ajanlatkeres [R=301,L]
+  RewriteRule ^sites/baleset\.html$                 /balesetbiztositas        [R=301,L]
+  RewriteRule ^sites/utas\.html$                    /utasbiztositas           [R=301,L]
+  RewriteRule ^sites/nyugdij\.html$                 /nyugdijbiztositas        [R=301,L]
+  RewriteRule ^sites/megtakaritas\.html$            /megtakaritas             [R=301,L]
+  RewriteRule ^sites/mezogazd\.html$                /mezogazdasagi-biztositas [R=301,L]
+  RewriteRule ^sites/vallakozas\.html$              /vallalkozasbiztositas    [R=301,L]
+  RewriteRule ^sites/vallalkozas-altalanos\.html$   /vallalkozas-altalanos    [R=301,L]
+  RewriteRule ^sites/kgfb-flotta\.html$             /kgfb-flotta              [R=301,L]
+  RewriteRule ^sites/geptores\.html$                /geptores                 [R=301,L]
+  RewriteRule ^sites/fuvarozoi-biztositasok\.html$  /fuvarozoi-biztositas     [R=301,L]
+  RewriteRule ^sites/kegyeleti\.html$               /kegyeleti-biztositas     [R=301,L]
+  RewriteRule ^sites/szakmai-felelosseg\.html$      /szakmai-felelosseg       [R=301,L]
+  RewriteRule ^sites/onkentes\.html$                /onkentes-pentarak        [R=301,L]
+  RewriteRule ^sites/rolunk\.html$                  /rolunk                   [R=301,L]
+  RewriteRule ^sites/kapcsolat\.html$               /kapcsolat                [R=301,L]
+  RewriteRule ^sites/szolgaltatasok\.html$          /szolgaltatasok           [R=301,L]
+  RewriteRule ^sites/infok\.html$                   /infok                    [R=301,L]
+  RewriteRule ^sites/impresszum\.html$              /impresszum               [R=301,L]
+  RewriteRule ^sites/panasz\.html$                  /panaszkezeles            [R=301,L]
+  RewriteRule ^sites/ekarbejelento\.html$           /e-karbejelento           [R=301,L]
+  RewriteRule ^sites/polgaror\.html$                /polgarorseg              [R=301,L]
+  RewriteRule ^sites/info-gepjarmu\.html$           /info-gepjarmu            [R=301,L]
+  RewriteRule ^sites/info-ingatlan\.html$           /info-ingatlan            [R=301,L]
+  RewriteRule ^sites/info-adminisztracio\.html$     /info-adminisztracio      [R=301,L]
+  RewriteRule ^sites/info-utazas-elet\.html$        /info-utazas-elet         [R=301,L]
+  RewriteRule ^sites/torveny2023\.html$             /torveny-2023             [R=301,L]
+  RewriteRule ^sites/oldalterkep\.html$             /oldalterkep              [R=301,L]
+  RewriteRule ^sites/infok/(.+)\.html$              /infok/$1                 [R=301,L]
+  RewriteRule ^sites/szakemberek/(.+)\.html$        /szakember/$1             [R=301,L]
+
+  # -------------------------------------------------------
+  # WebP automatikus kiszolgálás
+  # Ha a böngésző támogatja (Accept: image/webp) és létezik
+  # a .webp változat, azt küldi vissza az eredeti helyett.
+  # -------------------------------------------------------
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_URI} ^(.+)\.(jpe?g|png)$
+  RewriteCond %{REQUEST_URI} !^/img/icon/
+  RewriteCond %{DOCUMENT_ROOT}%1.webp -f
+  RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+
+  # --- Fő service oldalak ---
+  RewriteRule ^kotelezo-biztositas/?$            sites/kgfb.html           [L]
+  RewriteRule ^kotelezo-biztositas-ajanlatkeres/?$ sites/ajanlatok/kgfb.html [L]
+  RewriteRule ^casco-biztositas/?$               sites/casco.html          [L]
+  RewriteRule ^casco-flotta/?$                   sites/casco-flotta.html   [L]
+  RewriteRule ^lakasbiztositas/?$                sites/lakas.html          [L]
+  RewriteRule ^lakasbiztositas-ajanlatkeres/?$   sites/ajanlatok/lakas.html [L]
+  RewriteRule ^eletbiztositas/?$                 sites/elet.html           [L]
+  RewriteRule ^egeszsegbiztositas/?$             sites/egeszseg.html       [L]
+  RewriteRule ^egeszsegbiztositas-ajanlatkeres/?$ sites/ajanlatok/egeszseg.html [L]
+  RewriteRule ^balesetbiztositas/?$              sites/baleset.html        [L]
+  RewriteRule ^utasbiztositas/?$                 sites/utas.html           [L]
+  RewriteRule ^nyugdijbiztositas/?$              sites/nyugdij.html        [L]
+  RewriteRule ^megtakaritas/?$                   sites/megtakaritas.html   [L]
+  RewriteRule ^mezogazdasagi-biztositas/?$       sites/mezogazd.html       [L]
+  RewriteRule ^vallalkozasbiztositas/?$          sites/vallakozas.html     [L]
+  RewriteRule ^vallalkozas-altalanos/?$          sites/vallalkozas-altalanos.html [L]
+  RewriteRule ^kgfb-flotta/?$                    sites/kgfb-flotta.html    [L]
+  RewriteRule ^geptores/?$                       sites/geptores.html       [L]
+  RewriteRule ^fuvarozoi-biztositas/?$           sites/fuvarozoi-biztositasok.html [L]
+  RewriteRule ^kegyeleti-biztositas/?$           sites/kegyeleti.html      [L]
+  RewriteRule ^szakmai-felelosseg/?$             sites/szakmai-felelosseg.html [L]
+  RewriteRule ^onkentes-pentarak/?$              sites/onkentes.html       [L]
+
+  # --- Keyword-rich URL alias-ok (low-comp, high-intent) ---
+  RewriteRule ^flotta-biztositas/?$              sites/kgfb-flotta.html    [L]
+  RewriteRule ^flotta-biztositas-ar/?$           sites/kgfb-flotta.html    [L]
+  RewriteRule ^flotta-biztositas-arak/?$         sites/kgfb-flotta.html    [L]
+  RewriteRule ^ceges-casco-onresz/?$             sites/casco-flotta.html   [L]
+  RewriteRule ^casco-onresz-mennyi/?$            sites/casco-flotta.html   [L]
+  RewriteRule ^jegkar-biztositas-vallalkozas/?$  sites/vallakozas.html     [L]
+  RewriteRule ^jegkar-biztositas-mezogazdasag/?$ sites/mezogazd.html       [L]
+  RewriteRule ^kgfb-kalkulalas/?$                sites/kgfb.html           [L]
+  RewriteRule ^lakasbiztositas-arak/?$           sites/lakas.html          [L]
+
+  # --- PDF letöltések ---
+  RewriteRule ^pdf/(.+)/?$                       pdf/$1                    [L]
+  RewriteRule ^rolunk/?$                         sites/rolunk.html         [L]
+  RewriteRule ^kapcsolat/?$                      sites/kapcsolat.html      [L]
+  RewriteRule ^szolgaltatasok/?$                 sites/szolgaltatasok.html [L]
+  RewriteRule ^infok/?$                          sites/infok.html          [L]
+  RewriteRule ^impresszum/?$                     sites/impresszum.html     [L]
+  RewriteRule ^panaszkezeles/?$                  sites/panasz.html         [L]
+  RewriteRule ^e-karbejelento/?$                 sites/ekarbejelento.html  [L]
+  RewriteRule ^polgarorseg/?$                    sites/polgaror.html       [L]
+  
+  # Info overview aloldalak
+  RewriteRule ^info-gepjarmu/?$              sites/info-gepjarmu.html          [L]
+  RewriteRule ^info-ingatlan/?$              sites/info-ingatlan.html          [L]
+  RewriteRule ^info-adminisztracio/?$        sites/info-adminisztracio.html    [L]
+  RewriteRule ^info-utazas-elet/?$           sites/info-utazas-elet.html       [L]
+  RewriteRule ^torveny-2023/?$              sites/torveny2023.html            [L]
+  RewriteRule ^oldalterkep/?$                    sites/oldalterkep.html    [L]
+
+  # --- Infók cikkek (/infok/cikk-slug) ---
+  RewriteRule ^infok/(.+)/?$                     sites/infok/$1.html       [L]
+
+  # --- Szakemberek (/szakember/nev) ---
+  RewriteRule ^szakember/(.+)/?$                 sites/szakemberek/$1.html [L]
+
+  # 404 kezelés
+  ErrorDocument 404 /sites/404.html
+</IfModule>
+
+# ============================================================
+# Static asset caching and compression hints for Apache hosting
+# ============================================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML should be revalidated frequently
+  ExpiresByType text/html "access plus 5 minutes"
+
+  # CSS/JS
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Other static files
+  ExpiresByType application/pdf "access plus 1 year"
+  ExpiresDefault "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Keep HTML short-lived
+  <FilesMatch "\.(html?)$">
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </FilesMatch>
+
+  # Long-lived immutable cache for versioned static assets
+  <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|pdf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>

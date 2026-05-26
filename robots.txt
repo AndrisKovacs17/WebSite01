@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /sites/
+Disallow: /sites/404.html
+
+# GPTBot és AI scrapers blokkolása
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Crawl-delay ajánlás (másodpercben)
+Crawl-delay: 1
+
+Sitemap: https://biztor.hu/sitemap.xml
