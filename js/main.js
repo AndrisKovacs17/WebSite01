@@ -147,7 +147,7 @@ if (submitBtn) {
     if (!form) return;
 
     if (!form.checkValidity()) {
-      showResponse("Kérlek, tölts ki minden kötelező mezőt!", "danger");
+      showResponse("Kérem, töltsön ki minden kötelező mezőt!", "danger");
       form.reportValidity();
       return;
     }
@@ -155,13 +155,13 @@ if (submitBtn) {
     emailjs
       .sendForm("service_3qhvahx", "template_ucqlkw8", form)
       .then(() => {
-        showResponse("Az üzenetedet sikeresen elküldtük!", "success");
+        showResponse("Üzenetét megkaptuk – hamarosan visszakeressük.", "success");
         form.reset();
       })
       .catch((error) => {
         console.error("Hiba:", error);
         showResponse(
-          "Nem sikerült elküldeni az üzenetet. Kérlek, próbáld meg újra.",
+          "Az üzenet küldése nem sikerült. Kérjük, próbálja meg újra.",
           "danger"
         );
       });
@@ -1228,3 +1228,37 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+// Tudásellenőrző teszt – interaktív kvíz logika
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.quiz-option').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var optionsDiv = this.parentElement;
+      var card = optionsDiv.closest('.service-item');
+      if (!card) return;
+
+      // Disable all options so each question can only be answered once
+      optionsDiv.querySelectorAll('.quiz-option').forEach(function (b) {
+        b.disabled = true;
+        b.style.cursor = 'default';
+      });
+
+      // Colour the clicked button
+      if (this.dataset.correct === 'true') {
+        this.classList.replace('btn-outline-secondary', 'btn-success');
+      } else {
+        this.classList.replace('btn-outline-secondary', 'btn-danger');
+        // Also highlight the correct answer in green
+        optionsDiv.querySelectorAll('.quiz-option[data-correct="true"]').forEach(function (b) {
+          b.classList.replace('btn-outline-secondary', 'btn-success');
+        });
+      }
+
+      // Reveal the explanation
+      var expl = card.querySelector('.quiz-explanation');
+      if (expl) {
+        expl.classList.remove('d-none');
+      }
+    });
+  });
+});
