@@ -2224,6 +2224,8 @@
   --shadow-hover:   0 14px 40px rgba(0, 0, 0, .13);
   --radius-card:    1.25rem;
   --ease-out:       .35s cubic-bezier(.25, .46, .45, .94);
+  --topbar-h:       40px;  /* narancssárga topbar magassága (csak desktop) */
+  --navbar-h:       70px;  /* sticky navbar magassága */
 }
 
 /* ── Body antialiasing ── */
@@ -2296,6 +2298,18 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, .97) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+/* ── Hero – tökéletes viewport kitöltés a sticky header alatt ── */
+/* Desktop: topbar (--topbar-h) + navbar (--navbar-h) együtt adja a teljes header magasságát */
+.home-map-showcase {
+  height: clamp(480px, calc(100svh - var(--topbar-h) - var(--navbar-h)), 920px);
+}
+/* Mobilon a topbar d-none, csak a navbar marad */
+@media (max-width: 991.98px) {
+  .home-map-showcase {
+    height: clamp(360px, calc(100svh - var(--navbar-h)), 760px);
+  }
 }
 
 /* ── About – tapasztalat-badge gradiens ── */

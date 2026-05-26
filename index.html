@@ -308,17 +308,6 @@
       title="Biztor hálózat térképes bemutató"
       loading="eager"></iframe>
   </section>
-  <script>
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    window.addEventListener('load', function () {
-      if (window.location.hash) return;
-      var mapHeader = document.querySelector('.home-map-showcase');
-      if (mapHeader) window.scrollTo(0, mapHeader.offsetTop);
-    }, { once: true });
-  </script>
   <!-- Map Showcase Header End -->
 
   <!-- About Start -->
