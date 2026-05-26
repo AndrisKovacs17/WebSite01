@@ -96,6 +96,13 @@
   MSF.prototype._showStep = function (index, direction) {
     var prev = this.steps[this.current];
     var next = this.steps[index];
+    var wrapper = this.wrapper;
+
+    // Lock wrapper height before hiding prev step to prevent height jump
+    var lockedH = wrapper.offsetHeight;
+    if (lockedH > 0) {
+      wrapper.style.minHeight = lockedH + 'px';
+    }
 
     if (prev && prev !== next) {
       prev.classList.remove('msf-active', 'msf-enter-forward', 'msf-enter-back');
@@ -114,6 +121,11 @@
 
     this._updateProgress();
     this._updateNav();
+
+    // Release height lock after transition completes, allowing natural resize
+    setTimeout(function () {
+      wrapper.style.minHeight = '';
+    }, 380);
 
     // Sync form-container min-height to active panel (absolute panels don't stretch parent)
     var panel = this.wrapper.closest('.form-panel');
@@ -162,8 +174,9 @@
     var valid   = true;
     var first   = null;
 
-    // Standard required fields
+    // Standard required fields (skip radios — handled by groups logic below)
     step.querySelectorAll('[required]').forEach(function (f) {
+      if (f.type === 'radio') return;
       if (!f.checkValidity()) {
         f.classList.add('msf-invalid');
         valid = false;
@@ -174,16 +187,17 @@
     });
 
     // Radio groups (at least one in group must be checked)
+    // Collect group names from required radios, then check ALL radios in that group
     var groups = {};
     step.querySelectorAll('input[type="radio"][required]').forEach(function (r) {
-      groups[r.name] = groups[r.name] || [];
-      groups[r.name].push(r);
+      if (!groups[r.name]) groups[r.name] = r; // store first required radio as fallback
     });
     Object.keys(groups).forEach(function (name) {
-      var checked = groups[name].some(function (r) { return r.checked; });
+      var allInGroup = Array.from(step.querySelectorAll('input[type="radio"][name="' + name + '"]'));
+      var checked = allInGroup.some(function (r) { return r.checked; });
       if (!checked) {
         valid = false;
-        if (!first) first = groups[name][0];
+        if (!first) first = groups[name];
       }
     });
 
