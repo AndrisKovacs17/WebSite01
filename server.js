@@ -100,6 +100,7 @@ const KNOWN_FORM_TYPES = new Set([
   'onkentes', 'utas', 'vallalkozas', 'kegyeleti',
   'ekarbejelento', 'ekarbejelento-corporate',
   'polgaror-personal', 'polgaror-group',
+  'contact', 'corporate-appointment',
 ]);
 
 app.use(
@@ -183,6 +184,11 @@ app.post("/api/forms/:formType", async (req, res) => {
     });
   }
 });
+
+// Serve guide PDFs at /pdf/* (referenced in lead magnet emails)
+app.use('/pdf', express.static(path.join(__dirname, 'guides')));
+// Serve printable guide HTML pages at /guides/*
+app.use('/guides', express.static(path.join(__dirname, 'guides')));
 
 const distDir = path.join(__dirname, "dist");
 
@@ -304,6 +310,11 @@ async function sendLeadMagnetEmail(formType, email, payload) {
 }
 
 async function sendGeneralFormEmail(formType, email, payload) {
+  const formLabels = {
+    contact: 'Kapcsolatfelvétel',
+    'corporate-appointment': 'Vállalati konzultáció kérés',
+  };
+  const label = formLabels[formType] || formType;
   const from = process.env.MAIL_FROM || process.env.SMTP_USER || "Biztor Alkusz <no-reply@biztor.hu>";
   const adminTo = process.env.MAIL_TO || "iroda@biztor.hu";
   const transporter = getTransporter();
@@ -312,10 +323,10 @@ async function sendGeneralFormEmail(formType, email, payload) {
     from,
     to: adminTo,
     replyTo: email,
-    subject: `Új ajánlatkérés - ${formType} [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
+    subject: `${label} [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
     headers: { "X-Biztor-Template": emailTemplateVersion },
     html: buildAdminHtml({
-      title: `Új ajánlatkérés: ${formType}`,
+      title: label,
       formType,
       email,
       payload,

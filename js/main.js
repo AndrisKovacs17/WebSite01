@@ -104,13 +104,6 @@ if (toggleBtn) {
   });
 }
 
-// EmailJS inicializálás
-(function () {
-  if (typeof emailjs !== "undefined") {
-    emailjs.init("_3PCXoqte_nDLYPSF"); // Saját publikus kulcs
-  }
-})();
-
 // Visszajelzés megjelenítése
 function showResponse(message, type = "success") {
   const responseBox = document.getElementById("form-response");
@@ -134,36 +127,6 @@ function showResponse(message, type = "success") {
   }, 5000);
 }
 
-// Email küldés gombra
-const submitBtn = document.getElementById("submit-link");
-if (submitBtn) {
-  submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const form = document.getElementById("contact-form");
-    if (!form) return;
-
-    if (!form.checkValidity()) {
-      showResponse("Kérem, töltsön ki minden kötelező mezőt!", "danger");
-      form.reportValidity();
-      return;
-    }
-
-    emailjs
-      .sendForm("service_3qhvahx", "template_ucqlkw8", form)
-      .then(() => {
-        showResponse("Üzenetét megkaptuk – hamarosan visszakeressük.", "success");
-        form.reset();
-      })
-      .catch((error) => {
-        console.error("Hiba:", error);
-        showResponse(
-          "Az üzenet küldése nem sikerült. Kérjük, próbálja meg újra.",
-          "danger"
-        );
-      });
-  });
-}
 document.addEventListener("DOMContentLoaded", function () {
   const tabBtns = document.querySelectorAll("[data-tab]");
   const tabContents = document.querySelectorAll(".tab-content");
