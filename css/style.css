@@ -2521,9 +2521,11 @@ h1, h2, h3, h4, h5, h6 {
    RESZPONZÍV STABILIZÁLÁS  —  320 px – 1920 px
    ════════════════════════════════════════════════════════════════════ */
 
-/* 1 – Globális vízszintes overflow-védelem */
+/* 1 – Globális vízszintes overflow-védelem
+   overflow-x: clip helyett hidden: clip nem hoz létre scroll containert,
+   így a position:sticky navbar nem törik el */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* 2 – Scroll-padding: sticky navbar ne takarja az anchor-célokat */
