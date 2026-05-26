@@ -144,7 +144,7 @@ app.post("/api/forms/:formType", async (req, res) => {
       message: "Köszönjük! Hamarosan felvesszük Önnel a kapcsolatot.",
     });
   } catch (error) {
-    console.error("Form submit error:", error);
+    console.error("Form submit error:", error.message || error);
     res.status(500).json({
       ok: false,
       message: "Nem sikerült elküldeni az űrlapot. Kérjük, próbálja meg később.",
@@ -177,9 +177,21 @@ if (fs.existsSync(distDir)) {
 
     next();
   });
+
+  const notFoundPage = path.join(distDir, "404.html");
+  app.use((_req, res) => {
+    if (fs.existsSync(notFoundPage)) {
+      res.status(404).sendFile(notFoundPage);
+    } else {
+      res.status(404).json({ ok: false, message: "Az oldal nem található." });
+    }
+  });
 }
 
 if (require.main === module) {
+  if (!mailDryRun && (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS)) {
+    console.warn("[figyelmeztetés] SMTP_HOST, SMTP_USER vagy SMTP_PASS nincs beállítva. Az email küldés nem fog működni. Teszteléshez állítsa be a MAIL_DRY_RUN=true értéket.");
+  }
   app.listen(port, () => {
     console.log(`Biztor form API listening on port ${port}`);
   });
