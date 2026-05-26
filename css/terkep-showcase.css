@@ -8,6 +8,13 @@ body {
 /* z-[102] hiányzik a Tailwind build-ből → kézzel pótoljuk */
 #hero-strip-panel {
   z-index: 102;
+  bottom: -32px; /* panel 32px-rel lejjebb → több hely a gomb és strip között */
+}
+
+/* A belső strip padding-bottom növelése kompenzálja a süllyesztést,
+   így a kártyák alja nem tűnik el a viewport szél alatt */
+.hc-strip {
+  padding-bottom: calc(1rem + 32px);
 }
 /* pointer-events-auto osztály szintén hiányzik */
 .pointer-events-auto {
@@ -48,7 +55,7 @@ body {
 }
 
 .hero-slide {
-  padding: 70px 220px 380px 48px;
+  padding: 70px 220px 310px 48px;
   pointer-events: none;
 }
 
@@ -437,7 +444,6 @@ z-index: 102;
 
   .hero-slide {
     padding-right: 180px;
-    padding-bottom: 380px;
   }
 
   #hero-person {
