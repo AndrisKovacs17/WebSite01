@@ -16,12 +16,12 @@
     new WOW().init();
   }
 
-  // Sticky Navbar
+  // Sticky Navbar – shadow when scrolled, no top manipulation (CSS handles sticky)
   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-      $(".sticky-top").addClass("shadow-sm").css("top", "0px");
+    if ($(this).scrollTop() > 50) {
+      $(".insure-navbar").addClass("shadow-sm");
     } else {
-      $(".sticky-top").removeClass("shadow-sm").css("top", "-100px");
+      $(".insure-navbar").removeClass("shadow-sm");
     }
   });
 
