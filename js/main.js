@@ -1217,3 +1217,14 @@ document.addEventListener("DOMContentLoaded", function () {
     insertBreadcrumb(renderBreadcrumbList(items));
   });
 })();
+
+// Navbar scroll effect
+(function () {
+  var navbar = document.querySelector('.insure-navbar');
+  if (!navbar) return;
+  function onScroll() {
+    navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
