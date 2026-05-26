@@ -147,7 +147,7 @@ if (submitBtn) {
     if (!form) return;
 
     if (!form.checkValidity()) {
-      showResponse("Kérlek, tölts ki minden kötelező mezőt!", "danger");
+      showResponse("Kérem, töltsön ki minden kötelező mezőt!", "danger");
       form.reportValidity();
       return;
     }
@@ -155,13 +155,13 @@ if (submitBtn) {
     emailjs
       .sendForm("service_3qhvahx", "template_ucqlkw8", form)
       .then(() => {
-        showResponse("Az üzenetedet sikeresen elküldtük!", "success");
+        showResponse("Üzenetét megkaptuk – hamarosan visszakeressük.", "success");
         form.reset();
       })
       .catch((error) => {
         console.error("Hiba:", error);
         showResponse(
-          "Nem sikerült elküldeni az üzenetet. Kérlek, próbáld meg újra.",
+          "Az üzenet küldése nem sikerült. Kérjük, próbálja meg újra.",
           "danger"
         );
       });
