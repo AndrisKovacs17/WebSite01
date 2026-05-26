@@ -100,6 +100,7 @@ const KNOWN_FORM_TYPES = new Set([
   'onkentes', 'utas', 'vallalkozas', 'kegyeleti',
   'ekarbejelento', 'ekarbejelento-corporate',
   'polgaror-personal', 'polgaror-group',
+  'contact', 'corporate-appointment',
 ]);
 
 app.use(
@@ -181,6 +182,46 @@ app.post("/api/forms/:formType", async (req, res) => {
       ok: false,
       message: "Nem sikerült elküldeni az űrlapot. Kérjük, próbálja meg később.",
     });
+  }
+});
+
+// Serve guide PDFs at /pdf/* (referenced in lead magnet emails)
+app.use('/pdf', express.static(path.join(__dirname, 'guides')));
+// Serve printable guide HTML pages at /guides/*
+app.use('/guides', express.static(path.join(__dirname, 'guides')));
+
+app.post('/api/newsletter', async (req, res) => {
+  try {
+    const body = req.body || {};
+
+    // Honeypot
+    if (body.website) {
+      res.json({ ok: true, message: 'Köszönjük!' });
+      return;
+    }
+
+    // GDPR consent required
+    if (!body.gdprConsent || body.gdprConsent === 'false') {
+      res.status(400).json({ ok: false, message: 'Az adatkezelési tájékoztató elfogadása kötelező.' });
+      return;
+    }
+
+    const email = normalizeEmail(body.email);
+    if (!email) {
+      res.status(400).json({ ok: false, message: 'Kérjük, adjon meg érvényes e-mail címet.' });
+      return;
+    }
+
+    if (isRateLimited(req, email)) {
+      res.status(429).json({ ok: false, message: 'Túl sok beküldés érkezett rövid időn belül. Kérjük, próbálja meg később.' });
+      return;
+    }
+
+    await sendNewsletterNotificationEmail(email);
+    res.json({ ok: true, message: 'Sikeresen feliratkozott! Hamarosan értesítjük az aktuális hírekről.' });
+  } catch (error) {
+    console.error('Newsletter subscribe error:', error.message || error);
+    res.status(500).json({ ok: false, message: 'A feliratkozás nem sikerült. Kérjük, próbálja meg később.' });
   }
 });
 
@@ -304,6 +345,11 @@ async function sendLeadMagnetEmail(formType, email, payload) {
 }
 
 async function sendGeneralFormEmail(formType, email, payload) {
+  const formLabels = {
+    contact: 'Kapcsolatfelvétel',
+    'corporate-appointment': 'Vállalati konzultáció kérés',
+  };
+  const label = formLabels[formType] || formType;
   const from = process.env.MAIL_FROM || process.env.SMTP_USER || "Biztor Alkusz <no-reply@biztor.hu>";
   const adminTo = process.env.MAIL_TO || "iroda@biztor.hu";
   const transporter = getTransporter();
@@ -312,14 +358,38 @@ async function sendGeneralFormEmail(formType, email, payload) {
     from,
     to: adminTo,
     replyTo: email,
-    subject: `Új ajánlatkérés - ${formType} [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
+    subject: `${label} [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
     headers: { "X-Biztor-Template": emailTemplateVersion },
     html: buildAdminHtml({
-      title: `Új ajánlatkérés: ${formType}`,
+      title: label,
       formType,
       email,
       payload,
     }),
+  });
+}
+
+async function sendNewsletterNotificationEmail(email) {
+  const from = process.env.MAIL_FROM || process.env.SMTP_USER || "Biztor Alkusz <no-reply@biztor.hu>";
+  const adminTo = process.env.MAIL_TO || "iroda@biztor.hu";
+  const transporter = getTransporter();
+
+  await transporter.sendMail({
+    from,
+    to: adminTo,
+    replyTo: email,
+    subject: `Új hírlevél feliratkozás [${new Date().toLocaleString('hu-HU', { timeZone: 'Europe/Budapest' })}]`,
+    headers: { "X-Biztor-Template": emailTemplateVersion },
+    html: `
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="font-family:Arial,sans-serif;max-width:560px;margin:0 auto;background:#f4f7fb;padding:32px 16px;">
+        <tr><td style="padding:24px;background:#fff;border-radius:16px;border:1px solid #edf0f5;">
+          <h2 style="margin:0 0 16px;color:#15233c;font-size:18px;">Új hírlevél feliratkozó</h2>
+          <p style="margin:0 0 8px;color:#3d4a5c;">E-mail cím:</p>
+          <p style="margin:0 0 20px;font-weight:700;color:#15233c;font-size:16px;">${escapeHtml(email)}</p>
+          <hr style="border:none;border-top:1px solid #edf0f5;margin:16px 0;">
+          <p style="margin:0;font-size:11px;color:#98a2b3;">GDPR hozzájárulás: igen · Forrás: biztor.hu</p>
+        </td></tr>
+      </table>`,
   });
 }
 

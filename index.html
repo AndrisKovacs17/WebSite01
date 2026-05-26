@@ -730,7 +730,7 @@
                       <div class="msf-wrapper">
                         <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-                            <form id="contact-form" class="msf-form" novalidate data-msf-type="emailjs" data-emailjs-service="service_3qhvahx" data-emailjs-template="template_ucqlkw8">
+                            <form id="contact-form" class="msf-form" novalidate action="/api/forms/contact">
                         <div class="msf-step">
                   <p class="msf-step-label">1 / 5</p>
                   <h2 class="msf-question">Hogyan szólítsuk?</h2>
@@ -826,7 +826,7 @@
                       <div class="msf-wrapper">
                         <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-                            <form id="corporate-appointment-form" class="msf-form" novalidate data-msf-type="emailjs" data-emailjs-service="service_3qhvahx" data-emailjs-template="template_ucqlkw8">
+                            <form id="corporate-appointment-form" class="msf-form" novalidate action="/api/forms/corporate-appointment">
                       <input type="hidden" name="cage" value="Vállalati konzultáció">
                 <div class="msf-step">
                   <p class="msf-step-label">1 / 4</p>
@@ -1454,18 +1454,25 @@
 
           <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
 
-          <!-- Newsletter subscription disabled
+          <!-- Newsletter subscription -->
           <div class="mt-4">
             <h5 class="text-light mb-4">Hírlevél</h5>
             <p>Iratkozzon fel hírlevelünkre!</p>
             <div class="position-relative mx-auto" style="max-width: 400px;">
-                <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="email" id="newsletter-email-index" name="newsletterEmail" autocomplete="email" placeholder="E-mail címe" />
-              <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">
+              <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="email" id="newsletter-email-index" name="newsletterEmail" autocomplete="email" placeholder="E-mail címe" required />
+              <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+              <button type="button" class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2" id="newsletter-submit-index">
                 Feliratkozás
               </button>
             </div>
+            <div class="form-check mt-2 text-start mx-auto" style="max-width:400px;">
+              <input class="form-check-input" type="checkbox" id="newsletter-gdpr-index" required>
+              <label class="form-check-label small" for="newsletter-gdpr-index">
+                Elfogadom az <a href="./Adatkezelesi_tajekoztato_biztor_alkusz.pdf" target="_blank" class="text-light text-decoration-underline">adatkezelési tájékoztatót</a>.
+              </label>
+            </div>
+            <div id="newsletter-response-index" class="mt-2 small d-none"></div>
           </div>
-          -->
         </div>
       </div>
     </div>
@@ -1494,7 +1501,7 @@
   <script defer src="./lib/waypoints/waypoints.min.js"></script>
   <script defer src="./lib/owlcarousel/owl.carousel.min.js"></script>
   <script defer src="./lib/counterup/counterup.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- <script defer src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script> -->
   <!-- <script defer src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
   <script>
     window.botpressWebChat.init({

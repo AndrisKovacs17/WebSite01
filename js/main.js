@@ -104,13 +104,6 @@ if (toggleBtn) {
   });
 }
 
-// EmailJS inicializálás
-(function () {
-  if (typeof emailjs !== "undefined") {
-    emailjs.init("_3PCXoqte_nDLYPSF"); // Saját publikus kulcs
-  }
-})();
-
 // Visszajelzés megjelenítése
 function showResponse(message, type = "success") {
   const responseBox = document.getElementById("form-response");
@@ -134,37 +127,68 @@ function showResponse(message, type = "success") {
   }, 5000);
 }
 
-// Email küldés gombra
-const submitBtn = document.getElementById("submit-link");
-if (submitBtn) {
-  submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    const form = document.getElementById("contact-form");
-    if (!form) return;
-
-    if (!form.checkValidity()) {
-      showResponse("Kérem, töltsön ki minden kötelező mezőt!", "danger");
-      form.reportValidity();
-      return;
-    }
-
-    emailjs
-      .sendForm("service_3qhvahx", "template_ucqlkw8", form)
-      .then(() => {
-        showResponse("Üzenetét megkaptuk – hamarosan visszakeressük.", "success");
-        form.reset();
-      })
-      .catch((error) => {
-        console.error("Hiba:", error);
-        showResponse(
-          "Az üzenet küldése nem sikerült. Kérjük, próbálja meg újra.",
-          "danger"
-        );
-      });
-  });
-}
 document.addEventListener("DOMContentLoaded", function () {
+  // Newsletter subscription handler
+  document.querySelectorAll("[id^='newsletter-submit-']").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const suffix = btn.id.replace("newsletter-submit-", "");
+      const emailInput = document.getElementById("newsletter-email-" + suffix);
+      const gdprInput = document.getElementById("newsletter-gdpr-" + suffix);
+      const responseDiv = document.getElementById("newsletter-response-" + suffix);
+
+      if (!emailInput || !responseDiv) return;
+
+      const emailVal = emailInput.value.trim();
+      if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        responseDiv.textContent = "Kérjük, adjon meg érvényes e-mail címet.";
+        responseDiv.className = "mt-2 small text-danger";
+        return;
+      }
+      if (gdprInput && !gdprInput.checked) {
+        responseDiv.textContent = "Az adatkezelési tájékoztató elfogadása kötelező.";
+        responseDiv.className = "mt-2 small text-danger";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Küldés…";
+
+      // Honeypot field (hidden sibling input named "website")
+      const parent = emailInput.closest("div") || emailInput.parentElement;
+      const honeypot = parent ? parent.querySelector("input[name='website']") : null;
+
+      fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: emailVal,
+          gdprConsent: gdprInput ? gdprInput.checked : false,
+          website: honeypot ? honeypot.value : "",
+        }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            responseDiv.textContent = data.message || "Sikeresen feliratkozott!";
+            responseDiv.className = "mt-2 small text-success";
+            emailInput.value = "";
+            if (gdprInput) gdprInput.checked = false;
+          } else {
+            responseDiv.textContent = data.message || "Hiba történt. Kérjük, próbálja újra.";
+            responseDiv.className = "mt-2 small text-danger";
+            btn.disabled = false;
+            btn.textContent = "Feliratkozás";
+          }
+        })
+        .catch(function () {
+          responseDiv.textContent = "A feliratkozás nem sikerült. Kérjük, próbálja meg később.";
+          responseDiv.className = "mt-2 small text-danger";
+          btn.disabled = false;
+          btn.textContent = "Feliratkozás";
+        });
+    });
+  });
+
   const tabBtns = document.querySelectorAll("[data-tab]");
   const tabContents = document.querySelectorAll(".tab-content");
 
