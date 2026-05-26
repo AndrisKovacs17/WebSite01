@@ -2659,6 +2659,7 @@ html, body {
 .quiz-option:not([disabled]):hover {
   border-color: var(--primary, #F15A24);
   background: #fff7f4;
+  color: var(--primary, #F15A24);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(241, 90, 36, 0.12);
 }
