@@ -1228,3 +1228,37 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+// Tudásellenőrző teszt – interaktív kvíz logika
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.quiz-option').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var optionsDiv = this.parentElement;
+      var card = optionsDiv.closest('.service-item');
+      if (!card) return;
+
+      // Disable all options so each question can only be answered once
+      optionsDiv.querySelectorAll('.quiz-option').forEach(function (b) {
+        b.disabled = true;
+        b.style.cursor = 'default';
+      });
+
+      // Colour the clicked button
+      if (this.dataset.correct === 'true') {
+        this.classList.replace('btn-outline-secondary', 'btn-success');
+      } else {
+        this.classList.replace('btn-outline-secondary', 'btn-danger');
+        // Also highlight the correct answer in green
+        optionsDiv.querySelectorAll('.quiz-option[data-correct="true"]').forEach(function (b) {
+          b.classList.replace('btn-outline-secondary', 'btn-success');
+        });
+      }
+
+      // Reveal the explanation
+      var expl = card.querySelector('.quiz-explanation');
+      if (expl) {
+        expl.classList.remove('d-none');
+      }
+    });
+  });
+});
