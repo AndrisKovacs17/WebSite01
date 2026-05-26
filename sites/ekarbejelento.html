@@ -308,6 +308,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <form class="needs-validation" novalidate action="/api/forms/ekarbejelento" method="post">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
               <input type="hidden" name="meta[page]" value="E-kárbejelentő" />
               <input type="hidden" name="meta[form]" value="Lakossági kárbejelentés" />
               <div class="row justify-content-center">
@@ -590,6 +591,7 @@
               </div>
 
               <form class="needs-validation" novalidate action="/api/forms/ekarbejelento-corporate" method="post">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
                 <input type="hidden" name="meta[page]" value="E-kárbejelentő" />
                 <input type="hidden" name="meta[form]" value="Vállalati kárbejelentés" />
                 <div class="row justify-content-center">

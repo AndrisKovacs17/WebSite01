@@ -72,6 +72,24 @@ const guideConfig = {
     fileEnv: "GUIDE_KEGYELETI_FILE",
     urlEnv: "GUIDE_KEGYELETI_URL",
   },
+  eletbiztositas: {
+    serviceLabel: "Életbiztosítás",
+    defaultGuideTitle: "Életbiztosítás előtt: 5 kérdés, amit érdemes feltenni (2026)",
+    fileEnv: "GUIDE_ELET_FILE",
+    urlEnv: "GUIDE_ELET_URL",
+  },
+  elet: {
+    serviceLabel: "Életbiztosítás",
+    defaultGuideTitle: "Életbiztosítás előtt: 5 kérdés, amit érdemes feltenni (2026)",
+    fileEnv: "GUIDE_ELET_FILE",
+    urlEnv: "GUIDE_ELET_URL",
+  },
+  vallalkozas: {
+    serviceLabel: "Vállalkozásbiztosítás",
+    defaultGuideTitle: "5 hiba, ami miatt nem fizet a biztosító",
+    fileEnv: "GUIDE_VALLALKOZAS_FILE",
+    urlEnv: "GUIDE_VALLALKOZAS_URL",
+  },
 };
 
 const recentRequests = new Map();
