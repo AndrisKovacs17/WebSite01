@@ -843,7 +843,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return isLocal
       ? "http://127.0.0.1:3000"
-      : "https://weblap.biztorszerver.synology.me";
+      : "https://biztor.hu";
   }
 
   function getSubmitErrorMessage(error) {

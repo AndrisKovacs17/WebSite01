@@ -7,3 +7,8 @@ node_modules/
 dist/
 build/
 .DS_Store
+
+# Fejlesztési munka-fájlok
+_tmp_test.txt
+_nav_comment_changes.txt
+_webp_convert.py
