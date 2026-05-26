@@ -347,14 +347,16 @@ input[type="datetime-local"].msf-input {
   font-size: 0.93rem;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s, background 0.25s;
   font-family: inherit;
   text-decoration: none;
   line-height: 1.4;
+  position: relative;
+  overflow: hidden;
 }
 
 .msf-btn:hover:not(:disabled) {
-  opacity: 0.88;
+  opacity: 1;
   transform: translateY(-1px);
 }
 
@@ -374,11 +376,26 @@ input[type="datetime-local"].msf-input {
   visibility: hidden;
 }
 
+/* Vissza gomb: hoverre balra csúszik az ikon */
+.msf-btn-back:hover:not(:disabled) {
+  transform: translateY(-1px) translateX(-3px);
+  border-color: var(--msf-primary);
+  color: var(--msf-primary);
+}
+
 .msf-btn-next,
 .msf-btn-submit {
-  background: var(--msf-primary);
-  border-color: var(--msf-primary);
+  background: linear-gradient(135deg, var(--msf-primary) 0%, #FF9800 100%);
+  border-color: transparent;
   color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 167, 38, .28);
+}
+
+/* Következő gomb: hoverre jobbra csúszik, árnyék mélyül */
+.msf-btn-next:hover:not(:disabled) {
+  transform: translateY(-2px) translateX(3px);
+  box-shadow: 0 8px 28px rgba(255, 167, 38, .45);
+  background: linear-gradient(135deg, #FF9800 0%, var(--msf-primary) 100%);
 }
 
 .msf-btn-submit {
