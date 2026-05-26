@@ -10,6 +10,10 @@ dotenv.config();
 const app = express();
 const port = Number(process.env.PORT || 3000);
 const mailDryRun = process.env.MAIL_DRY_RUN === "true";
+
+if (process.env.TRUST_PROXY) {
+  app.set("trust proxy", process.env.TRUST_PROXY);
+}
 const emailTemplateVersion = "biztor-email-showcase-v2-2026-04";
 const emailTemplateLabel = "Biztor email sablon: showcase v2 / 2026.04";
 
@@ -81,8 +85,15 @@ app.use(
       }
       callback(null, false);
     },
+    methods: ["GET", "POST", "OPTIONS"],
   })
 );
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  next();
+});
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
@@ -152,7 +163,13 @@ if (fs.existsSync(distDir)) {
       return;
     }
 
-    const pagePath = path.join(distDir, "pages", `${cleanPath}.html`);
+    const pagesDir = path.join(distDir, "pages");
+    const pagePath = path.join(pagesDir, `${cleanPath}.html`);
+    if (!pagePath.startsWith(pagesDir + path.sep)) {
+      next();
+      return;
+    }
+
     if (fs.existsSync(pagePath)) {
       res.sendFile(pagePath);
       return;
@@ -475,7 +492,18 @@ function isRateLimited(req, email) {
   const history = (recentRequests.get(key) || []).filter((timestamp) => now - timestamp < windowMs);
   history.push(now);
   recentRequests.set(key, history);
+  if (history.length === 1) {
+    pruneStaleRateLimitEntries(now, windowMs);
+  }
   return history.length > maxRequests;
+}
+
+function pruneStaleRateLimitEntries(now, windowMs) {
+  for (const [key, history] of recentRequests) {
+    if (history.every((ts) => now - ts >= windowMs)) {
+      recentRequests.delete(key);
+    }
+  }
 }
 
 function isAllowedOrigin(origin) {
@@ -484,7 +512,7 @@ function isAllowedOrigin(origin) {
   }
 
   if (origin === "null") {
-    return process.env.ALLOW_FILE_ORIGIN === "true" || process.env.NODE_ENV !== "production";
+    return process.env.ALLOW_FILE_ORIGIN === "true";
   }
 
   try {
