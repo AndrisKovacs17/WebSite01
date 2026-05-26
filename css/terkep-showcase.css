@@ -213,6 +213,7 @@ z-index: 102;
 .hc-outer {
   position: relative;
   cursor: default;
+  padding-bottom: 44px; /* reserves space so panel height stays identical */
 }
 
 .hc-strip {
@@ -380,7 +381,9 @@ z-index: 102;
   justify-content: left;
   gap: 10px;
   padding: 2px 0 8px;
-  margin-bottom: 36px;
+  position: absolute;
+  bottom: 36px; /* 36-32=4px above viewport edge → buttons fully visible */
+  left: 0;
 }
 
 .hc-nav {
