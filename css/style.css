@@ -2781,3 +2781,163 @@ html, body {
     font-size: 1.6rem;
   }
 }
+
+/* =============================================================================
+   INFOK ALOLDALAK – PRÉMIUM UI/UX FEJLESZTÉSEK
+   ============================================================================= */
+
+/* ── 1. Képek hover zoom hatás ─────────────────────────────────────────────── */
+/* Az infok oldalak képei overflow-hidden konténerben vannak – enyhe scale zoom */
+.rounded.overflow-hidden > img.position-absolute,
+.rounded.overflow-hidden > picture img {
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.rounded.overflow-hidden:hover > img.position-absolute,
+.rounded.overflow-hidden:hover > picture img {
+  transform: scale(1.055);
+}
+
+/* ── 2. Info-highlight-list hover + staggered belépő animáció ──────────────── */
+/* Hover hatás – azonos a kgfb.html hover-effect-item mintájával */
+.info-highlight-list li {
+  transition: transform 0.28s ease;
+  cursor: default;
+}
+.info-highlight-list li:hover {
+  transform: translateX(5px);
+}
+.info-highlight-list li::before {
+  transition: transform 0.28s ease, color 0.28s ease;
+}
+.info-highlight-list li:hover::before {
+  transform: scale(1.25);
+  color: var(--secondary, #E67E22);
+}
+
+/* Staggered belépő animáció – WOW.js .animated osztály triggere */
+@keyframes infoListSlideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animated .info-highlight-list li {
+  animation: infoListSlideIn 0.42s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.animated .info-highlight-list li:nth-child(1) { animation-delay: 0.05s; }
+.animated .info-highlight-list li:nth-child(2) { animation-delay: 0.17s; }
+.animated .info-highlight-list li:nth-child(3) { animation-delay: 0.29s; }
+.animated .info-highlight-list li:nth-child(4) { animation-delay: 0.41s; }
+.animated .info-highlight-list li:nth-child(5) { animation-delay: 0.53s; }
+.animated .info-highlight-list li:nth-child(6) { animation-delay: 0.65s; }
+
+/* ── 3. Staggered belépő: fa fa-check listák is (service-item kártyákon) ───── */
+@keyframes checkItemIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animated .list-unstyled > li.mb-3 {
+  animation: checkItemIn 0.38s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.animated .list-unstyled > li.mb-3:nth-child(1) { animation-delay: 0.05s; }
+.animated .list-unstyled > li.mb-3:nth-child(2) { animation-delay: 0.16s; }
+.animated .list-unstyled > li.mb-3:nth-child(3) { animation-delay: 0.27s; }
+.animated .list-unstyled > li.mb-3:nth-child(4) { animation-delay: 0.38s; }
+.animated .list-unstyled > li.mb-3:nth-child(5) { animation-delay: 0.49s; }
+
+/* ── 4. List-group-flush prémium megjelenés ("Mire figyeljen" blokk) ─────────  */
+.list-group-flush .list-group-item {
+  border-left: 3px solid transparent;
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 0.85rem 1rem;
+  transition: border-left-color 0.22s ease, background 0.22s ease, padding-left 0.22s ease;
+  line-height: 1.65;
+}
+.list-group-flush .list-group-item:hover {
+  border-left-color: var(--primary, #F15A24);
+  background: rgba(241, 90, 36, 0.05);
+  padding-left: 1.4rem;
+  cursor: default;
+}
+.list-group-flush .list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* ── 5. Accordion – simább animáció + hover ───────────────────────────────── */
+.accordion-item {
+  border-radius: 0.6rem !important;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  transition: box-shadow 0.2s ease;
+}
+.accordion-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.accordion-button {
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+.accordion-button:not(.collapsed) {
+  color: var(--primary, #F15A24) !important;
+  background: rgba(241, 90, 36, 0.04) !important;
+  box-shadow: none !important;
+}
+.accordion-button::after {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+@keyframes accordionBodyIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.accordion-collapse.show > .accordion-body {
+  animation: accordionBodyIn 0.3s ease;
+}
+
+/* ── 6. CTA szekció – emeltebb megjelenés ─────────────────────────────────── */
+.cta-section {
+  position: relative;
+  background: linear-gradient(135deg, rgba(241, 90, 36, 0.06) 0%, rgba(255, 167, 38, 0.08) 100%);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(241, 90, 36, 0.12);
+  margin-top: 1rem;
+}
+.cta-section h3 {
+  color: var(--dark, #1a1a2e);
+  font-weight: 700;
+}
+
+/* ── 7. Infok oldalak általános levegős spacingtöbblet ───────────────────── */
+/* Section-elválasztók: az egymást követő főszekciók között extra lélegzet */
+.container-xxl .row.g-4.mb-5 + .row.g-4.mb-5,
+.container-xxl .row.g-5.mb-5 + .row.g-4.mb-5 {
+  margin-top: 1rem;
+}
+/* Szekció-cím (centered text-center) feletti tér */
+.container-xxl .text-center.mx-auto.mb-5 {
+  margin-top: 0.5rem;
+}
+
+/* ── 8. Service-item kártyák – jobb belépő shadow ────────────────────────── */
+.service-item {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease !important;
+}
+.service-item:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── 9. Reszponzív kiigazítások ─────────────────────────────────────────── */
+@media (max-width: 767.98px) {
+  .rounded.overflow-hidden:hover > img.position-absolute,
+  .rounded.overflow-hidden:hover > picture img {
+    /* Mobilon ne legyen zoom – layoutot zavar */
+    transform: none;
+  }
+  .list-group-flush .list-group-item:hover {
+    padding-left: 1rem;
+  }
+  .cta-section {
+    border-radius: 0.75rem;
+  }
+}
