@@ -123,7 +123,8 @@
 }
 
 .msf-input:focus {
-  border-bottom-color: var(--msf-primary);
+  border-bottom-color: #94A3B8;
+  outline: none;
 }
 
 .msf-input::placeholder {
@@ -149,8 +150,9 @@ textarea.msf-input,
 
 textarea.msf-input:focus,
 .msf-input.msf-textarea:focus {
-  border-color: var(--msf-primary);
-  border-bottom-color: var(--msf-primary);
+  border-color: #94A3B8;
+  border-bottom-color: #94A3B8;
+  outline: none;
 }
 
 /* Select */
