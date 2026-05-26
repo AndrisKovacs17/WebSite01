@@ -368,6 +368,64 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeContactForm();
 });
 
+// Lead magnet form handler (.needs-validation forms that POST to /api/forms/)
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('form.needs-validation[action^="/api/forms/"]').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated');
+          return;
+        }
+        form.classList.add('was-validated');
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.dataset.orig = submitBtn.textContent;
+          submitBtn.textContent = 'Küldés…';
+        }
+        var data = {};
+        new FormData(form).forEach(function (v, k) { data[k] = v; });
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (!json.ok) throw new Error(json.message || 'Hiba történt.');
+          form.style.display = 'none';
+          var thanks = document.getElementById('leadMagnetThanks');
+          if (thanks) {
+            thanks.classList.remove('d-none');
+          } else {
+            var msg = document.createElement('p');
+            msg.className = 'alert alert-success mt-3';
+            msg.textContent = json.message || 'Köszönjük! Hamarosan elküldjük az útmutatót.';
+            form.parentNode.insertBefore(msg, form.nextSibling);
+          }
+        })
+        .catch(function (err) {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.dataset.orig || 'Elküldöm';
+          }
+          var errEl = form.querySelector('.lead-magnet-error');
+          if (!errEl) {
+            errEl = document.createElement('p');
+            errEl.className = 'lead-magnet-error alert alert-danger mt-2';
+            form.appendChild(errEl);
+          }
+          errEl.textContent = (err && err.message) || 'Hiba történt. Kérjük, próbálja újra.';
+        });
+      }, true);
+    });
+  });
+}());
+
 function switchForm(type) {
   const personalForm = document.getElementById("personal-form");
   const corporateForm = document.getElementById("corporate-form");
