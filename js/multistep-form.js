@@ -328,7 +328,10 @@
       });
     }
 
-    if (!items.length) { reviewEl.innerHTML = ''; return; }
+    if (!items.length) {
+      reviewEl.innerHTML = '<p class="msf-review-empty">A megadott adatok itt jelennek meg.</p>';
+      return;
+    }
 
     var html = '<dl class="msf-review-list">';
     items.forEach(function (item) {
