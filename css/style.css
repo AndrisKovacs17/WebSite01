@@ -2516,3 +2516,111 @@ h1, h2, h3, h4, h5, h6 {
   .display-6 { font-size: 1.5rem; }
   .display-5 { font-size: 2rem; }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   RESZPONZÍV STABILIZÁLÁS  —  320 px – 1920 px
+   ════════════════════════════════════════════════════════════════════ */
+
+/* 1 – Globális vízszintes overflow-védelem */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 2 – Scroll-padding: sticky navbar ne takarja az anchor-célokat */
+:root {
+  scroll-padding-top: calc(var(--navbar-h, 70px) + 0.5rem);
+}
+
+/* 3 – Navbar-container oldalsó padding
+   (originálisan nem volt px-padding; logó és hamburger
+    a képernyő széléhez ért 320 px-en)                   */
+.insure-navbar-container {
+  padding-left:  clamp(0.75rem, 3vw, 1.5rem);
+  padding-right: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+/* 4 – Sub-oldalak topbar egységes prémium stílus */
+.bg-warning.bg-opacity-75.text-dark {
+  background: linear-gradient(
+    135deg,
+    var(--secondary, #FF9800) 0%,
+    var(--primary, rgb(255, 167, 38)) 100%
+  ) !important;
+}
+.bg-warning.bg-opacity-75.text-dark small,
+.bg-warning.bg-opacity-75.text-dark a,
+.bg-warning.bg-opacity-75.text-dark i {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.bg-warning.bg-opacity-75.text-dark a:hover {
+  color: #fff !important;
+}
+
+/* 5 – Facts szekció: padding csökkentése mobilon
+   (az eredeti 6 rem túl nagy < 992 px-en)          */
+@media (max-width: 991.98px) {
+  .container.facts .facts-text .h-100,
+  .container.facts .facts-counter .h-100 {
+    padding-top:    clamp(2.5rem, 7vw, 5rem);
+    padding-bottom: clamp(2.5rem, 7vw, 5rem);
+  }
+}
+
+/* 6 – Kapcsolat-form: lelógás megelőzése kis képernyőn
+   (position:absolute + p-5 → form magasabb volt mint
+    a form-container min-height: 450 px) */
+@media (max-width: 575.98px) {
+  .form-container {
+    min-height: 540px;
+  }
+  .form-panel {
+    padding: 1.25rem !important;
+  }
+}
+
+/* 7 – Mobile-action-bar: lábléc tartalom ne takarjon */
+@media (max-width: 991.98px) {
+  body:has(.mobile-action-bar) {
+    padding-bottom: 88px;
+  }
+}
+
+/* 8 – Custom form-toggle gombok wrapelése nagyon kis képernyőn */
+@media (max-width: 374.98px) {
+  .custom-tab-buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .custom-tab-btn {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+/* 9 – Rólunk / Timeline: szűkített offset < 576 px-en */
+@media (max-width: 575.98px) {
+  .timeline-text,
+  .timeline-image {
+    width: calc(100% - 44px) !important;
+    left:  44px !important;
+  }
+  .timeline-text {
+    padding: 20px !important;
+  }
+}
+
+/* 10 – display-4 mobilon */
+@media (max-width: 767.98px) {
+  .display-4 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+}
+
+/* 11 – Nagyon kis (≤ 374 px) képernyők */
+@media (max-width: 374.98px) {
+  .service-item {
+    padding: 1.5rem !important;
+  }
+}
