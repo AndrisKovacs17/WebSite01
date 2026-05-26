@@ -1,4 +1,4 @@
-/********** Template CSS **********/
+﻿/********** Template CSS **********/
 :root {
     --primary: rgb(255, 167, 38); /* Közepes narancs */
     --secondary: #FF9800; /* Sötét narancs */
@@ -643,11 +643,11 @@
   background-color: #ff9800; /* Csak a hÃ¡ttÃ©rszÃ­n vÃ¡ltozik */
   transform: scale(1.05);
 }
-/* Topbar hÃ¡ttÃ©rszÃ­n */
+/* Topbar hatterszin */
 .container-fluid.bg-warning {
-  background-color: #ffa726 !important; /* NarancssÃ¡rga szÃ­n */
+  background-color: #ffa726 !important; /* Narancssarga szin */
 }
-/* Mobil nÃ©zet: ÃzletkÃ¶tÅknek gomb */
+/* Mobil nezet: Uzletkotoknek gomb */
 .insure-mobile-menu .btn-warning {
   background-color: #ffa726;
   color: #fff;

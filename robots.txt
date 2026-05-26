@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /sites/
-Disallow: /sites/404.html
 
 # GPTBot és AI scrapers blokkolása
 User-agent: GPTBot
