@@ -83,12 +83,18 @@
       });
     });
 
-    // Clear invalid class on input / change
+    // Clear invalid class and inline error on input / change
     this.form.addEventListener('input', function (e) {
       e.target.classList.remove('msf-invalid');
+      var errEl = e.target.parentNode.querySelector('.msf-field-error[data-for="' + (e.target.name || '') + '"]');
+      if (errEl) { errEl.style.display = 'none'; }
+      self._hideBanner('msf-validation-error');
     });
     this.form.addEventListener('change', function (e) {
       e.target.classList.remove('msf-invalid');
+      var errEl = e.target.parentNode.querySelector('.msf-field-error[data-for="' + (e.target.name || '') + '"]');
+      if (errEl) { errEl.style.display = 'none'; }
+      self._hideBanner('msf-validation-error');
     });
   };
 
@@ -104,7 +110,9 @@
       wrapper.style.minHeight = lockedH + 'px';
     }
 
+    // Clear field errors on the previous step when leaving
     if (prev && prev !== next) {
+      this._clearFieldErrors(prev);
       prev.classList.remove('msf-active', 'msf-enter-forward', 'msf-enter-back');
       prev.style.display = 'none';
     }
@@ -121,6 +129,11 @@
 
     this._updateProgress();
     this._updateNav();
+
+    // Populate summary on the last step
+    if (index === this.total - 1) {
+      this._populateSummary();
+    }
 
     // Release height lock after transition completes, allowing natural resize
     setTimeout(function () {
@@ -168,21 +181,83 @@
     if (subBtn)  subBtn.style.display     = isLast ? 'inline-flex' : 'none';
   };
 
+  /* ---- Hungarian field name → label map ---- */
+  var MSF_FIELD_LABELS = {
+    'gname':                 'Neve',
+    'cname':                 'Telefonszám',
+    'gmail':                 'E-mail cím',
+    'message':               'Megjegyzés',
+    'cage':                  'Érdeklődési terület',
+    'applicant[name]':       'Neve',
+    'applicant[phone]':      'Telefonszám',
+    'applicant[email]':      'E-mail cím',
+    'applicant[note]':       'Megjegyzés',
+    'vehicle[registration]': 'Rendszám',
+    'vehicle[brand]':        'Gépjármű márkája',
+    'vehicle[model]':        'Gépjármű típusa',
+    'property[type]':        'Ingatlan típusa',
+    'property[address]':     'Cím',
+    'property[size]':        'Alapterület'
+  };
+
+  /* ---- Per-field Hungarian error message ---- */
+  MSF.prototype._getFieldError = function (f) {
+    if (f.type === 'email') {
+      if (!f.value.trim()) return 'Kérjük, adja meg az e-mail címét.';
+      return 'Kérjük, adjon meg egy érvényes e-mail címet. (pl. pelda@email.hu)';
+    }
+    if (f.type === 'tel') {
+      return 'Kérjük, adja meg a telefonszámát.';
+    }
+    if (f.type === 'checkbox') {
+      return 'Az adatkezelési tájékoztató elfogadása szükséges a küldéshez.';
+    }
+    if (f.name && (f.name.indexOf('name') !== -1 || f.name === 'gname')) {
+      return 'Kérjük, adja meg a nevét.';
+    }
+    return 'Ezt a mezőt ki kell tölteni a folytatáshoz.';
+  };
+
+  /* ---- Show / hide inline field error ---- */
+  MSF.prototype._setFieldError = function (f, msg) {
+    var errEl = f.parentNode.querySelector('.msf-field-error[data-for="' + f.name + '"]');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.className = 'msf-field-error';
+      errEl.setAttribute('data-for', f.name || '');
+      f.parentNode.insertBefore(errEl, f.nextSibling);
+    }
+    errEl.textContent = msg;
+    errEl.style.display = msg ? 'block' : 'none';
+  };
+
+  MSF.prototype._clearFieldErrors = function (step) {
+    step.querySelectorAll('.msf-field-error').forEach(function (el) {
+      el.style.display = 'none';
+      el.textContent = '';
+    });
+  };
+
   /* ---- Validation ---- */
   MSF.prototype._validate = function () {
-    var step    = this.steps[this.current];
-    var valid   = true;
-    var first   = null;
+    var self  = this;
+    var step  = this.steps[this.current];
+    var valid = true;
+    var first = null;
+
+    this._clearFieldErrors(step);
 
     // Standard required fields (skip radios — handled by groups logic below)
     step.querySelectorAll('[required]').forEach(function (f) {
       if (f.type === 'radio') return;
       if (!f.checkValidity()) {
         f.classList.add('msf-invalid');
+        self._setFieldError(f, self._getFieldError(f));
         valid = false;
         if (!first) first = f;
       } else {
         f.classList.remove('msf-invalid');
+        self._setFieldError(f, '');
       }
     });
 
@@ -190,7 +265,7 @@
     // Collect group names from required radios, then check ALL radios in that group
     var groups = {};
     step.querySelectorAll('input[type="radio"][required]').forEach(function (r) {
-      if (!groups[r.name]) groups[r.name] = r; // store first required radio as fallback
+      if (!groups[r.name]) groups[r.name] = r;
     });
     Object.keys(groups).forEach(function (name) {
       var allInGroup = Array.from(step.querySelectorAll('input[type="radio"][name="' + name + '"]'));
@@ -198,12 +273,81 @@
       if (!checked) {
         valid = false;
         if (!first) first = groups[name];
+        // Show error below the choices container
+        var choicesEl = step.querySelector('.msf-choices');
+        if (choicesEl) {
+          var errEl = choicesEl.parentNode.querySelector('.msf-field-error[data-for="' + name + '"]');
+          if (!errEl) {
+            errEl = document.createElement('p');
+            errEl.className = 'msf-field-error';
+            errEl.setAttribute('data-for', name);
+            choicesEl.parentNode.insertBefore(errEl, choicesEl.nextSibling);
+          }
+          errEl.textContent = 'Kérjük, válasszon az opciók közül.';
+          errEl.style.display = 'block';
+        }
       }
     });
 
     if (!valid && first) { try { first.focus(); } catch (ex) { /* ignore */ } }
     return valid;
   };
+
+  /* ---- Summary: populate .msf-review on last step ---- */
+  MSF.prototype._populateSummary = function () {
+    var lastStep = this.steps[this.total - 1];
+    if (!lastStep) return;
+    var reviewEl = lastStep.querySelector('.msf-review');
+    if (!reviewEl) return;
+
+    var items = [];
+
+    for (var i = 0; i < this.total - 1; i++) {
+      var step = this.steps[i];
+
+      // Checked radios
+      step.querySelectorAll('input[type="radio"]:checked').forEach(function (r) {
+        var label = MSF_FIELD_LABELS[r.name] || 'Kiválasztott';
+        // Avoid duplicates
+        for (var k = 0; k < items.length; k++) {
+          if (items[k].label === label) { items[k].value = r.value; return; }
+        }
+        items.push({ label: label, value: r.value });
+      });
+
+      // Text / email / tel / textarea (non-hidden, non-empty)
+      step.querySelectorAll(
+        'input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), textarea'
+      ).forEach(function (inp) {
+        var val = inp.value.trim();
+        if (!val) return;
+        var label = MSF_FIELD_LABELS[inp.name] ||
+                    (inp.placeholder && !inp.placeholder.match(/^(pl\.|[+0-9])/) ? inp.placeholder : null) ||
+                    inp.name || 'Adat';
+        items.push({ label: label, value: val });
+      });
+    }
+
+    if (!items.length) { reviewEl.innerHTML = ''; return; }
+
+    var html = '<dl class="msf-review-list">';
+    items.forEach(function (item) {
+      html += '<div class="msf-review-item">' +
+              '<dt>' + _esc(item.label) + '</dt>' +
+              '<dd>' + _esc(item.value) + '</dd>' +
+              '</div>';
+    });
+    html += '</dl>';
+    reviewEl.innerHTML = html;
+  };
+
+  function _esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
   /* ---- Error / Banner helpers ---- */
   MSF.prototype._showBanner = function (msg, cls) {
@@ -226,7 +370,13 @@
   /* ---- Navigation ---- */
   MSF.prototype.goNext = function () {
     if (!this._validate()) {
-      this._showBanner('Kérjük, töltse ki a kötelező mezőket!', 'msf-validation-error');
+      // Banner shown only if no inline errors are visible (fallback)
+      var hasInline = this.steps[this.current].querySelector('.msf-field-error[style*="block"]');
+      if (!hasInline) {
+        this._showBanner('Kérjük, töltse ki a kötelező mezőket a folytatáshoz!', 'msf-validation-error');
+      } else {
+        this._hideBanner('msf-validation-error');
+      }
       return;
     }
     this._hideBanner('msf-validation-error');

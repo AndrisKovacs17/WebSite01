@@ -1231,34 +1231,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Tudásellenőrző teszt – interaktív kvíz logika
 document.addEventListener('DOMContentLoaded', function () {
+
+  function getQuizSection(card) {
+    // Walk up to find the closest row that contains all quiz cards in the section
+    var el = card.parentElement;
+    while (el) {
+      if (el.classList.contains('row') && el.querySelector('.quiz-option')) return el;
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function checkSectionComplete(section) {
+    if (!section) return;
+    var cards = section.querySelectorAll('.service-item');
+    var answered = 0, correct = 0, total = cards.length;
+    cards.forEach(function (c) {
+      if (c.querySelector('.quiz-option[disabled]')) {
+        answered++;
+        if (c.querySelector('.quiz-option-correct')) correct++;
+      }
+    });
+    if (answered < total) return; // not all answered yet
+
+    // Remove existing result box if re-rendered
+    var existingResult = section.parentElement ? section.parentElement.querySelector('.quiz-result-box[data-for-section]') : null;
+    // Insert result box after section
+    var pct = Math.round((correct / total) * 100);
+    var grade, gradeClass;
+    if (pct >= 80) { grade = 'Kiváló! 🎉'; gradeClass = 'quiz-result-excellent'; }
+    else if (pct >= 50) { grade = 'Jó eredmény! 👍'; gradeClass = 'quiz-result-good'; }
+    else { grade = 'Érdemes ismételni. 📖'; gradeClass = 'quiz-result-poor'; }
+
+    var box = document.createElement('div');
+    box.className = 'quiz-result-box ' + gradeClass;
+    box.setAttribute('data-for-section', '1');
+    box.innerHTML =
+      '<div class="quiz-result-inner">' +
+        '<div class="quiz-result-score">' + correct + ' / ' + total + '</div>' +
+        '<div class="quiz-result-grade">' + grade + '</div>' +
+        '<div class="quiz-result-pct">' + pct + '% helyes válasz</div>' +
+      '</div>';
+    section.insertAdjacentElement('afterend', box);
+  }
+
   document.querySelectorAll('.quiz-option').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var optionsDiv = this.parentElement;
       var card = optionsDiv.closest('.service-item');
       if (!card) return;
+      // Already answered?
+      if (optionsDiv.querySelector('.quiz-option[disabled]')) return;
 
-      // Disable all options so each question can only be answered once
+      var isCorrect = this.dataset.correct === 'true';
+
+      // Disable all options
       optionsDiv.querySelectorAll('.quiz-option').forEach(function (b) {
         b.disabled = true;
         b.style.cursor = 'default';
+        b.classList.remove('btn-outline-secondary');
       });
 
-      // Colour the clicked button
-      if (this.dataset.correct === 'true') {
-        this.classList.replace('btn-outline-secondary', 'btn-success');
+      // Colour buttons with premium classes
+      if (isCorrect) {
+        this.classList.add('quiz-option-correct');
       } else {
-        this.classList.replace('btn-outline-secondary', 'btn-danger');
-        // Also highlight the correct answer in green
+        this.classList.add('quiz-option-wrong');
         optionsDiv.querySelectorAll('.quiz-option[data-correct="true"]').forEach(function (b) {
-          b.classList.replace('btn-outline-secondary', 'btn-success');
+          b.classList.add('quiz-option-correct');
         });
       }
 
-      // Reveal the explanation
+      // Reveal the explanation with smooth fade
       var expl = card.querySelector('.quiz-explanation');
       if (expl) {
         expl.classList.remove('d-none');
+        expl.classList.add('quiz-explanation-visible');
       }
+
+      // Check if the whole section is now answered
+      var section = getQuizSection(card);
+      checkSectionComplete(section);
     });
   });
 });
