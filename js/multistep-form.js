@@ -290,16 +290,17 @@
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(this._buildPayload())
       })
-      .then(function (resp) {
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      .then(function (resp) { return resp.json(); })
+      .then(function (data) {
+        if (!data.ok) throw new Error(data.message || 'Ismeretlen hiba');
+        self._onSuccess();
       })
-      .then(function () { self._onSuccess(); })
       .catch(function (err) {
         console.error('API error:', err);
-        self._onError(
-          subBtn,
-          'Hiba történt a küldés során. Kérjük, próbálja meg újra, vagy hívjon minket: +36 70 625 8201'
-        );
+        var msg = (err && err.message && err.message !== '[object Object]')
+          ? err.message
+          : 'Hiba történt a küldés során. Kérjük, próbálja meg újra, vagy hívjon minket: +36 70 625 8201';
+        self._onError(subBtn, msg);
       });
     }
   };

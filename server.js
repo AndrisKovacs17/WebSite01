@@ -510,7 +510,9 @@ function findPayloadEmail(payload) {
     normalizeEmail(payload.email) ||
     normalizeEmail(payload.applicant && payload.applicant.email) ||
     normalizeEmail(payload.contact && payload.contact.email) ||
-    normalizeEmail(payload.insured && payload.insured.email)
+    normalizeEmail(payload.insured && payload.insured.email) ||
+    normalizeEmail(payload.claimant && payload.claimant.email) ||
+    normalizeEmail(payload.association && payload.association.email)
   );
 }
 
