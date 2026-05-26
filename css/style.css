@@ -2959,6 +2959,15 @@ html, body {
   }
 }
 
+/* CTA szekció: single-arrow-button gombok középre igazítása (mobilon is) */
+.cta-section .d-flex .single-arrow-button {
+  align-self: center;
+}
+/* Szolgáltatás kártyák: single-arrow-button igazítás */
+.service-item .single-arrow-button.mt-auto {
+  align-self: flex-start;
+}
+
 /* ══════════════════════════════════════════════
    TESTIMONIAL – prémium kártya grid
    ══════════════════════════════════════════════ */
