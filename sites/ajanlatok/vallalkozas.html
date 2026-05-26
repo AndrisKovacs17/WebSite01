@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -227,187 +228,71 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">Felelősségbiztosítás igényfelmérő</h1>
-      <p class="text-muted">Biztosítási szerződéskötés előtt törvényi kötelezettségünk, hogy egy rövid igényfelmérő segítségével megtaláljuk az Ön, illetve vállalkozása szükségleteinek és lehetőségeinek megfelelő biztosítási terméket. Az alábbi űrlap kitöltésével, vagy kérdéseire adott válaszaival kérhet a vállalkozása tevékenységéhez kapcsolódó felelősségbiztosításra ajánlatot, ha nincsenek épületei, tárgyi eszközei, vagy azokra nem kíván biztosítást kötni.</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
       <p class="text-muted">Kérjük, hogy minden beviteli mezőt pontosan töltsön ki! Tájékoztatjuk, hogy az igényfelmérés során megadott adatait az igényfelmérés elkészítése céljából a Biztor Alkusz Kft. kezeli és tárolja, valamint az eredményt e-mailben is megküldjük Önnek.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <form class="needs-validation" novalidate action="/api/forms/vallalkozas" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ajánlatkérő adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="applicantName" class="form-label">Név *</label>
-                    <input type="text" class="form-control" id="applicantName" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantEmail" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="applicantEmail" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantPhone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="applicantPhone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="applicantNote" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="applicantNote" name="applicant[note]" rows="3" placeholder="pl. kapcsolattartó neve, sürgős egyeztetés" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/vallalkozas" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 4</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy tudjuk, hogyan keressük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Vállalkozás adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">A biztosítási védelmet igénylő vállalkozás</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="companyName" class="form-label">Neve *</label>
-                  <input type="text" class="form-control" id="companyName" name="company[name]" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="companyTax" class="form-label">Adószáma *</label>
-                  <input type="text" class="form-control" id="companyTax" name="company[taxNo]" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="companyZipCity" class="form-label">Irányítószám, település</label>
-                  <input type="text" class="form-control" id="companyZipCity" name="company[zipCity]">
-                </div>
-                <div class="col-md-6">
-                  <label for="companyAddress" class="form-label">Utca, házszám vagy helyrajzi szám</label>
-                  <input type="text" class="form-control" id="companyAddress" name="company[address]">
-                </div>
-                <div class="col-md-12">
-                  <label for="companyActivity" class="form-label">Főtevékenysége (TEÁOR vagy SZJ szerint)</label>
-                  <input type="text" class="form-control" id="companyActivity" name="company[activity]">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 4</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is elküldjük a részleteket.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Általános kérdések -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Általános kérdések</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label d-block">Van élő biztosítási fedezete erre a módozatra?</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="general[hasCoverage]" id="coverageNo" value="no" checked>
-                    <label class="form-check-label" for="coverageNo">Nem</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="general[hasCoverage]" id="coverageYes" value="yes">
-                    <label class="form-check-label" for="coverageYes">Igen</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Volt káreseménye az elmúlt 3 évben?</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="general[claims]" id="claimsNo" value="no" checked>
-                    <label class="form-check-label" for="claimsNo">Nem</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="general[claims]" id="claimsYes" value="yes">
-                    <label class="form-check-label" for="claimsYes">Igen</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 4</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
 
-          <!-- Pénzügyi adatok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Általános pénzügyi adatok</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="revenuePrev" class="form-label">Előző év tényleges bruttó árbevétel (ezer Ft)</label>
-                  <input type="number" class="form-control" id="revenuePrev" name="finance[prevYearRevenue]" placeholder="ezer Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="revenuePlan" class="form-label">Tárgyév tervezett bruttó árbevétel (ezer Ft)</label>
-                  <input type="number" class="form-control" id="revenuePlan" name="finance[thisYearRevenue]" placeholder="ezer Ft">
-                </div>
-                <div class="col-md-4">
-                  <label for="employees" class="form-label">Alkalmazotti létszám</label>
-                  <input type="number" class="form-control" id="employees" name="finance[employees]">
-                </div>
-                <div class="col-md-4">
-                  <label for="wageCost" class="form-label">Éves bérköltség (ezer Ft)</label>
-                  <input type="number" class="form-control" id="wageCost" name="finance[wageCost]" placeholder="ezer Ft">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 4</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a vállalkozói biztosítási ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
 
-          <!-- Igényelt fedezetek -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Igényelt biztosítási fedezetek</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[general]">Általános felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[service]">Szolgáltatás felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[employer]">Munkáltatói felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[product]">Termék felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[pollution]">Környezetszennyezési felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[tenant]">Bérbevevői felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="coverageTypes[landlord]">Bérbeadói felelősségbiztosítás</label></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kártérítési fedezet -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Igényelt kártérítési fedezet</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2"><input class="form-check-input me-2" type="radio" name="limit" id="limitLow" value="2-4.9m" checked><label class="form-check-label" for="limitLow">Minimális (2&nbsp;millió Ft/kár-tól 4,9&nbsp;millió Ft/kárig)</label></div>
-              <div class="form-check mb-2"><input class="form-check-input me-2" type="radio" name="limit" id="limitMed" value="5-19.9m"><label class="form-check-label" for="limitMed">Közepes (5&nbsp;millió Ft/kár-tól 19,9&nbsp;millió Ft/kárig)</label></div>
-              <div class="form-check"><input class="form-check-input me-2" type="radio" name="limit" id="limitHigh" value="20m+"><label class="form-check-label" for="limitHigh">Maximális (20&nbsp;millió Ft/kár-tól)</label></div>
-            </div>
-          </div>
-
-          <!-- Önrészesedés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Önrészesedés</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2"><input class="form-check-input me-2" type="radio" name="deductible" id="deductibleNone" value="none" checked><label class="form-check-label" for="deductibleNone">Önrész nélkül</label></div>
-              <div class="form-check mb-2"><input class="form-check-input me-2" type="radio" name="deductible" id="deductibleMin" value="min"><label class="form-check-label" for="deductibleMin">A lehető legkisebb önrésszel</label></div>
-              <div class="form-check"><input class="form-check-input me-2" type="radio" name="deductible" id="deductible10" value="10pct"><label class="form-check-label" for="deductible10">10%, de minimum 100&nbsp;000 Ft, vagy több</label></div>
-            </div>
-          </div>
-
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">
-            A Biztor Alkusz Kft. üzletszabályzatát megismertem és hozzájárulok, hogy a megadott adatokat a megfelelő biztosítási termék kiválasztása érdekében az adatvédelmi tájékoztatóban megjelölt időtartamig kezeljék.
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center mt-3">
-            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button>
-          </div>
-        </form>
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Vállalkozói biztosítás ajánlatot kérek ✓</button>
       </div>
     </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a vállalkozói biztosítási lehetőségekkel.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -560,6 +445,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

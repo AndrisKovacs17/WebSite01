@@ -70,6 +70,7 @@
     <link rel="preload" href="./../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="./../css/style.css" /></noscript>
      Törölve: <link href="css/output.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="../css/multistep-form.css">
 </head>
 
   <body>
@@ -264,500 +265,238 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <!-- Personal Form -->
-            <div id="personalForm" class="tab-content active">
-              <div class="container-xxl">
-                <div class="container">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                      <form class="needs-validation" novalidate action="/api/forms/polgaror-personal" method="post">
-                        <input type="hidden" name="meta[page]" value="Polgárőr biztosítás" />
-                        <input type="hidden" name="meta[form]" value="Személyes nyilatkozat" />
-                        <!-- Személyes adatok -->
-                        <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-                          <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Személyes adatok</h5>
-                          </div>
-                          <div class="card-body">
-                            <div class="row g-3">
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                                <label class="form-label" for="personalLastName">Vezetéknév *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="personalLastName"
-                                  name="member[lastName]"
-                                  autocomplete="family-name"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                                <label class="form-label" for="personalFirstName">Keresztnév *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="personalFirstName"
-                                  name="member[firstName]"
-                                  autocomplete="given-name"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                                <label class="form-label" for="personalBirthDate">Születési dátum *</label>
-                                <input
-                                  type="date"
-                                  class="form-control"
-                                  id="personalBirthDate"
-                                  name="member[birthDate]"
-                                  autocomplete="bday"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                                <label class="form-label">Neme *</label>
-                                <div>
-                                  <div class="form-check form-check-inline">
-                                    <input
-                                      class="form-check-input"
-                                      type="radio"
-                                      name="member[gender]"
-                                      id="personalGenderMale"
-                                      value="férfi"
-                                      required
-                                    />
-                                    <label class="form-check-label" for="personalGenderMale">Férfi</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input
-                                      class="form-check-input"
-                                      type="radio"
-                                      name="member[gender]"
-                                      id="personalGenderFemale"
-                                      value="nő"
-                                      required
-                                    />
-                                    <label class="form-check-label" for="personalGenderFemale">Nő</label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
-                                <label class="form-label" for="personalIdNumber">Polgárőr igazolvány száma *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="personalIdNumber"
-                                  name="member[idNumber]"
-                                  autocomplete="off"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            <div id="personalForm" class="tab-content active">
+                          <div class="row justify-content-center">
+                      <div class="col-lg-8 col-xl-7">
+                                <div class="msf-wrapper">
+                      <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-                        <!-- Elérhetőségi adatok -->
-                        <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-                          <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Elérhetőségi adatok</h5>
-                          </div>
-                          <div class="card-body">
-                            <div class="row g-3">
-                              <div class="col-md-3 wow fadeIn" data-wow-delay="0.6s">
-                                <label class="form-label" for="personalZip">Irányítószám *</label>
-                                  <input
-                                    type="text"
-                                    pattern="\d{4}"
-                                    inputmode="numeric"
-                                    class="form-control"
-                                    id="personalZip"
-                                    name="contact[zip]"
-                                    autocomplete="postal-code"
-                                    required
-                                  />
-                              </div>
-                              <div class="col-md-9 wow fadeIn" data-wow-delay="0.6s">
-                                <label class="form-label" for="personalCity">Város *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="personalCity"
-                                  name="contact[city]"
-                                  autocomplete="address-level2"
-                                  required
-                                />
-                              </div>
-                              <div class="col-12 wow fadeIn" data-wow-delay="0.7s">
-                                <label class="form-label" for="personalAddress">Utca, házszám *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="personalAddress"
-                                  name="contact[address]"
-                                  autocomplete="street-address"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.8s">
-                                <label class="form-label" for="personalPhone">Telefonszám *</label>
-                                <input
-                                  type="tel"
-                                  class="form-control"
-                                  id="personalPhone"
-                                  name="contact[phone]"
-                                  autocomplete="tel"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="0.8s">
-                                <label class="form-label" for="personalEmail">E-mail *</label>
-                                <input
-                                  type="email"
-                                  class="form-control"
-                                  id="personalEmail"
-                                  name="contact[email]"
-                                  autocomplete="email"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                          <form class="msf-form" novalidate action="/api/forms/polgaror-personal" method="post">
+                    <input type="hidden" name="meta[page]" value="Polgárőr biztosítás">
+            <input type="hidden" name="meta[form]" value="Személyes nyilatkozat">
+              <div class="msf-step">
+                <p class="msf-step-label">1 / 6</p>
+                <h2 class="msf-question">Személyes adatok</h2>
+                <p class="msf-hint">Adja meg az alapadatokat a nyilatkozat indításához.</p>
+            <div class="msf-field-group">
+              <input type="text" class="msf-input" name="member[lastName]" placeholder="Vezetéknév" required>
+              <input type="text" class="msf-input" name="member[firstName]" placeholder="Keresztnév" required>
+            </div>
+              </div>
 
-                        <!-- Kedvezményezett adatai -->
-                        <div class="card mb-4 wow fadeIn" data-wow-delay="0.9s">
-                          <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Kedvezményezett adatai</h5>
-                          </div>
-                          <div class="card-body">
-                            <div class="row g-3">
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="1.0s">
-                                <label class="form-label" for="beneficiaryName">Kedvezményezett neve *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="beneficiaryName"
-                                  name="beneficiary[name]"
-                                  autocomplete="name"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="1.0s">
-                                <label class="form-label">Kedvezményezett neme *</label>
-                                <div>
-                                  <div class="form-check form-check-inline">
-                                    <input
-                                      class="form-check-input"
-                                      type="radio"
-                                      name="beneficiary[gender]"
-                                      id="beneficiaryGenderMale"
-                                      value="férfi"
-                                      required
-                                    />
-                                    <label class="form-check-label" for="beneficiaryGenderMale">Férfi</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input
-                                      class="form-check-input"
-                                      type="radio"
-                                      name="beneficiary[gender]"
-                                      id="beneficiaryGenderFemale"
-                                      value="nő"
-                                      required
-                                    />
-                                    <label class="form-check-label" for="beneficiaryGenderFemale">Nő</label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="1.1s">
-                                <label class="form-label" for="beneficiaryBirthDate">Születési dátum *</label>
-                                <input
-                                  type="date"
-                                  class="form-control"
-                                  id="beneficiaryBirthDate"
-                                  name="beneficiary[birthDate]"
-                                  autocomplete="bday"
-                                  required
-                                />
-                              </div>
-                              <div class="col-md-6 wow fadeIn" data-wow-delay="1.1s">
-                                <label class="form-label" for="beneficiaryShare">Kedvezményezettség mértéke (%) *</label>
-                                <input
-                                  type="number"
-                                  class="form-control"
-                                  id="beneficiaryShare"
-                                  name="beneficiary[sharePercent]"
-                                  min="0"
-                                  max="100"
-                                  required
-                                />
-                              </div>
-                              <div class="col-12 wow fadeIn" data-wow-delay="1.2s">
-                                <label class="form-label" for="beneficiaryAddress">Kedvezményezett címe *</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="beneficiaryAddress"
-                                  name="beneficiary[address]"
-                                  autocomplete="street-address"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Nyilatkozatok -->
-                        <div class="card mb-4 wow fadeIn" data-wow-delay="1.3s">
-                          <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Nyilatkozatok</h5>
-                          </div>
-                          <div class="card-body">
-                            <div class="mb-3">
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  id="fitForWork"
-                                  name="declarations[fitForWork]"
-                                  value="igen"
-                                  required
-                                />
-                                <label class="form-check-label" for="fitForWork">
-                                  Kijelentem, hogy a nyilatkozat aláírásakor keresőképes vagyok *
-                                </label>
-                              </div>
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label" for="sickDays">Az elmúlt 3 hónapban betegség miatt távol töltött napok száma *</label>
-                              <input
-                                type="number"
-                                class="form-control"
-                                id="sickDays"
-                                name="declarations[sickDaysLast3Months]"
-                                min="0"
-                                required
-                              />
-                            </div>
-                            <div class="mb-3">
-                              <label class="form-label">TB rokkantsági vagy rehabilitációs járadék folyósítása *</label>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="declarations[disabilityPension]"
-                                  id="disabilityYes"
-                                  value="folyósít"
-                                  required
-                                />
-                                <label class="form-check-label" for="disabilityYes">Folyósít</label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="declarations[disabilityPension]"
-                                  id="disabilityNo"
-                                  value="nem folyósít"
-                                  required
-                                />
-                                <label class="form-check-label" for="disabilityNo">Nem folyósít</label>
-                              </div>
-                            </div>
-                            <div class="mb-0">
-                              <label class="form-label">Munkaképesség csökkenés megállapítási kérelem *</label>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="declarations[workAbilityReview]"
-                                  id="workAbilityNotRequested"
-                                  value="nincs folyamatban"
-                                  required
-                                />
-                                <label class="form-check-label" for="workAbilityNotRequested">Nincs folyamatban</label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="declarations[workAbilityReview]"
-                                  id="workAbilityInProgress"
-                                  value="folyamatban van"
-                                  required
-                                />
-                                <label class="form-check-label" for="workAbilityInProgress">Folyamatban van</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Hozzájárulások -->
-                        <div class="card mb-4 wow fadeIn" data-wow-delay="1.4s">
-                          <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">Hozzájárulások</h5>
-                          </div>
-                          <div class="card-body">
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="personalConsentPrivacy"
-                                name="consent[privacy]"
-                                value="elfogadva"
-                                required
-                              />
-                              <label class="form-check-label" for="personalConsentPrivacy">
-                                A nyilatkozatot elfogadom, az Adatkezelési tájékoztatót megismertem és elfogadom *
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                id="personalConsentUpdates"
-                                name="consent[updates]"
-                                value="hozzájárul"
-                                required
-                              />
-                              <label class="form-check-label" for="personalConsentUpdates">
-                                Hozzájárulok, hogy részemre a Polgárőrökkel kapcsolatos balesetbiztosításról tájékoztatást küldjenek *
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="text-center mt-4 wow fadeIn" data-wow-delay="1.5s">
-                          <button
-                            type="submit"
-                            class="btn btn-primary btn-lg px-5 rounded-pill"
-                          >
-                            Nyilatkozat beküldése
-                          </button>
-                          <div class="alert form-status-message d-none mt-3" role="alert"></div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+              <div class="msf-step">
+                <p class="msf-step-label">2 / 6</p>
+                <h2 class="msf-question">Azonosító adatok</h2>
+                <p class="msf-hint">A születési adatok és az igazolványszám szükséges a nyilatkozathoz.</p>
+                        <div class="msf-field-group">
+                          <input type="date" class="msf-input" name="member[birthDate]" required>
+                          <div class="msf-choices">
+              <div class="msf-choice">
+                <input type="radio" name="member[gender]" id="polgaror-personal-gender-male" value="férfi" required>
+                <label for="polgaror-personal-gender-male">Férfi</label>
+              </div>
+              <div class="msf-choice">
+                <input type="radio" name="member[gender]" id="polgaror-personal-gender-female" value="nő">
+                <label for="polgaror-personal-gender-female">Nő</label>
               </div>
             </div>
+                          <input type="text" class="msf-input" name="member[idNumber]" placeholder="Polgárőr igazolvány száma" required>
+                        </div>
+              </div>
 
-            <!-- No Email Form -->
-            <div id="noEmailForm" class="tab-content">
-              <form class="needs-validation" novalidate action="/api/forms/polgaror-group" method="post">
-                <input type="hidden" name="meta[page]" value="Polgárőr biztosítás" />
-                <input type="hidden" name="meta[form]" value="Csoportos nyilatkozat" />
-                <!-- Egyesületi adatok -->
-                <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Egyesületi adatok</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-3">
-                      <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                        <label class="form-label" for="associationName">Egyesület neve *</label>
-                        <input type="text" class="form-control" id="associationName" name="association[name]" autocomplete="organization" required />
-                      </div>
-                      <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                        <label class="form-label" for="associationEmail">Egyesület e-mail címe *</label>
-                        <input type="email" class="form-control" id="associationEmail" name="association[email]" autocomplete="email" required />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="msf-step">
+                <p class="msf-step-label">3 / 6</p>
+                <h2 class="msf-question">Elérhetőségi adatok</h2>
+                <p class="msf-hint">Írja be a lakcímet és az elérhetőségeket.</p>
+            <div class="msf-field-group">
+              <input type="text" class="msf-input" name="contact[zip]" placeholder="Irányítószám" required pattern="\d{4}" inputmode="numeric">
+              <input type="text" class="msf-input" name="contact[city]" placeholder="Város" required>
+              <input type="text" class="msf-input" name="contact[address]" placeholder="Utca, házszám" required>
+              <input type="tel" class="msf-input" name="contact[phone]" placeholder="Telefonszám" required>
+              <input type="email" class="msf-input" name="contact[email]" placeholder="E-mail cím" required>
+            </div>
+              </div>
 
-                <!-- Tag adatai -->
-                <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Tag adatai</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-3">
-                      <div class="col-12 wow fadeIn" data-wow-delay="0.4s">
-                        <label class="form-label" for="groupMemberName">Tag teljes neve *</label>
-                        <input type="text" class="form-control" id="groupMemberName" name="member[name]" autocomplete="name" required />
-                      </div>
-                      <div class="col-12 wow fadeIn" data-wow-delay="0.4s">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="groupIsPresident"
-                            name="member[isPresident]"
-                            value="igen"
-                          />
-                          <label class="form-check-label" for="groupIsPresident">
-                            Ez a személy az egyesület elnöke
+              <div class="msf-step">
+                <p class="msf-step-label">4 / 6</p>
+                <h2 class="msf-question">Kedvezményezett adatai</h2>
+                <p class="msf-hint">Adja meg a kedvezményezett alapadatait.</p>
+                        <div class="msf-field-group">
+                          <input type="text" class="msf-input" name="beneficiary[name]" placeholder="Kedvezményezett neve" required>
+                          <div class="msf-choices">
+              <div class="msf-choice">
+                <input type="radio" name="beneficiary[gender]" id="polgaror-beneficiary-gender-male" value="férfi" required>
+                <label for="polgaror-beneficiary-gender-male">Férfi</label>
+              </div>
+              <div class="msf-choice">
+                <input type="radio" name="beneficiary[gender]" id="polgaror-beneficiary-gender-female" value="nő">
+                <label for="polgaror-beneficiary-gender-female">Nő</label>
+              </div>
+            </div>
+                          <input type="date" class="msf-input" name="beneficiary[birthDate]" required>
+                          <input type="number" class="msf-input" name="beneficiary[sharePercent]" placeholder="Kedvezményezettség mértéke (%)" required min="0" max="100">
+                          <input type="text" class="msf-input" name="beneficiary[address]" placeholder="Kedvezményezett címe" required>
+                        </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">5 / 6</p>
+                <h2 class="msf-question">Nyilatkozatok</h2>
+                <p class="msf-hint">Kérjük, válaszoljon az egészségi és jogosultsági kérdésekre.</p>
+                        <div class="msf-consent">
+                          <label class="msf-consent-label">
+                            <input type="checkbox" name="declarations[fitForWork]" value="igen" required>
+                            Kijelentem, hogy a nyilatkozat aláírásakor keresőképes vagyok.
                           </label>
                         </div>
-                      </div>
-                      <div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                        <label class="form-label" for="groupBirthDate">Születési dátum *</label>
-                        <input type="date" class="form-control" id="groupBirthDate" name="member[birthDate]" autocomplete="bday" required />
-                      </div>
-                      <div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                        <label class="form-label" for="groupIdNumber">Polgárőr igazolvány száma *</label>
-                        <input type="text" class="form-control" id="groupIdNumber" name="member[idNumber]" autocomplete="off" required />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Lakcím -->
-                <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Lakcím</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="row g-3">
-                      <div class="col-md-3 wow fadeIn" data-wow-delay="0.7s">
-                        <label class="form-label" for="groupZip">Irányítószám *</label>
-                        <input type="text" class="form-control" id="groupZip" name="memberAddress[zip]" pattern="\d{4}" inputmode="numeric" autocomplete="postal-code" required />
-                      </div>
-                      <div class="col-md-9 wow fadeIn" data-wow-delay="0.7s">
-                        <label class="form-label" for="groupCity">Város *</label>
-                        <input type="text" class="form-control" id="groupCity" name="memberAddress[city]" autocomplete="address-level2" required />
-                      </div>
-                      <div class="col-12 wow fadeIn" data-wow-delay="0.8s">
-                        <label class="form-label" for="groupAddress">Utca, házszám *</label>
-                        <input type="text" class="form-control" id="groupAddress" name="memberAddress[address]" autocomplete="street-address" required />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Nyilatkozatok -->
-                <div class="card mb-4 wow fadeIn" data-wow-delay="0.9s">
-                  <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Nyilatkozatok</h5>
-                  </div>
-                  <div class="card-body">
-                    <div class="form-check mb-3 wow fadeIn" data-wow-delay="1.0s">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="groupConsentPrivacy"
-                        name="consent[privacy]"
-                        value="elfogadva"
-                        required
-                      />
-                      <label class="form-check-label" for="groupConsentPrivacy">
-                        A nyilatkozatot elfogadom, az Adatkezelési tájékoztatót megismertem és elfogadom *
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="text-center mt-4 wow fadeIn" data-wow-delay="1.1s">
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-lg px-5 rounded-pill"
-                  >
-                    Nyilatkozat beküldése
-                  </button>
-                  <div class="alert form-status-message d-none mt-3" role="alert"></div>
-                </div>
-              </form>
+                        <div class="msf-field-group mt-4">
+                          <input type="number" class="msf-input" name="declarations[sickDaysLast3Months]" placeholder="Az elmúlt 3 hónapban betegség miatt távol töltött napok száma" required min="0">
+                        </div>
+                        <div class="mt-4">
+                          <div class="msf-choices">
+              <div class="msf-choice">
+                <input type="radio" name="declarations[disabilityPension]" id="polgaror-disability-yes" value="folyósít" required>
+                <label for="polgaror-disability-yes">Folyósít</label>
+              </div>
+              <div class="msf-choice">
+                <input type="radio" name="declarations[disabilityPension]" id="polgaror-disability-no" value="nem folyósít">
+                <label for="polgaror-disability-no">Nem folyósít</label>
+              </div>
             </div>
+                        </div>
+                        <div class="mt-4">
+                          <div class="msf-choices">
+              <div class="msf-choice">
+                <input type="radio" name="declarations[workAbilityReview]" id="polgaror-review-no" value="nincs folyamatban" required>
+                <label for="polgaror-review-no">Nincs folyamatban</label>
+              </div>
+              <div class="msf-choice">
+                <input type="radio" name="declarations[workAbilityReview]" id="polgaror-review-yes" value="folyamatban van">
+                <label for="polgaror-review-yes">Folyamatban van</label>
+              </div>
+            </div>
+                        </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">6 / 6</p>
+                <h2 class="msf-question">Hozzájárulások</h2>
+                <p class="msf-hint">Küldés előtt még kérjük a szükséges hozzájárulásokat.</p>
+            <div class="msf-consent">
+              <label class="msf-consent-label">
+                <input type="checkbox" name="consent[privacy]" value="elfogadva" required>
+                A nyilatkozatot elfogadom, az <a href="/adatkezeles" target="_blank" rel="noopener">Adatkezelési tájékoztatót</a> megismertem és elfogadom.
+              </label>
+            </div>
+            <div class="msf-consent mt-3">
+              <label class="msf-consent-label">
+                <input type="checkbox" name="consent[updates]" value="hozzájárul" required>
+                Hozzájárulok, hogy részemre a Polgárőrökkel kapcsolatos balesetbiztosításról tájékoztatást küldjenek.
+              </label>
+            </div>
+              </div>
+
+                    <div class="msf-nav">
+              <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+              <div class="msf-nav-right">
+                <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+                <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Nyilatkozat beküldése ✓</button>
+              </div>
+            </div>
+                </form>
+
+                      <div class="msf-success" style="display:none">
+                        <div class="msf-success-icon">✓</div>
+                        <h2 class="msf-success-title">Nyilatkozatát megkaptuk!</h2>
+                        <p class="msf-success-text">Kollégánk szükség esetén hamarosan felveszi Önnel a kapcsolatot.</p>
+                        <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                </div>
+
+            <!-- No Email Form -->
+                            <div id="noEmailForm" class="tab-content">
+                          <div class="row justify-content-center">
+                      <div class="col-lg-8 col-xl-7">
+                                <div class="msf-wrapper">
+                      <div class="msf-progress"><div class="msf-progress-fill"></div></div>
+
+                          <form class="msf-form" novalidate action="/api/forms/polgaror-group" method="post">
+                    <input type="hidden" name="meta[page]" value="Polgárőr biztosítás">
+            <input type="hidden" name="meta[form]" value="Csoportos nyilatkozat">
+              <div class="msf-step">
+                <p class="msf-step-label">1 / 4</p>
+                <h2 class="msf-question">Egyesületi adatok</h2>
+                <p class="msf-hint">Adja meg az egyesület alapadatait.</p>
+            <div class="msf-field-group">
+              <input type="text" class="msf-input" name="association[name]" placeholder="Egyesület neve" required>
+              <input type="email" class="msf-input" name="association[email]" placeholder="Egyesület e-mail címe" required>
+            </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">2 / 4</p>
+                <h2 class="msf-question">Tag adatai</h2>
+                <p class="msf-hint">Adja meg a biztosítandó tag adatait.</p>
+            <div class="msf-field-group">
+              <input type="text" class="msf-input" name="member[name]" placeholder="Tag teljes neve" required>
+            </div>
+            <div class="msf-consent mt-4">
+              <label class="msf-consent-label">
+                <input type="checkbox" name="member[isPresident]" value="igen">
+                Ez a személy az egyesület elnöke.
+              </label>
+            </div>
+            <div class="msf-field-group mt-4">
+              <input type="date" class="msf-input" name="member[birthDate]" required>
+              <input type="text" class="msf-input" name="member[idNumber]" placeholder="Polgárőr igazolvány száma" required>
+            </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">3 / 4</p>
+                <h2 class="msf-question">Lakcím</h2>
+                <p class="msf-hint">Adja meg a lakcím adatokat.</p>
+            <div class="msf-field-group">
+              <input type="text" class="msf-input" name="memberAddress[zip]" placeholder="Irányítószám" required pattern="\d{4}" inputmode="numeric">
+              <input type="text" class="msf-input" name="memberAddress[city]" placeholder="Város" required>
+              <input type="text" class="msf-input" name="memberAddress[address]" placeholder="Utca, házszám" required>
+            </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">4 / 4</p>
+                <h2 class="msf-question">Hozzájárulás</h2>
+                <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+            <div class="msf-consent">
+              <label class="msf-consent-label">
+                <input type="checkbox" name="consent[privacy]" value="elfogadva" required>
+                A nyilatkozatot elfogadom, az <a href="/adatkezeles" target="_blank" rel="noopener">Adatkezelési tájékoztatót</a> megismertem és elfogadom.
+              </label>
+            </div>
+              </div>
+
+                    <div class="msf-nav">
+              <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+              <div class="msf-nav-right">
+                <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+                <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Nyilatkozat beküldése ✓</button>
+              </div>
+            </div>
+                </form>
+
+                      <div class="msf-success" style="display:none">
+                        <div class="msf-success-icon">✓</div>
+                        <h2 class="msf-success-title">Nyilatkozatát megkaptuk!</h2>
+                        <p class="msf-success-text">Kollégánk szükség esetén hamarosan felveszi Önnel a kapcsolatot.</p>
+                        <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                </div>
           </div>
         </div>
       </div>
@@ -976,6 +715,7 @@
     <script defer src="./../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../js/multistep-form.js"></script>
+</body>
 </html>
 

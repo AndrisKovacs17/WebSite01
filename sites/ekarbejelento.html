@@ -70,6 +70,7 @@
     <link rel="preload" href="./../css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="./../css/style.css" /></noscript>
      Törölve: <link href="css/output.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="../css/multistep-form.css">
 </head>
 
   <body>
@@ -307,192 +308,80 @@
         <!-- Main Form Section -->
         <div class="row justify-content-center">
           <div class="col-lg-10">
-            <form class="needs-validation" novalidate action="/api/forms/ekarbejelento" method="post">
-              <input type="hidden" name="meta[page]" value="E-kárbejelentő" />
-              <input type="hidden" name="meta[form]" value="Lakossági kárbejelentés" />
-              <div class="row justify-content-center">
-                <div class="col-lg-10">
-                  <!-- Personal Info -->
-                  <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="card-header bg-primary text-white">
-                      <h5 class="mb-0">Személyes adatok</h5>
-                    </div>
-                    <div class="card-body">
-                      <div class="row g-3">
-                        <div class="col-md-12">
-                          <label for="claimantName" class="form-label">Név *</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="claimantName"
-                            name="claimant[name]"
-                            autocomplete="name"
-                            required
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="claimantEmail" class="form-label">E-mail *</label>
-                          <input
-                            type="email"
-                            class="form-control"
-                            id="claimantEmail"
-                            name="claimant[email]"
-                            autocomplete="email"
-                            required
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="claimantPhone" class="form-label">Telefonszám *</label>
-                          <input
-                            type="tel"
-                            class="form-control"
-                            id="claimantPhone"
-                            name="claimant[phone]"
-                            autocomplete="tel"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                                <div class="msf-wrapper">
+                      <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-                  <!-- Claim Details -->
-                  <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="card-header bg-primary text-white">
-                      <h5 class="mb-0">Káresemény adatai</h5>
-                    </div>
-                    <div class="card-body">
-                      <div class="row g-3">
-                        <div class="col-md-6">
-                          <label for="claimType" class="form-label">Káresemény típusa *</label>
-                          <select class="form-select" id="claimType" name="claim[type]" required>
-                            <option value="">-- Válasszon --</option>
-                            <option value="KGFB">KGFB</option>
-                            <option value="CASCO">CASCO</option>
-                            <option value="Lakásbiztosítás">Lakásbiztosítás</option>
-                            <option value="Egyéb">Egyéb</option>
-                          </select>
-                        </div>
-                        <div class="col-md-6">
-                          <label for="claimDate" class="form-label">Káresemény időpontja *</label>
-                          <input
-                            type="date"
-                            class="form-control"
-                            id="claimDate"
-                            name="claim[date]"
-                            autocomplete="off"
-                            required
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="estimatedAmount" class="form-label">Becsült kárösszeg (Ft) *</label>
-                          <input
-                            type="number"
-                            class="form-control"
-                            id="estimatedAmount"
-                            name="claim[estimatedAmount]"
-                            min="0"
-                            step="1000"
-                            autocomplete="off"
-                            required
-                          />
-                        </div>
-                        <div class="col-md-6">
-                          <label for="policyNumber" class="form-label">Kötvényszám</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="policyNumber"
-                            name="claim[policyNumber]"
-                            autocomplete="off"
-                          />
-                        </div>
-                        <div class="col-md-12">
-                          <label for="paymentMethod" class="form-label">Kifizetés módja *</label>
-                          <select class="form-select" id="paymentMethod" name="claim[payoutMethod]" required>
-                            <option value="">-- Válasszon --</option>
-                            <option value="Banki átutalás">Banki átutalás</option>
-                            <option value="Postai kifizetés">Postai kifizetés</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Description -->
-                  <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="card-header bg-primary text-white">
-                      <h5 class="mb-0">Káresemény leírása</h5>
-                    </div>
-                    <div class="card-body">
-                      <textarea
-                        class="form-control"
-                        id="claimDescription"
-                        name="claim[description]"
-                        rows="5"
-                        autocomplete="off"
-                        required
-                      ></textarea>
-                    </div>
-                  </div>
-
-                  <!-- File Upload -->
-                  <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="card-header bg-primary text-white">
-                      <h5 class="mb-0">Dokumentumok feltöltése</h5>
-                    </div>
-                    <div class="card-body">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="claimAttachments"
-                        name="attachments[]"
-                        multiple
-                        accept=".pdf,.jpg,.png"
-                      />
-                      <div class="form-text mt-2">
-                        Maximum 8 darab állomány csatolása lehetséges.<br />
-                        Támogatott formátumok: PDF, JPG, PNG | Maximális méret: 4 MB csatolmányonként
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Terms and Submit -->
-                  <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="card-body">
-                      <div class="form-check mb-4">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          id="terms"
-                          name="consent[privacy]"
-                          value="accepted"
-                          required
-                        />
-                        <label class="form-check-label" for="terms">
-                          Elfogadom az
-                          <a
-                            class="phone-link"
-                            href="./../Adatkezelesi_tajekoztato_biztor_alkusz.pdf"
-                            >Adatkezelési tájékoztatóban</a
-                          >
-                          foglaltakat *
-                        </label>
-                      </div>
-                      <div class="text-center">
-                        <button
-                          type="submit"
-                          class="btn btn-primary btn-lg rounded-pill px-5"
-                        >
-                          Kárbejelentés küldése
-                        </button>
-                      </div>
-                      <div class="alert form-status-message d-none mt-3" role="alert"></div>
-                    </div>
-                  </div>
-                </div>
+                          <form class="msf-form" novalidate action="/api/forms/ekarbejelento" method="post">
+                    <input type="hidden" name="meta[page]" value="E-kárbejelentő">
+            <input type="hidden" name="meta[form]" value="Lakossági kárbejelentés">
+              <div class="msf-step">
+                <p class="msf-step-label">1 / 5</p>
+                <h2 class="msf-question">Hogyan szólítsuk?</h2>
+                <p class="msf-hint">Írja be a nevét, hogy tudjuk, kihez kapcsolódik a bejelentés.</p>
+            <input type="text" class="msf-input" name="claimant[name]" required>
               </div>
-            </form>
+
+              <div class="msf-step">
+                <p class="msf-step-label">2 / 5</p>
+                <h2 class="msf-question">Hogyan érjük el?</h2>
+                <p class="msf-hint">Telefonon és e-mailben is visszajelzünk a következő lépésekről.</p>
+            <div class="msf-field-group">
+              <input type="tel" class="msf-input" name="claimant[phone]" required>
+              <input type="email" class="msf-input" name="claimant[email]" required>
+            </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">3 / 5</p>
+                <h2 class="msf-question">Milyen káreset történt?</h2>
+                <p class="msf-hint">Válassza ki a káresemény típusát, és adja meg a dátumát.</p>
+                        <div class="msf-field-group">
+                          <select class="msf-input" name="claim[type]" required>
+              <option value="">Válasszon típust</option>
+              <option value="KGFB">KGFB</option>
+              <option value="CASCO">CASCO</option>
+              <option value="Lakásbiztosítás">Lakásbiztosítás</option>
+              <option value="Egyéb">Egyéb</option>
+            </select>
+                          <input type="date" class="msf-input" name="claim[date]" required>
+                        </div>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">4 / 5</p>
+                <h2 class="msf-question">Írja le, mi történt?</h2>
+                <p class="msf-hint">Néhány mondatban foglalja össze a káreset körülményeit.</p>
+            <textarea class="msf-input msf-textarea" name="claim[description]" rows="5" placeholder="Rövid leírás a káreset körülményeiről" required></textarea>
+              </div>
+
+              <div class="msf-step">
+                <p class="msf-step-label">5 / 5</p>
+                <h2 class="msf-question">Majdnem kész!</h2>
+                <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+            <div class="msf-consent">
+              <label class="msf-consent-label">
+                <input type="checkbox" name="privacyConsent" required>
+                Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a kárbejelentés ügyintézése érdekében kezeljék.
+              </label>
+            </div>
+              </div>
+
+                    <div class="msf-nav">
+              <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+              <div class="msf-nav-right">
+                <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+                <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Kárbejelentést küldök ✓</button>
+              </div>
+            </div>
+                </form>
+
+                      <div class="msf-success" style="display:none">
+                        <div class="msf-success-icon">✓</div>
+                        <h2 class="msf-success-title">Kárbejelentést megkaptuk!</h2>
+                        <p class="msf-success-text">Kollégánk hamarosan visszajelzést küld a következő lépésekről.</p>
+                        <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+                      </div>
+                    </div>
 
             <div class="row g-4 mt-4">
               <!-- What Happens Next -->
@@ -589,261 +478,82 @@
                 </div>
               </div>
 
-              <form class="needs-validation" novalidate action="/api/forms/ekarbejelento-corporate" method="post">
-                <input type="hidden" name="meta[page]" value="E-kárbejelentő" />
-                <input type="hidden" name="meta[form]" value="Vállalati kárbejelentés" />
-                <div class="row justify-content-center">
-                  <div class="col-lg-10">
-                    <!-- Company Info -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Cég adatai</h5>
-                      </div>
-                      <div class="card-body">
-                        <div class="row g-3">
-                          <div class="col-md-6">
-                            <label for="companyName" class="form-label">Cég neve *</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="companyName"
-                              name="company[name]"
-                              autocomplete="organization"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="companyTaxId" class="form-label">Adószám</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="companyTaxId"
-                              name="company[taxId]"
-                              placeholder="12345678-1-12"
-                              autocomplete="off"
-                            />
-                          </div>
-                          <div class="col-12">
-                            <label for="companyAddress" class="form-label">Székhely címe</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="companyAddress"
-                              name="company[address]"
-                              autocomplete="street-address"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                                    <div class="msf-wrapper">
+                        <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-                    <!-- Contact Info -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Kapcsolattartó adatai</h5>
-                      </div>
-                      <div class="card-body">
-                        <div class="row g-3">
-                          <div class="col-md-6">
-                            <label for="contactName" class="form-label">Kapcsolattartó neve *</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="contactName"
-                              name="contact[name]"
-                              autocomplete="name"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="contactRole" class="form-label">Beosztás</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="contactRole"
-                              name="contact[position]"
-                              autocomplete="organization-title"
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="contactEmail" class="form-label">E-mail *</label>
-                            <input
-                              type="email"
-                              class="form-control"
-                              id="contactEmail"
-                              name="contact[email]"
-                              autocomplete="email"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="contactPhone" class="form-label">Telefon *</label>
-                            <input
-                              type="tel"
-                              class="form-control"
-                              id="contactPhone"
-                              name="contact[phone]"
-                              autocomplete="tel"
-                              required
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Claim Details -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Káresemény adatai</h5>
-                      </div>
-                      <div class="card-body">
-                        <div class="row g-3">
-                          <div class="col-md-6">
-                            <label for="corporateClaimType" class="form-label">Káresemény típusa *</label>
-                            <select
-                              class="form-select"
-                              id="corporateClaimType"
-                              name="claim[type]"
-                              required
-                            >
-                              <option value="">-- Válasszon --</option>
-                              <option value="Vagyonbiztosítás">Vagyonbiztosítás</option>
-                              <option value="Felelősségbiztosítás">Felelősségbiztosítás</option>
-                              <option value="Munkavállalói baleset">Munkavállalói baleset</option>
-                              <option value="Flotta káresemény">Flotta káresemény</option>
-                              <option value="Egyéb">Egyéb</option>
-                            </select>
-                          </div>
-                          <div class="col-md-6">
-                            <label for="corporateClaimDate" class="form-label">Káresemény időpontja *</label>
-                            <input
-                              type="date"
-                              class="form-control"
-                              id="corporateClaimDate"
-                              name="claim[date]"
-                              autocomplete="off"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="incidentLocation" class="form-label">Esemény helyszíne *</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="incidentLocation"
-                              name="claim[location]"
-                              autocomplete="off"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="businessLoss" class="form-label">Becsült kár (Ft)</label>
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="businessLoss"
-                              name="claim[estimatedLoss]"
-                              min="0"
-                              step="10000"
-                              autocomplete="off"
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="corporatePolicyNumber" class="form-label">Kötvényszám</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="corporatePolicyNumber"
-                              name="claim[policyNumber]"
-                              autocomplete="off"
-                            />
-                          </div>
-                          <div class="col-md-6">
-                            <label for="insurerName" class="form-label">Biztosító neve</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="insurerName"
-                              name="claim[insurer]"
-                              autocomplete="organization"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Káresemény leírása</h5>
-                      </div>
-                      <div class="card-body">
-                        <textarea
-                          class="form-control"
-                          id="corporateDescription"
-                          name="claim[description]"
-                          rows="5"
-                          autocomplete="off"
-                          required
-                        ></textarea>
-                        <div class="form-text mt-2">
-                          Írja le röviden az esemény körülményeit, az okozott károkat és az azonnali intézkedéseket.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- File Upload -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">Kapcsolódó dokumentumok</h5>
-                      </div>
-                      <div class="card-body">
-                        <input
-                          type="file"
-                          class="form-control"
-                          id="corporateAttachments"
-                          name="attachments[]"
-                          multiple
-                          accept=".pdf,.jpg,.png"
-                        />
-                        <div class="form-text mt-2">
-                          Csatoljon kárfelvételi jegyzőkönyvet, fotókat vagy számlákat – a fájlok neveit rögzítjük, a dokumentumokat e-mailben is elküldheti.
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Terms and Submit -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-                      <div class="card-body">
-                        <div class="form-check mb-4">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="corporateTerms"
-                            name="consent[privacy]"
-                            value="accepted"
-                            required
-                          />
-                          <label class="form-check-label" for="corporateTerms">
-                            Tudomásul veszem, hogy a megadott adatokat a Biztor Alkusz Kft. a vállalati kárbejelentés feldolgozásához használja fel, az
-                            <a class="phone-link" href="./../Adatkezelesi_tajekoztato_biztor_alkusz.pdf">adatkezelési tájékoztatóban</a>
-                            foglaltak szerint.
-                          </label>
-                        </div>
-                        <div class="text-center">
-                          <button
-                            type="submit"
-                            class="btn btn-primary btn-lg rounded-pill px-5"
-                          >
-                            Kárbejelentés elküldése
-                          </button>
-                        </div>
-                        <div class="alert form-status-message d-none mt-3" role="alert"></div>
-                      </div>
-                    </div>
-                  </div>
+                            <form class="msf-form" novalidate action="/api/forms/ekarbejelento-corporate" method="post">
+                      <input type="hidden" name="meta[page]" value="E-kárbejelentő">
+              <input type="hidden" name="meta[form]" value="Vállalati kárbejelentés">
+                <div class="msf-step">
+                  <p class="msf-step-label">1 / 5</p>
+                  <h2 class="msf-question">Mi a cég neve?</h2>
+                  <p class="msf-hint">Adja meg a vállalkozás nevét.</p>
+              <input type="text" class="msf-input" name="claimant[companyName]" placeholder="Cégnév" required>
                 </div>
-              </form>
+
+                <div class="msf-step">
+                  <p class="msf-step-label">2 / 5</p>
+                  <h2 class="msf-question">Ki a kapcsolattartó és hogyan érjük el?</h2>
+                  <p class="msf-hint">A kapcsolattartó adatai segítik a gyors egyeztetést.</p>
+              <div class="msf-field-group">
+                <input type="text" class="msf-input" name="claimant[contactPerson]" required>
+                <input type="tel" class="msf-input" name="claimant[phone]" required>
+                <input type="email" class="msf-input" name="claimant[email]" required>
+              </div>
+                </div>
+
+                <div class="msf-step">
+                  <p class="msf-step-label">3 / 5</p>
+                  <h2 class="msf-question">Milyen káreset történt?</h2>
+                  <p class="msf-hint">Válassza ki a káresemény típusát, és adja meg a dátumát.</p>
+                          <div class="msf-field-group">
+                            <select class="msf-input" name="claim[type]" required>
+                <option value="">Válasszon típust</option>
+                <option value="Vagyonbiztosítás">Vagyonbiztosítás</option>
+                <option value="Felelősségbiztosítás">Felelősségbiztosítás</option>
+                <option value="Munkavállalói baleset">Munkavállalói baleset</option>
+                <option value="Flotta káresemény">Flotta káresemény</option>
+                <option value="Egyéb">Egyéb</option>
+              </select>
+                            <input type="date" class="msf-input" name="claim[date]" required>
+                          </div>
+                </div>
+
+                <div class="msf-step">
+                  <p class="msf-step-label">4 / 5</p>
+                  <h2 class="msf-question">Írja le, mi történt?</h2>
+                  <p class="msf-hint">Néhány mondatban foglalja össze a káreset körülményeit.</p>
+              <textarea class="msf-input msf-textarea" name="claim[description]" rows="5" placeholder="Rövid leírás a káreset körülményeiről" required></textarea>
+                </div>
+
+                <div class="msf-step">
+                  <p class="msf-step-label">5 / 5</p>
+                  <h2 class="msf-question">Majdnem kész!</h2>
+                  <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+              <div class="msf-consent">
+                <label class="msf-consent-label">
+                  <input type="checkbox" name="privacyConsent" required>
+                  Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a céges kárbejelentés ügyintézése érdekében kezeljék.
+                </label>
+              </div>
+                </div>
+
+                      <div class="msf-nav">
+                <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+                <div class="msf-nav-right">
+                  <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+                  <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Céges kárbejelentést küldök ✓</button>
+                </div>
+              </div>
+                  </form>
+
+                        <div class="msf-success" style="display:none">
+                          <div class="msf-success-icon">✓</div>
+                          <h2 class="msf-success-title">Kárbejelentést megkaptuk!</h2>
+                          <p class="msf-success-text">Kollégánk hamarosan visszajelzést küld a következő lépésekről.</p>
+                          <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+                        </div>
+                      </div>
             </div>
           </div>
         </div>
@@ -1007,6 +717,7 @@
     <script defer src="./../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../js/multistep-form.js"></script>
+</body>
 </html>
 

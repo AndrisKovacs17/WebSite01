@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -227,153 +228,84 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">Nyugdíjbiztosítás igényfelmérő</h1>
-      <p class="text-muted">Töltse ki az alábbi űrlapot személyre szabott nyugdíjbiztosítási ajánlatért!</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <form class="needs-validation" novalidate action="/api/forms/nyugdij" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Ajánlatkérő adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="name" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="name" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="email" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="phone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="note" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="note" name="applicant[note]" rows="2" placeholder="pl. extra igény, kérés" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/nyugdij" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 4</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Személyes adatok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Személyes adatok</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="dob" class="form-label">Születési dátum *</label>
-                  <input type="date" class="form-control" id="dob" name="insured[dob]" required>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label d-block">Neme *</label>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label"><input class="form-check-input me-2" type="radio" name="insured[gender]" value="male" required>Férfi</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label"><input class="form-check-input me-2" type="radio" name="insured[gender]" value="female">Nő</label>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="occupation" class="form-label">Foglalkozás</label>
-                  <input type="text" class="form-control" id="occupation" name="insured[occupation]" placeholder="pl. alkalmazott, szabadfoglalkozású">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 4</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is küldjük a részleteket.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Nyugdíjcél és időtáv -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Nyugdíjcél és időtáv</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="retirementAge" class="form-label">Cél nyugdíjkorhatár (év) *</label>
-                  <input type="number" class="form-control" id="retirementAge" name="goal[retirementAge]" min="55" max="75" required>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 4</p>
+        <h2 class="msf-question">Születési dátuma és neme</h2>
+        <p class="msf-hint">Születési dátuma segít pontosabb ajánlatot adni.</p>
+                <div class="msf-field-group">
+                  <input type="date" class="msf-input" name="insured[dob]" required>
                 </div>
-                <div class="col-md-6">
-                  <label for="currentAge" class="form-label">Jelenlegi életkor (év) *</label>
-                  <input type="number" class="form-control" id="currentAge" name="goal[currentAge]" min="18" max="75" required>
-                </div>
-                <div class="col-12">
-                  <label for="pensionTarget" class="form-label">Várt havi járadék összege (Ft)</label>
-                  <input type="number" class="form-control" id="pensionTarget" name="goal[pensionTarget]" placeholder="pl. 150 000">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Befizetési konstrukció -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Befizetési konstrukció</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="recurringFrequency" class="form-label">Rendszeres befizetés gyakorisága</label>
-                  <select class="form-select" id="recurringFrequency" name="payment[frequency]">
-                    <option value="monthly">Havi</option>
-                    <option value="quarterly">Negyedéves</option>
-                    <option value="yearly">Éves</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="recurringAmount" class="form-label">Rendszeres befizetés összege (Ft)</label>
-                  <input type="number" class="form-control" id="recurringAmount" name="payment[amount]" placeholder="pl. 20 000">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Egyszeri befizetés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Egyszeri befizetés</h5></div>
-            <div class="card-body">
-              <label for="lumpSum" class="form-label">Egyszeri befizetés összege (Ft)</label>
-              <input type="number" class="form-control" id="lumpSum" name="payment[lumpSum]" placeholder="pl. 100 000">
-            </div>
-          </div>
-
-          <!-- Hozamkockázat és portfólió -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Hozamkockázat és portfólió</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="risk[profile]" value="conservative" checked>Konzervatív (kötvényalapú)</label></div>
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="risk[profile]" value="balanced">Kiegyensúlyozott</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="risk[profile]" value="growth">Növekedési (részvényalapú)</label></div>
-            </div>
-          </div>
-
-          <!-- Jelenlegi nyugdíjbiztosítás -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Jelenlegi nyugdíjbiztosítás</h5></div>
-            <div class="card-body">
-              <label for="existingPremium" class="form-label">Meglévő biztosítási díj (Ft)</label>
-              <input type="number" class="form-control" id="existingPremium" name="existing[premium]" placeholder="pl. 10 000">
-            </div>
-          </div>
-
-          <!-- Kedvezmények -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.8s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Kedvezmények</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[taxBenefit]">Adóvisszatérítés (adókedvezmény)</label></div>
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[eComm]">E-kommunikációs kedvezmény</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[loyalty]">Hűségkedvezmény</label></div>
-            </div>
-          </div>
-
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">A Biztor Alkusz Kft. üzletszabályzatát megismertem és hozzájárulok, hogy a megadott adatokat a nyugdíjbiztosítási ajánlat elkészítése érdekében kezeljék.</div>
-
-          <!-- Submit Button -->
-          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button></div>
-        </form>
+                <div class="mt-4">
+                  <div class="msf-choices">
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="nyugdij-gender-male" value="male" required>
+        <label for="nyugdij-gender-male">Férfi</label>
+      </div>
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="nyugdij-gender-female" value="female">
+        <label for="nyugdij-gender-female">Nő</label>
       </div>
     </div>
+                </div>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 4</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a nyugdíjbiztosítási ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
+
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Nyugdíjbiztosítás ajánlatot kérek ✓</button>
+      </div>
+    </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a nyugdíjbiztosítási lehetőségekről.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -528,6 +460,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

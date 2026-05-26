@@ -54,6 +54,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -226,206 +227,80 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">KGFB igényfelmérő</h1>
-      <p class="text-muted">Töltse ki az űrlapot a kötelező gépjármű-felelősségbiztosítás ajánlatához!</p>
-      <div class="form-intro-panel text-start mx-auto mt-4">
-        <div class="form-step-list" aria-label="Ajánlatkérés lépései">
-          <span>1. Kapcsolat</span>
-          <span>2. Jármű</span>
-          <span>3. Opcionális pontosítás</span>
-        </div>
-        <p class="mb-0">A csillagos mezők elegendőek az ajánlatkérés indításához. A díjpontosításhoz szükséges további adatokat megadhatja most, vagy visszahíváskor egyeztetjük.</p>
-      </div>
-    </div>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>    </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <form class="needs-validation" novalidate action="/api/forms/kgfb" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Ajánlatkérő adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="applicantName" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="applicantName" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantEmail" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="applicantEmail" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantPhone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="applicantPhone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="applicantNote" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="applicantNote" name="applicant[note]" rows="2" placeholder="pl. sürgős ajánlatkérés" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/kgfb" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 5</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Gépjármű tulajdonos -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Tulajdonos adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="ownerName" class="form-label">Tulajdonos neve *</label>
-                  <input type="text" class="form-control" id="ownerName" name="owner[name]" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="ownerId" class="form-label">Személyi igazolvány száma</label>
-                  <input type="text" class="form-control" id="ownerId" name="owner[id]">
-                </div>
-                <div class="col-md-12">
-                  <label for="ownerAddress" class="form-label">Cím</label>
-                  <input type="text" class="form-control" id="ownerAddress" name="owner[address]" placeholder="irányítószám, település, utca, házszám">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 5</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is küldjük a visszajelzést.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Gépjármű adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Gépjármű adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="registration" class="form-label">Rendszám *</label>
-                  <input type="text" class="form-control" id="registration" name="vehicle[registration]" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="brand" class="form-label">Márka *</label>
-                  <input type="text" class="form-control" id="brand" name="vehicle[brand]" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="model" class="form-label">Típus *</label>
-                  <input type="text" class="form-control" id="model" name="vehicle[model]" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="firstReg" class="form-label">Első forgalomba helyezés</label>
-                  <input type="date" class="form-control" id="firstReg" name="vehicle[firstReg]">
-                </div>
-                <div class="col-md-4">
-                  <label for="power" class="form-label">Teljesítmény (kW)</label>
-                  <input type="number" class="form-control" id="power" name="vehicle[power]">
-                </div>
-                <div class="col-md-4">
-                  <label for="engine" class="form-label">Hengerűrtartalom (cm³)</label>
-                  <input type="number" class="form-control" id="engine" name="vehicle[engine]">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 5</p>
+        <h2 class="msf-question">Melyik autót biztosítaná?</h2>
+        <p class="msf-hint">A három alapadat elég ahhoz, hogy elindítsuk az ajánlatot.</p>
+    <div class="msf-field-group">
+      <input type="text" class="msf-input" name="vehicle[registration]" placeholder="Rendszám (pl. ABC-123)" required>
+      <input type="text" class="msf-input" name="vehicle[brand]" placeholder="Márka (pl. Volkswagen)" required>
+      <input type="text" class="msf-input" name="vehicle[model]" placeholder="Típus (pl. Golf)" required>
+    </div>
+      </div>
 
-          <details class="optional-form-details mb-4">
-            <summary>Részletes KGFB adatok megadása (opcionális)</summary>
-            <div class="optional-form-details__body">
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 5</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
 
-          <!-- Szerződés adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Szerződés adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="startDate" class="form-label">Kezdés dátuma</label>
-                  <input type="date" class="form-control" id="startDate" name="policy[startDate]">
-                </div>
-                <div class="col-md-4">
-                  <label for="paymentMethod" class="form-label">Fizetési mód</label>
-                  <select class="form-select" id="paymentMethod" name="policy[paymentMethod]">
-                    <option value="bank_transfer">Átutalás</option>
-                    <option value="cash">Készpénz</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label for="frequency" class="form-label">Díjfizetés üteme</label>
-                  <select class="form-select" id="frequency" name="policy[frequency]">
-                    <option value="yearly">Éves</option>
-                    <option value="semiannual">Féléves</option>
-                    <option value="quarterly">Negyedéves</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">5 / 5</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a KGFB ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
 
-          <!-- Létező KGFB -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Korábbi KGFB</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="currentInsurer" class="form-label">Jelenlegi biztosító</label>
-                  <input type="text" class="form-control" id="currentInsurer" name="policy[currentInsurer]">
-                </div>
-                <div class="col-md-6">
-                  <label for="noClaimYears" class="form-label">No-claim évek száma</label>
-                  <input type="number" class="form-control" id="noClaimYears" name="policy[noClaimYears]" min="0">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fedezet és kiegészítők -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Fedezet és kiegészítők</h5></div>
-            <div class="card-body">
-              <p class="mb-2">Alap KGFB fedezet:</p>
-              <ul>
-                <li>Járművek harmadik személynek okozott kárai</li>
-                <li>Sérüléses és anyagi károk térítése</li>
-              </ul>
-              <p class="mb-2">Kiegészítő lehetőségek:</p>
-              <div class="form-check mb-2">
-                <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[passengerLiability]">Utastárs felelősségbiztosítás</label>
-              </div>
-              <div class="form-check mb-2">
-                <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[assistance]">Útmentő és assistance szolgáltatások</label>
-              </div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[legal]">Jogvédelmi segítség</label></div>
-            </div>
-          </div>
-
-          <!-- Önrészesedés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Önrészesedés</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="deductible" value="none" checked>Önrész nélkül</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="deductible" value="fixed">Fix összeg (pl. 10 000 Ft)</label></div>
-            </div>
-          </div>
-
-          <!-- Kedvezmények -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.8s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Kedvezmények</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[noClaim]">No-claim kedvezmény</label></div>
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[eComm]">E-kommunikációs kedvezmény</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[fleet]">Flotta kedvezmény</label></div>
-            </div>
-          </div>
-
-            </div>
-          </details>
-
-          <!-- Nyilatkozat -->
-          <div class="form-check form-consent mb-4">
-            <input class="form-check-input" type="checkbox" id="privacyConsent" name="privacyConsent" required>
-            <label class="form-check-label" for="privacyConsent">
-              Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a KGFB ajánlat elkészítése érdekében kezeljék.
-            </label>
-            <div class="invalid-feedback">Az ajánlatkérés beküldéséhez az adatkezelési hozzájárulás szükséges.</div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">KGFB ajánlatkérést indítok</button></div>
-        </form>
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">KGFB ajánlatot kérek ✓</button>
       </div>
     </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a legjobb KGFB ajánlattal.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -584,6 +459,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

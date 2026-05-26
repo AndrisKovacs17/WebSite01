@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -226,146 +227,70 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">Önkéntes Pénztárak Felmérő</h1>
-      <p class="text-muted">Kérjük, töltse ki az alábbi űrlapot az Önkéntes Pénztári ajánlat elkészítéséhez!</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <form class="needs-validation" novalidate action="/api/forms/onkentes" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Ajánlatkérő adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="applicantName" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="applicantName" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantEmail" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="applicantEmail" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantPhone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="applicantPhone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="applicantNote" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="applicantNote" name="applicant[note]" rows="2" placeholder="pl. sürgős igénylés, egyéb igény" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/onkentes" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 4</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy tudjuk, hogyan keressük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Személyes adatok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Személyes adatok</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="memberName" class="form-label">Tag neve *</label>
-                  <input type="text" class="form-control" id="memberName" name="member[name]" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="memberDob" class="form-label">Születési dátum *</label>
-                  <input type="date" class="form-control" id="memberDob" name="member[dob]" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Neme *</label>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input class="form-check-input me-2" type="radio" name="member[gender]" value="male" required>Férfi
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input class="form-check-input me-2" type="radio" name="member[gender]" value="female">Nő
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="memberId" class="form-label">Személyi igazolvány szám</label>
-                  <input type="text" class="form-control" id="memberId" name="member[id]">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 4</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is elküldjük a részleteket.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Pénztári tagság -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Pénztári tagság</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="chosenFund" class="form-label">Kiválasztott pénztár *</label>
-                  <select class="form-select" id="chosenFund" name="fund[chosen]" required>
-                    <option value="">Válasszon...</option>
-                    <option value="evesz">ÉVESZ Önkéntes Nyugdíjpénztár</option>
-                    <option value="onnv">ÖNNV Önkéntes Nyugdíjpénztár</option>
-                    <option value="trend">Trend Önkéntes Nyugdíjpénztár</option>
-                    <option value="pump">PUMP Önkéntes Nyugdíjpénztár</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="membershipSince" class="form-label">Tagság kezdete</label>
-                  <input type="month" class="form-control" id="membershipSince" name="fund[start]">
-                </div>
-                <div class="col-12">
-                  <label for="fundDetails" class="form-label">Megjegyzések a tagsághoz</label>
-                  <textarea class="form-control" id="fundDetails" name="fund[details]" rows="2" placeholder="pl. korábbi befizetések, speciális igény"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 4</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
 
-          <!-- Befizetési adatok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Befizetési adatok</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="monthlyContribution" class="form-label">Havi befizetés összege *</label>
-                  <input type="number" class="form-control" id="monthlyContribution" name="contribution[monthly]" placeholder="Ft" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="paymentMethod" class="form-label">Fizetési mód</label>
-                  <select class="form-select" id="paymentMethod" name="contribution[method]">
-                    <option value="bank">Banki átutalás</option>
-                    <option value="pbx">PBX levonás</option>
-                    <option value="készpénz">Készpénz</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Kiegészítő szolgáltatások</label>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input me-2" type="checkbox" name="riders[eseti]">Eseti extra befizetés lehetősége
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input me-2" type="checkbox" name="riders[szamlavezeto]">Számlavezetői szolgáltatás
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 4</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat az önkéntes pénztári ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
 
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">
-            A pénztári tájékoztatót megismertem, és hozzájárulok, hogy a megadott adatokat az Önkéntes Pénztári ajánlat elkészítéséhez kezeljék.
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button>
-          </div>
-        </form>
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Önkéntes pénztári ajánlatot kérek ✓</button>
       </div>
     </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot az önkéntes pénztári lehetőségekkel.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -519,6 +444,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

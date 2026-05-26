@@ -54,6 +54,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -226,580 +227,89 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-5">
       <h1 class="display-6">Lakásbiztosítás ajánlatkérés</h1>
-      <p class="text-muted">Kérjük töltse ki az alábbi adatokat</p>
-      <div class="form-intro-panel text-start mx-auto mt-4">
-        <div class="form-step-list" aria-label="Ajánlatkérés lépései">
-          <span>1. Kapcsolat</span>
-          <span>2. Szerződő</span>
-          <span>3. Opcionális részletek</span>
-        </div>
-        <p class="mb-0">Első körben a csillagos mezők elegendőek az ajánlatkérés indításához. A részletes lakásadatokat megadhatja most, vagy később telefonon egyeztetjük.</p>
-      </div>
-    </div>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>    </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <form class="needs-validation" novalidate action="/api/forms/lakas" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ajánlatkérő adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="name" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="name" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="email" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="phone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="note" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="note" name="applicant[note]" rows="3" placeholder="pl. a választott kapcsolattartó neve, vagy sürgős ügyintézés kérése" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/lakas" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 5</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Szerződő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Szerződő adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-12">
-                  <label class="form-label d-block">Szerződő típusa *</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="contractorType" id="private" value="private" required>
-                    <label class="form-check-label" for="private">Magánszemély</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="contractorType" id="entrepreneur" value="entrepreneur">
-                    <label class="form-check-label" for="entrepreneur">Egyéni vállalkozó</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Neme *</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-                    <label class="form-check-label" for="male">Férfi</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                    <label class="form-check-label" for="female">Nő</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="birthdate" class="form-label">Születési idő *</label>
-                  <input type="date" class="form-control" id="birthdate" name="contractor[birthdate]" required>
-                </div>
-                <div class="col-12">
-                  <label for="contractorName" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="contractorName" name="contractor[name]" required>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 5</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is küldjük a részleteket.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <details class="optional-form-details mb-4">
-            <summary>Részletes lakásadatok megadása (opcionális)</summary>
-            <div class="optional-form-details__body">
-
-          <!-- Biztosított adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Biztosított adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="sameAsContractor" name="insured[sameAsContractor]" checked>
-                <label class="form-check-label" for="sameAsContractor">Megegyezik a szerződővel</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Lakók adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">A lakásban életvitelszerűen lakók</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-6">
-                  <label for="residentCount" class="form-label">Lakók száma</label>
-                  <input type="number" class="form-control" id="residentCount" name="residents[count]" value="1" min="1">
-                </div>
-                <div class="col-md-6">
-                  <label for="firstResident" class="form-label">Első személy</label>
-                  <input type="text" class="form-control" id="firstResident" name="residents[first]" value="Szerződő">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Szerződés adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Szerződés adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="startDate" class="form-label">Kockázatviselés kezdete</label>
-                  <input type="date" class="form-control" id="startDate" name="policy[startDate]">
-                </div>
-                <div class="col-md-4">
-                  <label for="paymentMethod" class="form-label">Igényelt fizetési mód</label>
-                  <select class="form-select" id="paymentMethod" name="policy[paymentMethod]">
-                    <option value="bank_transfer">Átutalás</option>
-                    <option value="cash">Készpénz</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label for="paymentFrequency" class="form-label">Igényelt díjfizetési ütem</label>
-                  <select class="form-select" id="paymentFrequency" name="policy[paymentFrequency]">
-                    <option value="quarterly">Negyedéves</option>
-                    <option value="yearly">Éves</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="currentInsurer" class="form-label">Jelenleg melyik biztosítónál van biztosítva az ingatlan</label>
-                  <input type="text" class="form-control" id="currentInsurer" name="policy[currentInsurer]" value="Aegon Biztosító Zrt.">
-                </div>
-                <div class="col-md-6">
-                  <label for="renewalDate" class="form-label">A meglévő szerződés biztosítási évfordulója</label>
-                  <input type="date" class="form-control" id="renewalDate" name="policy[renewalDate]">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kockázatviselési hely -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Kockázatviselési hely</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="zipCity" class="form-label">Irányítószám, település</label>
-                  <input type="text" class="form-control" id="zipCity" name="location[zipCity]">
-                </div>
-                <div class="col-md-8">
-                  <label for="address" class="form-label">Utca, házszám vagy helyrajzi szám</label>
-                  <input type="text" class="form-control" id="address" name="location[address]">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Biztosítás igényelt fedezetei -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Biztosítás igényelt fedezetei</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-12">
-                  <label class="form-label d-block">Biztosítani kívánt vagyontárgyak</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="coverRealEstate" name="coverage[realEstate]" checked>
-                    <label class="form-check-label" for="coverRealEstate">Ingatlan</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="coverMovables" name="coverage[movables]" checked>
-                    <label class="form-check-label" for="coverMovables">Ingóság</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <label class="form-label d-block">Működik vállalkozás az ingatlanban</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="businessOnPremise" id="bizNo" value="no" checked>
-                    <label class="form-check-label" for="bizNo">Nem</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="businessOnPremise" id="bizYes" value="yes">
-                    <label class="form-check-label" for="bizYes">Igen</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ingatlan adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.8s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ingatlan adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="propertyType" class="form-label">Az ingatlan típusa</label>
-                  <select class="form-select" id="propertyType" name="property[type]">
-                    <option value="house">Családi ház</option>
-                    <option value="apartment">Lakás</option>
-                    <option value="other">Egyéb</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="ownership" class="form-label">Az ingatlan tulajdoni viszonya</label>
-                  <select class="form-select" id="ownership" name="property[ownership]">
-                    <option value="rented">Bérlemény</option>
-                    <option value="owned">Tulajdonos</option>
-                    <option value="other">Egyéb</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Az ingatlan lakottsága</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="property[occupied]" id="occupiedYes" value="permanent" checked>
-                    <label class="form-check-label" for="occupiedYes">Állandóan lakott</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="property[occupied]" id="occupiedNo" value="not">
-                    <label class="form-check-label" for="occupiedNo">Nem lakott</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Az ingatlan lakóterületen fekszik</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="property[zone]" id="zoneInner" value="inner" checked>
-                    <label class="form-check-label" for="zoneInner">Belterületen van</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="property[zone]" id="zoneOuter" value="outer">
-                    <label class="form-check-label" for="zoneOuter">Külterületen van</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="construction" class="form-label">Az ingatlan kivitelezése</label>
-                  <select class="form-select" id="construction" name="property[construction]">
-                    <option value="simple">Egyszerű</option>
-                    <option value="premium">Prémium</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Épület adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.9s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Épület adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label d-block">Használatbavételi engedély</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[permit]" id="permitYes" value="yes" checked>
-                    <label class="form-check-label" for="permitYes">Igen</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[permit]" id="permitNo" value="no">
-                    <label class="form-check-label" for="permitNo">Nem</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Építés alatt áll</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[underConstruction]" id="underYes" value="yes" checked>
-                    <label class="form-check-label" for="underYes">Igen</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[underConstruction]" id="underNo" value="no">
-                    <label class="form-check-label" for="underNo">Nem</label>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="yearBuilt" class="form-label">Építés éve</label>
-                  <input type="number" class="form-control" id="yearBuilt" name="building[year]" placeholder="éééé">
-                </div>
-                <div class="col-md-4">
-                  <label for="floors" class="form-label">Szintek száma</label>
-                  <input type="number" class="form-control" id="floors" name="building[floors]" value="1" min="1">
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label d-block">Szilárd alapzat</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[foundation]" id="foundationYes" value="yes" checked>
-                    <label class="form-check-label" for="foundationYes">Igen</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="building[foundation]" id="foundationNo" value="no">
-                    <label class="form-check-label" for="foundationNo">Nem</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="wallType" class="form-label">Falazat típusa</label>
-                  <select class="form-select" id="wallType" name="building[wall]">
-                    <option value="brick">Tégla</option>
-                    <option value="panel">Panel</option>
-                    <option value="wood">Fa</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="roofType" class="form-label">Tetőborítás típusa</label>
-                  <select class="form-select" id="roofType" name="building[roof]">
-                    <option value="tile">Cserép</option>
-                    <option value="metal">Fém</option>
-                    <option value="shingle">Zsindely</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sérülések -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Sérülések</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label d-block">Szerkezet sérült</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="damage[structure]" id="structureYes" value="yes" checked>
-                    <label class="form-check-label" for="structureYes">Igen</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="damage[structure]" id="structureNo" value="no">
-                    <label class="form-check-label" for="structureNo">Nem</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Üvegezés sérült</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="damage[glazing]" id="glazingYes" value="yes" checked>
-                    <label class="form-check-label" for="glazingYes">Igen</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="damage[glazing]" id="glazingNo" value="no">
-                    <label class="form-check-label" for="glazingNo">Nem</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Alapterület adatok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1.1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Alapterület adatok</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="useStandardRates" name="area[useStandardRates]" checked>
-                <label class="form-check-label" for="useStandardRates">Ajánlott m<sup>2</sup> árakkal számoljunk</label>
-              </div>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="livingArea" class="form-label">Lakóterület (az alább felsoroltak kivételével)</label>
-                  <input type="number" class="form-control" id="livingArea" name="area[living]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="basement" class="form-label">Pince (nem lakás célú)/Tároló</label>
-                  <input type="number" class="form-control" id="basement" name="area[basement]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="balcony" class="form-label">Erkély, terasz</label>
-                  <input type="number" class="form-control" id="balcony" name="area[balcony]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="attic" class="form-label">Beépített tetőtér</label>
-                  <input type="number" class="form-control" id="attic" name="area[attic]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="atticTall" class="form-label">Ebből a lakóterületnek minősülő ≥1,9 m belmagasságú rész</label>
-                  <input type="number" class="form-control" id="atticTall" name="area[atticTall]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="garage" class="form-label">Főépülettel egybeépített garázs</label>
-                  <input type="number" class="form-control" id="garage" name="area[garage]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="otherRooms" class="form-label">Egyéb helyiségek (lépcsőház, kamra)</label>
-                  <input type="number" class="form-control" id="otherRooms" name="area[otherRooms]" placeholder="m2">
-                </div>
-              </div>
-              <hr>
-              <h6 class="mt-3">Építmények</h6>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="poolArea" class="form-label">Szilárd falazatú medence (m2)</label>
-                  <input type="number" class="form-control" id="poolArea" name="structures[poolArea]" placeholder="m2">
-                </div>
-                <div class="col-md-6">
-                  <label for="poolValue" class="form-label">Medence biztosítási összege</label>
-                  <input type="number" class="form-control" id="poolValue" name="structures[poolValue]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="fenceValue" class="form-label">Kerítés biztosítási összege</label>
-                  <input type="number" class="form-control" id="fenceValue" name="structures[fence]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="gardenBuilding" class="form-label">Egyéb kerti építmény biztosítási összege</label>
-                  <input type="number" class="form-control" id="gardenBuilding" name="structures[gardenBuilding]" placeholder="Ft">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ingóságok adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1.2s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ingóságok adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="useStandardContentRates" name="contents[useStandardRates]" checked>
-                <label class="form-check-label" for="useStandardContentRates">Ajánlott ingóság értékkel számoljunk</label>
-              </div>
-              <h6 class="mt-3">Háztartási ingóságokon kívüli ingóságok</h6>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="antiques" class="form-label">Antik bútorok, tárgyak</label>
-                  <input type="number" class="form-control" id="antiques" name="contents[antiques]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="artworks" class="form-label">Műalkotások</label>
-                  <input type="number" class="form-control" id="artworks" name="contents[artworks]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="preciousMetals" class="form-label">Nemesfémek</label>
-                  <input type="number" class="form-control" id="preciousMetals" name="contents[preciousMetals]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="jewelry" class="form-label">Ékszerek, drágakövek</label>
-                  <input type="number" class="form-control" id="jewelry" name="contents[jewelry]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="furs" class="form-label">Valódi szőrmék</label>
-                  <input type="number" class="form-control" id="furs" name="contents[furs]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="textiles" class="form-label">Kézi csomózású szőnyegek, textíliák</label>
-                  <input type="number" class="form-control" id="textiles" name="contents[textiles]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="coinCollection" class="form-label">Érme-, bélyeggyűjtemény</label>
-                  <input type="number" class="form-control" id="coinCollection" name="contents[coinCollection]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="otherCollections" class="form-label">Egyéb gyűjtemények</label>
-                  <input type="number" class="form-control" id="otherCollections" name="contents[otherCollections]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="otherItems" class="form-label">Egyéb különleges ingóságok</label>
-                  <input type="number" class="form-control" id="otherItems" name="contents[otherItems]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label for="hobbyEquipment" class="form-label">Hobby eszközök</label>
-                  <input type="number" class="form-control" id="hobbyEquipment" name="contents[hobbyEquipment]" placeholder="Ft">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Háztartási ingóságokon kívüli összeg (automatikus)</label>
-                  <input type="number" class="form-control" id="contentsTotal" name="contents[total]" readonly>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kedvezmények -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1.3s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Kedvezmények</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" id="termDiscount" name="discounts[term]" checked>
-                <label class="form-check-label" for="termDiscount">Igénybe vesz tartamkedvezményt</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="eCommunication" name="discounts[eCommunication]" checked>
-                <label class="form-check-label" for="eCommunication">Igénybe veszi az e-kommunikációs kedvezményt</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Szolgáltatási szint -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1.4s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Szolgáltatási szint</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="serviceLevel" id="basic" value="basic" checked>
-                <label class="form-check-label" for="basic">Alap (alapfedezetek + 1-2 kiegészítő)</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="serviceLevel" id="medium" value="medium">
-                <label class="form-check-label" for="medium">Közepes (alapfedezetek + kiterjedt kiegészítők)</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="serviceLevel" id="premium" value="premium">
-                <label class="form-check-label" for="premium">Magas (all risk típusú csomag)</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Egyéb fedezetek -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="1.5s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Egyéb igényelt fedezetek</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[burglary]">Betöréses lopás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[snatch]">Besurranásos lopás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[cash]">Készpénz biztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[vandalism]">Vandalizmus</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[assistance]">Lakás asszisztencia</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[waterDamage]">Elfolyt víz díja</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[solar]">Napelem, napkollektor</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[glazing]">Épületüvegezés</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[keyChange]">Zárcsere (kulcs elvesztése esetén)</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[utilityFailure]">Közüzemi szolgáltatások kimaradása</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[surge]">Túlfeszültség okozta károk</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[gardenFurniture]">Kerti bútorok</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[specialGlass]">Különleges üvegek lakásban</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[legalProtection]">Tulajdonosi jogvédelem</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[liability]">Magánemberi felelősségbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[accident]">Balesetbiztosítás</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="extras[petLiability]">Ebtartói felelősségbiztosítás</label></div>
-              </div>
-            </div>
-          </div>
-
-            </div>
-          </details>
-
-          <!-- Nyilatkozat -->
-          <div class="form-check form-consent mb-4">
-            <input class="form-check-input" type="checkbox" id="privacyConsent" name="privacyConsent" required>
-            <label class="form-check-label" for="privacyConsent">
-              Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a lakásbiztosítási ajánlat elkészítése érdekében kezeljék.
-            </label>
-            <div class="invalid-feedback">Az ajánlatkérés beküldéséhez az adatkezelési hozzájárulás szükséges.</div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Lakásbiztosítási ajánlatkérést indítok</button>
-          </div>
-        </form>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 5</p>
+        <h2 class="msf-question">Milyen ingatlanra keres biztosítást?</h2>
+        <p class="msf-hint">Válassza ki a szerződő típusát, majd adja meg az ingatlan címét.</p>
+                <div class="msf-choices">
+      <div class="msf-choice">
+        <input type="radio" name="contractorType" id="lakas-contractor-private" value="private" required>
+        <label for="lakas-contractor-private">Magánszemély</label>
+      </div>
+      <div class="msf-choice">
+        <input type="radio" name="contractorType" id="lakas-contractor-entrepreneur" value="entrepreneur">
+        <label for="lakas-contractor-entrepreneur">Egyéni vállalkozó</label>
       </div>
     </div>
+                <div class="msf-field-group mt-4">
+                  <input type="text" class="msf-input" name="location[zipCity]" placeholder="Irányítószám, település">
+                  <input type="text" class="msf-input" name="location[address]" placeholder="Utca, házszám">
+                </div>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 5</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">5 / 5</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a lakásbiztosítási ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
+
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Lakásbiztosítás ajánlatot kérek ✓</button>
+      </div>
+    </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a legjobb lakásbiztosítási ajánlattal.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -954,6 +464,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

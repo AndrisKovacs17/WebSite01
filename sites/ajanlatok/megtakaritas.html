@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -225,125 +226,84 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">Megtakarítás igényfelmérő</h1>
-      <p class="text-muted">Töltse ki az alábbi űrlapot, hogy személyre szabott megtakarítási ajánlatot adhassunk!</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <form class="needs-validation" novalidate action="/api/forms/megtakaritas" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Ajánlatkérő adatai</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="applicantName" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="applicantName" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantEmail" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="applicantEmail" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantPhone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="applicantPhone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="applicantNote" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="applicantNote" name="applicant[note]" rows="2" placeholder="pl. cél vagy egyéb igény megjegyzése" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/megtakaritas" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 4</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Megtakarítás célja -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Megtakarítás célja</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-12">
-                  <label for="goalDescription" class="form-label">Cél megnevezése *</label>
-                  <input type="text" class="form-control" id="goalDescription" name="goal[description]" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="goalAmount" class="form-label">Célösszeg (Ft) *</label>
-                  <input type="number" class="form-control" id="goalAmount" name="goal[amount]" placeholder="pl. 1 000 000" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="goalTerm" class="form-label">Időtáv (év) *</label>
-                  <input type="number" class="form-control" id="goalTerm" name="goal[term]" placeholder="pl. 5" min="1" required>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 4</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is küldjük a részleteket.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Befizetési módok -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Befizetési módok</h5></div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="recurringPayment" class="form-label">Rendszeres befizetés</label>
-                  <select class="form-select" id="recurringPayment" name="payment[recurring]">
-                    <option value="none">Nem kérek</option>
-                    <option value="monthly">Havi</option>
-                    <option value="quarterly">Negyedéves</option>
-                    <option value="yearly">Éves</option>
-                  </select>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 4</p>
+        <h2 class="msf-question">Születési dátuma és neme</h2>
+        <p class="msf-hint">Születési dátuma segít pontosabb ajánlatot adni.</p>
+                <div class="msf-field-group">
+                  <input type="date" class="msf-input" name="insured[dob]" required>
                 </div>
-                <div class="col-md-6">
-                  <label for="recurringAmount" class="form-label">Összeg (Ft)</label>
-                  <input type="number" class="form-control" id="recurringAmount" name="payment[recurringAmount]" placeholder="pl. 20 000">
-                </div>
-                <div class="col-12">
-                  <label for="lumpSum" class="form-label">Egyszeri befizetés (Ft)</label>
-                  <input type="number" class="form-control" id="lumpSum" name="payment[lumpSum]" placeholder="pl. 100 000">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kockázattűrés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Kockázattűrés</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="riskTolerance" value="low" checked>Alacsony (kisebb hozam, nagyobb biztonság)</label></div>
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="riskTolerance" value="medium">Közepes (egyensúly hozam és biztonság között)</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="radio" name="riskTolerance" value="high">Magas (nagyobb kockázat, potenciálisan magasabb hozam)</label></div>
-            </div>
-          </div>
-
-          <!-- Jelenlegi megtakarítások -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Jelenlegi megtakarítások</h5></div>
-            <div class="card-body">
-              <div class="col-12">
-                <label for="currentSavings" class="form-label">Összes meglévő megtakarítás (Ft)</label>
-                <input type="number" class="form-control" id="currentSavings" name="current[savings]" placeholder="pl. 500 000">
-              </div>
-            </div>
-          </div>
-
-          <!-- Kedvezmények -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white"><h5 class="mb-0">Kedvezmények</h5></div>
-            <div class="card-body">
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[eComm]">E-kommunikációs kedvezmény</label></div>
-              <div class="form-check mb-2"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[repeatClient]">Visszatérő ügyfél kedvezmény</label></div>
-              <div class="form-check"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="discounts[package]">Csomag kedvezmény (több termék egyszerre)</label></div>
-            </div>
-          </div>
-
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">A Biztor Alkusz Kft. üzletszabályzatát megismertem és hozzájárulok, hogy a megadott adatokat a megtakarítási ajánlat elkészítése érdekében kezeljék.</div>
-
-          <!-- Submit Button -->
-          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button></div>
-        </form>
+                <div class="mt-4">
+                  <div class="msf-choices">
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="megtakaritas-gender-male" value="male" required>
+        <label for="megtakaritas-gender-male">Férfi</label>
+      </div>
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="megtakaritas-gender-female" value="female">
+        <label for="megtakaritas-gender-female">Nő</label>
       </div>
     </div>
+                </div>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 4</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a megtakarítási ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
+
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Megtakarítás ajánlatot kérek ✓</button>
+      </div>
+    </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a megtakarítási lehetőségekről.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -500,6 +460,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

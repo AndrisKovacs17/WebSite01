@@ -703,7 +703,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const apiForms = document.querySelectorAll('form[action^="/api/forms/"]');
+  const apiForms = document.querySelectorAll('form[action^="/api/forms/"]:not(.msf-form)');
   if (!apiForms.length) {
     return;
   }

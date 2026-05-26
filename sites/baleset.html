@@ -108,7 +108,8 @@
     <!-- Sablon stíluslap -->
     <link rel="stylesheet" href="./../css/style.css" />
     <!-- Törölve: <link href="css/output.css" rel="stylesheet"> -->
-  </head>
+    <link rel="stylesheet" href="../css/multistep-form.css">
+</head>
 
   <body>
     <!-- Skip to content -->
@@ -1113,23 +1114,62 @@
             <div class="col-lg-5 wow fadeInRight" data-wow-delay="0.2s">
               <div class="neu-card p-4">
                 <p class="fw-semibold mb-3" style="color:#15233C;">Kérje e-mailben a PDF útmutatót:</p>
-                <form id="leadMagnetForm" class="needs-validation" action="/api/forms/baleset" method="post" novalidate>
-                  <input type="hidden" name="requestType" value="lead_magnet">
-                  <input type="hidden" name="guide" value="Balesetbiztosítás előtt: 5 kérdés, amit érdemes feltenni (2026)">
-                  <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:1px;width:1px;opacity:0;">
-                  <div class="mb-3">
-                    <label for="leadEmail" class="visually-hidden">E-mail cím a PDF útmutató elküldéséhez</label>
-                    <input type="email" class="neu-input" id="leadEmail"
-                      name="email" placeholder="email@example.com" required autocomplete="email" aria-describedby="leadEmailHelp">
-                    <div id="leadEmailHelp" class="form-text text-center mt-2">Ide küldjük az útmutatót.</div>
+                                        <div class="msf-wrapper">
+                          <div class="msf-progress"><div class="msf-progress-fill"></div></div>
+
+                              <form class="msf-form" novalidate action="/api/forms/baleset" method="post">
+                          <div class="msf-step">
+                    <p class="msf-step-label">1 / 4</p>
+                    <h2 class="msf-question">Hogyan szólítsuk?</h2>
+                    <p class="msf-hint">Írja be a nevét, hogy tudjuk, hogyan keressük.</p>
+                <input type="text" class="msf-input" name="applicant[name]" required>
                   </div>
-                  <button type="submit" class="neu-btn">
-                    <i class="fa fa-download me-2"></i>Elkérem a PDF útmutatót
-                  </button>
-                  <p class="text-muted small mt-3 mb-0 text-center">
-                    <i class="fa fa-lock me-1"></i>Nem küldünk spam-et. Bármikor leiratkozhat.
-                  </p>
-                </form>
+
+                  <div class="msf-step">
+                    <p class="msf-step-label">2 / 4</p>
+                    <h2 class="msf-question">Hogyan érjük el?</h2>
+                    <p class="msf-hint">Telefonon és e-mailben is elküldjük a részleteket.</p>
+                <div class="msf-field-group">
+                  <input type="tel" class="msf-input" name="applicant[phone]" required>
+                  <input type="email" class="msf-input" name="applicant[email]" required>
+                </div>
+                  </div>
+
+                  <div class="msf-step">
+                    <p class="msf-step-label">3 / 4</p>
+                    <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+                    <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+                <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+                  </div>
+
+                  <div class="msf-step">
+                    <p class="msf-step-label">4 / 4</p>
+                    <h2 class="msf-question">Majdnem kész!</h2>
+                    <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+                <div class="msf-consent">
+                  <label class="msf-consent-label">
+                    <input type="checkbox" name="privacyConsent" required>
+                    Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a balesetbiztosítási ajánlat elkészítése érdekében kezeljék.
+                  </label>
+                </div>
+                  </div>
+
+                        <div class="msf-nav">
+                  <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+                  <div class="msf-nav-right">
+                    <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+                    <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Balesetbiztosítás ajánlatot kérek ✓</button>
+                  </div>
+                </div>
+                    </form>
+
+                          <div class="msf-success" style="display:none">
+                            <div class="msf-success-icon">✓</div>
+                            <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                            <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a balesetbiztosítási lehetőségekről.</p>
+                            <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+                          </div>
+                        </div>
               </div>
             </div>
           </div>
@@ -1217,5 +1257,6 @@
     <script defer src="./../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../js/multistep-form.js"></script>
+</body>
 </html>

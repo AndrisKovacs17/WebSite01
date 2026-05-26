@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -227,150 +228,92 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">Balesetbiztosítás igényfelmérő</h1>
-      <p class="text-muted">Kérjük, töltse ki az alábbi adatokat a balesetbiztosítási ajánlat elkészítéséhez!</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <form class="needs-validation" novalidate action="/api/forms/baleset" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ajánlatkérő adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="name" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="name" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="email" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="email" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="phone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="note" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="note" name="applicant[note]" rows="2" placeholder="pl. sürgős igénylés, külön igény" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/baleset" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 5</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Biztosított adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Biztosított adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="insuredName" class="form-label">Biztosított neve *</label>
-                  <input type="text" class="form-control" id="insuredName" name="insured[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="insuredDob" class="form-label">Születési dátum *</label>
-                  <input type="date" class="form-control" id="insuredDob" name="insured[dob]" autocomplete="bday" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label d-block">Neme *</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="insured[gender]" id="genderM" value="male" autocomplete="off" required>
-                    <label class="form-check-label" for="genderM">Férfi</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="insured[gender]" id="genderF" value="female" autocomplete="off">
-                    <label class="form-check-label" for="genderF">Nő</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="insuredId" class="form-label">Szem. ig. szám</label>
-                  <input type="text" class="form-control" id="insuredId" name="insured[id]" autocomplete="off">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 5</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is elküldjük a visszajelzést.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Biztosítási részletek -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Biztosítási részletek</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="sumInsured" class="form-label">Biztosítási összeg*</label>
-                  <select class="form-select" id="sumInsured" name="policy[sumInsured]" required>
-                    <option value="">Válasszon összeget...</option>
-                    <option value="500000">500 000 Ft</option>
-                    <option value="1000000">1 000 000 Ft</option>
-                    <option value="2000000">2 000 000 Ft</option>
-                    <option value="5000000">5 000 000 Ft</option>
-                  </select>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 5</p>
+        <h2 class="msf-question">Kit biztosítana?</h2>
+        <p class="msf-hint">A biztosított alapadatai segítenek a pontos ajánlat elkészítésében.</p>
+                <div class="msf-field-group">
+                  <input type="text" class="msf-input" name="insured[name]" placeholder="Biztosított neve" required>
+                  <input type="date" class="msf-input" name="insured[dob]" required>
                 </div>
-                <div class="col-md-6">
-                  <label for="deductible" class="form-label">Önrész</label>
-                  <select class="form-select" id="deductible" name="policy[deductible]">
-                    <option value="0">Önrész nélkül</option>
-                    <option value="10000">10 000 Ft</option>
-                    <option value="50000">50 000 Ft</option>
-                    <option value="100000">100 000 Ft</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Kiegészítő szolgáltatások</label>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="riderHospital" name="riders[hospital]">
-                    <label class="form-check-label" for="riderHospital">Kórházi napi térítés</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="riderDisability" name="riders[disability]">
-                    <label class="form-check-label" for="riderDisability">Baleseti rokkantsági térítés</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="riderDeath" name="riders[death]">
-                    <label class="form-check-label" for="riderDeath">Baleseti halál térítése</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Egészségügyi nyilatkozat -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Egészségügyi nyilatkozat</h5>
-            </div>
-            <div class="card-body">
-              <p class="mb-2">Volt-e az elmúlt 12 hónapban műtétje vagy kórházi kezelése?</p>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="health[history]" id="healthNo" value="no" checked>
-                <label class="form-check-label" for="healthNo">Nem</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="health[history]" id="healthYes" value="yes">
-                <label class="form-check-label" for="healthYes">Igen</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">
-            A Biztosítás.ma Kft. üzletszabályzatát megismertem és hozzájárulok, hogy a megadott adatokat a biztosítási ajánlat elkészítése érdekében kezeljék.
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button>
-          </div>
-        </form>
+                <div class="mt-4">
+                  <div class="msf-choices">
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="baleset-gender-male" value="male" required>
+        <label for="baleset-gender-male">Férfi</label>
+      </div>
+      <div class="msf-choice">
+        <input type="radio" name="insured[gender]" id="baleset-gender-female" value="female">
+        <label for="baleset-gender-female">Nő</label>
       </div>
     </div>
+                </div>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 5</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
+
+      <div class="msf-step">
+        <p class="msf-step-label">5 / 5</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a balesetbiztosítási ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
+
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">Balesetbiztosítás ajánlatot kérek ✓</button>
+      </div>
+    </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a legjobb balesetbiztosítási ajánlattal.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -525,6 +468,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 

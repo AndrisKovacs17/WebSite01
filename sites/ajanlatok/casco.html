@@ -55,6 +55,7 @@
     "serviceType": "Biztosítási tanácsadás és közvetítés"
   }
   </script>
+  <link rel="stylesheet" href="../../css/multistep-form.css">
 </head>
 
   <body>
@@ -225,258 +226,81 @@
     <!-- Header -->
     <div class="text-center mx-auto mb-4">
       <h1 class="display-6">CASCO biztosítás igényfelmérő</h1>
-      <p class="text-muted">Kérjük, töltse ki az alábbi adatokat a CASCO biztosítási ajánlat elkészítéséhez!</p>
+      <p class="text-muted">Néhány egyszerű kérdéssel elindítjuk az ajánlatkérést. Nem tart 2 percnél tovább.</p>
     </div>
 
     <!-- Form Container -->
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <form class="needs-validation" novalidate action="/api/forms/casco" method="post">
+                <div class="row justify-content-center">
+              <div class="col-lg-8 col-xl-7">
+                        <div class="msf-wrapper">
+              <div class="msf-progress"><div class="msf-progress-fill"></div></div>
 
-          <!-- Ajánlatkérő adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Ajánlatkérő adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-12">
-                  <label for="applicantName" class="form-label">Név *</label>
-                  <input type="text" class="form-control" id="applicantName" name="applicant[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantEmail" class="form-label">E-mail *</label>
-                  <input type="email" class="form-control" id="applicantEmail" name="applicant[email]" autocomplete="email" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="applicantPhone" class="form-label">Telefon *</label>
-                  <input type="tel" class="form-control" id="applicantPhone" name="applicant[phone]" autocomplete="tel" required>
-                </div>
-                <div class="col-12">
-                  <label for="applicantNote" class="form-label">Megjegyzés</label>
-                  <textarea class="form-control" id="applicantNote" name="applicant[note]" rows="2" placeholder="pl. sürgős igénylés" autocomplete="off"></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                  <form class="msf-form" novalidate action="/api/forms/casco" method="post">
+              <div class="msf-step">
+        <p class="msf-step-label">1 / 5</p>
+        <h2 class="msf-question">Hogyan szólítsuk?</h2>
+        <p class="msf-hint">Írja be a nevét, hogy személyesen kereshessük.</p>
+    <input type="text" class="msf-input" name="applicant[name]" required>
+      </div>
 
-          <!-- Tulajdonos adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Gépjármű tulajdonos adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="ownerName" class="form-label">Tulajdonos neve *</label>
-                  <input type="text" class="form-control" id="ownerName" name="owner[name]" autocomplete="name" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="ownerId" class="form-label">Szem. ig. szám</label>
-                  <input type="text" class="form-control" id="ownerId" name="owner[id]" autocomplete="off">
-                </div>
-                <div class="col-md-12">
-                  <label for="ownerAddress" class="form-label">Címe</label>
-                  <input type="text" class="form-control" id="ownerAddress" name="owner[address]" placeholder="irányítószám, település, utca, házszám" autocomplete="street-address">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">2 / 5</p>
+        <h2 class="msf-question">Hogyan érjük el?</h2>
+        <p class="msf-hint">Telefonon és e-mailben is küldjük a visszajelzést.</p>
+    <div class="msf-field-group">
+      <input type="tel" class="msf-input" name="applicant[phone]" required>
+      <input type="email" class="msf-input" name="applicant[email]" required>
+    </div>
+      </div>
 
-          <!-- Gépjármű adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Gépjármű adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="registration" class="form-label">Rendszám *</label>
-                  <input type="text" class="form-control" id="registration" name="vehicle[registration]" autocomplete="off" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="brand" class="form-label">Márka *</label>
-                  <input type="text" class="form-control" id="brand" name="vehicle[brand]" autocomplete="off" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="model" class="form-label">Típus *</label>
-                  <input type="text" class="form-control" id="model" name="vehicle[model]" autocomplete="off" required>
-                </div>
-                <div class="col-md-4">
-                  <label for="vin" class="form-label">Alvázszám (VIN)</label>
-                  <input type="text" class="form-control" id="vin" name="vehicle[vin]" autocomplete="off">
-                </div>
-                <div class="col-md-4">
-                  <label for="firstReg" class="form-label">Első forgalomba helyezés</label>
-                  <input type="date" class="form-control" id="firstReg" name="vehicle[firstReg]" autocomplete="off">
-                </div>
-                <div class="col-md-4">
-                  <label for="power" class="form-label">Teljesítmény (kW)</label>
-                  <input type="number" class="form-control" id="power" name="vehicle[power]" autocomplete="off">
-                </div>
-                <div class="col-md-4">
-                  <label for="engine" class="form-label">Hengerűrtartalom (cm³)</label>
-                  <input type="number" class="form-control" id="engine" name="vehicle[engine]" autocomplete="off">
-                </div>
-                <div class="col-md-4">
-                  <label for="mileage" class="form-label">Futott km</label>
-                  <input type="number" class="form-control" id="mileage" name="vehicle[mileage]" autocomplete="off">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">3 / 5</p>
+        <h2 class="msf-question">Melyik autót biztosítaná?</h2>
+        <p class="msf-hint">A három alapadat elég ahhoz, hogy elindítsuk az ajánlatot.</p>
+    <div class="msf-field-group">
+      <input type="text" class="msf-input" name="vehicle[registration]" placeholder="Rendszám (pl. ABC-123)" required>
+      <input type="text" class="msf-input" name="vehicle[brand]" placeholder="Márka (pl. Volkswagen)" required>
+      <input type="text" class="msf-input" name="vehicle[model]" placeholder="Típus (pl. Golf)" required>
+    </div>
+      </div>
 
-          <!-- Szerződés adatai -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Szerződés adatai</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-4">
-                  <label for="startDate" class="form-label">Kockázatviselés kezdete</label>
-                  <input type="date" class="form-control" id="startDate" name="policy[startDate]" autocomplete="off">
-                </div>
-                <div class="col-md-4">
-                  <label for="paymentMethod" class="form-label">Fizetési mód</label>
-                  <select class="form-select" id="paymentMethod" name="policy[paymentMethod]" autocomplete="off">
-                    <option value="bank_transfer">Átutalás</option>
-                    <option value="cash">Készpénz</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label for="frequency" class="form-label">Díjfizetési ütem</label>
-                  <select class="form-select" id="frequency" name="policy[frequency]" autocomplete="off">
-                    <option value="yearly">Éves</option>
-                    <option value="semiannual">Féléves</option>
-                    <option value="quarterly">Negyedéves</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">4 / 5</p>
+        <h2 class="msf-question">Van valami, amit előre tudnunk kell?</h2>
+        <p class="msf-hint">Ez teljesen opcionális – ha van külön kérése, ide írhatja.</p>
+    <textarea class="msf-input msf-textarea" name="applicant[note]" rows="4" placeholder="pl. sürgős, kedvező díjra fontos figyelni…"></textarea>
+      </div>
 
-          <!-- Létező szerződés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Létező CASCO szerződés</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="currentInsurer" class="form-label">Jelenlegi biztosító</label>
-                  <input type="text" class="form-control" id="currentInsurer" name="policy[currentInsurer]" autocomplete="organization">
-                </div>
-                <div class="col-md-6">
-                  <label for="renewalDate" class="form-label">Biztosítási évforduló</label>
-                  <input type="date" class="form-control" id="renewalDate" name="policy[renewalDate]" autocomplete="off">
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="msf-step">
+        <p class="msf-step-label">5 / 5</p>
+        <h2 class="msf-question">Majdnem kész!</h2>
+        <p class="msf-hint">Küldés előtt még kérjük az adatkezelés elfogadását.</p>
+    <div class="msf-consent">
+      <label class="msf-consent-label">
+        <input type="checkbox" name="privacyConsent" required>
+        Megismertem az <a href="/adatkezeles" target="_blank" rel="noopener">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a megadott adatokat a CASCO ajánlat elkészítése érdekében kezeljék.
+      </label>
+    </div>
+      </div>
 
-          <!-- Fedezetek -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Igényelt fedezetek</h5>
-            </div>
-            <div class="card-body">
-              <div class="row g-3">
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[collision]" checked>Ütközéskár</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[theft]">Lopáskár</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[vandalism]">Vandalizmus</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[natural]">Természeti károk (jég, viharkár)</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[glass]">Üvegkár</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[fire]">Tűz- és robbanáskár</label></div>
-                <div class="col-6 col-md-4"><label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="covers[earthquake]">Földrengés</label></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kiegészítő szolgáltatások -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Kiegészítő szolgáltatások</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="extras[assistance]">Útbaigazítás, szállítási szolgáltatás
-                </label>
-              </div>
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="extras[legal]">Jogvédelmi segítség
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="extras[replacement]">Csereautó szolgáltatás baleset esetén
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Önrészesedés -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.8s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Önrészesedés</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="radio" name="deductible" value="none">Önrész nélkül
-                </label>
-              </div>
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="radio" name="deductible" value="fixed">Fix összeg (Ft)
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="radio" name="deductible" value="percent">Százalékos (%)
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kedvezmények -->
-          <div class="card mb-4 wow fadeIn" data-wow-delay="0.9s">
-            <div class="card-header bg-primary text-white">
-              <h5 class="mb-0">Kedvezmények</h5>
-            </div>
-            <div class="card-body">
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="discounts[noClaim]">Névleges bónusz (No-claim kedvezmény)
-                </label>
-              </div>
-              <div class="form-check mb-2">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="discounts[telemetry]">Telematikai kedvezmény
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input me-2" type="checkbox" name="discounts[eComm]">E-kommunikációs kedvezmény
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Nyilatkozat -->
-          <div class="form-text text-muted mb-4">
-            A Biztosítás.ma Kft. üzletszabályzatát megismertem és hozzájárulok, hogy a megadott adatokat a CASCO ajánlat elkészítése érdekében kezeljék.
-          </div>
-
-          <!-- Submit Button -->
-          <div class="text-center mt-3">
-            <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill">Ajánlat beküldése</button>
-          </div>
-        </form>
+            <div class="msf-nav">
+      <button type="button" class="msf-btn msf-btn-back">← Vissza</button>
+      <div class="msf-nav-right">
+        <button type="button" class="msf-btn msf-btn-next">Tovább →</button>
+        <button type="submit" class="msf-btn msf-btn-submit" style="display:none">CASCO ajánlatot kérek ✓</button>
       </div>
     </div>
+        </form>
+
+              <div class="msf-success" style="display:none">
+                <div class="msf-success-icon">✓</div>
+                <h2 class="msf-success-title">Ajánlatkérést megkaptuk!</h2>
+                <p class="msf-success-text">Kollégánk hamarosan felveszi Önnel a kapcsolatot a legjobb CASCO ajánlattal.</p>
+                <p class="msf-success-contact"><a href="tel:+36706258201">+36 70 625 8201</a></p>
+              </div>
+            </div>
+              </div>
+            </div>
   </div>
 </div>
 
@@ -633,6 +457,7 @@
     <script defer src="./../../js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="../../js/multistep-form.js"></script>
+</body>
 </html>
 
