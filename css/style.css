@@ -2846,18 +2846,17 @@ html, body {
 
 /* ── 4. List-group-flush prémium megjelenés ("Mire figyeljen" blokk) ─────────  */
 .list-group-flush .list-group-item {
-  border-left: 3px solid transparent;
   border-top: none;
   border-right: none;
+  border-left: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   padding: 0.85rem 1rem;
-  transition: border-left-color 0.22s ease, background 0.22s ease, padding-left 0.22s ease;
+  transition: color 0.2s ease, background 0.2s ease;
   line-height: 1.65;
 }
 .list-group-flush .list-group-item:hover {
-  border-left-color: var(--primary, #F15A24);
-  background: rgba(241, 90, 36, 0.05);
-  padding-left: 1.4rem;
+  color: var(--primary, #F15A24);
+  background: rgba(241, 90, 36, 0.04);
   cursor: default;
 }
 .list-group-flush .list-group-item:last-child {
@@ -2884,7 +2883,10 @@ html, body {
   background: rgba(241, 90, 36, 0.04) !important;
   box-shadow: none !important;
 }
-.accordion-button::after {
+/* Nyíl maradjon eredeti sötét szín – felülírja a korábbi brightness filter-t */
+.accordion-button:not(.collapsed)::after {
+  filter: none !important;
+}
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 @keyframes accordionBodyIn {
@@ -2895,12 +2897,9 @@ html, body {
   animation: accordionBodyIn 0.3s ease;
 }
 
-/* ── 6. CTA szekció – emeltebb megjelenés ─────────────────────────────────── */
+/* ── 6. CTA szekció – tiszta, keret/háttér nélkül ────────────────────────── */
 .cta-section {
   position: relative;
-  background: linear-gradient(135deg, rgba(241, 90, 36, 0.06) 0%, rgba(255, 167, 38, 0.08) 100%);
-  border-radius: 1.25rem;
-  border: 1px solid rgba(241, 90, 36, 0.12);
   margin-top: 1rem;
 }
 .cta-section h3 {
@@ -2933,9 +2932,6 @@ html, body {
   .rounded.overflow-hidden:hover > picture img {
     /* Mobilon ne legyen zoom – layoutot zavar */
     transform: none;
-  }
-  .list-group-flush .list-group-item:hover {
-    padding-left: 1rem;
   }
   .cta-section {
     border-radius: 0.75rem;
