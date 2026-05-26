@@ -49,6 +49,60 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://biztor.hu/casco-biztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/balesetbiztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/eletbiztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/mezogazdasagi-biztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/nyugdijbiztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/megtakaritas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/onkentes-pentarak-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/utasbiztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://biztor.hu/vallalkozasbiztositas-ajanlatkeres</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://biztor.hu/e-karbejelento</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
