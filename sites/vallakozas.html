@@ -30,17 +30,53 @@
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
-            { "@type": "ListItem", "position": 2, "name": "Vállalkozásbiztosítás", "item": "https://biztor.hu/vallalkozasbiztositas" }
+            { "@type": "ListItem", "position": 2, "name": "Biztosítások", "item": "https://biztor.hu/szolgaltatasok" },
+            { "@type": "ListItem", "position": 3, "name": "Vállalkozásbiztosítás", "item": "https://biztor.hu/vallalkozasbiztositas" }
           ]
         },
         {
           "@type": "WebPage",
           "url": "https://biztor.hu/vallalkozasbiztositas",
           "name": "Vállalkozásbiztosítás – Biztor Alkusz Kft.",
-          "description": "Komplex biztosítási csomagok vállalkozásoknak",
+          "description": "Komplex biztosítási csomagok vállalkozásoknak: vagyon, felelősség, flotta, munkavállalói védelem.",
           "inLanguage": "hu-HU",
+          "dateModified": "2026-05-26",
           "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
           "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
+        },
+        {
+          "@type": "Service",
+          "name": "Vállalkozásbiztosítási tanácsadás és ajánlatok összehasonlítása",
+          "serviceType": "Vállalkozásbiztosítás",
+          "url": "https://biztor.hu/vallalkozasbiztositas",
+          "provider": { "@type": "InsuranceAgency", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" },
+          "areaServed": { "@type": "City", "name": "Nyíregyháza" }
+        },
+        {
+          "@type": "InsuranceAgency",
+          "name": "Biztor Alkusz Kft.",
+          "url": "https://biztor.hu",
+          "telephone": "+36706258201",
+          "email": "iroda@biztor.hu",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Liliom utca 27/A.",
+            "addressLocality": "Nyíregyháza",
+            "postalCode": "4400",
+            "addressCountry": "HU"
+          },
+          "openingHours": ["Mo 09:00-16:00", "Tu-Fr 08:00-16:00"],
+          "areaServed": "Nyíregyháza, Szabolcs-Szatmár-Bereg megye"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Milyen biztosításokra lehet szüksége egy vállalkozásnak?", "acceptedAnswer": { "@type": "Answer", "text": "A legtöbb vállalkozásnál alap a vagyonbiztosítás (épületek, gépek, készlet), a felelősségbiztosítás (tevékenységi, termék- vagy szakmai felelősség), és ha van járműpark, flottabiztosítás. Munkavállalók esetén érdemes lehet baleset- vagy egészségbiztosítást is bevonni." } },
+            { "@type": "Question", "name": "Miben segít az alkusz egy céges biztosítási döntésnél?", "acceptedAnswer": { "@type": "Answer", "text": "Független alkuszként több biztosító ajánlatát kérjük be, és összehasonlítjuk a fedezetet, a kizárásokat, az önrészt és a díjat. Így nem egyetlen biztosító egyetlen ajánlatát kapja, hanem versenyeztetett megoldást." } },
+            { "@type": "Question", "name": "Mi a különbség a vállalkozói és a magánszemélyi biztosítás között?", "acceptedAnswer": { "@type": "Answer", "text": "Vállalkozói biztosítások általában tágabb fedezeti körrel, magasabb összeghatárral és speciális kizárásokkal működnek. A tevékenységi felelősség, szakmai felelősség, technológiai kockázatok és munkavállalói fedezetek csak vállalkozói termékekben érhetők el." } },
+            { "@type": "Question", "name": "Mikor érdemes felülvizsgálni a céges biztosításokat?", "acceptedAnswer": { "@type": "Answer", "text": "Évfordulónál mindenképpen, de fontos eseménynél (új telephelyt nyit, flottát bővít, személyi változás, bevétel nő) soron kívül is javasolt. Az alulbiztosítottság kár esetén csak akkor derül ki, amikor már fontos." } },
+            { "@type": "Question", "name": "Mennyibe kerül az alkuszi tanácsadás?", "acceptedAnswer": { "@type": "Answer", "text": "Az alkuszi díjat a biztosítók fizetik jutalék formájában, nem az ügyfél külön fizeti. Az ajánlatkérés, összehasonlítás és szerződéskötés ingyenes az ügyfél számára." } }
+          ]
         }
       ]
     }
@@ -252,7 +288,7 @@
                         <i class="fa fa-check-circle text-primary me-2"></i>Testre szabott védelem
                     </h5>
                     <p>
-                        Az Ön vállalkozásának egyedi igényeihez igazított biztosítói megoldásokat mutatunk be.
+                            Nem kínálunk sablont: először megnézzük, milyen kockázatoknak van kitéve a vállalkozása, és utána keresünk ajánlatot.
                     </p>
                 </div>
 
@@ -261,7 +297,7 @@
                     <i class="fa fa-check-circle text-primary me-2"></i>Kárbejelentési támogatás
                   </h5>
                   <p>
-                    Segítünk előkészíteni a szükséges dokumentumokat, hogy a biztosító eljárása minél gördülékenyebb legyen.
+                    Kárbejelentésnél segítünk: megmondjuk, mit, hova és mikor kell küldeni, és figyelemmel kísérjük az eljárást.
                   </p>
                 </div>
 
@@ -270,7 +306,7 @@
                         <i class="fa fa-check-circle text-primary me-2"></i>Kockázatkezelési tanácsadás
                     </h5>
                     <p>
-                        Segítünk azonosítani és csökkenteni vállalkozása kockázatait.
+                        Feltérképezzük a vállalkozása kockázatait, és megmutatjuk, melyikre van biztosítói megoldás, melyikre nincs.
                     </p>
                 </div>
             </div>
@@ -287,22 +323,22 @@
         <!-- Second Content Row -->
         <div class="row g-5 align-items-center mb-5">
             <div class="col-lg-6 wow fadeInUp order-lg-2" data-wow-delay="0.1s">
-                <h2 class="mb-4">Üzleti fedezetek példák</h2>
+                <h2 class="mb-4">Mivel foglalkozunk az Ön vállalkozásánál?</h2>
                 <p class="mb-4">
-                  A biztosítók vállalati csomagjaiban elérhető szolgáltatások közül néhány gyakori példa:
+                  Nem csak szerződést kötünk – utána is ott vagyunk:
                 </p>
                 <ul class="list-unstyled">
                     <li class="mb-3 hover-effect-item">
-                      <i class="fa fa-check-circle text-primary me-2"></i>Üzleti assistance szolgáltatások elérhetősége a biztosítónál
+                      <i class="fa fa-check-circle text-primary me-2"></i>Ismertetjük az üzleti assistance lehetőségeket, és segítünk igénybe venni őket
                     </li>
                     <li class="mb-3 hover-effect-item">
-                      <i class="fa fa-check-circle text-primary me-2"></i>Díjfizetési ütemezések ismertetése
+                      <i class="fa fa-check-circle text-primary me-2"></i>Díjfizetési lehetőségek áttekintése: éves, féléves, negyedéves ütemezések
                     </li>
                     <li class="mb-3 hover-effect-item">
-                      <i class="fa fa-check-circle text-primary me-2"></i>Kijelölt kapcsolattartási csatorna
+                      <i class="fa fa-check-circle text-primary me-2"></i>Kijelölt ügyintéző, akit a vállalkozás közvetlenül elérhet
                     </li>
                     <li class="mb-3 hover-effect-item">
-                        <i class="fa fa-check-circle text-primary me-2"></i>Online kárbejelentés
+                        <i class="fa fa-check-circle text-primary me-2"></i>Segítünk a kárbejelentésben: mit, hova, mikor kell küldeni
                     </li>
                 </ul>
             </div>
@@ -318,8 +354,8 @@
 
         <!-- Header Section -->
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h2 class="mb-3">Vállalkozásbiztosítás</h2>
-            <p>Biztosítói megoldások bemutatása vállalkozása védelméhez, független alkuszi segítséggel.</p>
+            <h2 class="mb-3">Vállalkozásbiztosítás – mit fedezhet?</h2>
+            <p>Segítünk átnézni, milyen kockázatokra kínálnak biztosítói megoldást – díj, fedezet és kizárások szerint.</p>
         </div>
 
         <!-- Main Content -->
@@ -333,7 +369,7 @@
                         </div>
                         <h4 class="mb-0">Vagyonbiztosítás</h4>
                     </div>
-                    <p class="mb-4">Védje vállalkozása vagyoni értékeit a választott biztosító fedezeteivel!</p>
+                    <p class="mb-4">Épület, gép, készlet, üzemszünet – megnézzük, mi tartozik bele a csomagba, és mi marad ki.</p>
                     <ul class="list-unstyled mb-0">
                         <li><i class="fa fa-check text-primary me-2"></i>Épület és berendezés</li>
                         <li><i class="fa fa-check text-primary me-2"></i>Készletek</li>
@@ -352,7 +388,7 @@
                         </div>
                         <h4 class="mb-0">Felelősségbiztosítás</h4>
                     </div>
-                    <p class="mb-4">Védelem harmadik félnek okozott károk esetén biztosítói megoldásokkal.</p>
+                    <p class="mb-4">Ha kárt okoz – akár az alkalmazott, akár a termék –, ez a fedezet fizet. Megmutatjuk, melyik csomag mit tartalmaz.</p>
                     <ul class="list-unstyled mb-0">
                         <li><i class="fa fa-check text-primary me-2"></i>Általános felelősség</li>
                         <li><i class="fa fa-check text-primary me-2"></i>Szakmai felelősség</li>
@@ -371,7 +407,7 @@
                         </div>
                         <h4 class="mb-0">Speciális fedezetek</h4>
                     </div>
-                    <p class="mb-4">Egyedi igényekre szabott megoldások a biztosítók kínálatából.</p>
+                    <p class="mb-4">Szállítmány, cyber, D&O – ha az iparága különleges kockázatot jelent, ezeket is fel tudjuk tárni.</p>
                     <ul class="list-unstyled mb-0">
                         <li><i class="fa fa-check text-primary me-2"></i>Szállítmánybiztosítás</li>
                         <li><i class="fa fa-check text-primary me-2"></i>Építés-szerelés</li>
@@ -440,12 +476,12 @@
         <div class="text-center cta-section py-4 py-md-5 wow fadeInUp" data-wow-delay="0.7s">
             <div class="container">
                 <h3 class="mb-3 mb-md-4 px-3">
-                    Védje meg vállalkozása értékeit!
+                    Kíváncsi, mit fedez le egy vállalkozásbiztosítás az Ön esetében?
                 </h3>
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-10 col-lg-8">
                         <p class="lead mb-4 px-3">
-                            Kérjen személyre szabott vállalkozásbiztosítási ajánlatot most!
+                            Küldünk egy összehasonlítást, mit kínálnak a biztosítók a vállalkozása típusára – díj, fedezet és kizárások szerint.
                         </p>
                         <div class="d-flex flex-column flex-md-row justify-content-center gap-3 px-3">
                             <a href="./ajanlatok/vallalkozas.html" 
