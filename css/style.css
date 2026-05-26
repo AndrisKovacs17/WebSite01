@@ -589,6 +589,7 @@
 .insure-menu-item .title {
   position: absolute;
   font-size: 0.9em;
+  font-weight: 600;
   color: #fff;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -2905,6 +2906,26 @@ html, body {
 .cta-section h3 {
   color: var(--dark, #1a1a2e);
   font-weight: 700;
+}
+
+/* ── Design konzisztencia: mobil menü font-weight, fókuszgyűrű ── */
+.insure-mobile-menu .nav-link {
+  font-weight: 600;
+}
+
+/* Globális fókuszgyűrű: brand narancs (minden oldalon egységes) */
+:focus-visible {
+  outline: 2px solid var(--primary, #FFA726) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.25) !important;
+}
+/* Bootstrap accordion és form elemek fókuszgyűrűje is narancs */
+.btn:focus-visible,
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 167, 38, 0.30) !important;
+  outline: none !important;
 }
 
 /* ── 7. Infok oldalak általános levegős spacingtöbblet ───────────────────── */
