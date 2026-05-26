@@ -1307,7 +1307,8 @@ document.addEventListener('DOMContentLoaded', function () {
     cards.forEach(function (c) {
       if (c.querySelector('.quiz-option[disabled]')) {
         answered++;
-        if (c.querySelector('.quiz-option-correct')) correct++;
+        // Only correct if user actually selected the right answer (no wrong selection present)
+        if (c.querySelector('.quiz-option-correct') && !c.querySelector('.quiz-option-wrong')) correct++;
       }
     });
     if (answered < total) return; // not all answered yet
