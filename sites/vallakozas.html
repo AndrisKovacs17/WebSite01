@@ -618,9 +618,12 @@
           <div class="col-lg-5 wow fadeInRight" data-wow-delay="0.2s">
             <div class="bg-white rounded-3 p-4">
               <p class="fw-semibold text-dark mb-3">Kérje egyb&ouml;l e-mailben &ndash; ingyen, azonnal:</p>
-              <form id="leadMagnetForm" onsubmit="handleLeadMagnet(event)" novalidate>
+              <form id="leadMagnetForm" action="/api/forms/vallalkozas" class="needs-validation" novalidate>
+                <input type="hidden" name="requestType" value="lead_magnet">
+                <input type="hidden" name="guide" value="5 hiba, ami miatt nem fizet a biztosító">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
                 <div class="mb-3">
-                  <input type="email" class="form-control form-control-lg" id="leadEmail"
+                  <input type="email" class="form-control form-control-lg" id="leadEmail" name="email"
                     placeholder="email@example.com" required autocomplete="email">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 py-3 fw-semibold">
