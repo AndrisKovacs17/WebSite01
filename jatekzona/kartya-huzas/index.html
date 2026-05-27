@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <title>Biztosítási Kártyahúzás – Mit üzen a sors? | Biztor Játékzóna</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Húzz egyet a pakliból – és megtudd, mit üzen neked a biztosítási sors. Játékos, de tanulságos kártyahúzás." />
+    <meta name="theme-color" content="#FFA726" />
+    <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/jatekzona.css" />
+  </head>
+
+  <body>
+    <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
+    </div>
+
+    <!-- Topbar -->
+    <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+      <div class="row gx-0 align-items-center">
+        <div class="col d-flex align-items-center gap-3">
+          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="insure-navbar sticky-top">
+      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+        <a href="/" class="insure-navbar-brand d-flex align-items-center">
+          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+        </a>
+        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="insure-icon-menu d-none d-lg-flex">
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
+        </ul>
+      </div>
+      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
+          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="game-hero" id="fo-tartalom">
+      <div class="container position-relative" style="z-index:2;">
+        <div class="jz-breadcrumb">
+          <a href="/jatekzona/">Játékzóna</a>
+          <span class="jz-breadcrumb-sep">›</span>
+          <span>Kártyahúzás</span>
+        </div>
+        <div class="game-hero-badge"><i class="fa fa-magic me-1"></i> Szerencsejáték</div>
+        <h1>Biztosítási <span>Kártyahúzás</span></h1>
+        <p>Kattints egy kártyára – és megtudd, mit üzen neked a biztosítási sors. Minden húzás más tanulságot tartogat.</p>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section class="game-section">
+      <div class="container">
+
+        <div class="tarot-intro">
+          <h2>Válassz egy lapot</h2>
+          <p>8 kártya vár. Kattints bármelyikre – az üzeneted azonnal megjelenik. Húzhatsz egyet, vagy akár mindegyiket.</p>
+        </div>
+
+        <div class="tarot-grid" id="tarotGrid"></div>
+
+        <div class="tarot-reveal-panel" id="tarotReveal">
+          <div class="tarot-reveal-icon" id="tarotRevealIcon"></div>
+          <h3 id="tarotRevealTitle"></h3>
+          <p id="tarotRevealText"></p>
+          <button class="btn btn-outline-primary rounded-pill px-4 mt-1" id="tarotRevealClose">
+            Vissza a paklihoz
+          </button>
+        </div>
+
+        <div class="game-cta" style="max-width:640px;margin:2rem auto 0;">
+          <h4>Komoly jövőhöz komoly fedezet kell</h4>
+          <p>A kártyahúzás szórakoztató – de a biztosításkötés nem maradhat a véletlenre.</p>
+          <div class="game-cta-btns">
+            <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Ajánlatkérés</a>
+            <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
+            <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="container-fluid bg-dark footer mt-0 pt-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor logó" width="279" height="105" decoding="async"></div>
+            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Gyors linkek</h5>
+            <a class="btn btn-link" href="/">Kezdőlap</a>
+            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Más játékok</h5>
+            <a class="btn btn-link" href="/jatekzona/bullshit-fordito/">Bullshit Fordító</a>
+            <a class="btn btn-link" href="/jatekzona/biztositas-tinder/">Biztosítás Tinder</a>
+            <a class="btn btn-link" href="/jatekzona/kotvenymuzeum/">Kötvénymúzeum</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a></div></div></div></div>
+    </div>
+    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/lib/wow/wow.min.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+    (function () {
+      var cards = [
+        { icon: '🚗', title: 'A KGFB lapja',        text: 'Ez a kötelező fedezeted. Ma ellenőrizd: nem járt-e le, és a legkedvezőbb díjat fizeted-e? Egy váltás akár 30%-ot is spórolhat.' },
+        { icon: '🏠', title: 'A Lakás lapja',        text: 'Az otthonod a legnagyobb értéked – de van-e valóban tükrözve ez a biztosításodban? Sokszor az alulbiztosítás rejtett kockázatot jelent.' },
+        { icon: '✈️', title: 'Az Utazás lapja',      text: 'A következő utazásod előtt szánd rá a 2 percet az utasbiztosítás kötésére. Az EU-kártya nem elegendő pótlék.' },
+        { icon: '🛡️', title: 'A CASCO lapja',        text: 'Ha az autód hitellel terhelt vagy 3 évesnél fiatalabb, a CASCO nem luxus – hanem szükséglet. Nézd meg, mit nyerhetsz.' },
+        { icon: '🍀', title: 'A Szerencse lapja',    text: 'Idén különleges szerencséd lesz... de csak ha rendben van a biztosításod! A sors a felkészülteket részesíti előnyben.' },
+        { icon: '💼', title: 'A Vállalkozás lapja',  text: 'Ha vállalkozó vagy, egy felelősségbiztosítás nem kerül sokba – de egy kártérítési per igen. Gondolj rá időben.' },
+        { icon: '🔮', title: 'A Titokzatos lap',     text: 'Ez a kártya egyetlen üzenetet hordoz: hívd fel a Biztort. Nem tudod, miért – de a sors szerint érdemes. Komolyan.' },
+        { icon: '🎁', title: 'A Meglepetés lapja',   text: 'Ingyenes biztosítás-átnézést húztál! Vedd fel a kapcsolatot, és mi megmutatjuk, mi az, ami valóban rendben van – és mi az, amin érdemes változtatni.' }
+      ];
+
+      var gridEl    = document.getElementById('tarotGrid');
+      var revealEl  = document.getElementById('tarotReveal');
+      var revIcon   = document.getElementById('tarotRevealIcon');
+      var revTitle  = document.getElementById('tarotRevealTitle');
+      var revText   = document.getElementById('tarotRevealText');
+      var closeBtn  = document.getElementById('tarotRevealClose');
+
+      // Build grid
+      cards.forEach(function (c, i) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'tarot-card';
+        wrapper.setAttribute('role', 'button');
+        wrapper.setAttribute('aria-label', 'Kártya ' + (i+1));
+        wrapper.setAttribute('tabindex', '0');
+        wrapper.innerHTML =
+          '<div class="tarot-card-inner">' +
+            '<div class="tarot-card-front"><div class="tarot-card-front-pattern">✦</div></div>' +
+            '<div class="tarot-card-back">' +
+              '<div class="tarot-card-back-icon">' + c.icon + '</div>' +
+              '<h6>' + c.title + '</h6>' +
+              '<p>' + c.text.substring(0, 60) + '…</p>' +
+            '</div>' +
+          '</div>';
+
+        function flip() {
+          if (wrapper.classList.contains('flipped')) {
+            showReveal(c);
+            return;
+          }
+          wrapper.classList.add('flipped');
+          setTimeout(function () { showReveal(c); }, 650);
+        }
+
+        wrapper.addEventListener('click', flip);
+        wrapper.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+        gridEl.appendChild(wrapper);
+      });
+
+      function showReveal(c) {
+        revIcon.textContent  = c.icon;
+        revTitle.textContent = c.title;
+        revText.textContent  = c.text;
+        revealEl.classList.add('visible');
+        revealEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      closeBtn.addEventListener('click', function () {
+        revealEl.classList.remove('visible');
+        window.scrollTo({ top: document.getElementById('tarotGrid').offsetTop - 100, behavior: 'smooth' });
+      });
+    })();
+    </script>
+  </body>
+</html>

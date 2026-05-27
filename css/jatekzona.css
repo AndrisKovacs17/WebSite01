@@ -1,0 +1,998 @@
+/* ================================================================
+   jatekzona.css  –  Biztor Játékzóna  |  task/ui branch
+   ================================================================ */
+
+/* ── Alap változók (örököl a style.css :root-ból) ── */
+:root {
+  --jz-orange:   #FFA726;
+  --jz-orange2:  #FF9800;
+  --jz-dark:     #1c1c2e;
+  --jz-dark2:    #2a2a3e;
+  --jz-card-bg:  #ffffff;
+  --jz-radius:   1.25rem;
+  --jz-shadow:   0 8px 32px rgba(0,0,0,.10);
+  --jz-shadow-h: 0 18px 48px rgba(0,0,0,.18);
+  --jz-ease:     .32s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ================================================================
+   HERO – Játékzóna landing
+   ================================================================ */
+.jz-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 50%, #1c2e2e 100%);
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.jz-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255,167,38,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(255,152,0,.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.jz-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(255,167,38,.15);
+  border: 1px solid rgba(255,167,38,.35);
+  color: #FFA726;
+  border-radius: 2rem;
+  padding: .35rem 1rem;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.jz-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #fff;
+  line-height: 1.2;
+}
+.jz-hero h1 span { color: #FFA726; }
+.jz-hero p {
+  color: rgba(255,255,255,.72);
+  font-size: 1.05rem;
+  max-width: 560px;
+}
+
+/* hero floating shapes */
+.jz-hero-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.jz-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .06;
+  background: #FFA726;
+  animation: jzFloat 8s ease-in-out infinite alternate;
+}
+.jz-shape:nth-child(1) { width:320px; height:320px; top:-80px; right:-60px; animation-delay:0s; }
+.jz-shape:nth-child(2) { width:160px; height:160px; bottom:40px; left:10%; animation-delay:2s; }
+.jz-shape:nth-child(3) { width:80px;  height:80px;  top:40%;  right:20%; animation-delay:4s; }
+@keyframes jzFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(12px,-18px) scale(1.06); }
+}
+
+/* ================================================================
+   LANDING GAME CARDS
+   ================================================================ */
+.jz-grid { padding: 3.5rem 0 5rem; background: #f7f8fc; }
+
+.jz-card {
+  background: #fff;
+  border-radius: var(--jz-radius);
+  box-shadow: var(--jz-shadow);
+  padding: 2rem 1.75rem 1.75rem;
+  transition: transform var(--jz-ease), box-shadow var(--jz-ease);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.jz-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--card-accent, #FFA726);
+  border-radius: var(--jz-radius) var(--jz-radius) 0 0;
+  transition: height var(--jz-ease);
+}
+.jz-card:hover { transform: translateY(-8px); box-shadow: var(--jz-shadow-h); }
+.jz-card:hover::before { height: 6px; }
+
+.jz-card-icon {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.1rem;
+  background: var(--icon-bg, rgba(255,167,38,.12));
+  color: var(--icon-color, #FFA726);
+  transition: transform .25s ease, background var(--jz-ease);
+}
+.jz-card:hover .jz-card-icon { transform: scale(1.12) rotate(-5deg); }
+
+.jz-card-badge {
+  display: inline-block;
+  padding: .2rem .65rem;
+  border-radius: 1rem;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: .75rem;
+  background: var(--badge-bg, rgba(255,167,38,.12));
+  color: var(--badge-color, #7a4700);
+}
+.jz-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1c1c2e;
+  margin-bottom: .5rem;
+}
+.jz-card p {
+  color: #6b7280;
+  font-size: .9rem;
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+.jz-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--card-accent, #FFA726);
+  text-decoration: none;
+  transition: gap var(--jz-ease), color .2s;
+}
+.jz-card-link:hover { gap: .75rem; color: #FF9800; }
+
+/* ── Kártya akcentus változatok ── */
+.jz-card.accent-blue  { --card-accent:#4f8ef7; --icon-bg:rgba(79,142,247,.12); --icon-color:#4f8ef7; --badge-bg:rgba(79,142,247,.12); --badge-color:#1e3a8a; }
+.jz-card.accent-red   { --card-accent:#ef4444; --icon-bg:rgba(239,68,68,.12);  --icon-color:#ef4444; --badge-bg:rgba(239,68,68,.12);  --badge-color:#991b1b; }
+.jz-card.accent-purple{ --card-accent:#8b5cf6; --icon-bg:rgba(139,92,246,.12); --icon-color:#8b5cf6; --badge-bg:rgba(139,92,246,.12); --badge-color:#5b21b6; }
+.jz-card.accent-teal  { --card-accent:#14b8a6; --icon-bg:rgba(20,184,166,.12); --icon-color:#14b8a6; --badge-bg:rgba(20,184,166,.12); --badge-color:#0f766e; }
+.jz-card.accent-sepia { --card-accent:#92400e; --icon-bg:rgba(146,64,14,.12);  --icon-color:#92400e; --badge-bg:rgba(146,64,14,.12);  --badge-color:#78350f; }
+.jz-card.accent-green { --card-accent:#22c55e; --icon-bg:rgba(34,197,94,.12);  --icon-color:#22c55e; --badge-bg:rgba(34,197,94,.12);  --badge-color:#15803d; }
+
+/* ================================================================
+   GAME PAGE – Általános
+   ================================================================ */
+.game-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 100%);
+  padding: 3.5rem 0 2.5rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.game-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,167,38,.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.game-hero-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(255,167,38,.15); border: 1px solid rgba(255,167,38,.3);
+  color: #FFA726; border-radius: 2rem;
+  padding: .3rem .9rem; font-size: .75rem; font-weight: 600;
+  letter-spacing: .04em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.game-hero h1 { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 700; margin-bottom: .6rem; }
+.game-hero h1 span { color: #FFA726; }
+.game-hero p { color: rgba(255,255,255,.72); max-width: 520px; font-size: .97rem; }
+
+.game-section { padding: 3rem 0 5rem; background: #f7f8fc; min-height: 60vh; }
+
+/* ================================================================
+   GAME CTA BLOKK (minden játék vége)
+   ================================================================ */
+.game-cta {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 100%);
+  border-radius: var(--jz-radius);
+  padding: 2.5rem 2rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.game-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,167,38,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.game-cta h4 { font-weight: 700; font-size: 1.3rem; margin-bottom: .5rem; }
+.game-cta p  { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 1.5rem; }
+.game-cta-btns { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.game-cta-btns .btn {
+  border-radius: 2rem;
+  padding: .55rem 1.4rem;
+  font-size: .88rem;
+  font-weight: 600;
+  display: inline-flex; align-items: center; gap: .4rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.game-cta-btns .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.22); }
+.btn-cta-primary {
+  background: linear-gradient(90deg,#FFA726,#FF9800);
+  color: #fff; border: none;
+}
+.btn-cta-outline {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.4);
+  color: #fff;
+}
+.btn-cta-outline:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.65); color: #fff; }
+
+/* ================================================================
+   BULLSHIT FORDÍTÓ
+   ================================================================ */
+.bs-container {
+  background: #fff;
+  border-radius: var(--jz-radius);
+  box-shadow: var(--jz-shadow);
+  padding: 2.5rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.bs-samples {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem;
+}
+.bs-sample-btn {
+  background: rgba(255,167,38,.08);
+  border: 1.5px solid rgba(255,167,38,.25);
+  color: #7a4700;
+  border-radius: 2rem;
+  padding: .35rem .9rem;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+  font-family: 'Poppins', sans-serif;
+}
+.bs-sample-btn:hover,
+.bs-sample-btn.active {
+  background: #FFA726; color: #fff; border-color: #FFA726;
+}
+.bs-input-wrap { position: relative; margin-bottom: 1.25rem; }
+.bs-textarea {
+  width: 100%;
+  border: 2px solid #e9ecef;
+  border-radius: .75rem;
+  padding: .9rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: .92rem;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color .2s;
+  outline: none;
+}
+.bs-textarea:focus { border-color: #FFA726; }
+.bs-translate-btn {
+  background: linear-gradient(90deg,#FFA726,#FF9800);
+  border: none; color: #fff;
+  border-radius: 2rem;
+  padding: .7rem 2rem;
+  font-size: .95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.bs-translate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,167,38,.4); }
+.bs-translate-btn.loading { opacity: .7; pointer-events: none; }
+
+.bs-result {
+  margin-top: 1.75rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255,167,38,.07), rgba(255,152,0,.04));
+  border: 1.5px solid rgba(255,167,38,.22);
+  border-radius: 1rem;
+  display: none;
+  animation: bsFadeIn .4s ease;
+}
+.bs-result.visible { display: block; }
+@keyframes bsFadeIn {
+  from { opacity:0; transform: translateY(10px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+.bs-result-label {
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: #FFA726; margin-bottom: .5rem;
+}
+.bs-result-text {
+  font-size: 1.25rem; font-weight: 700; color: #1c1c2e; line-height: 1.35;
+}
+.bs-result-sub {
+  margin-top: .5rem; font-size: .85rem; color: #6b7280; line-height: 1.5;
+}
+
+/* ================================================================
+   BIZTOSÍTÁS TINDER
+   ================================================================ */
+.tinder-wrap { max-width: 480px; margin: 0 auto; }
+.tinder-progress {
+  display: flex; gap: .4rem; margin-bottom: 1.75rem;
+}
+.tinder-progress-dot {
+  flex: 1; height: 4px; border-radius: 2px;
+  background: #e5e7eb;
+  transition: background .3s;
+}
+.tinder-progress-dot.done { background: #FFA726; }
+.tinder-progress-dot.active { background: linear-gradient(90deg,#FFA726,#FF9800); }
+
+.tinder-card-wrap {
+  perspective: 800px;
+  margin-bottom: 1.75rem;
+}
+.tinder-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,.13);
+  padding: 2rem;
+  position: relative;
+  transition: transform .35s ease, box-shadow .35s ease;
+  transform-origin: bottom center;
+}
+.tinder-card.animating-yes {
+  animation: tinderSwipeRight .45s ease forwards;
+}
+.tinder-card.animating-no {
+  animation: tinderSwipeLeft .45s ease forwards;
+}
+.tinder-card.animating-maybe {
+  animation: tinderSwipeUp .45s ease forwards;
+}
+@keyframes tinderSwipeRight {
+  to { transform: translateX(120%) rotate(18deg); opacity: 0; }
+}
+@keyframes tinderSwipeLeft {
+  to { transform: translateX(-120%) rotate(-18deg); opacity: 0; }
+}
+@keyframes tinderSwipeUp {
+  to { transform: translateY(-80%) scale(.85); opacity: 0; }
+}
+
+.tinder-card-tag {
+  display: inline-block;
+  background: rgba(255,167,38,.12); color: #7a4700;
+  border-radius: 2rem; padding: .25rem .8rem;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; margin-bottom: 1rem;
+}
+.tinder-card h3 {
+  font-size: 1.35rem; font-weight: 700; color: #1c1c2e; margin-bottom: .4rem;
+}
+.tinder-card .tinder-card-sub {
+  font-size: .88rem; color: #6b7280; margin-bottom: 1.1rem; font-style: italic;
+}
+.tinder-card-facts { list-style: none; padding: 0; margin: 0; }
+.tinder-card-facts li {
+  display: flex; align-items: flex-start; gap: .6rem;
+  font-size: .88rem; color: #374151; padding: .3rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.tinder-card-facts li:last-child { border: none; }
+.tinder-card-facts li::before {
+  content: '✓';
+  color: #FFA726; font-weight: 700; flex-shrink: 0; margin-top: .02rem;
+}
+
+.tinder-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
+.tinder-btn {
+  border: 2px solid;
+  border-radius: 1rem;
+  padding: .65rem .5rem;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  transition: background .2s, color .2s, transform .15s;
+  display: flex; align-items: center; justify-content: center; gap: .35rem;
+  font-family: 'Poppins', sans-serif;
+}
+.tinder-btn:active { transform: scale(.96); }
+.tinder-btn-ok    { border-color:#22c55e; color:#15803d; }
+.tinder-btn-ok:hover    { background:#22c55e; color:#fff; }
+.tinder-btn-review{ border-color:#FFA726; color:#7a4700; }
+.tinder-btn-review:hover{ background:#FFA726; color:#fff; }
+.tinder-btn-trash { border-color:#ef4444; color:#991b1b; }
+.tinder-btn-trash:hover { background:#ef4444; color:#fff; }
+.tinder-btn-idk   { border-color:#8b5cf6; color:#5b21b6; }
+.tinder-btn-idk:hover   { background:#8b5cf6; color:#fff; }
+
+.tinder-verdict {
+  display: none;
+  position: absolute; top: 1rem; right: 1rem;
+  font-size: 2rem;
+  animation: verdictPop .25s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes verdictPop {
+  from { opacity:0; transform: scale(.3) rotate(-20deg); }
+  to   { opacity:1; transform: scale(1) rotate(0deg); }
+}
+
+.tinder-summary {
+  display: none;
+  background: #fff; border-radius: 1.5rem;
+  box-shadow: var(--jz-shadow); padding: 2rem;
+}
+.tinder-summary.visible { display: block; animation: bsFadeIn .4s ease; }
+.tinder-sum-item {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .6rem 0; border-bottom: 1px solid #f3f4f6;
+  font-size: .9rem;
+}
+.tinder-sum-item:last-child { border: none; }
+.tinder-sum-icon { font-size: 1.2rem; width: 28px; text-align: center; }
+
+/* ================================================================
+   HOROSZKÓP KVÍZ
+   ================================================================ */
+.quiz-wrap { max-width: 600px; margin: 0 auto; }
+.quiz-progress-bar-wrap {
+  background: #e5e7eb; border-radius: 1rem;
+  height: 8px; margin-bottom: .5rem; overflow: hidden;
+}
+.quiz-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg,#FFA726,#FF9800);
+  border-radius: 1rem;
+  transition: width .4s ease;
+}
+.quiz-step-label {
+  font-size: .78rem; color: #9ca3af; margin-bottom: 1.75rem;
+}
+
+.quiz-card {
+  background: #fff; border-radius: 1.5rem;
+  box-shadow: var(--jz-shadow); padding: 2rem;
+}
+.quiz-question {
+  font-size: 1.2rem; font-weight: 700; color: #1c1c2e;
+  margin-bottom: 1.5rem; line-height: 1.4;
+}
+.quiz-answers { display: flex; flex-direction: column; gap: .75rem; }
+.quiz-answer {
+  display: flex; align-items: center; gap: 1rem;
+  background: #f9fafb;
+  border: 2px solid #e9ecef;
+  border-radius: 1rem;
+  padding: .9rem 1.1rem;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  font-size: .92rem; color: #374151;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+}
+.quiz-answer:hover {
+  border-color: #FFA726; background: rgba(255,167,38,.06);
+  transform: translateX(4px);
+}
+.quiz-answer.selected {
+  border-color: #FFA726; background: rgba(255,167,38,.1); color: #7a4700;
+}
+.quiz-answer-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: rgba(255,167,38,.1); color: #FFA726;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; transition: background .2s;
+}
+.quiz-answer:hover .quiz-answer-icon,
+.quiz-answer.selected .quiz-answer-icon { background: #FFA726; color: #fff; }
+
+.quiz-result {
+  display: none; text-align: center;
+  background: #fff; border-radius: 1.5rem;
+  box-shadow: var(--jz-shadow); padding: 2.5rem 2rem;
+}
+.quiz-result.visible { display: block; animation: bsFadeIn .5s ease; }
+.quiz-result-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg,#FFA726,#FF9800);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; margin: 0 auto 1.25rem;
+  box-shadow: 0 8px 24px rgba(255,167,38,.3);
+}
+.quiz-result h3 {
+  font-size: 1.5rem; font-weight: 700; color: #1c1c2e; margin-bottom: .5rem;
+}
+.quiz-result-sub {
+  color: #6b7280; font-size: .92rem; margin-bottom: 1.5rem; line-height: 1.6;
+}
+.quiz-result-tags { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1.75rem; }
+.quiz-result-tag {
+  background: rgba(255,167,38,.1); color: #7a4700;
+  border-radius: 2rem; padding: .3rem .9rem; font-size: .78rem; font-weight: 600;
+}
+
+/* ================================================================
+   KÁRTYAHÚZÁS (Tarot)
+   ================================================================ */
+.tarot-intro { text-align: center; max-width: 540px; margin: 0 auto 2.5rem; }
+.tarot-intro h2 { font-size: 1.5rem; font-weight: 700; color: #1c1c2e; margin-bottom: .5rem; }
+.tarot-intro p { color: #6b7280; font-size: .92rem; }
+
+.tarot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+@media (max-width: 575px) { .tarot-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 576px) and (max-width: 767px) { .tarot-grid { grid-template-columns: repeat(3,1fr); } }
+
+.tarot-card {
+  aspect-ratio: 2/3;
+  border-radius: 1rem;
+  cursor: pointer;
+  position: relative;
+  perspective: 600px;
+  transition: transform .15s ease;
+}
+.tarot-card:hover { transform: translateY(-4px); }
+.tarot-card-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.4,.2,.2,1);
+}
+.tarot-card.flipped .tarot-card-inner { transform: rotateY(180deg); }
+.tarot-card-front, .tarot-card-back {
+  position: absolute; inset: 0;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; padding: .75rem;
+}
+.tarot-card-front {
+  background: linear-gradient(135deg, #2d1f3d, #1c2e2e);
+  border: 2px solid rgba(255,167,38,.3);
+}
+.tarot-card-front-pattern {
+  width: 100%; height: 100%;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,167,38,.05) 0px, rgba(255,167,38,.05) 2px, transparent 2px, transparent 12px),
+    repeating-linear-gradient(-45deg, rgba(255,167,38,.05) 0px, rgba(255,167,38,.05) 2px, transparent 2px, transparent 12px);
+  border-radius: .75rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.tarot-card-back {
+  background: linear-gradient(135deg, #fffbf2, #fff8e8);
+  border: 2px solid rgba(255,167,38,.25);
+  transform: rotateY(180deg);
+  text-align: center;
+}
+.tarot-card-back-icon {
+  font-size: 1.6rem; margin-bottom: .4rem;
+}
+.tarot-card-back h6 {
+  font-size: .72rem; font-weight: 700; color: #1c1c2e; margin-bottom: .25rem; line-height: 1.3;
+}
+.tarot-card-back p {
+  font-size: .62rem; color: #6b7280; line-height: 1.4; margin: 0;
+}
+
+.tarot-reveal-panel {
+  display: none;
+  background: #fff; border-radius: 1.5rem;
+  box-shadow: var(--jz-shadow); padding: 2rem;
+  max-width: 520px; margin: 0 auto;
+  text-align: center;
+  animation: bsFadeIn .4s ease;
+}
+.tarot-reveal-panel.visible { display: block; }
+.tarot-reveal-icon { font-size: 3rem; margin-bottom: .75rem; }
+.tarot-reveal-panel h3 { font-size: 1.3rem; font-weight: 700; color: #1c1c2e; margin-bottom: .5rem; }
+.tarot-reveal-panel p { color: #6b7280; font-size: .92rem; line-height: 1.6; margin-bottom: 1.25rem; }
+
+/* ================================================================
+   KÖTVÉNYMÚZEUM
+   ================================================================ */
+.museum-intro {
+  text-align: center; max-width: 560px; margin: 0 auto 3rem;
+}
+.museum-intro h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: .5rem; color: #1c1c2e; }
+.museum-intro p { color: #6b7280; font-size: .92rem; }
+
+.museum-item {
+  background: #fdf8ef;
+  border: 2px solid #e8d9b5;
+  border-radius: var(--jz-radius);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--jz-ease), box-shadow var(--jz-ease);
+  height: 100%;
+}
+.museum-item::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #92400e, #d97706);
+}
+.museum-item:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: 0 16px 48px rgba(146,64,14,.15);
+}
+.museum-era {
+  display: inline-block;
+  background: rgba(146,64,14,.1); color: #92400e;
+  border-radius: 2rem; padding: .2rem .75rem;
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.museum-item h3 {
+  font-size: 1.05rem; font-weight: 700; color: #1c1c2e; margin-bottom: .4rem;
+}
+.museum-item p { color: #78716c; font-size: .85rem; line-height: 1.55; margin: 0; }
+.museum-item-icon {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  font-size: 1.75rem; opacity: .18;
+}
+.museum-stamp {
+  display: inline-block;
+  border: 2px solid rgba(146,64,14,.35);
+  color: #92400e; font-size: .65rem; font-weight: 800;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: .15rem .5rem; border-radius: .25rem;
+  margin-top: .75rem; transform: rotate(-2deg); display: inline-block;
+}
+
+/* ── Kötvényszellem (easter egg) ── */
+.jz-ghost {
+  position: absolute;
+  bottom: 1.5rem; right: 1.5rem;
+  font-size: 1.1rem;
+  opacity: .15;
+  cursor: pointer;
+  transition: opacity .3s, transform .3s;
+  z-index: 10;
+  user-select: none;
+}
+.jz-ghost:hover { opacity: .9; transform: translateY(-4px) scale(1.2); }
+.jz-ghost-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background: #1c1c2e;
+  color: #fff;
+  font-size: .75rem;
+  padding: .5rem .85rem;
+  border-radius: .6rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  animation: bsFadeIn .25s ease;
+  z-index: 20;
+}
+.jz-ghost-tooltip::after {
+  content: '';
+  position: absolute; top: 100%; right: 10px;
+  border: 6px solid transparent;
+  border-top-color: #1c1c2e;
+}
+.jz-ghost:hover .jz-ghost-tooltip,
+.jz-ghost.active .jz-ghost-tooltip { display: block; }
+
+/* ================================================================
+   PAPÍRDARÁLÓ
+   ================================================================ */
+.shredder-wrap { max-width: 520px; margin: 0 auto; }
+.shredder-progress {
+  display: flex; gap: .4rem; margin-bottom: 1.75rem;
+}
+.shredder-progress-dot {
+  flex: 1; height: 4px; border-radius: 2px; background: #e5e7eb;
+  transition: background .3s;
+}
+.shredder-progress-dot.done { background: #22c55e; }
+.shredder-progress-dot.shredded { background: #ef4444; }
+.shredder-progress-dot.review  { background: #FFA726; }
+.shredder-progress-dot.active  { background: linear-gradient(90deg,#FFA726,#FF9800); }
+
+.shredder-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: var(--jz-shadow);
+  padding: 2rem 1.75rem;
+  position: relative;
+  transition: transform .3s ease;
+}
+.shredder-card-stamp {
+  position: absolute; top: 1rem; right: 1rem;
+  font-size: 1.5rem; opacity: .12;
+}
+.shredder-card-type {
+  display: inline-block;
+  background: rgba(255,167,38,.1); color: #7a4700;
+  border-radius: 2rem; padding: .2rem .75rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.shredder-card h3 {
+  font-size: 1.1rem; font-weight: 700; color: #1c1c2e; margin-bottom: .4rem;
+}
+.shredder-card p { color: #6b7280; font-size: .87rem; line-height: 1.55; margin-bottom: 1.5rem; }
+.shredder-btns {
+  display: flex; flex-wrap: wrap; gap: .6rem;
+}
+.shredder-btn {
+  flex: 1; min-width: 100px;
+  border: 2px solid; border-radius: 1rem;
+  padding: .6rem .5rem; font-size: .82rem; font-weight: 600;
+  cursor: pointer; background: #fff;
+  transition: background .2s, color .2s, transform .15s;
+  display: flex; align-items: center; justify-content: center; gap: .35rem;
+  font-family: 'Poppins', sans-serif;
+}
+.shredder-btn:active { transform: scale(.95); }
+.shredder-btn-keep    { border-color:#22c55e; color:#15803d; }
+.shredder-btn-keep:hover    { background:#22c55e; color:#fff; }
+.shredder-btn-shred   { border-color:#ef4444; color:#991b1b; }
+.shredder-btn-shred:hover   { background:#ef4444; color:#fff; }
+.shredder-btn-review  { border-color:#FFA726; color:#7a4700; }
+.shredder-btn-review:hover  { background:#FFA726; color:#fff; }
+
+/* Papírdaráló animáció */
+.shredder-anim {
+  display: none;
+  text-align: center; padding: 1.5rem 0;
+}
+.shredder-anim.visible { display: block; animation: bsFadeIn .3s ease; }
+.shredder-strips {
+  display: flex; justify-content: center; gap: 3px;
+  margin-top: .75rem; height: 60px; align-items: flex-end; overflow: hidden;
+}
+.shredder-strip {
+  width: 8px; background: linear-gradient(180deg,#e5e7eb,#d1d5db);
+  border-radius: 0 0 2px 2px;
+  animation: shredFall .6s ease forwards;
+  animation-delay: calc(var(--i)*0.04s);
+  transform-origin: top;
+  opacity: 0;
+}
+@keyframes shredFall {
+  from { height: 0; opacity: 1; transform: scaleX(1.1); }
+  60%  { height: 52px; opacity: 1; }
+  to   { height: 52px; opacity: 0; transform: translateY(20px); }
+}
+
+.shredder-summary {
+  display: none; background: #fff; border-radius: 1.5rem;
+  box-shadow: var(--jz-shadow); padding: 2rem;
+}
+.shredder-summary.visible { display: block; animation: bsFadeIn .4s ease; }
+
+/* Shredder summary result rows */
+.shredder-summary-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .6rem 0; border-bottom: 1px solid #f3f4f6;
+}
+.shredder-summary-row:last-child { border-bottom: none; }
+.shredder-summary-label {
+  font-size: .9rem; font-weight: 600; color: #374151;
+}
+.shredder-summary-count {
+  font-size: 1.1rem; font-weight: 700; color: #1c1c2e;
+}
+
+/* Shredder progress bar (single bar variant) */
+.shredder-progress-text {
+  font-size: .75rem; color: #6b7280; font-weight: 600; margin-bottom: .4rem;
+  display: block;
+}
+.shredder-progress-bar {
+  height: 4px; background: linear-gradient(90deg,#FFA726,#FF9800);
+  border-radius: 2px; transition: width .3s ease;
+}
+
+/* Shredder card icon & tag */
+.shredder-card-icon { font-size: 2rem; margin-bottom: .5rem; }
+.shredder-card-tag {
+  display: inline-block;
+  background: rgba(255,167,38,.1); color: #7a4700;
+  border-radius: 2rem; padding: .2rem .75rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  margin-top: .75rem;
+}
+
+/* Shredder card animation states */
+.shredder-card.keeping  { animation: keepPop .5s ease; }
+.shredder-card.reviewing { animation: reviewPop .5s ease; }
+@keyframes keepPop {
+  0%   { transform: scale(1); background: #fff; }
+  40%  { transform: scale(1.04); background: #f0fdf4; }
+  100% { transform: scale(1); background: #fff; }
+}
+@keyframes reviewPop {
+  0%   { transform: scale(1); background: #fff; }
+  40%  { transform: scale(1.02); background: #fffbeb; }
+  100% { transform: scale(1); background: #fff; }
+}
+.shredder-card.shredding { animation: shredPop .5s ease; }
+@keyframes shredPop {
+  0% { transform: scaleY(1); opacity: 1; }
+  60%{ transform: scaleY(.8) scaleX(1.05); opacity:.6; }
+  100%{ transform: scaleY(0); opacity:0; }
+}
+
+/* Shredder feedback message */
+.shredder-feedback {
+  text-align: center; font-size: .87rem; font-weight: 600;
+  color: #6b7280; min-height: 1.5rem; margin-top: .75rem;
+}
+
+/* Shredder arena wrapper */
+.shredder-arena { max-width: 520px; margin: 0 auto; }
+.shredder-card-wrap { position: relative; }
+
+/* Museum item icon */
+.museum-item-icon { font-size: 2.25rem; margin-bottom: .75rem; }
+
+/* Teaser CTA button */
+.btn-jz-teaser {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: linear-gradient(135deg,#FFA726,#FF9800);
+  color: #fff; font-weight: 700; font-size: .9rem;
+  border-radius: 2rem; padding: .7rem 1.75rem;
+  border: none; box-shadow: 0 4px 18px rgba(255,167,38,.35);
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+}
+.btn-jz-teaser:hover {
+  transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,167,38,.45);
+  color: #fff; text-decoration: none;
+}
+
+/* Teaser pills wrapper */
+.jz-teaser-pills {
+  display: flex; flex-wrap: wrap; gap: .6rem;
+  justify-content: center; margin: 1.25rem auto 0;
+  max-width: 560px;
+}
+
+/* ================================================================
+   EASTER EGGS
+   ================================================================ */
+
+/* Konami kód aktiválásra: #FFA726 flash overlay */
+.jz-konami-flash {
+  position: fixed; inset: 0;
+  background: rgba(255,167,38,.15);
+  pointer-events: none; z-index: 9999;
+  display: none;
+  animation: konamiFlash .6s ease forwards;
+}
+@keyframes konamiFlash {
+  0%  { opacity:0; }
+  20% { opacity:1; }
+  100%{ opacity:0; }
+}
+
+/* Rejtett logó animáció – hover a footerben */
+.jz-logo-spin {
+  display: inline-block;
+  transition: transform .5s ease;
+  cursor: pointer;
+}
+.jz-logo-spin:hover { transform: rotate(360deg) scale(1.08); }
+
+/* Titkos kártya overlay */
+.jz-secret-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.65);
+  z-index: 10000;
+  align-items: center; justify-content: center;
+}
+.jz-secret-overlay.visible { display: flex; animation: bsFadeIn .35s ease; }
+.jz-secret-card {
+  background: linear-gradient(135deg, #1c1c2e, #2d1f3d);
+  border: 2px solid rgba(255,167,38,.5);
+  border-radius: 1.5rem; padding: 2.5rem 2rem;
+  max-width: 380px; text-align: center; color: #fff;
+  position: relative;
+}
+.jz-secret-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: .5rem; }
+.jz-secret-card p  { color: rgba(255,255,255,.72); font-size: .9rem; line-height: 1.6; }
+.jz-secret-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,.1); border: none; color: #fff;
+  border-radius: 50%; width: 32px; height: 32px;
+  cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.jz-secret-close:hover { background: rgba(255,255,255,.2); }
+
+/* ================================================================
+   NAVIGÁCIÓ VISSZA A JÁTÉKZÓNÁHOZ
+   ================================================================ */
+.jz-breadcrumb {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: .75rem;
+}
+.jz-breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; }
+.jz-breadcrumb a:hover { color: #FFA726; }
+.jz-breadcrumb-sep { opacity: .4; }
+
+/* ================================================================
+   FŐOLDALI TEASER
+   ================================================================ */
+.jz-teaser {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 100%);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.jz-teaser::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 10% 50%, rgba(255,167,38,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 90% 50%, rgba(255,152,0,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.jz-teaser-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,167,38,.15); border: 1px solid rgba(255,167,38,.3);
+  color: #FFA726; border-radius: 2rem;
+  padding: .3rem .9rem; font-size: .75rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.jz-teaser h2 {
+  font-size: clamp(1.5rem,3.5vw,2.4rem);
+  font-weight: 700; color: #fff; margin-bottom: .6rem; line-height: 1.25;
+}
+.jz-teaser h2 span { color: #FFA726; }
+.jz-teaser p { color: rgba(255,255,255,.68); font-size: .97rem; max-width: 440px; }
+.jz-teaser-mini-cards {
+  display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem;
+}
+.jz-teaser-pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.8); border-radius: 2rem;
+  padding: .35rem .9rem; font-size: .8rem; font-weight: 500;
+  transition: background .2s, border-color .2s;
+}
+.jz-teaser-pill:hover {
+  background: rgba(255,167,38,.15); border-color: rgba(255,167,38,.4);
+  color: #FFA726; text-decoration: none;
+}
+
+/* ================================================================
+   RESZPONZÍV
+   ================================================================ */
+@media (max-width: 575px) {
+  .jz-hero { padding: 3rem 0 2.5rem; }
+  .bs-container { padding: 1.5rem 1rem; }
+  .tinder-card { padding: 1.5rem; }
+  .quiz-card { padding: 1.5rem; }
+  .museum-item { padding: 1.25rem; }
+  .shredder-card { padding: 1.5rem 1.25rem; }
+  .game-cta { padding: 2rem 1.25rem; }
+  .game-cta-btns { flex-direction: column; align-items: stretch; }
+  .game-cta-btns .btn { justify-content: center; }
+  .tinder-btns { grid-template-columns: 1fr 1fr; }
+}
