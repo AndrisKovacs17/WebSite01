@@ -235,12 +235,7 @@
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,.07);
 }
-/* Desktopn a topbar is látszik (+40px) */
-@media (min-width: 992px) {
-  .filter-bar {
-    top: calc(var(--topbar-h, 40px) + var(--navbar-h, 70px));
-  }
-}
+/* Topbar nem sticky, ezért desktop-on is csak a navbar magasságát kell figyelembe venni */
 .filter-search {
   position: relative;
   flex: 1; min-width: 180px; max-width: 280px;
