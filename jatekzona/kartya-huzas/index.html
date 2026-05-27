@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <title>Biztosítási Kártyahúzás – Mi vár rád ma? | Biztor Alkusz</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description" content="Húzz kártyát – és kiderül, milyen biztosítási tanulság vár rád ma. Játékos, de igaz. Kattints, forgasd fel a kártyát!" />
+  <link rel="canonical" href="https://biztor.hu/jatekzona/kartya-huzas/" />
+  <meta property="og:title" content="Biztosítási Kártyahúzás | Biztor Játékzóna" />
+  <meta property="og:description" content="Húzz egyet a 8 biztosítási kártyából – és nézd meg, mi jön szembe ma." />
+  <meta property="og:url" content="https://biztor.hu/jatekzona/kartya-huzas/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Biztor Alkusz Kft." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Biztor Alkusz Kft." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
+          { "@type": "ListItem", "position": 2, "name": "Játékzóna", "item": "https://biztor.hu/jatekzona/" },
+          { "@type": "ListItem", "position": 3, "name": "Kártyahúzás", "item": "https://biztor.hu/jatekzona/kartya-huzas/" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "url": "https://biztor.hu/jatekzona/kartya-huzas/",
+        "name": "Biztosítási Kártyahúzás",
+        "description": "Játékos kártyahúzás 8 biztosítási tanulsággal. Kattints, forgasd fel a kártyát.",
+        "inLanguage": "hu-HU",
+        "dateModified": "2026-05-27",
+        "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
+        "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" href="/img/icon/favicon.ico" />
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 1rem; max-width: 760px; margin: 0 auto; }
+    .flip-card { perspective: 900px; height: 200px; cursor: pointer; }
+    .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.55s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: .75rem; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .75rem; }
+    .flip-card-front { background: linear-gradient(135deg, #FFA726 0%, #fb8c00 100%); color: #fff; box-shadow: 0 3px 15px rgba(255,167,38,.3); }
+    .flip-card-front:hover { box-shadow: 0 6px 24px rgba(255,167,38,.45); transform: translateY(-2px); }
+    .flip-card-back { background: #fff; border: 2px solid #FFA726; box-shadow: 0 3px 15px rgba(0,0,0,.09); transform: rotateY(180deg); }
+    .flip-card-front .card-symbol { font-size: 2.2rem; margin-bottom: .3rem; }
+    .flip-card-front .card-label { font-size: .75rem; opacity: .85; text-transform: uppercase; letter-spacing: .04em; }
+    .flip-card-back .card-icon { font-size: 1.5rem; margin-bottom: .25rem; }
+    .flip-card-back .card-name { font-size: .75rem; font-weight: 700; color: #fb8c00; margin-bottom: .2rem; text-align:center; }
+    .flip-card-back .card-lesson { font-size: .7rem; color: #444; text-align: center; line-height: 1.35; }
+    .secret-card { display: none; }
+    .secret-card.show { display: block; animation: fadeInUp .5s; }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+  <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
+  </div>
+  <!-- Topbar -->
+  <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+    <div class="row gx-0 align-items-center">
+      <div class="col d-flex align-items-center gap-3">
+        <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+        <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
+        <small class="d-flex align-items-center small fw-light"><i class="far fa-clock me-1"></i>H: 09:00–16:00, K-P: 8:00–16:00, Szo-V: Zárva</small>
+      </div>
+      <div class="col-auto d-flex align-items-center">
+        <a href="https://www.facebook.com/biztoralkusz?locale=hu_HU" class="text-dark ms-3 small fw-light" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <div class="insure-navbar sticky-top">
+    <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+      <a href="/" class="insure-navbar-brand d-flex align-items-center">
+        <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+      </a>
+      <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="insure-icon-menu d-none d-lg-flex">
+        <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+        <li class="insure-menu-item"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span><a class="title" href="/rolunk">Rólunk</a></li>
+        <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+        <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+        <li class="insure-menu-item"><span class="icon"><ion-icon name="book-outline"></ion-icon></span><a class="title" href="/infok">Infók</a></li>
+      </ul>
+    </div>
+    <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+      <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+        <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+        <li class="nav-item"><a href="/rolunk" class="nav-link">Rólunk</a></li>
+        <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
+        <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+        <li class="nav-item"><a href="/infok" class="nav-link">Infók</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Fő tartalom -->
+  <div class="container-xxl py-5" id="fo-tartalom">
+    <div class="container">
+
+      <div class="row mb-4 justify-content-center">
+        <div class="col-lg-8 wow fadeInUp text-center" data-wow-delay="0.1s">
+          <nav aria-label="breadcrumb" class="mb-3 d-flex justify-content-center">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Kezdőlap</a></li>
+              <li class="breadcrumb-item"><a href="/jatekzona/">Játékzóna</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Kártyahúzás</li>
+            </ol>
+          </nav>
+          <div class="fs-1 mb-2">🃏</div>
+          <h1 class="display-5 mb-3">Biztosítási Kártyahúzás</h1>
+          <p class="lead mb-2">Nem jóslás – de tanulságos.</p>
+          <p class="text-muted">Kattints egy kártyára, és forgasd fel. Mindegyiken egy valódi biztosítási helyzet és egy hasznos tanulság vár. Ha mindet felforgattad, egy titkos kártya is vár rád.</p>
+          <div class="mt-3">
+            <span class="badge bg-warning text-dark">Felforgattad: <span id="flipped-count">0</span> / 8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-12">
+          <div class="card-grid" id="card-grid"></div>
+        </div>
+      </div>
+
+      <!-- Titkos kártya (csak ha mind 8 fel van forgatva) -->
+      <div class="row justify-content-center mb-5 secret-card" id="secret-card">
+        <div class="col-lg-7">
+          <div class="card border-warning shadow p-4 text-center">
+            <div class="fs-2 mb-2">🔮</div>
+            <h3 class="fw-bold text-warning mb-2">A Kötvényszellem kártyája</h3>
+            <p class="text-muted mb-3">Ez a kártya csak akkor jelenik meg, ha mindet felforgattad. Gratulálunk – alapos vagy!</p>
+            <p class="fw-semibold">Tanulság: A legjobb biztosítás nem az, amelyiket a legolcsóbban kötötted meg – hanem amelyiket a legjobban értesz.</p>
+            <p class="text-muted small">Ha valaha biztosítási kérdésed van, egy alkusz díjmentesen átbeszéli veled. Ez nem értékesítés – ez a szakma.</p>
+            <a href="/kapcsolat" class="btn btn-warning rounded-pill px-4 mt-2">Kérdésem van</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="bg-light rounded p-4">
+            <h3 class="fw-bold mb-3">Valami felkeltette az érdeklődésedet?</h3>
+            <p class="text-muted mb-4">Ha bármelyik kártyán lévő helyzet ismerős, érdemes megnézni a saját szerződéseidet.</p>
+            <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+              <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-primary rounded-pill px-4"><i class="fa fa-file-alt me-2"></i>Ajánlatkérés</a>
+              <a href="/kapcsolat" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-search me-2"></i>Átnézetem</a>
+              <a href="/jatekzona/" class="btn btn-outline-secondary rounded-pill px-4"><i class="fa fa-arrow-left me-2"></i>Vissza</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="text-white mb-4"><img class="img-fluid me-3" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
+          <p>BIZTOR Alkusz Kft.<br>4400 Nyíregyháza Liliom utca 27/A.<br>MNB engedélyszám: 208080710804</p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+            <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-square me-1 phone-link" href="tel:+36706258201" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
+            <a class="btn btn-square me-0" href="https://linkedin.com/company/biztor-alkusz-kft" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-4">Elérhetőség</h5>
+          <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
+          <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
+          <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-4">Gyors linkek</h5>
+          <a class="btn btn-link" href="/rolunk">Rólunk</a>
+          <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+          <a class="btn btn-link" href="/szolgaltatasok">Szolgáltatásaink</a>
+          <a class="btn btn-link" href="/impresszum">Impresszum</a>
+          <a class="btn btn-link" href="/Adatkezelesi_szabalyzat_biztor_alkusz.pdf">Adatkezelési szabályzat</a>
+          <a class="btn btn-link" href="/Adatkezelesi_tajekoztato_biztor_alkusz.pdf">Adatkezelési tájékoztató</a>
+          <a class="btn btn-link" href="/panaszkezeles">Panaszkezelés</a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-light mb-4">Dokumentumok</h5>
+          <a class="btn btn-link" href="/fentarthatosagi_kovetelmenyek.pdf">Fenntarthatósági követelmények tájékoztatás</a>
+          <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mb-3 mb-md-0">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
+  <div class="mobile-action-bar d-lg-none" aria-label="Gyors elérhetőség">
+    <a href="/kotelezo-biztositas-ajanlatkeres" class="mobile-action-bar__primary hover-lift"><i class="fa fa-file-alt"></i> Ajánlatkérés</a>
+    <a href="tel:+36706258201" class="mobile-action-bar__secondary hover-lift phone-link" aria-label="Telefonhívás" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,167,38,0.5);color:var(--primary);"><i class="fa fa-phone-alt"></i></a>
+  </div>
+
+  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="/lib/wow/wow.min.js"></script>
+  <script defer src="/lib/easing/easing.min.js"></script>
+  <script defer src="/lib/waypoints/waypoints.min.js"></script>
+  <script defer src="/js/main.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+  var cards = [
+    {
+      symbol: "🌊",
+      label: "Vízkár",
+      icon: "🌊",
+      name: "A Vízkár",
+      lesson: "Vízkár az egyik leggyakoribb kárfajta – de sokan csak akkor tudják meg, nem fedezi a biztosításuk, amikor már megtörtént.",
+      situation: "Mosógép tömlője megrepedt, a szomszéd mennyezete ázott be.",
+      action: "Ellenőrizd: tartalmaz-e a lakásbiztosításod felelősségi részt?"
+    },
+    {
+      symbol: "❌",
+      label: "Elveszett bónusz",
+      icon: "❌",
+      name: "Az Elveszett Bónusz",
+      lesson: "Egy kisebb autós kár bejelentése évekre elveheti a szerzett bónuszt. Néha jobban jársz, ha fizeted magad.",
+      situation: "Parkoláskor megkarcolták az autódat. Érdemes-e bejelenteni?",
+      action: "Számold ki a kárrendezés előtt, mennyit veszíthetsz bónuszban."
+    },
+    {
+      symbol: "📄",
+      label: "Papírtengerész",
+      icon: "📄",
+      name: "A Papírtengerész",
+      lesson: "A biztosítási szerződések általános feltétele átlagosan 40-60 oldal. A legtöbben nem olvassák el. Egy alkusz elmondja, mi van benne.",
+      situation: "Kaptál egy borítékot: 'Általános Biztosítási Feltételek'. Elolvasod?",
+      action: "Kérd meg az alkuszod, hogy összefoglalja a lényeget 5 percben."
+    },
+    {
+      symbol: "⚖️",
+      label: "Alulbiztosított",
+      icon: "⚖️",
+      name: "Az Alulbiztosított",
+      lesson: "Ha az ingatlan biztosított értéke kisebb, mint a valódi értéke, kár esetén arányosan kevesebbet kapsz. Ez az alulbiztosítás csapdája.",
+      situation: "A lakásodat 10 éve 15 millióra biztosítottad. Azóta megduplázódott az értéke.",
+      action: "Ellenőrizd évente a biztosítási összeget az ingatlan piaci értékéhez képest."
+    },
+    {
+      symbol: "🔄",
+      label: "Váltókártya",
+      icon: "🔄",
+      name: "A Váltókártya",
+      lesson: "Az évfordulón lehet biztosítót váltani – ez az egyetlen időszak, amikor díjmentesen léphetünk ki. Legtöbben kihagyják.",
+      situation: "Jövő hónapban van a KGFB évfordulója. Megnézed, mennyi lenne máshol?",
+      action: "Alkusszal összehasonlíttatva 5-15 percbe telik – és spórolhatsz."
+    },
+    {
+      symbol: "🚫",
+      label: "Kizárás",
+      icon: "🚫",
+      name: "A Kizárás",
+      lesson: "A biztosítás nem fizet, ha 'gondatlanság' állapítható meg – és ezt a biztosító értelmezi. Olvass utána a kizárásoknak.",
+      situation: "Nyitva hagytad az ablakot, esőt kapott a szoba. A biztosító nem fizet.",
+      action: "Nézd meg a kizárásokat a saját szerződésedben – meglepődhetsz."
+    },
+    {
+      symbol: "📂",
+      label: "Elfelejtett kötvény",
+      icon: "📂",
+      name: "Az Elfelejtett Kötvény",
+      lesson: "Sok ember évekig fizet olyan biztosítást, amelyre nincs szükségük, mert elfelejtették lemondani vagy észre sem vették.",
+      situation: "Átköltöztél 3 éve, de az old lakáson még mindig fut egy biztosítás.",
+      action: "Nézd át az összes aktív biztosítási szerződésedet – van köztük felesleges?"
+    },
+    {
+      symbol: "🤝",
+      label: "Segítő alkusz",
+      icon: "🤝",
+      name: "A Segítő Alkusz",
+      lesson: "Egy alkusz nem a biztosítónak, hanem az ügyfélnek dolgozik. Kár esetén az alkusz az ügyfél oldalán áll – nem a biztosítóén.",
+      situation: "Kárbejelentés után a biztosító elutasított. Ki áll ki érted?",
+      action: "Ha alkuszod van, ne habozz felvenni a kapcsolatot kárral kapcsolatban."
+    }
+  ];
+
+  var flippedCards = 0;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var grid = document.getElementById('card-grid');
+    cards.forEach(function(c, i) {
+      var fc = document.createElement('div');
+      fc.className = 'flip-card';
+      fc.setAttribute('role', 'button');
+      fc.setAttribute('tabindex', '0');
+      fc.setAttribute('aria-label', 'Kártya ' + (i+1) + ' – kattints a felforgáshoz');
+      fc.innerHTML = '<div class="flip-card-inner">'
+        + '<div class="flip-card-front"><div class="card-symbol">' + c.symbol + '</div><div class="card-label">Kattints</div></div>'
+        + '<div class="flip-card-back">'
+        + '<div class="card-icon">' + c.icon + '</div>'
+        + '<div class="card-name">' + c.name + '</div>'
+        + '<div class="card-lesson">' + c.lesson + '</div>'
+        + '</div></div>';
+      fc.addEventListener('click', function() { flipCard(fc); });
+      fc.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') flipCard(fc); });
+      grid.appendChild(fc);
+    });
+  });
+
+  function flipCard(el) {
+    if (el.classList.contains('flipped')) return;
+    el.classList.add('flipped');
+    flippedCards++;
+    document.getElementById('flipped-count').textContent = flippedCards;
+    if (flippedCards >= 8) {
+      var sec = document.getElementById('secret-card');
+      sec.classList.add('show');
+      sec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+  </script>
+</body>
+</html>
