@@ -230,6 +230,34 @@
       "path": "/oldalterkep"
     },
     {
+      "source": "jatekzona/index.html",
+      "path": "/jatekzona"
+    },
+    {
+      "source": "jatekzona/bullshit-fordito/index.html",
+      "path": "/jatekzona/bullshit-fordito"
+    },
+    {
+      "source": "jatekzona/biztositas-tinder/index.html",
+      "path": "/jatekzona/biztositas-tinder"
+    },
+    {
+      "source": "jatekzona/horoszkop/index.html",
+      "path": "/jatekzona/horoszkop"
+    },
+    {
+      "source": "jatekzona/kartya-huzas/index.html",
+      "path": "/jatekzona/kartya-huzas"
+    },
+    {
+      "source": "jatekzona/kotvenymuzeum/index.html",
+      "path": "/jatekzona/kotvenymuzeum"
+    },
+    {
+      "source": "jatekzona/papirdaralo/index.html",
+      "path": "/jatekzona/papirdaralo"
+    },
+    {
       "source": "404.html",
       "path": "/404",
       "output": "404.html"
