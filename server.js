@@ -225,41 +225,45 @@ app.post('/api/newsletter', async (req, res) => {
   }
 });
 
-const distDir = path.join(__dirname, "dist");
+const ROOT = __dirname;
+const distDir = path.join(ROOT, "dist");
 
-if (fs.existsSync(distDir)) {
-  app.use(express.static(distDir));
-  app.get("*", (req, res, next) => {
-    const cleanPath = req.path.replace(/^\/+|\/+$/g, "");
-    if (!cleanPath) {
-      next();
-      return;
-    }
+// Prefer dist/ if it exists (production build), otherwise serve from source tree (dev).
+const serveDir = fs.existsSync(distDir) ? distDir : ROOT;
 
-    const pagesDir = path.join(distDir, "pages");
-    const pagePath = path.join(pagesDir, `${cleanPath}.html`);
-    if (!pagePath.startsWith(pagesDir + path.sep)) {
-      next();
-      return;
-    }
+// Serve static assets (CSS, JS, images, libs, etc.)
+app.use(express.static(serveDir));
 
-    if (fs.existsSync(pagePath)) {
-      res.sendFile(pagePath);
-      return;
-    }
-
+// Clean URL handler: /route or /route/ → ROUTE/index.html
+app.get("*", (req, res, next) => {
+  const cleanPath = req.path.replace(/^\/+|\/+$/g, "");
+  if (!cleanPath) {
     next();
-  });
+    return;
+  }
 
-  const notFoundPage = path.join(distDir, "404.html");
-  app.use((_req, res) => {
-    if (fs.existsSync(notFoundPage)) {
-      res.status(404).sendFile(notFoundPage);
-    } else {
-      res.status(404).json({ ok: false, message: "Az oldal nem található." });
-    }
-  });
-}
+  const indexPath = path.join(serveDir, cleanPath, "index.html");
+  if (!indexPath.startsWith(serveDir + path.sep)) {
+    next();
+    return;
+  }
+
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+    return;
+  }
+
+  next();
+});
+
+app.use((_req, res) => {
+  const notFoundPage = path.join(serveDir, "404.html");
+  if (fs.existsSync(notFoundPage)) {
+    res.status(404).sendFile(notFoundPage);
+  } else {
+    res.status(404).json({ ok: false, message: "Az oldal nem található." });
+  }
+});
 
 if (require.main === module) {
   if (!mailDryRun && (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS)) {
