@@ -11,6 +11,7 @@
     "start": "node server.js",
     "build": "npm run build:static",
     "build:static": "node tools/build-static.js",
+    "check:routes": "node tools/check-routes.js",
     "build:css": "tailwindcss -i ./css/tailwind.css -o ./css/output.css --minify",
     "watch:css": "tailwindcss -i ./css/tailwind.css -o ./css/output.css --watch"
   },

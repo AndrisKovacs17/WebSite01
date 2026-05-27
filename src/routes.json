@@ -1,69 +1,259 @@
 {
   "siteOrigin": "https://biztor.hu",
   "routes": [
-    { "source": "index.html", "path": "/" },
-    { "source": "sites/index-prototype.html", "path": "/index-prototype" },
-    { "source": "sites/header-showcase.html", "path": "/header-showcase" },
-    { "source": "sites/header-c-variants.html", "path": "/header-c-variants" },
-    { "source": "sites/header-c-full.html", "path": "/header-c-full" },
-    { "source": "sites/interaktivitas-showcase.html", "path": "/interaktivitas-showcase" },
-    { "source": "sites/terkep-showcase.html", "path": "/terkep-showcase" },
-    { "source": "sites/design-showcase.html", "path": "/design-showcase" },
-    { "source": "sites/rating-showcase.html", "path": "/rating-showcase" },
-    { "source": "adatkezeles.html", "path": "/adatkezeles" },
-    { "source": "sites/kgfb.html", "path": "/kotelezo-biztositas" },
-    { "source": "sites/ajanlatok/kgfb.html", "path": "/kotelezo-biztositas-ajanlatkeres" },
-    { "source": "sites/casco.html", "path": "/casco-biztositas" },
-    { "source": "sites/casco-flotta.html", "path": "/casco-flotta" },
-    { "source": "sites/lakas.html", "path": "/lakasbiztositas" },
-    { "source": "sites/ajanlatok/lakas.html", "path": "/lakasbiztositas-ajanlatkeres" },
-    { "source": "sites/elet.html", "path": "/eletbiztositas" },
-    { "source": "sites/egeszseg.html", "path": "/egeszsegbiztositas" },
-    { "source": "sites/ajanlatok/egeszseg.html", "path": "/egeszsegbiztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/casco.html", "path": "/casco-biztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/baleset.html", "path": "/balesetbiztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/elet.html", "path": "/eletbiztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/mezogazd.html", "path": "/mezogazdasagi-biztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/nyugdij.html", "path": "/nyugdijbiztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/megtakaritas.html", "path": "/megtakaritas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/onkentes.html", "path": "/onkentes-pentarak-ajanlatkeres" },
-    { "source": "sites/ajanlatok/utas.html", "path": "/utasbiztositas-ajanlatkeres" },
-    { "source": "sites/ajanlatok/vallalkozas.html", "path": "/vallalkozasbiztositas-ajanlatkeres" },
-    { "source": "sites/baleset.html", "path": "/balesetbiztositas" },
-    { "source": "sites/utas.html", "path": "/utasbiztositas" },
-    { "source": "sites/nyugdij.html", "path": "/nyugdijbiztositas" },
-    { "source": "sites/megtakaritas.html", "path": "/megtakaritas" },
-    { "source": "sites/mezogazd.html", "path": "/mezogazdasagi-biztositas" },
-    { "source": "sites/vallakozas.html", "path": "/vallalkozasbiztositas" },
-    { "source": "sites/vallalkozas-altalanos.html", "path": "/vallalkozas-altalanos" },
-    { "source": "sites/kgfb-flotta.html", "path": "/kgfb-flotta" },
-    { "source": "sites/geptores.html", "path": "/geptores" },
-    { "source": "sites/fuvarozoi-biztositasok.html", "path": "/fuvarozoi-biztositas" },
-    { "source": "sites/kegyeleti.html", "path": "/kegyeleti-biztositas" },
-    { "source": "sites/szakmai-felelosseg.html", "path": "/szakmai-felelosseg" },
-    { "source": "sites/onkentes.html", "path": "/onkentes-pentarak" },
-    { "source": "sites/rolunk.html", "path": "/rolunk" },
-    { "source": "sites/kapcsolat.html", "path": "/kapcsolat" },
-    { "source": "sites/szolgaltatasok.html", "path": "/szolgaltatasok" },
-    { "source": "sites/infok.html", "path": "/infok" },
-    { "source": "sites/impresszum.html", "path": "/impresszum" },
-    { "source": "sites/panasz.html", "path": "/panaszkezeles" },
-    { "source": "sites/ekarbejelento.html", "path": "/e-karbejelento" },
-    { "source": "sites/polgaror.html", "path": "/polgarorseg" },
-    { "source": "sites/info-gepjarmu.html", "path": "/info-gepjarmu" },
-    { "source": "sites/info-ingatlan.html", "path": "/info-ingatlan" },
-    { "source": "sites/info-adminisztracio.html", "path": "/info-adminisztracio" },
-    { "source": "sites/info-utazas-elet.html", "path": "/info-utazas-elet" },
-    { "source": "sites/torveny2023.html", "path": "/torveny-2023" },
-    { "source": "sites/oldalterkep.html", "path": "/oldalterkep" },
-    { "source": "sites/404.html", "path": "/404", "output": "404.html" }
+    {
+      "source": "index.html",
+      "path": "/"
+    },
+    {
+      "source": "index-prototype/index.html",
+      "path": "/index-prototype",
+      "noindex": true
+    },
+    {
+      "source": "header-showcase/index.html",
+      "path": "/header-showcase",
+      "noindex": true
+    },
+    {
+      "source": "header-c-variants/index.html",
+      "path": "/header-c-variants",
+      "noindex": true
+    },
+    {
+      "source": "header-c-full/index.html",
+      "path": "/header-c-full",
+      "noindex": true
+    },
+    {
+      "source": "interaktivitas-showcase/index.html",
+      "path": "/interaktivitas-showcase",
+      "noindex": true
+    },
+    {
+      "source": "terkep-showcase/index.html",
+      "path": "/terkep-showcase",
+      "noindex": true
+    },
+    {
+      "source": "design-showcase/index.html",
+      "path": "/design-showcase",
+      "noindex": true
+    },
+    {
+      "source": "rating-showcase/index.html",
+      "path": "/rating-showcase",
+      "noindex": true
+    },
+    {
+      "source": "adatkezeles/index.html",
+      "path": "/adatkezeles"
+    },
+    {
+      "source": "kotelezo-biztositas/index.html",
+      "path": "/kotelezo-biztositas"
+    },
+    {
+      "source": "kotelezo-biztositas-ajanlatkeres/index.html",
+      "path": "/kotelezo-biztositas-ajanlatkeres"
+    },
+    {
+      "source": "casco-biztositas/index.html",
+      "path": "/casco-biztositas"
+    },
+    {
+      "source": "casco-flotta/index.html",
+      "path": "/casco-flotta"
+    },
+    {
+      "source": "lakasbiztositas/index.html",
+      "path": "/lakasbiztositas"
+    },
+    {
+      "source": "lakasbiztositas-ajanlatkeres/index.html",
+      "path": "/lakasbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "eletbiztositas/index.html",
+      "path": "/eletbiztositas"
+    },
+    {
+      "source": "egeszsegbiztositas/index.html",
+      "path": "/egeszsegbiztositas"
+    },
+    {
+      "source": "egeszsegbiztositas-ajanlatkeres/index.html",
+      "path": "/egeszsegbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "casco-biztositas-ajanlatkeres/index.html",
+      "path": "/casco-biztositas-ajanlatkeres"
+    },
+    {
+      "source": "balesetbiztositas-ajanlatkeres/index.html",
+      "path": "/balesetbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "eletbiztositas-ajanlatkeres/index.html",
+      "path": "/eletbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "mezogazdasagi-biztositas-ajanlatkeres/index.html",
+      "path": "/mezogazdasagi-biztositas-ajanlatkeres"
+    },
+    {
+      "source": "nyugdijbiztositas-ajanlatkeres/index.html",
+      "path": "/nyugdijbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "megtakaritas-ajanlatkeres/index.html",
+      "path": "/megtakaritas-ajanlatkeres"
+    },
+    {
+      "source": "onkentes-pentarak-ajanlatkeres/index.html",
+      "path": "/onkentes-pentarak-ajanlatkeres"
+    },
+    {
+      "source": "utasbiztositas-ajanlatkeres/index.html",
+      "path": "/utasbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "vallalkozasbiztositas-ajanlatkeres/index.html",
+      "path": "/vallalkozasbiztositas-ajanlatkeres"
+    },
+    {
+      "source": "balesetbiztositas/index.html",
+      "path": "/balesetbiztositas"
+    },
+    {
+      "source": "utasbiztositas/index.html",
+      "path": "/utasbiztositas"
+    },
+    {
+      "source": "nyugdijbiztositas/index.html",
+      "path": "/nyugdijbiztositas"
+    },
+    {
+      "source": "megtakaritas/index.html",
+      "path": "/megtakaritas"
+    },
+    {
+      "source": "mezogazdasagi-biztositas/index.html",
+      "path": "/mezogazdasagi-biztositas"
+    },
+    {
+      "source": "vallalkozasbiztositas/index.html",
+      "path": "/vallalkozasbiztositas"
+    },
+    {
+      "source": "vallalkozas-altalanos/index.html",
+      "path": "/vallalkozas-altalanos"
+    },
+    {
+      "source": "kgfb-flotta/index.html",
+      "path": "/kgfb-flotta"
+    },
+    {
+      "source": "geptores/index.html",
+      "path": "/geptores"
+    },
+    {
+      "source": "fuvarozoi-biztositas/index.html",
+      "path": "/fuvarozoi-biztositas"
+    },
+    {
+      "source": "kegyeleti-biztositas/index.html",
+      "path": "/kegyeleti-biztositas"
+    },
+    {
+      "source": "szakmai-felelosseg/index.html",
+      "path": "/szakmai-felelosseg"
+    },
+    {
+      "source": "onkentes-pentarak/index.html",
+      "path": "/onkentes-pentarak"
+    },
+    {
+      "source": "rolunk/index.html",
+      "path": "/rolunk"
+    },
+    {
+      "source": "kapcsolat/index.html",
+      "path": "/kapcsolat"
+    },
+    {
+      "source": "szolgaltatasok/index.html",
+      "path": "/szolgaltatasok"
+    },
+    {
+      "source": "infok/index.html",
+      "path": "/infok"
+    },
+    {
+      "source": "impresszum/index.html",
+      "path": "/impresszum"
+    },
+    {
+      "source": "panaszkezeles/index.html",
+      "path": "/panaszkezeles"
+    },
+    {
+      "source": "e-karbejelento/index.html",
+      "path": "/e-karbejelento"
+    },
+    {
+      "source": "polgarorseg/index.html",
+      "path": "/polgarorseg"
+    },
+    {
+      "source": "info-gepjarmu/index.html",
+      "path": "/info-gepjarmu"
+    },
+    {
+      "source": "info-ingatlan/index.html",
+      "path": "/info-ingatlan"
+    },
+    {
+      "source": "info-adminisztracio/index.html",
+      "path": "/info-adminisztracio"
+    },
+    {
+      "source": "info-utazas-elet/index.html",
+      "path": "/info-utazas-elet"
+    },
+    {
+      "source": "torveny-2023/index.html",
+      "path": "/torveny-2023"
+    },
+    {
+      "source": "oldalterkep/index.html",
+      "path": "/oldalterkep"
+    },
+    {
+      "source": "404.html",
+      "path": "/404",
+      "output": "404.html"
+    }
   ],
   "generatedGroups": [
-    { "sourceDir": "sites/infok", "pathPrefix": "/infok" },
-    { "sourceDir": "sites/szakemberek", "pathPrefix": "/szakember" },
-    { "sourceDir": "sites/ajanlatok", "pathPrefix": "/ajanlatkeres" }
+    {
+      "sourceDir": "infok",
+      "pathPrefix": "/infok",
+      "dirMode": true
+    },
+    {
+      "sourceDir": "szakember",
+      "pathPrefix": "/szakember",
+      "dirMode": true
+    }
   ],
-  "assetDirs": ["css", "img", "js", "lib", "scss"],
+  "assetDirs": [
+    "css",
+    "img",
+    "js",
+    "lib",
+    "scss"
+  ],
   "rootAssets": [
     "robots.txt",
     "sitemap.xml",

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://biztor.hu/</loc>
@@ -7,559 +7,559 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/balesetbiztositas</loc>
+    <loc>https://biztor.hu/balesetbiztositas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/casco-biztositas</loc>
+    <loc>https://biztor.hu/casco-biztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/casco-flotta</loc>
+    <loc>https://biztor.hu/casco-flotta/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/egeszsegbiztositas</loc>
+    <loc>https://biztor.hu/egeszsegbiztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/egeszsegbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/egeszsegbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/kotelezo-biztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/kotelezo-biztositas-ajanlatkeres/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/lakasbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/lakasbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/casco-biztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/casco-biztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/balesetbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/balesetbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/eletbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/eletbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/mezogazdasagi-biztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/mezogazdasagi-biztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/nyugdijbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/nyugdijbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/megtakaritas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/megtakaritas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/onkentes-pentarak-ajanlatkeres</loc>
+    <loc>https://biztor.hu/onkentes-pentarak-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/utasbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/utasbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/vallalkozasbiztositas-ajanlatkeres</loc>
+    <loc>https://biztor.hu/vallalkozasbiztositas-ajanlatkeres/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/e-karbejelento</loc>
+    <loc>https://biztor.hu/e-karbejelento/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/eletbiztositas</loc>
+    <loc>https://biztor.hu/eletbiztositas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/fuvarozoi-biztositas</loc>
+    <loc>https://biztor.hu/fuvarozoi-biztositas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/geptores</loc>
+    <loc>https://biztor.hu/geptores/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/impresszum</loc>
+    <loc>https://biztor.hu/impresszum/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/info-adminisztracio</loc>
+    <loc>https://biztor.hu/info-adminisztracio/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/info-gepjarmu</loc>
+    <loc>https://biztor.hu/info-gepjarmu/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/info-ingatlan</loc>
+    <loc>https://biztor.hu/info-ingatlan/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok</loc>
+    <loc>https://biztor.hu/infok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/adojovairas-tervezese</loc>
+    <loc>https://biztor.hu/infok/adojovairas-tervezese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/alkusz-es-ugynok-szerepe</loc>
+    <loc>https://biztor.hu/infok/alkusz-es-ugynok-szerepe/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/alulbiztositottsag-elkerulese</loc>
+    <loc>https://biztor.hu/infok/alulbiztositottsag-elkerulese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/beazas-es-csotores-teendok</loc>
+    <loc>https://biztor.hu/infok/beazas-es-csotores-teendok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/betoresi-kar-dokumentalasa</loc>
+    <loc>https://biztor.hu/infok/betoresi-kar-dokumentalasa/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/bonus-malus-es-dijhatas</loc>
+    <loc>https://biztor.hu/infok/bonus-malus-es-dijhatas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/dijnemfizetes-kovetkezmenyei</loc>
+    <loc>https://biztor.hu/infok/dijnemfizetes-kovetkezmenyei/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/eletbiztositas-elethelyzetre</loc>
+    <loc>https://biztor.hu/infok/eletbiztositas-elethelyzetre/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/evfordulos-valtas</loc>
+    <loc>https://biztor.hu/infok/evfordulos-valtas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/extrem-sport-fedezet</loc>
+    <loc>https://biztor.hu/infok/extrem-sport-fedezet/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/fedezetlensegi-dij</loc>
+    <loc>https://biztor.hu/infok/fedezetlensegi-dij/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/hitelvedelem-osszehasonlitas</loc>
+    <loc>https://biztor.hu/infok/hitelvedelem-osszehasonlitas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/hivatalos-ertesitesek-kezelese</loc>
+    <loc>https://biztor.hu/infok/hivatalos-ertesitesek-kezelese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/ideiglenes-lakhatasi-koltsegek</loc>
+    <loc>https://biztor.hu/infok/ideiglenes-lakhatasi-koltsegek/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/karbejelento-ellenorzolista</loc>
+    <loc>https://biztor.hu/infok/karbejelento-ellenorzolista/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/karrendezesi-dokumentumok</loc>
+    <loc>https://biztor.hu/infok/karrendezesi-dokumentumok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/katyukar-lepesrol-lepesre</loc>
+    <loc>https://biztor.hu/infok/katyukar-lepesrol-lepesre/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/korhazi-napi-terites</loc>
+    <loc>https://biztor.hu/infok/korhazi-napi-terites/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/kulfoldi-baleset-teendoi</loc>
+    <loc>https://biztor.hu/infok/kulfoldi-baleset-teendoi/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/kulfoldi-karesemeny-menete</loc>
+    <loc>https://biztor.hu/infok/kulfoldi-karesemeny-menete/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/maganfelelossegi-kar-bejelentese</loc>
+    <loc>https://biztor.hu/infok/maganfelelossegi-kar-bejelentese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/meghatalmazas-es-ugyintezes</loc>
+    <loc>https://biztor.hu/infok/meghatalmazas-es-ugyintezes/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/mellekepuletek-es-kerti-ertekek</loc>
+    <loc>https://biztor.hu/infok/mellekepuletek-es-kerti-ertekek/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/poggyaszkar-kezelese</loc>
+    <loc>https://biztor.hu/infok/poggyaszkar-kezelese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/rendszam-nelkuli-karokozas</loc>
+    <loc>https://biztor.hu/infok/rendszam-nelkuli-karokozas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/szerzodes-elotti-ellenorzes</loc>
+    <loc>https://biztor.hu/infok/szerzodes-elotti-ellenorzes/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/szerzodeskotes-elotti-ellenorzes</loc>
+    <loc>https://biztor.hu/infok/szerzodeskotes-elotti-ellenorzes/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/tarsashazi-karok-felelossege</loc>
+    <loc>https://biztor.hu/infok/tarsashazi-karok-felelossege/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/totalkar-szamitasi-alapok</loc>
+    <loc>https://biztor.hu/infok/totalkar-szamitasi-alapok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/uvegkar-es-onresz</loc>
+    <loc>https://biztor.hu/infok/uvegkar-es-onresz/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/vadelutes-kezelese</loc>
+    <loc>https://biztor.hu/infok/vadelutes-kezelese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/villamkar-es-tulfeszultseg</loc>
+    <loc>https://biztor.hu/infok/villamkar-es-tulfeszultseg/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/casco-karbejelento-ellenorzolista</loc>
+    <loc>https://biztor.hu/infok/casco-karbejelento-ellenorzolista/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/elgondoskodas-vagy-utolas-kotes</loc>
+    <loc>https://biztor.hu/infok/elgondoskodas-vagy-utolas-kotes/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/kegyeleti-biztositas-mire-figyeljen</loc>
+    <loc>https://biztor.hu/infok/kegyeleti-biztositas-mire-figyeljen/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/kegyeleti-dokumentumok</loc>
+    <loc>https://biztor.hu/infok/kegyeleti-dokumentumok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/kegyeleti-kedvezmenyezett-kijelolese</loc>
+    <loc>https://biztor.hu/infok/kegyeleti-kedvezmenyezett-kijelolese/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/lopas-teendoi</loc>
+    <loc>https://biztor.hu/infok/lopas-teendoi/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/onresz-optimalizalas</loc>
+    <loc>https://biztor.hu/infok/onresz-optimalizalas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/infok/total-kar-eset-teendoi</loc>
+    <loc>https://biztor.hu/infok/total-kar-eset-teendoi/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/info-utazas-elet</loc>
+    <loc>https://biztor.hu/info-utazas-elet/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/kapcsolat</loc>
+    <loc>https://biztor.hu/kapcsolat/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/kegyeleti-biztositas</loc>
+    <loc>https://biztor.hu/kegyeleti-biztositas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/kotelezo-biztositas</loc>
+    <loc>https://biztor.hu/kotelezo-biztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/kgfb-flotta</loc>
+    <loc>https://biztor.hu/kgfb-flotta/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/lakasbiztositas</loc>
+    <loc>https://biztor.hu/lakasbiztositas/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/megtakaritas</loc>
+    <loc>https://biztor.hu/megtakaritas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/mezogazdasagi-biztositas</loc>
+    <loc>https://biztor.hu/mezogazdasagi-biztositas/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/nyugdijbiztositas</loc>
+    <loc>https://biztor.hu/nyugdijbiztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/onkentes-pentarak</loc>
+    <loc>https://biztor.hu/onkentes-pentarak/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/panaszkezeles</loc>
+    <loc>https://biztor.hu/panaszkezeles/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/polgarorseg</loc>
+    <loc>https://biztor.hu/polgarorseg/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/rolunk</loc>
+    <loc>https://biztor.hu/rolunk/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/andrea</loc>
+    <loc>https://biztor.hu/szakember/andrea/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/anita</loc>
+    <loc>https://biztor.hu/szakember/anita/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/erika</loc>
+    <loc>https://biztor.hu/szakember/erika/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/katalin</loc>
+    <loc>https://biztor.hu/szakember/katalin/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/kocsis</loc>
+    <loc>https://biztor.hu/szakember/kocsis/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/mihaly</loc>
+    <loc>https://biztor.hu/szakember/mihaly/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/szandra</loc>
+    <loc>https://biztor.hu/szakember/szandra/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakember/viktoria</loc>
+    <loc>https://biztor.hu/szakember/viktoria/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szakmai-felelosseg</loc>
+    <loc>https://biztor.hu/szakmai-felelosseg/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/szolgaltatasok</loc>
+    <loc>https://biztor.hu/szolgaltatasok/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/torveny-2023</loc>
+    <loc>https://biztor.hu/torveny-2023/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/utasbiztositas</loc>
+    <loc>https://biztor.hu/utasbiztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/vallalkozasbiztositas</loc>
+    <loc>https://biztor.hu/vallalkozasbiztositas/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/vallalkozas-altalanos</loc>
+    <loc>https://biztor.hu/vallalkozas-altalanos/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://biztor.hu/oldalterkep</loc>
+    <loc>https://biztor.hu/oldalterkep/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
