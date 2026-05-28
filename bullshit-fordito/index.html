@@ -8,12 +8,12 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://biztor.hu/bullshit-fordito/" />
     <meta property="og:title" content="Bullshit Fordító – biztosítási fogalmak emberi nyelven" />
-    <meta property="og:description" content="Önrész? Kizárás? Várakozási idő? A Bullshit Fordító érthetően megmagyarázza a biztosítási szakzsargont." />
+    <meta property="og:description" content="Írj be egy biztosítási vagy pénzügyi kifejezést, és közérthetően elmagyarázzuk, mit jelent, mire figyelj, és miért lehet fontos a szerződésedben." />
     <meta property="og:url" content="https://biztor.hu/bullshit-fordito/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://biztor.hu/img/biztor/biztorfront.jpg" />
     <meta property="og:locale" content="hu_HU" />
-    <meta name="theme-color" content="#3b82f6" />
+    <meta name="theme-color" content="#FFA726" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,18 +27,21 @@
           ]
         },
         {
-          "@type": "WebPage",
+          "@type": "WebApplication",
+          "name": "Bullshit Fordító",
           "url": "https://biztor.hu/bullshit-fordito/",
-          "name": "Bullshit Fordító – biztosítási fogalmak emberi nyelven | Biztor Alkusz",
-          "description": "Interaktív biztosítási szótár: írd be a szakzsargont, emberi nyelven megmagyarázzuk. 50+ fogalom, kereshető, ingyenes.",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "description": "Interaktív biztosítási fogalomtár: írd be a szakkifejezést, és közérthető magyarázatot kapsz. 300+ fogalom, kereshető, ingyenes.",
           "inLanguage": "hu-HU",
-          "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HUF" },
           "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
         }
       ]
     }
     </script>
     <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icon/favicon.ico" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="stylesheet" href="/css/fonts.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
@@ -50,7 +53,7 @@
     <link rel="stylesheet" href="/css/bullshit-fordito.css" />
   </head>
 
-  <body>
+  <body class="bf-page">
     <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
       <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
@@ -104,155 +107,172 @@
     <!-- ══════════ HERO ══════════ -->
     <section class="bf-hero" id="fo-tartalom">
       <div class="container position-relative" style="z-index:2;">
-        <a href="/jatekzona/" class="bf-back-link"><i class="fa fa-arrow-left"></i> Vissza a Játékzónába</a>
+        <a href="/jatekzona/" class="bf-back-link"><i class="fa fa-arrow-left" aria-hidden="true"></i> Vissza a Játékzónába</a>
         <nav aria-label="Webhely útvonal">
-          <ol class="jz-breadcrumb">
+          <ol class="bf-breadcrumb">
             <li><a href="/">Kezdőlap</a></li>
-            <span class="jz-breadcrumb-sep">›</span>
+            <span class="bf-breadcrumb-sep" aria-hidden="true">›</span>
             <li><a href="/jatekzona/">Játékzóna</a></li>
-            <span class="jz-breadcrumb-sep">›</span>
+            <span class="bf-breadcrumb-sep" aria-hidden="true">›</span>
             <li aria-current="page">Bullshit Fordító</li>
           </ol>
         </nav>
-        <div class="row align-items-center g-4 mt-1">
-          <div class="col-lg-8">
-            <div class="bf-hero-badge"><i class="fa fa-language me-1"></i> Interaktív fogalomtár</div>
-            <h1>Bullshit Fordító</h1>
-            <p class="bf-hero-sub">Írj be egy biztosítós vagy pénzügyi kifejezést – mi lefordítjuk emberi nyelvre.</p>
-            <p class="bf-hero-note">Önrész? Kizárás? Várakozási idő? Ha egy szerződésben furcsán hangzik, itt gyorsan megnézheted, mit jelent.</p>
-          </div>
-          <div class="col-lg-4 d-none d-lg-flex justify-content-end align-items-center">
-            <div class="bf-hero-emoji" aria-hidden="true">🔤</div>
-          </div>
-        </div>
+        <div class="bf-hero-badge"><i class="fa fa-language" aria-hidden="true"></i> Interaktív fogalomtár</div>
+        <h1>Bullshit <span>Fordító</span></h1>
+        <p class="bf-hero-sub">Biztosítós szövegből emberi magyarázat. Írj be egy kifejezést, és közérthetően elmondjuk, mit jelent, mire figyelj, és miért lehet fontos a szerződésedben.</p>
+        <ul class="bf-hero-points">
+          <li>Önrész, kizárás, várakozási idő, kockázatviselés.</li>
+          <li>Olyan szavak, amelyek kár esetén nagyon is számítanak.</li>
+          <li>Itt gyorsan megnézheted, mit jelentenek emberi nyelven.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- ══════════ FORDÍTÓGÉP ══════════ -->
-    <section class="bf-section" id="fordito">
+    <!-- ══════════ GENERÁTOR ══════════ -->
+    <section class="bf-machine-section" id="bf-fordito" aria-label="Fordító">
       <div class="container">
-        <div class="bf-machine-wrap">
+        <div class="translator-machine" id="bfMachine">
 
-          <!-- Input -->
-          <label class="bf-input-label" for="bfInput">Biztosítási kifejezés</label>
-          <div class="bf-input-row">
-            <input
-              type="text"
-              id="bfInput"
-              class="bf-input-field"
-              placeholder="pl. önrész, kizárás, várakozási idő…"
-              autocomplete="off"
-              spellcheck="false"
-              maxlength="120"
-              aria-label="Biztosítási kifejezés beírása"
-            />
-            <button type="button" id="bfBtn" class="bf-translate-btn" aria-label="Fordítás indítása">
-              Lefordítom <span class="btn-arrow" aria-hidden="true">→</span>
-            </button>
-          </div>
-
-          <!-- Hibaüzenet -->
-          <div class="bf-error-msg" id="bfError" role="alert" aria-live="polite"></div>
-
-          <!-- Gyors chipek -->
-          <div class="bf-chips" role="group" aria-label="Gyors példa fogalmak">
-            <span class="bf-chips-label">Gyors példák:</span>
-            <button type="button" class="bf-chip" data-term="önrész">Önrész</button>
-            <button type="button" class="bf-chip" data-term="kizárás">Kizárás</button>
-            <button type="button" class="bf-chip" data-term="várakozási idő">Várakozási idő</button>
-            <button type="button" class="bf-chip" data-term="alulbiztosítottság">Alulbiztosítottság</button>
-            <button type="button" class="bf-chip" data-term="avultatás">Avultatás</button>
-            <button type="button" class="bf-chip" data-term="totálkár">Totálkár</button>
-            <button type="button" class="bf-chip" data-term="indexálás">Indexálás</button>
-            <button type="button" class="bf-chip" data-term="díjnemfizetés">Díjnemfizetés</button>
-          </div>
-
-          <!-- Scanner animáció -->
-          <div class="bf-scanner-wrap" id="bfScanner" aria-hidden="true">
-            <div class="bf-scanner-bg">
-              <span class="bf-scanner-term" id="bfScannerTerm"></span>
-              <div class="bf-scanner-line" id="bfScannerLine"></div>
+          <!-- Input panel -->
+          <div class="translator-input-panel">
+            <label class="bf-input-label" for="bfInput">Biztosítási vagy pénzügyi kifejezés</label>
+            <div class="bf-input-row">
+              <input
+                type="text"
+                id="bfInput"
+                class="bf-input-field"
+                placeholder="pl. önrész, kizárás, bonus-malus, avultatás…"
+                autocomplete="off"
+                spellcheck="false"
+                maxlength="120"
+                aria-label="Biztosítási kifejezés beírása"
+              />
+              <button type="button" id="bfBtn" class="bf-translate-btn">
+                Lefordítom <i class="fa fa-arrow-right bf-btn-arrow" aria-hidden="true"></i>
+              </button>
             </div>
-            <div class="bf-scanner-status">Fordítjuk emberi nyelvre…</div>
+            <div class="bf-error-msg" id="bfError" role="alert" aria-live="assertive"></div>
+
+            <div class="bf-chips" role="group" aria-label="Gyors példa fogalmak">
+              <span class="bf-chips-label">Gyors példák:</span>
+              <button type="button" class="bf-chip" data-term="önrész">Önrész</button>
+              <button type="button" class="bf-chip" data-term="kizárás">Kizárás</button>
+              <button type="button" class="bf-chip" data-term="várakozási idő">Várakozási idő</button>
+              <button type="button" class="bf-chip" data-term="alulbiztosítottság">Alulbiztosítottság</button>
+              <button type="button" class="bf-chip" data-term="avultatás">Avultatás</button>
+              <button type="button" class="bf-chip" data-term="totálkár">Totálkár</button>
+              <button type="button" class="bf-chip" data-term="díjnemfizetés">Díjnemfizetés</button>
+              <button type="button" class="bf-chip" data-term="bonus-malus">Bonus-malus</button>
+              <button type="button" class="bf-chip" data-term="fedezet">Fedezet</button>
+              <button type="button" class="bf-chip" data-term="záradék">Záradék</button>
+            </div>
           </div>
 
-          <!-- Eredmény kártya (aria-live) -->
-          <div id="bfResultCard" class="bf-result-card" role="region" aria-live="polite" aria-label="Fordítás eredménye"></div>
+          <!-- Feldolgozó csatorna -->
+          <div class="translator-tunnel" aria-hidden="true">
+            <div class="translator-beam"></div>
+            <div class="translator-token">
+              <i class="fa fa-quote-left bf-token-ico" aria-hidden="true"></i>
+              <span class="bf-token-text" id="bfTokenText"></span>
+            </div>
+            <div class="translator-steps">
+              <div class="translator-step"><span class="bf-step-dot"></span> Szakkifejezés felismerése</div>
+              <div class="translator-step"><span class="bf-step-dot"></span> Jelentés kibontása</div>
+              <div class="translator-step"><span class="bf-step-dot"></span> Emberi nyelvre fordítás</div>
+            </div>
+          </div>
 
-          <!-- Nincs találat kártya -->
-          <div id="bfNoMatchCard" class="bf-no-match-card" role="region" aria-live="polite"></div>
+          <!-- Kimenet -->
+          <div class="translator-output">
+            <div class="translator-result-card" id="bfResultCard" role="region" aria-live="polite" aria-label="Fordítás eredménye"></div>
+            <div class="translator-nomatch" id="bfNoMatch" role="region" aria-live="polite"></div>
+          </div>
 
-        </div><!-- /.bf-machine-wrap -->
+        </div><!-- /.translator-machine -->
       </div>
     </section>
 
-    <!-- ══════════ FOGALOMTÁR ══════════ -->
-    <section class="bf-glossary" id="fogalomtar" aria-labelledby="fogalomtarTitle">
+    <!-- ══════════ FOGALOMTÁR BÖNGÉSZŐ ══════════ -->
+    <section class="bf-section bf-glossary" id="fogalomtar" aria-labelledby="bfGlossaryTitle">
       <div class="container">
-        <h2 class="bf-section-title" id="fogalomtarTitle">Gyakori biztosítási fogalmak</h2>
-        <p class="bf-section-sub">Kattints bármelyik kártyára, és azonnal megjeleníti a fordítást.</p>
-
-        <!-- Kategória fülek -->
-        <div class="bf-cat-tabs" role="tablist" aria-label="Fogalom kategóriák">
-          <button type="button" class="bf-cat-tab active" data-cat="mind" role="tab" aria-selected="true">Mind</button>
-          <button type="button" class="bf-cat-tab" data-cat="Általános" role="tab" aria-selected="false">📄 Általános</button>
-          <button type="button" class="bf-cat-tab" data-cat="Gépjármű" role="tab" aria-selected="false">🚗 Gépjármű</button>
-          <button type="button" class="bf-cat-tab" data-cat="Lakás" role="tab" aria-selected="false">🏠 Lakás</button>
-          <button type="button" class="bf-cat-tab" data-cat="Élet és egészség" role="tab" aria-selected="false">❤️ Élet és egészség</button>
-          <button type="button" class="bf-cat-tab" data-cat="Vállalati" role="tab" aria-selected="false">🏢 Vállalati</button>
-          <button type="button" class="bf-cat-tab" data-cat="Kárügyintézés" role="tab" aria-selected="false">🔧 Kárügyintézés</button>
+        <div class="bf-section-head">
+          <h2 class="bf-section-title" id="bfGlossaryTitle">Gyakori biztosítási fogalmak</h2>
+          <p class="bf-section-sub">Böngéssz kategória szerint vagy keress rá egy szóra. Kattints bármelyik kártyára, és a fordító azonnal megmutatja a magyarázatot.</p>
         </div>
 
-        <!-- Fogalmak rács -->
-        <div class="bf-terms-grid" id="bfTermsGrid" role="list" aria-label="Fogalmak kártyái"></div>
+        <div class="bf-glossary-search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" id="bfGlossarySearch" placeholder="Keresés a fogalomtárban…" autocomplete="off" spellcheck="false" aria-label="Keresés a fogalomtárban" />
+        </div>
+
+        <div class="bf-cat-tabs" role="tablist" aria-label="Fogalom kategóriák">
+          <button type="button" class="bf-cat-tab active" data-cat="mind" role="tab" aria-selected="true"><i class="fa fa-th-large" aria-hidden="true"></i> Mind</button>
+          <button type="button" class="bf-cat-tab" data-cat="Általános" role="tab" aria-selected="false"><i class="fa fa-file-contract" aria-hidden="true"></i> Általános</button>
+          <button type="button" class="bf-cat-tab" data-cat="Gépjármű" role="tab" aria-selected="false"><i class="fa fa-car" aria-hidden="true"></i> Gépjármű</button>
+          <button type="button" class="bf-cat-tab" data-cat="Lakás" role="tab" aria-selected="false"><i class="fa fa-home" aria-hidden="true"></i> Lakás</button>
+          <button type="button" class="bf-cat-tab" data-cat="Életbiztosítás" role="tab" aria-selected="false"><i class="fa fa-heart" aria-hidden="true"></i> Élet</button>
+          <button type="button" class="bf-cat-tab" data-cat="Baleset és egészség" role="tab" aria-selected="false"><i class="fa fa-heartbeat" aria-hidden="true"></i> Baleset és egészség</button>
+          <button type="button" class="bf-cat-tab" data-cat="Utasbiztosítás" role="tab" aria-selected="false"><i class="fa fa-plane" aria-hidden="true"></i> Utas</button>
+          <button type="button" class="bf-cat-tab" data-cat="Vállalati" role="tab" aria-selected="false"><i class="fa fa-building" aria-hidden="true"></i> Vállalati</button>
+          <button type="button" class="bf-cat-tab" data-cat="Felelősség" role="tab" aria-selected="false"><i class="fa fa-balance-scale" aria-hidden="true"></i> Felelősség</button>
+          <button type="button" class="bf-cat-tab" data-cat="Kárügyintézés" role="tab" aria-selected="false"><i class="fa fa-tools" aria-hidden="true"></i> Kárügyintézés</button>
+          <button type="button" class="bf-cat-tab" data-cat="Díj és szerződés" role="tab" aria-selected="false"><i class="fa fa-file-invoice-dollar" aria-hidden="true"></i> Díj és szerződés</button>
+          <button type="button" class="bf-cat-tab" data-cat="Mezőgazdaság" role="tab" aria-selected="false"><i class="fa fa-seedling" aria-hidden="true"></i> Mezőgazdaság</button>
+          <button type="button" class="bf-cat-tab" data-cat="Pénzügyi" role="tab" aria-selected="false"><i class="fa fa-coins" aria-hidden="true"></i> Pénzügyi</button>
+        </div>
+
+        <div class="bf-terms-grid" id="bfTermsGrid" role="list" aria-label="Fogalmak"></div>
+        <p class="bf-glossary-count" id="bfGlossaryCount" aria-live="polite"></p>
       </div>
     </section>
 
     <!-- ══════════ EDUKÁCIÓS BLOKK ══════════ -->
-    <section class="bf-edu" aria-labelledby="eduTitle">
+    <section class="bf-section bf-edu" aria-labelledby="bfEduTitle">
       <div class="container">
-        <h2 class="bf-edu-title" id="eduTitle">Miért érdemes érteni a biztosítási szöveget?</h2>
-        <p class="bf-edu-sub">Négy ok, ami a legtöbb embernek megváltoztatja a véleményét.</p>
+        <div class="bf-section-head">
+          <h2 class="bf-section-title" id="bfEduTitle">Miért fontos érteni a biztosítási szöveget?</h2>
+          <p class="bf-section-sub">Néhány ok, ami a legtöbb embernél megváltoztatja a hozzáállást.</p>
+        </div>
         <div class="bf-edu-grid">
-          <div class="bf-edu-point">
-            <div class="bf-edu-point-icon">🔍</div>
-            <div class="bf-edu-point-title">Könnyebb összehasonlítani</div>
-            <div class="bf-edu-point-text">Ha értesz a feltételekhez, hamarabb megtalálod a számodra valóban legjobb ajánlatot – nem csak az olcsót.</div>
+          <div class="bf-edu-card">
+            <span class="bf-edu-ico" aria-hidden="true"><i class="fa fa-search-plus"></i></span>
+            <h3>Kár esetén a részletek döntenek</h3>
+            <p>Egy-egy feltétel, határidő vagy önrész jelentősen befolyásolhatja, mennyit kapsz vissza, amikor tényleg számít.</p>
           </div>
-          <div class="bf-edu-point">
-            <div class="bf-edu-point-icon">😮</div>
-            <div class="bf-edu-point-title">Kevesebb kellemetlen meglepetés</div>
-            <div class="bf-edu-point-text">A legtöbb kárrendezési vita abból ered, hogy az ügyfél mást gondolt, mint amit a szerződés tartalmaz.</div>
+          <div class="bf-edu-card">
+            <span class="bf-edu-ico" aria-hidden="true"><i class="fa fa-shield-alt"></i></span>
+            <h3>Nem mindegy, mire terjed ki a fedezet</h3>
+            <p>Két hasonló árú szerződés között óriási különbség lehet abban, hogy mit fed le és mit zár ki.</p>
           </div>
-          <div class="bf-edu-point">
-            <div class="bf-edu-point-icon">💡</div>
-            <div class="bf-edu-point-title">Látod, mire fizetsz</div>
-            <div class="bf-edu-point-text">Egy jól értett szerződésnél pontosan tudod, mi fér bele és mi nem – ez önbizalmat ad kárbejelentéskor is.</div>
+          <div class="bf-edu-card">
+            <span class="bf-edu-ico" aria-hidden="true"><i class="fa fa-file-signature"></i></span>
+            <h3>Az apróbetűs rész gyakran pénzről szól</h3>
+            <p>A záradékok és kizárások sokszor pont azokat az eseteket érintik, amelyek a legtöbbe kerülhetnek.</p>
           </div>
-          <div class="bf-edu-point">
-            <div class="bf-edu-point-icon">🤝</div>
-            <div class="bf-edu-point-title">Tudod, mikor kell szakértő</div>
-            <div class="bf-edu-point-text">Nem minden döntést kell egyedül meghozni. De aki érti a kérdéseket, sokkal jobb tárgyalási pozícióból indul.</div>
+          <div class="bf-edu-card">
+            <span class="bf-edu-ico" aria-hidden="true"><i class="fa fa-clipboard-check"></i></span>
+            <h3>Egy átnézés sok meglepetést megelőz</h3>
+            <p>Ha előre tudod, mire figyelj, kevesebb kellemetlen meglepetés érhet a kárrendezésnél.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════ ZÁRÓ CTA ══════════ -->
-    <section class="bf-final-cta" aria-labelledby="ctaTitle">
+    <section class="bf-final-cta" aria-labelledby="bfCtaTitle">
       <div class="container">
-        <div class="bf-final-cta-icon" aria-hidden="true">📋</div>
-        <h2 id="ctaTitle">Nem biztos benne, mit jelent a szerződésében?</h2>
-        <p class="bf-final-cta-sub">Átnézzük, és érthetően elmondjuk – ingyen, kötelezettség nélkül.</p>
-        <div class="bf-final-cta-btns">
-          <a href="/kapcsolat" class="bf-final-btn-primary"><i class="fa fa-file-alt me-2"></i>Átnézetem</a>
-          <a href="tel:+36706258201" class="bf-final-btn-outline phone-link"><i class="fa fa-phone-alt me-2"></i>Visszahívást kérek</a>
-          <a href="/jatekzona/" class="bf-final-btn-outline"><i class="fa fa-gamepad me-2"></i>Vissza a Játékzónába</a>
+        <span class="bf-final-ico" aria-hidden="true"><i class="fa fa-clipboard-list"></i></span>
+        <h2 id="bfCtaTitle">Van olyan kifejezés a szerződésében, amit nem teljesen ért?</h2>
+        <p>Átnézzük, és érthetően elmondjuk, mire figyeljen – kötelezettség nélkül.</p>
+        <div class="bf-final-btns">
+          <a href="/kapcsolat" class="bf-final-primary"><i class="fa fa-file-alt" aria-hidden="true"></i> Átnézetem</a>
+          <a href="/kapcsolat" class="bf-final-outline"><i class="fa fa-comment-dots" aria-hidden="true"></i> Kapcsolat</a>
+          <a href="tel:+36706258201" class="bf-final-outline phone-link"><i class="fa fa-phone-alt" aria-hidden="true"></i> Visszahívást kérek</a>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ FOOTER ══════════ -->
+    <!-- Footer -->
     <div class="container-fluid bg-dark footer mt-0 pt-5">
       <div class="container py-5">
         <div class="row g-5">
@@ -316,530 +336,7 @@
     <script defer src="/js/main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script defer src="/js/bullshit-fordito-glossary.js"></script>
     <script defer src="/js/bullshit-fordito.js"></script>
-
-    <script>
-    (function () {
-      "use strict";
-
-      var inputEl      = document.getElementById('bfInput');
-      var btn          = document.getElementById('bfBtn');
-      var errorEl      = document.getElementById('bfError');
-      var scannerEl    = document.getElementById('bfScanner');
-      var scanTermEl   = document.getElementById('bfScannerTerm');
-      var scanLineEl   = document.getElementById('bfScannerLine');
-      var resultCard   = document.getElementById('bfResultCard');
-      var noMatchCard  = document.getElementById('bfNoMatchCard');
-      var termsGrid    = document.getElementById('bfTermsGrid');
-
-      /* ── Segédfüggvények ─────────────────────────────────── */
-      function hideAll() {
-        resultCard.classList.remove('active');
-        noMatchCard.classList.remove('active');
-        scannerEl.classList.remove('active');
-        errorEl.classList.remove('visible');
-        errorEl.textContent = '';
-      }
-
-      function escHtml(str) {
-        return String(str)
-          .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-          .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      }
-
-      /* ── Fordítás futtatása ───────────────────────────────── */
-      function runTranslation(query) {
-        if (!query || !query.trim()) {
-          errorEl.textContent = 'Írj be egy kifejezést, amit lefordíthatunk.';
-          errorEl.classList.add('visible');
-          inputEl.focus();
-          return;
-        }
-        if (query.length > 120) {
-          errorEl.textContent = 'Kicsit rövidebb kifejezést adj meg!';
-          errorEl.classList.add('visible');
-          return;
-        }
-
-        hideAll();
-
-        /* Scanner megjelenítése */
-        scanTermEl.textContent = query;
-        /* Scanline újraindul */
-        scanLineEl.style.animation = 'none';
-        scannerEl.classList.add('active');
-        void scanLineEl.offsetWidth; /* reflow */
-        scanLineEl.style.animation = '';
-
-        btn.classList.add('loading');
-        btn.setAttribute('aria-busy', 'true');
-
-        /* Kis delay hogy az animáció látszódjon */
-        var delay = window.BF ? 750 : 950;
-        setTimeout(function () {
-          scannerEl.classList.remove('active');
-          btn.classList.remove('loading');
-          btn.removeAttribute('aria-busy');
-
-          if (!window.BF) {
-            /* BF JS még nem töltött be — újrapróbál */
-            errorEl.textContent = 'A szótár még töltődik, próbáld újra egy pillanat múlva.';
-            errorEl.classList.add('visible');
-            return;
-          }
-
-          var res = window.BF.searchGlossary(query);
-          if (res.found && res.result) {
-            renderResult(res.result);
-            resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          } else if (res.suggestions && res.suggestions.length > 0) {
-            renderNoMatch(query, res.suggestions);
-            noMatchCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          } else {
-            renderNoMatch(query, []);
-            noMatchCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }, delay);
-      }
-
-      /* ── Eredmény kártya renderelés ──────────────────────── */
-      function renderResult(entry) {
-        var sections = '';
-        sections += '<div class="bf-result-section explain">'
-          + '<div class="bf-result-icon explain" aria-hidden="true">💬</div>'
-          + '<div>'
-          + '<div class="bf-result-content-label">Mit jelent?</div>'
-          + '<div class="bf-result-content-text">' + escHtml(entry.plainExplanation) + '</div>'
-          + '</div></div>';
-        sections += '<div class="bf-result-section why">'
-          + '<div class="bf-result-icon why" aria-hidden="true">💡</div>'
-          + '<div>'
-          + '<div class="bf-result-content-label">Miért fontos?</div>'
-          + '<div class="bf-result-content-text">' + escHtml(entry.whyItMatters) + '</div>'
-          + '</div></div>';
-        sections += '<div class="bf-result-section check">'
-          + '<div class="bf-result-icon check" aria-hidden="true">✅</div>'
-          + '<div>'
-          + '<div class="bf-result-content-label">Mire figyelj?</div>'
-          + '<div class="bf-result-content-text">' + escHtml(entry.whatToCheck) + '</div>'
-          + '</div></div>';
-        sections += '<div class="bf-result-section mistake">'
-          + '<div class="bf-result-icon mistake" aria-hidden="true">⚠️</div>'
-          + '<div>'
-          + '<div class="bf-result-content-label">Gyakori félreértés</div>'
-          + '<div class="bf-result-content-text">' + escHtml(entry.commonMisunderstanding) + '</div>'
-          + '</div></div>';
-        if (entry.example) {
-          sections += '<div class="bf-result-section example">'
-            + '<div class="bf-result-icon example" aria-hidden="true">📖</div>'
-            + '<div>'
-            + '<div class="bf-result-content-label">Példa</div>'
-            + '<div class="bf-result-content-text">' + escHtml(entry.example) + '</div>'
-            + '</div></div>';
-        }
-
-        resultCard.innerHTML =
-          '<div class="bf-result-header">'
-          + '<div>'
-          + '<div class="bf-result-term-text">' + escHtml(entry.catIcon || '') + ' ' + escHtml(entry.term) + '</div>'
-          + '</div>'
-          + '<span class="bf-result-cat-badge">' + escHtml(entry.category) + '</span>'
-          + '</div>'
-          + '<div class="bf-result-body">' + sections + '</div>'
-          + '<div class="bf-result-cta">'
-          + '<div class="bf-result-cta-hint">' + escHtml(entry.ctaHint || 'Kérdése van? Segítünk.') + '</div>'
-          + '<a href="/kapcsolat" class="bf-cta-btn-primary"><i class="fa fa-file-alt me-1"></i>Átnézetem</a>'
-          + '<a href="tel:+36706258201" class="bf-cta-btn-outline phone-link"><i class="fa fa-phone-alt me-1"></i>Visszahívást kérek</a>'
-          + '</div>';
-
-        noMatchCard.classList.remove('active');
-        resultCard.classList.add('active');
-      }
-
-      /* ── Nincs találat kártya renderelés ─────────────────── */
-      function renderNoMatch(query, suggestions) {
-        var suggestHtml = '';
-        if (suggestions && suggestions.length > 0) {
-          suggestHtml = '<p style="font-size:.875rem;color:#92400e;margin-bottom:.5rem;">Talán erre gondoltál?</p>'
-            + '<div class="bf-suggestions">';
-          suggestions.forEach(function (s) {
-            suggestHtml += '<button type="button" class="bf-suggestion-btn" data-term="' + escHtml(s.term) + '">'
-              + escHtml(s.catIcon || '') + ' ' + escHtml(s.term)
-              + '</button>';
-          });
-          suggestHtml += '</div>';
-        } else {
-          suggestHtml = '<div class="bf-suggestions">'
-            + '<a href="/kapcsolat" class="bf-cta-btn-primary mt-2" style="font-size:.875rem;">Kérdezz rá nálunk</a>'
-            + '</div>';
-        }
-
-        noMatchCard.innerHTML =
-          '<div class="bf-no-match-title">🤔 Ezt pontosan nem ismerjük még…</div>'
-          + '<div class="bf-no-match-body">„' + escHtml(query) + '" kifejezésre nem találtunk pontos egyezést, de lehet, hogy hasonlóra gondoltál.</div>'
-          + suggestHtml;
-
-        resultCard.classList.remove('active');
-        noMatchCard.classList.add('active');
-
-        /* Javaslat gombok eseménykezelői */
-        noMatchCard.querySelectorAll('.bf-suggestion-btn').forEach(function (sb) {
-          sb.addEventListener('click', function () {
-            var t = sb.dataset.term;
-            if (t) {
-              inputEl.value = t;
-              runTranslation(t);
-            }
-          });
-        });
-      }
-
-      /* ── Fogalomtár rács ──────────────────────────────────── */
-      function renderGlossary(cat) {
-        if (!window.BF_GLOSSARY) return;
-        var list = cat === 'mind'
-          ? window.BF_GLOSSARY
-          : window.BF_GLOSSARY.filter(function (e) { return e.category === cat; });
-
-        termsGrid.innerHTML = '';
-        list.forEach(function (entry) {
-          var card = document.createElement('div');
-          card.className = 'bf-term-card';
-          card.setAttribute('role', 'listitem');
-          card.setAttribute('tabindex', '0');
-          card.setAttribute('aria-label', entry.term + ' — ' + entry.category);
-          card.innerHTML =
-            '<div class="bf-term-card-icon" aria-hidden="true">' + escHtml(entry.catIcon || '📄') + '</div>'
-            + '<div class="bf-term-card-name">' + escHtml(entry.term) + '</div>'
-            + '<div class="bf-term-card-cat">' + escHtml(entry.category) + '</div>'
-            + '<div class="bf-term-card-peek">' + escHtml(entry.plainExplanation) + '</div>';
-          card.addEventListener('click', function () {
-            inputEl.value = entry.term;
-            runTranslation(entry.term);
-            document.getElementById('fordito').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-          card.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              card.click();
-            }
-          });
-          termsGrid.appendChild(card);
-        });
-      }
-
-      /* ── Kategória fülek ─────────────────────────────────── */
-      document.querySelectorAll('.bf-cat-tab').forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          document.querySelectorAll('.bf-cat-tab').forEach(function (t) {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-          renderGlossary(tab.dataset.cat);
-        });
-      });
-
-      /* ── Chip kattintás ───────────────────────────────────── */
-      document.querySelectorAll('.bf-chip').forEach(function (chip) {
-        chip.addEventListener('click', function () {
-          var t = chip.dataset.term;
-          if (t) {
-            inputEl.value = t;
-            runTranslation(t);
-            document.getElementById('fordito').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-        chip.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chip.click(); }
-        });
-      });
-
-      /* ── Gomb kattintás ───────────────────────────────────── */
-      btn.addEventListener('click', function () {
-        runTranslation(inputEl.value.trim());
-      });
-
-      /* ── Enter billentyű az inputon ───────────────────────── */
-      inputEl.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          runTranslation(inputEl.value.trim());
-        }
-      });
-
-      /* ── Input változáskor hiba törlése ───────────────────── */
-      inputEl.addEventListener('input', function () {
-        if (errorEl.classList.contains('visible')) {
-          errorEl.classList.remove('visible');
-          errorEl.textContent = '';
-        }
-      });
-
-      /* ── Fogalomtár betöltése (BF_GLOSSARY lehet defer) ───── */
-      function tryInitGlossary() {
-        if (window.BF_GLOSSARY) {
-          renderGlossary('mind');
-        } else {
-          setTimeout(tryInitGlossary, 200);
-        }
-      }
-      tryInitGlossary();
-
-    })();
-    </script>
-  </body>
-</html>
-      <div class="row gx-0 align-items-center">
-        <div class="col d-flex align-items-center gap-3">
-          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
-          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navbar -->
-    <div class="insure-navbar sticky-top">
-      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
-        <a href="/" class="insure-navbar-brand d-flex align-items-center">
-          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
-        </a>
-        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="insure-icon-menu d-none d-lg-flex">
-          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
-          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
-          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
-          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
-        </ul>
-      </div>
-      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
-        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
-          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
-          <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
-          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
-          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- HERO -->
-    <section class="game-hero" id="fo-tartalom">
-      <div class="container position-relative" style="z-index:2;">
-        <div class="jz-breadcrumb">
-          <a href="/jatekzona/">Játékzóna</a>
-          <span class="jz-breadcrumb-sep">›</span>
-          <span>Bullshit Fordító</span>
-        </div>
-        <div class="game-hero-badge"><i class="fa fa-language me-1"></i> Interaktív</div>
-        <h1>Bullshit <span>Fordító</span></h1>
-        <p>Biztosítási szakzsargon → emberi nyelv. Keresd ki a mondatot, és megtudod, mit jelent valójában.</p>
-      </div>
-    </section>
-
-    <!-- GAME SECTION -->
-    <section class="game-section">
-      <div class="container">
-        <div class="bs-container">
-
-          <h2 style="font-size:1.1rem;font-weight:700;color:#1c1c2e;margin-bottom:.5rem;">Válassz egy mondatot</h2>
-          <p style="font-size:.85rem;color:#6b7280;margin-bottom:1.25rem;">…vagy írj be bármilyen biztosítási szakszót.</p>
-
-          <!-- Gyors példák -->
-          <div class="bs-samples" id="bsSamples"></div>
-
-          <!-- Saját input -->
-          <div class="bs-input-wrap">
-            <textarea class="bs-textarea" id="bsInput" rows="3" placeholder="Pl. komplex kockázatkezelési megoldás..."></textarea>
-          </div>
-
-          <button class="bs-translate-btn" id="bsTranslateBtn">
-            <i class="fa fa-exchange-alt"></i> Fordítás
-          </button>
-
-          <!-- Eredmény -->
-          <div class="bs-result" id="bsResult">
-            <div class="bs-result-label">Emberi fordítás:</div>
-            <div class="bs-result-text" id="bsResultText"></div>
-            <div class="bs-result-sub" id="bsResultSub"></div>
-          </div>
-
-          <!-- Game CTA -->
-          <div class="game-cta mt-4">
-            <h4>Komolyra fordítva</h4>
-            <p>Ha van egy biztosítási kérdésed, amelyre valódi választ szeretnél – hívj minket.</p>
-            <div class="game-cta-btns">
-              <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Ajánlatkérés</a>
-              <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
-              <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza a játékzónához</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <div class="container-fluid bg-dark footer mt-0 pt-5">
-      <div class="container py-5">
-        <div class="row g-5">
-          <div class="col-lg-4 col-md-6">
-            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
-            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
-            <div class="d-flex pt-2">
-              <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-              <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a class="btn btn-square me-1 phone-link" href="tel:+36425952480" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <h5 class="text-light mb-4">Gyors linkek</h5>
-            <a class="btn btn-link" href="/">Kezdőlap</a>
-            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
-            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <h5 class="text-light mb-4">Más játékok</h5>
-            <a class="btn btn-link" href="/biztositas-tinder/">Biztosítás Tinder</a>
-            <a class="btn btn-link" href="/biztositasi-horoszkop/">Horoszkóp</a>
-            <a class="btn btn-link" href="/biztositasi-kartyahuzas/">Kártyahúzás</a>
-            <a class="btn btn-link" href="/kotvenymuzeum/">Kötvénymúzeum</a>
-            <a class="btn btn-link" href="/papirdaralo/">Papírdaráló</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div></div></div></div>
-    </div>
-    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
-
-    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="/lib/wow/wow.min.js"></script>
-    <script defer src="/js/main.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script>
-    (function () {
-      var dict = [
-        {
-          input: 'Komplex kockázatkezelési megoldás',
-          output: 'Biztosítás',
-          sub: 'Igen, ennyi. A „komplex kockázatkezelési megoldás" csupán egy módszer arra, hogy drágábban hangozzon az, amit biztosításnak hívunk.'
-        },
-        {
-          input: 'Káresemény-bekövetkezési valószínűség optimalizáció',
-          output: 'Annak kiszámítása, mennyit fizetsz',
-          sub: 'A biztosító kiszámolja, milyen valószínűséggel érsz el kárt – és az alapján állapítja meg a díjadat.'
-        },
-        {
-          input: 'Deduktibilis önrész alkalmazása',
-          output: 'Ebből te fizetsz',
-          sub: 'Az önrész az a rész, amelyet kár esetén neked kell állnod. Az „deduktibilis" verzió csak angolul hangzik jobban.'
-        },
-        {
-          input: 'Szerződéses kötelezettségvállalás kárbekövetkezés esetén',
-          output: 'Ha baj van, fizetünk',
-          sub: 'A biztosítás lényege: ha bekövetkezik a biztosított esemény, a biztosító teljesít. Ennyi.'
-        },
-        {
-          input: 'Kármegelőzési és kárenyhítési kötelezettség',
-          output: 'Ha tűz van, hívj tűzoltót',
-          sub: 'A biztosított köteles mindent megtenni a kár megelőzéséért és csökkentéséért – például nem nézni tétlenül a lángokat.'
-        },
-        {
-          input: 'Indexált díjfelülvizsgálat',
-          output: 'Drágább lett az idei díjad',
-          sub: 'A biztosítók rendszeresen felülvizsgálják a díjakat az inflációhoz igazítva. Az „indexált" szó erre utal.'
-        },
-        {
-          input: 'Záradékos kiegészítő fedezet',
-          output: 'Plusz biztosítás, külön fizetve',
-          sub: 'A záradék egy extra felár ellenében kibővíti az alap fedezetet – például casco mellé üvegkár-biztosítás.'
-        },
-        {
-          input: 'Bonus-malus besorolás',
-          output: 'Mennyi baleseted volt, ez dönti el az áradat',
-          sub: 'A bonus-malus rendszer jutalmazza a kármentes éveket (bonus = olcsóbb), és bünteti a károkat (malus = drágább).'
-        },
-        {
-          input: 'Pénzügyi intézményi jelzálogjog-érvényesítési kikötés',
-          output: 'A bank is rajta van a kötvényen',
-          sub: 'Ha a lakásod jelzáloggal terhelt, a bank engedményesként szerepel a biztosításban – azaz kár esetén ők is érintettek.'
-        },
-        {
-          input: 'Vagyonvédelmi instrumentum',
-          output: 'Biztosítás (megint)',
-          sub: 'Ez csak egy másik módja ugyanannak. Minden vagyonvédelmi instrumentum valamilyen formájú biztosítás vagy befektetési eszköz.'
-        }
-      ];
-
-      var samplesEl = document.getElementById('bsSamples');
-      var inputEl   = document.getElementById('bsInput');
-      var btn       = document.getElementById('bsTranslateBtn');
-      var resultEl  = document.getElementById('bsResult');
-      var resultTxt = document.getElementById('bsResultText');
-      var resultSub = document.getElementById('bsResultSub');
-      var currentMatch = null;
-
-      // Build sample buttons
-      dict.forEach(function (item, i) {
-        var b = document.createElement('button');
-        b.className = 'bs-sample-btn';
-        b.textContent = item.input;
-        b.dataset.idx = i;
-        b.addEventListener('click', function () {
-          document.querySelectorAll('.bs-sample-btn').forEach(function (x) { x.classList.remove('active'); });
-          b.classList.add('active');
-          inputEl.value = item.input;
-          currentMatch = item;
-        });
-        samplesEl.appendChild(b);
-      });
-
-      // Translate button
-      btn.addEventListener('click', function () {
-        var val = inputEl.value.trim();
-        if (!val) return;
-        btn.classList.add('loading');
-        btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Fordítás...';
-
-        setTimeout(function () {
-          btn.classList.remove('loading');
-          btn.innerHTML = '<i class="fa fa-exchange-alt"></i> Fordítás';
-
-          // Try to find exact match first
-          var match = currentMatch;
-          if (!match) {
-            var lower = val.toLowerCase();
-            match = dict.find(function (d) { return d.input.toLowerCase() === lower; });
-          }
-          if (!match) {
-            match = dict.find(function (d) { return lower.includes(d.input.toLowerCase().split(' ')[0]); });
-          }
-          if (!match) {
-            // Generic fallback
-            match = {
-              output: 'Biztosítási zsargon',
-              sub: 'Ez a kifejezés valószínűleg egyszerűbben is elmondható lenne. Kérdezd meg a Biztort – megmagyarázzák emberi nyelven is.'
-            };
-          }
-
-          resultTxt.textContent = match.output;
-          resultSub.textContent = match.sub || '';
-          resultEl.classList.add('visible');
-          resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          currentMatch = null;
-        }, 600);
-      });
-
-      // Allow Enter key
-      inputEl.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); btn.click(); }
-      });
-    })();
-    </script>
   </body>
 </html>
