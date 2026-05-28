@@ -1,401 +1,302 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="utf-8" />
-  <title>Milyen biztosítási típus vagy? Típusteszt | Biztor Alkusz</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="7 kérdéses típusteszt. Kiderül: tudatos biztosított, kényszervásárló, túlbiztosított vagy megbízható megtartó vagy-e. Ajánlással és CTA-val." />
-  <link rel="canonical" href="https://biztor.hu/jatekzona/horoszkop/" />
-  <meta property="og:title" content="Milyen biztosítási típus vagy? – Típusteszt | Biztor" />
-  <meta property="og:description" content="7 kérdés, 4 lehetséges típus. Derítsd ki, mennyire tudatosan biztosítasz!" />
-  <meta property="og:url" content="https://biztor.hu/jatekzona/horoszkop/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Biztor Alkusz Kft." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Biztor Alkusz Kft." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
-          { "@type": "ListItem", "position": 2, "name": "Játékzóna", "item": "https://biztor.hu/jatekzona/" },
-          { "@type": "ListItem", "position": 3, "name": "Típusteszt", "item": "https://biztor.hu/jatekzona/horoszkop/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://biztor.hu/jatekzona/horoszkop/",
-        "name": "Milyen biztosítási típus vagy? – Típusteszt",
-        "description": "Játékos biztosítási személyiségtípus-teszt. 7 kérdés, 4 eredménytípus, ajánlott következő lépéssel.",
-        "inLanguage": "hu-HU",
-        "dateModified": "2026-05-27",
-        "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
-        "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" href="/img/icon/favicon.ico" />
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/lib/animate/animate.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .quiz-option { cursor: pointer; transition: background 0.15s, border-color 0.15s; border: 2px solid transparent; }
-    .quiz-option:hover { border-color: var(--primary, #FFA726); background: #fff8e1; }
-    .quiz-option.selected { border-color: var(--primary, #FFA726); background: #fff3cd; }
-    .result-icon { font-size: 3.5rem; }
-    #quiz-section, #result-section { max-width: 620px; margin: 0 auto; }
-    #result-section { display: none; }
-  </style>
-</head>
-<body>
-  <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
-  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
-  </div>
-  <!-- Topbar -->
-  <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
-    <div class="row gx-0 align-items-center">
-      <div class="col d-flex align-items-center gap-3">
-        <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-clock me-1"></i>H: 09:00–16:00, K-P: 8:00–16:00, Szo-V: Zárva</small>
-      </div>
-      <div class="col-auto d-flex align-items-center">
-        <a href="https://www.facebook.com/biztoralkusz?locale=hu_HU" class="text-dark ms-3 small fw-light" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- Navbar -->
-  <div class="insure-navbar sticky-top">
-    <div class="insure-navbar-container d-flex align-items-center justify-content-between">
-      <a href="/" class="insure-navbar-brand d-flex align-items-center">
-        <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
-      </a>
-      <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="insure-icon-menu d-none d-lg-flex">
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span><a class="title" href="/rolunk">Rólunk</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="book-outline"></ion-icon></span><a class="title" href="/infok">Infók</a></li>
-      </ul>
-    </div>
-    <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
-      <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
-        <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
-        <li class="nav-item"><a href="/rolunk" class="nav-link">Rólunk</a></li>
-        <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
-        <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
-        <li class="nav-item"><a href="/infok" class="nav-link">Infók</a></li>
-      </ul>
-    </div>
-  </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Biztosítási Horoszkóp – Milyen típus vagy? | Biztor Játékzóna</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="5 kérdés, és megtudod: milyen biztosítási személyiségtípus vagy? Guru, minimalista, ismeretlen hős vagy bölcs újrakezdő?" />
+    <meta name="theme-color" content="#FFA726" />
+    <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/jatekzona.css" />
+  </head>
 
-  <!-- Fő tartalom -->
-  <div class="container-xxl py-5" id="fo-tartalom">
-    <div class="container">
+  <body>
+    <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
+    </div>
 
-      <!-- Header -->
-      <div class="row mb-4 justify-content-center">
-        <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-          <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Kezdőlap</a></li>
-              <li class="breadcrumb-item"><a href="/jatekzona/">Játékzóna</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Típusteszt</li>
-            </ol>
-          </nav>
-          <div class="fs-1 mb-2">🎯</div>
-          <h1 class="display-5 mb-3">Milyen biztosítási típus vagy?</h1>
-          <p class="lead mb-2">7 kérdés – és kiderül, hova tartozol.</p>
-          <p class="text-muted">Ez nem egy valódi horoszkóp – de sok mindent elárul arról, mennyire tudatosan kezeled a biztosításaidat. Válaszolj őszintén, nem te leszel az egyetlen, aki ezt kapta.</p>
+    <!-- Topbar -->
+    <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+      <div class="row gx-0 align-items-center">
+        <div class="col d-flex align-items-center gap-3">
+          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
         </div>
       </div>
+    </div>
 
-      <!-- Quiz -->
-      <div class="row justify-content-center mb-5">
-        <div class="col-12">
+    <!-- Navbar -->
+    <div class="insure-navbar sticky-top">
+      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+        <a href="/" class="insure-navbar-brand d-flex align-items-center">
+          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+        </a>
+        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="insure-icon-menu d-none d-lg-flex">
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
+        </ul>
+      </div>
+      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
+          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </div>
 
-          <!-- Kérdés szekció -->
-          <div id="quiz-section">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="text-muted small" id="q-counter">1 / 7. kérdés</span>
-              <span class="text-muted small" id="q-percent">0%</span>
-            </div>
-            <div class="progress mb-4" style="height:6px;">
-              <div class="progress-bar bg-primary" id="quiz-progress" role="progressbar" style="width:0%"></div>
-            </div>
-            <div class="card border-0 shadow-sm p-4 mb-3">
-              <h5 class="fw-bold mb-4" id="q-text"></h5>
-              <div class="d-flex flex-column gap-2" id="q-options"></div>
-            </div>
-            <div class="text-center mt-3">
-              <button class="btn btn-primary rounded-pill px-5" id="next-q-btn" disabled>Következő kérdés</button>
-            </div>
+    <!-- HERO -->
+    <section class="game-hero" id="fo-tartalom">
+      <div class="container position-relative" style="z-index:2;">
+        <div class="jz-breadcrumb">
+          <a href="/jatekzona/">Játékzóna</a>
+          <span class="jz-breadcrumb-sep">›</span>
+          <span>Biztosítási Horoszkóp</span>
+        </div>
+        <div class="game-hero-badge"><i class="fa fa-star me-1"></i> Típus teszt</div>
+        <h1>Biztosítási <span>Horoszkóp</span></h1>
+        <p>5 kérdés – és megtudod, milyen biztosítási személyiségtípus vagy. Komoly eredmény, játékos formában.</p>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="game-section">
+      <div class="container">
+        <div class="quiz-wrap">
+
+          <!-- Progress -->
+          <div class="quiz-progress-bar-wrap">
+            <div class="quiz-progress-bar" id="quizBar" style="width:0%"></div>
+          </div>
+          <div class="quiz-step-label" id="quizStepLabel">1 / 5. kérdés</div>
+
+          <!-- Kérdés kártya -->
+          <div class="quiz-card" id="quizCard">
+            <div class="quiz-question" id="quizQuestion"></div>
+            <div class="quiz-answers" id="quizAnswers"></div>
           </div>
 
-          <!-- Eredmény szekció -->
-          <div id="result-section">
-            <div class="card border-0 shadow-sm p-4 p-lg-5 text-center">
-              <div class="result-icon mb-3" id="result-icon"></div>
-              <h2 class="fw-bold mb-3" id="result-title"></h2>
-              <p class="text-muted mb-3" id="result-desc"></p>
-              <div class="alert alert-warning text-start" id="result-tip" role="alert"></div>
-              <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-4">
-                <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-primary rounded-pill px-4"><i class="fa fa-file-alt me-2"></i>Ajánlatkérés</a>
-                <a href="/kapcsolat" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-search me-2"></i>Átnézetem</a>
-                <button class="btn btn-outline-secondary rounded-pill px-4" id="restart-quiz-btn">Újra tesztelek</button>
+          <!-- Eredmény -->
+          <div class="quiz-result" id="quizResult">
+            <div class="quiz-result-icon" id="quizResultIcon"></div>
+            <h3 id="quizResultTitle"></h3>
+            <p class="quiz-result-sub" id="quizResultSub"></p>
+            <div class="quiz-result-tags" id="quizResultTags"></div>
+            <div class="game-cta">
+              <h4>Ez az eredmény valós?</h4>
+              <p>Egy ingyenes konzultáción ellenőrizzük együtt, valóban rendben van-e a biztosítási védelmed.</p>
+              <div class="game-cta-btns">
+                <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Ajánlatkérés</a>
+                <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
+                <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza</a>
               </div>
             </div>
           </div>
 
         </div>
       </div>
+    </section>
 
-      <div class="mt-2 text-center">
-        <a href="/jatekzona/" class="btn btn-link text-muted"><i class="fa fa-arrow-left me-1"></i>Vissza a Játékzónába</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-      <div class="row g-5">
-        <div class="col-lg-3 col-md-6">
-          <div class="text-white mb-4"><img class="img-fluid me-3" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
-          <p>BIZTOR Alkusz Kft.<br>4400 Nyíregyháza Liliom utca 27/A.<br>MNB engedélyszám: 208080710804</p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-            <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square me-1 phone-link" href="tel:+36706258201" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
-            <a class="btn btn-square me-0" href="https://linkedin.com/company/biztor-alkusz-kft" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Footer -->
+    <div class="container-fluid bg-dark footer mt-0 pt-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor logó" width="279" height="105" decoding="async"></div>
+            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Gyors linkek</h5>
+            <a class="btn btn-link" href="/">Kezdőlap</a>
+            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Más játékok</h5>
+            <a class="btn btn-link" href="/jatekzona/bullshit-fordito/">Bullshit Fordító</a>
+            <a class="btn btn-link" href="/jatekzona/biztositas-tinder/">Biztosítás Tinder</a>
+            <a class="btn btn-link" href="/jatekzona/kartya-huzas/">Kártyahúzás</a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Elérhetőség</h5>
-          <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
-          <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
-          <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Gyors linkek</h5>
-          <a class="btn btn-link" href="/rolunk">Rólunk</a>
-          <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
-          <a class="btn btn-link" href="/szolgaltatasok">Szolgáltatásaink</a>
-          <a class="btn btn-link" href="/impresszum">Impresszum</a>
-          <a class="btn btn-link" href="/Adatkezelesi_szabalyzat_biztor_alkusz.pdf">Adatkezelési szabályzat</a>
-          <a class="btn btn-link" href="/Adatkezelesi_tajekoztato_biztor_alkusz.pdf">Adatkezelési tájékoztató</a>
-          <a class="btn btn-link" href="/panaszkezeles">Panaszkezelés</a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Dokumentumok</h5>
-          <a class="btn btn-link" href="/fentarthatosagi_kovetelmenyek.pdf">Fenntarthatósági követelmények tájékoztatás</a>
-          <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
-        </div>
       </div>
+      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a></div></div></div></div>
     </div>
-    <div class="container-fluid copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center mb-3 mb-md-0">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-  <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
-  <div class="mobile-action-bar d-lg-none" aria-label="Gyors elérhetőség">
-    <a href="/kotelezo-biztositas-ajanlatkeres" class="mobile-action-bar__primary hover-lift"><i class="fa fa-file-alt"></i> Ajánlatkérés</a>
-    <a href="tel:+36706258201" class="mobile-action-bar__secondary hover-lift phone-link" aria-label="Telefonhívás" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,167,38,0.5);color:var(--primary);"><i class="fa fa-phone-alt"></i></a>
-  </div>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/lib/wow/wow.min.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script defer src="/lib/wow/wow.min.js"></script>
-  <script defer src="/lib/easing/easing.min.js"></script>
-  <script defer src="/lib/waypoints/waypoints.min.js"></script>
-  <script defer src="/js/main.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+    (function () {
+      var questions = [
+        {
+          q: 'Hogyan közlekedel általában?',
+          answers: [
+            { text: 'Autóval – óvatosan, mindig', icon: '🚗', score: { guru: 2 } },
+            { text: 'Autóval – gyorsan, de ügyesen', icon: '🏎️', score: { minimalist: 1, newbie: 1 } },
+            { text: 'Tömegközlekedéssel', icon: '🚌', score: { minimalist: 2 } },
+            { text: 'Kerékpárral vagy gyalog', icon: '🚶', score: { newbie: 1 } }
+          ]
+        },
+        {
+          q: 'Mi a helyzeted lakhatással?',
+          answers: [
+            { text: 'Saját ház vagy lakás, biztosítással', icon: '🏠', score: { guru: 2 } },
+            { text: 'Saját lakás, biztosítás nélkül', icon: '🏚️', score: { hero: 2 } },
+            { text: 'Albérletben lakok', icon: '🔑', score: { minimalist: 1 } },
+            { text: 'Folyamatosan változik', icon: '🧳', score: { newbie: 1 } }
+          ]
+        },
+        {
+          q: 'Mennyit utazol külföldre?',
+          answers: [
+            { text: 'Minden évben – mindig utasbiztosítással', icon: '✈️', score: { guru: 2 } },
+            { text: 'Néha – de biztosítás nélkül', icon: '🗺️', score: { hero: 2 } },
+            { text: 'Ritkán, itthon maradok', icon: '🏡', score: { minimalist: 1 } },
+            { text: 'Sokat, üzleti utakon', icon: '💼', score: { guru: 1, newbie: 1 } }
+          ]
+        },
+        {
+          q: 'Mi a viszonyod a kockázathoz?',
+          answers: [
+            { text: 'Mindent biztosítok, amit csak lehet', icon: '🛡️', score: { guru: 2 } },
+            { text: 'Csak a kötelezőeket kötöm meg', icon: '📋', score: { minimalist: 2 } },
+            { text: 'Soha nem gondoltam rá komolyan', icon: '🤔', score: { hero: 2 } },
+            { text: 'Kiszámolom és döntök', icon: '📊', score: { guru: 1, minimalist: 1 } }
+          ]
+        },
+        {
+          q: 'Ha ma beütne egy váratlan kár, mi lenne?',
+          answers: [
+            { text: 'Megvan a biztosításom – fedezi', icon: '✅', score: { guru: 3 } },
+            { text: 'A kötelező talán segít valamit', icon: '🤞', score: { minimalist: 2 } },
+            { text: 'Nem tudom, mi van kötve', icon: '😬', score: { hero: 3 } },
+            { text: 'Felhívnám a Biztort kideríteni', icon: '📞', score: { newbie: 3, guru: 1 } }
+          ]
+        }
+      ];
 
-  <script>
-  var questions = [
-    {
-      text: "Mi az első gondolatod, amikor biztosítási számla érkezik?",
-      options: [
-        { text: "Megint ez... de jobb nem foglalkozni vele.", type: "A" },
-        { text: "Fizetek, és kész. Minél több fedezet, annál jobb.", type: "B" },
-        { text: "Megcsináltuk tavaly is, majd most is rendbe lesz.", type: "C" },
-        { text: "Megnézem, mit is fizetek pontosan.", type: "D" }
-      ]
-    },
-    {
-      text: "Mikor nézted utoljára, mire terjed ki a lakásbiztosításod?",
-      options: [
-        { text: "Soha igazán.", type: "A" },
-        { text: "Mindig naprakész vagyok.", type: "B" },
-        { text: "Akkor, amikor kötöttem – valamikor régebben.", type: "C" },
-        { text: "Pár hónapja végignéztem az összeset.", type: "D" }
-      ]
-    },
-    {
-      text: "Hogyan döntötted el, hol kössz biztosítást?",
-      options: [
-        { text: "Valaki ajánlotta, nem foglalkoztam vele sokat.", type: "A" },
-        { text: "Mindent összehasonlítottam, sok időt töltöttem ezzel.", type: "B" },
-        { text: "Ahol régen volt, ott maradt – nem változtattam.", type: "C" },
-        { text: "Alkuszon keresztül néztük át az opciókat.", type: "D" }
-      ]
-    },
-    {
-      text: "Vízkár ért a lakásban. Mit csinálsz először?",
-      options: [
-        { text: "Javíttatom, majd valahogy elszámolunk.", type: "A" },
-        { text: "Rögtön felhívom a biztosítót és mindent bejelentek.", type: "B" },
-        { text: "Megcsináltam, biztosítóra nem gondoltam.", type: "C" },
-        { text: "Megnézem a szerződésem, és aszerint cselekszem.", type: "D" }
-      ]
-    },
-    {
-      text: "Mi a véleményed a biztosításváltásról?",
-      options: [
-        { text: "Bonyolult és kockázatos, inkább nem.", type: "A" },
-        { text: "Váltok, ha jobb lett az ajánlat – de ritkán nézen rá.", type: "B" },
-        { text: "Nem szoktam váltani, maradok ahol vagyok.", type: "C" },
-        { text: "Évfordulón megnézem az opciókat, ha jobb, váltok.", type: "D" }
-      ]
-    },
-    {
-      text: "Mit tartasz a legfontosabbnak egy biztosításban?",
-      options: [
-        { text: "Ne kelljen sokat foglalkozni vele.", type: "A" },
-        { text: "Mindent fedjen le, az ár másodlagos.", type: "B" },
-        { text: "Olcsó legyen.", type: "C" },
-        { text: "Érthetően elmagyarázzák, mit kapok valójában.", type: "D" }
-      ]
-    },
-    {
-      text: "Kaptál valaha kárpénzt a biztosítótól?",
-      options: [
-        { text: "Soha nem is próbáltam bejelenteni.", type: "A" },
-        { text: "Igen, és mindent bejelentettem ami volt.", type: "B" },
-        { text: "Egyszer próbáltam, de bonyolult volt.", type: "C" },
-        { text: "Igen, és előtte kiszámoltam, megérte-e bejelenteni.", type: "D" }
-      ]
-    }
-  ];
+      var results = {
+        guru: {
+          icon: '🏆', title: 'A Biztosítási Guru',
+          sub: 'Gratulálunk! Te vagy az, aki mindent rendben tart. Rendszeres átvilágítással biztos vagy benne, hogy az összes fontos terület le van fedve. Nincs sok ilyen ember.',
+          tags: ['Tervező', 'Felelős', 'Profi', 'Kármentes']
+        },
+        minimalist: {
+          icon: '🌿', title: 'A Kényelmes Minimalista',
+          sub: 'Csak a kötelezőkre fókuszálsz – ami érthető. De egy-két extra fedezet nem fáj, és meglepetést sem tartogat. Érdemes egyszer átnézni, mi hiányzik.',
+          tags: ['Praktikus', 'Egyszerű', 'Megfontolandó extra', 'Kötelező kész']
+        },
+        hero: {
+          icon: '🦸', title: 'Az Ismeretlen Hős',
+          sub: 'Valószínűleg van biztosításod, de nem tudod pontosan, mi van benne. Ez a leggyakoribb típus – és a legveszélyesebb is. Egy ingyenes átnézés sokat változtathat.',
+          tags: ['Alulbiztosított valószínűleg', 'Nem tudja mi van', 'Ingyenes audit ajánlott']
+        },
+        newbie: {
+          icon: '🌱', title: 'A Bölcs Újrakezdő',
+          sub: 'Vagy most kezdesz foglalkozni ezzel a témával, vagy volt már tapasztalatod és tanultál belőle. Jó irányban indulsz – segítünk eligazodni.',
+          tags: ['Tanul', 'Nyitott', 'Fejlődik', 'Segítséggel jó úton']
+        }
+      };
 
-  var results = {
-    A: {
-      icon: "😴",
-      title: "A Kényszervásárló",
-      desc: "Van biztosítása, mert kötelező, de soha nem nézte meg igazán, mit fed. Ha baj jön, meglepetés várhatja – sajnos nem mindig kellemes. Egy alkusszal átbeszélve az összes szerződést, 1-2 óra alatt kiderülhet, hol van hiány.",
-      tip: "💡 Javaslat: Kérd egy független alkusz segítségét az összes biztosítás áttekintéséhez. Általában díjmentes."
-    },
-    B: {
-      icon: "💸",
-      title: "A Túlbiztosított",
-      desc: "Biztosítottad a biztosítottakat – és aztán még egyszer. Ez jó szándékú döntés, de valószínűleg többet fizetsz, mint kellene. Duplikált fedezetek, felesleges kiegészítők. Egy strukturált átnézéssel spórolhatnál.",
-      tip: "💡 Javaslat: Kérj alkuszi átnézést – valószínűleg le lehet csökkenteni a díjakat a fedezet minőségét megőrizve."
-    },
-    C: {
-      icon: "🗝️",
-      title: "A Megbízható Megtartó",
-      desc: "Évek óta ugyanott, ugyanazokkal a feltételekkel. Stabilitás? Igen. De az évek alatt változtak az igények, nőtt az ingatlan értéke, felnőttek a gyerekek. A régi szerződés ma már nem biztos, hogy optimális.",
-      tip: "💡 Javaslat: 5 évente érdemes felülvizsgálni a meglévő biztosítási szerkezetet. Nem változtatáshoz, csak ellenőrzéshez."
-    },
-    D: {
-      icon: "🎯",
-      title: "A Tudatos Biztosított",
-      desc: "Érti, mit vett. Rendszeresen átnézi. Kárbejelentés előtt kiszámolja, megéri-e. Ritka típus – és valóban a legjobb helyen van. Az alkusz munkája az, hogy mindenki ide jusson el.",
-      tip: "💡 Javaslat: Maradj így! Ha bármit finomítana, egy alkusz szívesen átbeszéli a részleteket."
-    }
-  };
+      var scores = { guru: 0, minimalist: 0, hero: 0, newbie: 0 };
+      var current = 0;
 
-  var currentQ = 0;
-  var scores = { A: 0, B: 0, C: 0, D: 0 };
-  var selectedOption = null;
+      var barEl        = document.getElementById('quizBar');
+      var labelEl      = document.getElementById('quizStepLabel');
+      var questionEl   = document.getElementById('quizQuestion');
+      var answersEl    = document.getElementById('quizAnswers');
+      var cardEl       = document.getElementById('quizCard');
+      var resultEl     = document.getElementById('quizResult');
+      var resultIcon   = document.getElementById('quizResultIcon');
+      var resultTitle  = document.getElementById('quizResultTitle');
+      var resultSub    = document.getElementById('quizResultSub');
+      var resultTags   = document.getElementById('quizResultTags');
 
-  function showQuestion(idx) {
-    var q = questions[idx];
-    document.getElementById('q-text').textContent = q.text;
-    document.getElementById('q-counter').textContent = (idx+1) + ' / ' + questions.length + '. kérdés';
-    var pct = Math.round(idx / questions.length * 100);
-    document.getElementById('quiz-progress').style.width = pct + '%';
-    document.getElementById('q-percent').textContent = pct + '%';
+      function renderQuestion(idx) {
+        var q = questions[idx];
+        questionEl.textContent = q.q;
+        answersEl.innerHTML = '';
+        barEl.style.width = ((idx / questions.length) * 100) + '%';
+        labelEl.textContent = (idx + 1) + ' / ' + questions.length + '. kérdés';
 
-    var opts = document.getElementById('q-options');
-    opts.innerHTML = '';
-    q.options.forEach(function(o, i) {
-      var btn = document.createElement('button');
-      btn.className = 'btn text-start quiz-option rounded p-3';
-      btn.innerHTML = '<span class="fw-semibold me-2">' + String.fromCharCode(65+i) + ')</span>' + o.text;
-      btn.dataset.type = o.type;
-      opts.appendChild(btn);
-    });
-    selectedOption = null;
-    document.getElementById('next-q-btn').disabled = true;
-    var lastQ = idx >= questions.length - 1;
-    document.getElementById('next-q-btn').textContent = lastQ ? 'Eredmény megtekintése' : 'Következő kérdés';
-  }
-
-  function showResult() {
-    var maxType = 'A';
-    var maxScore = 0;
-    Object.keys(scores).forEach(function(t) {
-      if (scores[t] > maxScore) { maxScore = scores[t]; maxType = t; }
-    });
-    var r = results[maxType];
-    document.getElementById('result-icon').textContent = r.icon;
-    document.getElementById('result-title').textContent = r.title;
-    document.getElementById('result-desc').textContent = r.desc;
-    document.getElementById('result-tip').textContent = r.tip;
-    document.getElementById('quiz-section').style.display = 'none';
-    document.getElementById('result-section').style.display = 'block';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    showQuestion(0);
-
-    document.getElementById('q-options').addEventListener('click', function(e) {
-      var btn = e.target.closest('.quiz-option');
-      if (!btn) return;
-      document.querySelectorAll('.quiz-option').forEach(function(b) { b.classList.remove('selected'); });
-      btn.classList.add('selected');
-      selectedOption = btn.dataset.type;
-      document.getElementById('next-q-btn').disabled = false;
-    });
-
-    document.getElementById('next-q-btn').addEventListener('click', function() {
-      if (!selectedOption) return;
-      scores[selectedOption]++;
-      currentQ++;
-      if (currentQ >= questions.length) {
-        showResult();
-      } else {
-        showQuestion(currentQ);
+        q.answers.forEach(function (a) {
+          var btn = document.createElement('button');
+          btn.className = 'quiz-answer';
+          btn.innerHTML = '<span class="quiz-answer-icon">' + a.icon + '</span>' + a.text;
+          btn.addEventListener('click', function () {
+            // Add scores
+            Object.keys(a.score).forEach(function (k) { scores[k] += a.score[k]; });
+            // Animate
+            btn.classList.add('selected');
+            setTimeout(function () {
+              current++;
+              if (current < questions.length) {
+                cardEl.style.opacity = '0';
+                cardEl.style.transform = 'translateX(30px)';
+                setTimeout(function () {
+                  renderQuestion(current);
+                  cardEl.style.transition = 'none';
+                  cardEl.style.opacity = '0';
+                  cardEl.style.transform = 'translateX(30px)';
+                  requestAnimationFrame(function () {
+                    cardEl.style.transition = 'opacity .35s ease, transform .35s ease';
+                    cardEl.style.opacity = '1';
+                    cardEl.style.transform = 'translateX(0)';
+                  });
+                }, 200);
+              } else {
+                showResult();
+              }
+            }, 350);
+          });
+          answersEl.appendChild(btn);
+        });
       }
-    });
 
-    document.getElementById('restart-quiz-btn').addEventListener('click', function() {
-      currentQ = 0;
-      scores = { A: 0, B: 0, C: 0, D: 0 };
-      selectedOption = null;
-      document.getElementById('result-section').style.display = 'none';
-      document.getElementById('quiz-section').style.display = 'block';
-      showQuestion(0);
-    });
-  });
-  </script>
-</body>
+      function showResult() {
+        cardEl.style.display = 'none';
+        barEl.style.width = '100%';
+        labelEl.textContent = 'Kész!';
+
+        // Find winner
+        var winner = Object.keys(scores).reduce(function (a, b) { return scores[a] >= scores[b] ? a : b; });
+        var r = results[winner];
+
+        resultIcon.textContent = r.icon;
+        resultTitle.textContent = r.title;
+        resultSub.textContent = r.sub;
+        resultTags.innerHTML = '';
+        r.tags.forEach(function (t) {
+          var span = document.createElement('span');
+          span.className = 'quiz-result-tag';
+          span.textContent = t;
+          resultTags.appendChild(span);
+        });
+        resultEl.classList.add('visible');
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Init styles for animation
+      cardEl.style.transition = 'opacity .35s ease, transform .35s ease';
+      renderQuestion(0);
+    })();
+    </script>
+  </body>
 </html>

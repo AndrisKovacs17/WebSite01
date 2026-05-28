@@ -1,401 +1,289 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="utf-8" />
-  <title>Biztosítás Tinder – Döntsd el, mit csinálnál! | Biztor Alkusz</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="Valódi biztosítási élethelyzetek – te döntöd el: Oké, Átnézetném, Kuka vagy Fogalmam sincs? Teszteld, mennyire tudatosan biztosítasz." />
-  <link rel="canonical" href="https://biztor.hu/jatekzona/biztositas-tinder/" />
-  <meta property="og:title" content="Biztosítás Tinder – Döntsd el, mit csinálnál!" />
-  <meta property="og:description" content="8 biztosítási élethelyzet. Döntsd el: Oké, Átnézetném, Kuka vagy Fogalmam sincs? Magyarázattal együtt." />
-  <meta property="og:url" content="https://biztor.hu/jatekzona/biztositas-tinder/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Biztor Alkusz Kft." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Biztor Alkusz Kft." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
-          { "@type": "ListItem", "position": 2, "name": "Játékzóna", "item": "https://biztor.hu/jatekzona/" },
-          { "@type": "ListItem", "position": 3, "name": "Biztosítás Tinder", "item": "https://biztor.hu/jatekzona/biztositas-tinder/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://biztor.hu/jatekzona/biztositas-tinder/",
-        "name": "Biztosítás Tinder – Döntsd el, mit csinálnál!",
-        "description": "8 valódi biztosítási élethelyzet, döntési opciókkal és magyarázattal.",
-        "inLanguage": "hu-HU",
-        "dateModified": "2026-05-27",
-        "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
-        "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" href="/img/icon/favicon.ico" />
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/lib/animate/animate.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .tinder-card { max-width: 520px; margin: 0 auto; }
-    .tinder-card .card { border: none; box-shadow: 0 4px 24px rgba(0,0,0,0.10); border-radius: 16px; }
-    .tinder-situation { font-size: 1.05rem; line-height: 1.6; }
-    .tinder-feedback { display: none; border-radius: 8px; padding: 0.9rem 1.1rem; margin-top: 0.75rem; }
-    .tinder-feedback.show { display: block; }
-    .feedback-ok { background: #e8f5e9; border-left: 4px solid #43a047; }
-    .feedback-review { background: #e3f2fd; border-left: 4px solid #1e88e5; }
-    .feedback-trash { background: #fce4ec; border-left: 4px solid #e53935; }
-    .feedback-dunno { background: #fff8e1; border-left: 4px solid #ffa726; }
-    .decision-btn { min-width: 120px; }
-    .progress-label { font-size: 0.85rem; color: #888; }
-    #summary-section { display: none; }
-  </style>
-</head>
-<body>
-  <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
-  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
-  </div>
-  <!-- Topbar -->
-  <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
-    <div class="row gx-0 align-items-center">
-      <div class="col d-flex align-items-center gap-3">
-        <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-clock me-1"></i>H: 09:00–16:00, K-P: 8:00–16:00, Szo-V: Zárva</small>
-      </div>
-      <div class="col-auto d-flex align-items-center">
-        <a href="https://www.facebook.com/biztoralkusz?locale=hu_HU" class="text-dark ms-3 small fw-light" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Biztosítás Tinder – Melyikkel maradnál? | Biztor Játékzóna</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Döntsd el kártyánként: melyik biztosítással maradnál hosszú kapcsolatban? A Biztosítás Tinder interaktív döntősjáték." />
+    <meta name="theme-color" content="#FFA726" />
+    <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/jatekzona.css" />
+  </head>
+
+  <body>
+    <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
     </div>
-  </div>
-  <!-- Navbar -->
-  <div class="insure-navbar sticky-top">
-    <div class="insure-navbar-container d-flex align-items-center justify-content-between">
-      <a href="/" class="insure-navbar-brand d-flex align-items-center">
-        <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
-      </a>
-      <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="insure-icon-menu d-none d-lg-flex">
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span><a class="title" href="/rolunk">Rólunk</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="book-outline"></ion-icon></span><a class="title" href="/infok">Infók</a></li>
-      </ul>
-    </div>
-    <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
-      <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
-        <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
-        <li class="nav-item"><a href="/rolunk" class="nav-link">Rólunk</a></li>
-        <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
-        <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
-        <li class="nav-item"><a href="/infok" class="nav-link">Infók</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- Fő tartalom -->
-  <div class="container-xxl py-5" id="fo-tartalom">
-    <div class="container">
-
-      <!-- Header -->
-      <div class="row mb-4">
-        <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-          <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Kezdőlap</a></li>
-              <li class="breadcrumb-item"><a href="/jatekzona/">Játékzóna</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Biztosítás Tinder</li>
-            </ol>
-          </nav>
-          <div class="fs-1 mb-2">💘</div>
-          <h1 class="display-5 mb-3">Biztosítás Tinder</h1>
-          <p class="lead mb-2">Valódi élethelyzetek – te döntöd el.</p>
-          <p class="text-muted">Minden kártyán egy biztosítási szituáció szerepel. Döntsd el, mit csinálnál – és kiderül, mennyire volt jó a döntés. 8 helyzet, magyarázattal.</p>
-        </div>
-      </div>
-
-      <!-- Játék terület -->
-      <div class="row justify-content-center mb-5">
-        <div class="col-12 col-md-8 col-lg-6">
-
-          <!-- Progress -->
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <span class="progress-label" id="progress-label">1 / 8. helyzet</span>
-            <span class="progress-label" id="score-label">Döntések: 0</span>
-          </div>
-          <div class="progress mb-4" style="height:6px;">
-            <div class="progress-bar bg-primary" id="tinder-progress" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <!-- Kártya -->
-          <div class="tinder-card" id="tinder-card-area">
-            <div class="card p-4">
-              <h5 class="fw-bold mb-2" id="card-title"></h5>
-              <p class="tinder-situation" id="card-situation"></p>
-              <div class="tinder-feedback feedback-ok" id="fb-ok"></div>
-              <div class="tinder-feedback feedback-review" id="fb-review"></div>
-              <div class="tinder-feedback feedback-trash" id="fb-trash"></div>
-              <div class="tinder-feedback feedback-dunno" id="fb-dunno"></div>
-              <div class="d-flex flex-wrap gap-2 mt-4 justify-content-center" id="decision-buttons">
-                <button class="btn btn-success decision-btn rounded-pill" data-decision="ok">✅ Oké</button>
-                <button class="btn btn-primary decision-btn rounded-pill" data-decision="review">🔍 Átnézetném</button>
-                <button class="btn btn-danger decision-btn rounded-pill" data-decision="trash">🗑️ Kuka</button>
-                <button class="btn btn-warning decision-btn rounded-pill" data-decision="dunno">🤷 Fogalmam sincs</button>
-              </div>
-              <div class="text-center mt-3" id="next-btn-area" style="display:none!important;">
-                <button class="btn btn-outline-secondary rounded-pill px-4" id="next-card-btn">Következő helyzet →</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Összegzés -->
-          <div id="summary-section" class="card border-0 bg-light p-4 text-center">
-            <div class="fs-1 mb-3">🎉</div>
-            <h3 class="mb-3">Végeztél mind a 8 helyzettel!</h3>
-            <p class="text-muted" id="summary-text"></p>
-            <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-3">
-              <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-primary rounded-pill px-4"><i class="fa fa-file-alt me-2"></i>Ajánlatkérés</a>
-              <a href="/kapcsolat" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-search me-2"></i>Átnézetem</a>
-              <button class="btn btn-outline-secondary rounded-pill px-4" id="restart-btn">Újra játszom</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="mt-2 text-center">
-        <a href="/jatekzona/" class="btn btn-link text-muted"><i class="fa fa-arrow-left me-1"></i>Vissza a Játékzónába</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-      <div class="row g-5">
-        <div class="col-lg-3 col-md-6">
-          <div class="text-white mb-4"><img class="img-fluid me-3" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
-          <p>BIZTOR Alkusz Kft.<br>4400 Nyíregyháza Liliom utca 27/A.<br>MNB engedélyszám: 208080710804</p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-            <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square me-1 phone-link" href="tel:+36706258201" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
-            <a class="btn btn-square me-0" href="https://linkedin.com/company/biztor-alkusz-kft" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Elérhetőség</h5>
-          <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
-          <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
-          <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Gyors linkek</h5>
-          <a class="btn btn-link" href="/rolunk">Rólunk</a>
-          <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
-          <a class="btn btn-link" href="/szolgaltatasok">Szolgáltatásaink</a>
-          <a class="btn btn-link" href="/impresszum">Impresszum</a>
-          <a class="btn btn-link" href="/Adatkezelesi_szabalyzat_biztor_alkusz.pdf">Adatkezelési szabályzat</a>
-          <a class="btn btn-link" href="/Adatkezelesi_tajekoztato_biztor_alkusz.pdf">Adatkezelési tájékoztató</a>
-          <a class="btn btn-link" href="/panaszkezeles">Panaszkezelés</a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Dokumentumok</h5>
-          <a class="btn btn-link" href="/fentarthatosagi_kovetelmenyek.pdf">Fenntarthatósági követelmények tájékoztatás</a>
-          <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
+    <!-- Topbar -->
+    <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+      <div class="row gx-0 align-items-center">
+        <div class="col d-flex align-items-center gap-3">
+          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
         </div>
       </div>
     </div>
-    <div class="container-fluid copyright">
+
+    <!-- Navbar -->
+    <div class="insure-navbar sticky-top">
+      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+        <a href="/" class="insure-navbar-brand d-flex align-items-center">
+          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+        </a>
+        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="insure-icon-menu d-none d-lg-flex">
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
+        </ul>
+      </div>
+      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
+          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="game-hero" id="fo-tartalom">
+      <div class="container position-relative" style="z-index:2;">
+        <div class="jz-breadcrumb">
+          <a href="/jatekzona/">Játékzóna</a>
+          <span class="jz-breadcrumb-sep">›</span>
+          <span>Biztosítás Tinder</span>
+        </div>
+        <div class="game-hero-badge"><i class="fa fa-heart me-1"></i> Döntős játék</div>
+        <h1>Biztosítás <span>Tinder</span></h1>
+        <p>Melyik biztosítással maradnál hosszú kapcsolatban? Döntsd el kártyánként – az eredmény meglephet.</p>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section class="game-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center mb-3 mb-md-0">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div>
+        <div class="tinder-wrap">
+
+          <!-- Progress dots -->
+          <div class="tinder-progress" id="tinderProgress"></div>
+
+          <!-- Kártyák -->
+          <div id="tinderCardArea">
+            <div class="tinder-card-wrap">
+              <div class="tinder-card" id="tinderCard">
+                <div class="tinder-verdict" id="tinderVerdict"></div>
+                <div class="tinder-card-tag" id="tinderCardTag"></div>
+                <h3 id="tinderCardTitle"></h3>
+                <p class="tinder-card-sub" id="tinderCardSub"></p>
+                <ul class="tinder-card-facts" id="tinderCardFacts"></ul>
+              </div>
+            </div>
+
+            <!-- Döntési gombok -->
+            <div class="tinder-btns" id="tinderBtns">
+              <button class="tinder-btn tinder-btn-ok"     id="btnOk">     ✓ Oké</button>
+              <button class="tinder-btn tinder-btn-review" id="btnReview"> 👁 Átnézetném</button>
+              <button class="tinder-btn tinder-btn-trash"  id="btnTrash">  🗑 Kuka</button>
+              <button class="tinder-btn tinder-btn-idk"    id="btnIdk">    🤷 Fogalmam sincs</button>
+            </div>
+          </div>
+
+          <!-- Összesítő -->
+          <div class="tinder-summary" id="tinderSummary">
+            <h3 style="font-weight:700;color:#1c1c2e;margin-bottom:.25rem;">Döntéseid összesítve</h3>
+            <p style="font-size:.85rem;color:#6b7280;margin-bottom:1.25rem;">Íme, mit gondolsz az egyes biztosításokról:</p>
+            <div id="tinderSumList"></div>
+
+            <div class="game-cta mt-4">
+              <h4>Nézzük meg valóban!</h4>
+              <p>Egy ingyenes átnézéssel megtudhatod, mi az, amit valóban érdemes tartani – és mi az, amit lecserélni.</p>
+              <div class="game-cta-btns">
+                <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Átnézetem</a>
+                <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
+                <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="container-fluid bg-dark footer mt-0 pt-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor logó" width="279" height="105" decoding="async"></div>
+            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Gyors linkek</h5>
+            <a class="btn btn-link" href="/">Kezdőlap</a>
+            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Más játékok</h5>
+            <a class="btn btn-link" href="/jatekzona/bullshit-fordito/">Bullshit Fordító</a>
+            <a class="btn btn-link" href="/jatekzona/horoszkop/">Horoszkóp</a>
+            <a class="btn btn-link" href="/jatekzona/kartya-huzas/">Kártyahúzás</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a></div></div></div></div>
     </div>
-  </div>
+    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-  <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
-  <div class="mobile-action-bar d-lg-none" aria-label="Gyors elérhetőség">
-    <a href="/kotelezo-biztositas-ajanlatkeres" class="mobile-action-bar__primary hover-lift"><i class="fa fa-file-alt"></i> Ajánlatkérés</a>
-    <a href="tel:+36706258201" class="mobile-action-bar__secondary hover-lift phone-link" aria-label="Telefonhívás" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,167,38,0.5);color:var(--primary);"><i class="fa fa-phone-alt"></i></a>
-  </div>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/lib/wow/wow.min.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script defer src="/lib/wow/wow.min.js"></script>
-  <script defer src="/lib/easing/easing.min.js"></script>
-  <script defer src="/lib/waypoints/waypoints.min.js"></script>
-  <script defer src="/js/main.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+    (function () {
+      var cards = [
+        {
+          tag: 'Kötelező', title: 'KGFB – A kötelező',
+          sub: '"Minden autótulajdonos barátja vagyok."',
+          facts: ['1998 óta minden autóhoz kötelező', 'A másik fél kárát fedezi, ha te vagy a hibás', 'Kötni kell, különben bírság', 'Ára: bónusz-malus besorolástól függ']
+        },
+        {
+          tag: 'Casco', title: 'CASCO – A gondoskodó',
+          sub: '"Gazdagabb vagyok mint a KGFB – a sajátodat is védem."',
+          facts: ['A saját autódat is védi kár esetén', 'Lopás, baleset, időjárás ellen is', 'Nem kötelező, de hitelnél szokták írni', 'Drágább, mint a KGFB']
+        },
+        {
+          tag: 'Lakás', title: 'Lakásbiztosítás – Az otthon őre',
+          sub: '"Tűz, betörés, vihar? Nekem szólj."',
+          facts: ['Épületet és ingóságokat is véd', 'Nem csak a banknak kell, önkéntesen is érdemes', 'Kiegészítők: üvegtörés, felelősség, lopás', 'Éves díj jellemzően megfizethető']
+        },
+        {
+          tag: 'Utazás', title: 'Utasbiztosítás – A nyári szerelem',
+          sub: '"Csak nyaranta vagyunk együtt, de akkor nagyon számítok."',
+          facts: ['Külföldi kórházi ellátást fedezi', 'Poggyász, késedelem, lemondás is benne lehet', 'Évi néhány ezer forint', 'EU-kártya nem elegendő pótlék']
+        },
+        {
+          tag: 'Élet', title: 'Életbiztosítás – A komoly kapcsolat',
+          sub: '"Hosszú távra tervezünk. A gyerekek örülnek."',
+          facts: ['Halál vagy tartós betegség esetén véd', 'Befektetési elemet is tartalmazhat', 'Gyerekeknek különösen fontos', 'Hitelhez kötelezővé tehető']
+        },
+        {
+          tag: 'Vállalkozói', title: 'Felelősségbiztosítás – A szakmai védő',
+          sub: '"Csak cégtulajdonosoknak. Ha a munkám kárt okoz – én fizetem."',
+          facts: ['Vállalkozói tevékenységből eredő kárt fedezi', 'Kötelező lehet bizonyos szakmáknál', 'Jogi védelem is kapható kiegészítőként', 'Egyéni vállalkozónak is érdemes']
+        },
+        {
+          tag: 'Baleset', title: 'Balesetbiztosítás – Mindig melleted',
+          sub: '"Munkánál, sportnál, mindennapokban."',
+          facts: ['Rokkantság, kórházi tartózkodás esetén fizet', 'Sportra, utazásra külön köthető', 'Kombinálható életbiztosítással', 'Éves díja alacsony']
+        }
+      ];
 
-  <script>
-  var cards = [
-    {
-      title: "Az 5 éves lakásbiztosítás",
-      situation: "Öt éve kötötted. Az ingatlanod értéke azóta nőtt, de a biztosítási összeg nem változott. Az indexálásra sosem figyeltél rá.",
-      feedback: {
-        ok: "⚠️ Veszélyes! Ha valóban alulbiztosítottad az ingatlanodat, kárkor csak az arányos részt kapod vissza. Érdemes felülvizsgálni.",
-        review: "✅ Helyes döntés! 5 évente, különösen inflációs időszakban érdemes ellenőrizni a biztosítási összeget.",
-        trash: "❌ Ne mondj fel vakon! A lakásbiztosítás fontos – de kérj felülvizsgálatot az összegre.",
-        dunno: "💡 Kérd egy alkusz segítségét, aki megmondja, valóban megfelel-e az összeg az ingatlan mai értékéhez."
+      var decisions = [];
+      var current = 0;
+      var progressEl = document.getElementById('tinderProgress');
+      var cardEl     = document.getElementById('tinderCard');
+      var verdictEl  = document.getElementById('tinderVerdict');
+      var tagEl      = document.getElementById('tinderCardTag');
+      var titleEl    = document.getElementById('tinderCardTitle');
+      var subEl      = document.getElementById('tinderCardSub');
+      var factsEl    = document.getElementById('tinderCardFacts');
+      var summaryEl  = document.getElementById('tinderSummary');
+      var cardArea   = document.getElementById('tinderCardArea');
+      var sumListEl  = document.getElementById('tinderSumList');
+
+      // Build progress dots
+      cards.forEach(function (_, i) {
+        var d = document.createElement('div');
+        d.className = 'tinder-progress-dot' + (i === 0 ? ' active' : '');
+        progressEl.appendChild(d);
+      });
+
+      function updateDots() {
+        var dots = progressEl.querySelectorAll('.tinder-progress-dot');
+        dots.forEach(function (d, i) {
+          d.className = 'tinder-progress-dot';
+          if (i < current) d.classList.add('done');
+          else if (i === current) d.classList.add('active');
+        });
       }
-    },
-    {
-      title: "KGFB évforduló 2 hétre",
-      situation: "2 hét múlva az évfordulód. A szomszédod ugyanolyan autóra 8 000 Ft-tal kevesebbet fizet egy másik biztosítónál.",
-      feedback: {
-        ok: "💡 Megmaradhatsz, de legalább nézd meg az ajánlatokat – van mozgáster még 2 hétig.",
-        review: "✅ Pontosan! Évforduló előtt 30 napig van lehetőség váltásra. Most még van idő.",
-        trash: "❌ Ne dobd el! A KGFB kötelező – ha nincs, fedezetlenségi díjat kell fizetned.",
-        dunno: "📞 Hívj minket – 10 perc alatt átnézzük az opciókat és megmondjuk, megéri-e váltani."
-      }
-    },
-    {
-      title: "CASCO a 12 éves autón",
-      situation: "12 éves az autód, értéke kb. 1,2 millió forint. A teljes CASCO évi 160 000 Ft – csaknem az autó értékének 13%-a.",
-      feedback: {
-        ok: "💡 Befér, ha balesetes területen jársz sokat. De mindenképpen érdemes mérlegelni a casco-nélküli opciót is.",
-        review: "✅ Megéri átgondolni! Ennyi pénzért lehet, hogy más megoldás jobban megéri.",
-        trash: "⚠️ Ha nincs CASCO, legalább a KGFB legyen rendben. A saját kár azonban a tiéd lesz.",
-        dunno: "💡 Egy alkusz segíthet eldönteni, mi a racionális döntés az autó értékéhez képest."
-      }
-    },
-    {
-      title: "Vállalkozás biztosítás nélkül",
-      situation: "Kisvállalkozóként heti 3-4-szer jársz ügyfelekhez autóval. Irodád sincs biztosítva. Hibás termékért felelősség is terhelhet.",
-      feedback: {
-        ok: "⚠️ Kockázatos! Ha kár éri a vállalkozásodat vagy ügyfeledet, saját zsebből kell fizetni.",
-        review: "✅ Érdemes megvizsgálni a vállalkozói felelősségbiztosítást és az irodai vagyonbiztosítást.",
-        trash: "❌ Rossz döntés. Biztosítás nélkül egy káreset tönkreteheti a vállalkozást.",
-        dunno: "📞 Kérd ki alkuszunktól, mire van pontosan szükséged a vállalkozásod profilja szerint."
-      }
-    },
-    {
-      title: "A 20 éves életbiztosítás",
-      situation: "Húsz éve kötötted, mikor hitelre volt szükséged. A hiteled lejárt, a gyerekeid felnőttek. Az életbiztosítás még mindig fut.",
-      feedback: {
-        ok: "💡 Megmaradhat, ha jó feltételei vannak – de az eredeti cél már nem áll fenn. Nézd át!",
-        review: "✅ Pontosan! A körülmények változtak, az igények is. Érdemes alkusszal átbeszélni.",
-        trash: "⚠️ Vigyázz! Régi életbiztosítást visszavásárolt értékkel lehet megszüntetni – érdemes előtte konzultálni.",
-        dunno: "💡 Kérd az alkusz segítségét, hogy megértsd, milyen értéke és feltételei vannak még."
-      }
-    },
-    {
-      title: "Utazás poggyászbiztosítás nélkül",
-      situation: "Repülőutat foglaltál. A légitársaság ajánl poggyászbiztosítást +4 000 Ft-ért. Van bankkártyád, amihez van utasbiztosítás.",
-      feedback: {
-        ok: "💡 Lehet, hogy a kártyád utasbiztosítása lefedi a poggyászt is – de ezt előre ellenőrizd!",
-        review: "✅ Jó ötlet! Önálló utasbiztosítás olcsóbb is lehet, mint a légitársaság ajánlata.",
-        trash: "⚠️ Ha nincs poggyászbiztosítás és elvész a bőröndöd, csak a légitársaság limitált kártérítésére számíthatsz.",
-        dunno: "💡 Ellenőrizd a kártyád melletti biztosítás feltételeit – sokszor meglepő, mi van benne."
-      }
-    },
-    {
-      title: "Az ismeretlen díjfizetési emlékeztető",
-      situation: "Beesett a postán egy díjfizetési értesítő. Nem emlékszel pontosan, mikor kötötted ezt a biztosítást, de a díj megjelenik a bankszámládon.",
-      feedback: {
-        ok: "⚠️ Ha nem tudod, mit fedez, legalább keresd meg! Lehet felesleges – vagy éppen fontos.",
-        review: "✅ Helyes! Kérd ki a kötvény másolatát és nézd át, mire vonatkozik.",
-        trash: "⚠️ Ne mondj fel vakon! Előbb derítsd ki, mit fedez – esetleg fontos biztosítás.",
-        dunno: "📞 Hívj minket, segítünk beazonosítani és átnézni a szerződésedet."
-      }
-    },
-    {
-      title: "Önálló vállalkozó, balesetbiztosítás nélkül",
-      situation: "Önálló vállalkozóként nincs tb-n keresztül biztosított baleseti ellátásod. Ha munkabaleseted lesz, a kieső jövedelmet nem téríti senki.",
-      feedback: {
-        ok: "⚠️ Kockázatos! Önálló vállalkozóként a TB nem fedi le teljes mértékben a baleseti kiesést.",
-        review: "✅ Megéri! Egy balesetbiztosítás viszonylag olcsón fedezi a kieső jövedelmet.",
-        trash: "❌ Rossz döntés. Balesetnél a vállalkozói jövedelem akár hónapokra kieshet.",
-        dunno: "📞 Kérd alkuszunktól a lehetséges balesetbiztosítási opciókat – és az árakat is."
-      }
-    }
-  ];
 
-  var currentCard = 0;
-  var decisions = [];
-
-  function showCard(idx) {
-    var c = cards[idx];
-    document.getElementById('card-title').textContent = c.title;
-    document.getElementById('card-situation').textContent = c.situation;
-    ['ok','review','trash','dunno'].forEach(function(d) {
-      var el = document.getElementById('fb-' + d);
-      el.textContent = c.feedback[d];
-      el.classList.remove('show');
-    });
-    document.getElementById('next-btn-area').style.cssText = 'display:none!important;';
-    document.getElementById('decision-buttons').style.display = '';
-    document.getElementById('progress-label').textContent = (idx+1) + ' / ' + cards.length + '. helyzet';
-    document.getElementById('tinder-progress').style.width = (idx / cards.length * 100) + '%';
-  }
-
-  function handleDecision(decision) {
-    decisions.push(decision);
-    var c = cards[currentCard];
-    document.getElementById('fb-' + decision).classList.add('show');
-    document.getElementById('decision-buttons').style.display = 'none';
-    document.getElementById('next-btn-area').style.cssText = '';
-    document.getElementById('score-label').textContent = 'Döntések: ' + decisions.length;
-    if (currentCard >= cards.length - 1) {
-      document.getElementById('next-card-btn').textContent = 'Összegzés →';
-    }
-  }
-
-  function showSummary() {
-    var reviewCount = decisions.filter(function(d) { return d === 'review'; }).length;
-    var summaryText = '';
-    if (reviewCount >= 6) summaryText = '🎯 Nagyon tudatosan döntöttél! ' + reviewCount + ' esetben az „Átnézetném" opciót választottad – pontosan ez az a hozzáállás, ami megvédi az embert a nem várt kártól.';
-    else if (reviewCount >= 4) summaryText = '👍 Jó érzéked van a biztosításokhoz! ' + reviewCount + ' esetben gondoltál felülvizsgálatra. Egy alkuszi átnézéssel még jobbá teheted a védelmedet.';
-    else if (reviewCount >= 2) summaryText = '💡 Vannak bizonytalan pontok. ' + reviewCount + ' esetben gondoltál felülvizsgálatra. Érdemes lenne egyszer átbeszélni az összes meglévő biztosítást.';
-    else summaryText = '📞 Úgy tűnik, a biztosítások nem állnak a tudatosság középpontjában nálad. Egy rövid konzultáció segíthet átlátni, hol vannak a hiányosságok.';
-    document.getElementById('summary-text').textContent = summaryText;
-    document.getElementById('tinder-card-area').style.display = 'none';
-    document.getElementById('summary-section').style.display = 'block';
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    showCard(0);
-
-    document.getElementById('decision-buttons').addEventListener('click', function(e) {
-      var btn = e.target.closest('[data-decision]');
-      if (btn) handleDecision(btn.dataset.decision);
-    });
-
-    document.getElementById('next-card-btn').addEventListener('click', function() {
-      currentCard++;
-      if (currentCard >= cards.length) {
-        showSummary();
-      } else {
-        showCard(currentCard);
+      function showCard(idx) {
+        var c = cards[idx];
+        tagEl.textContent   = c.tag;
+        titleEl.textContent = c.title;
+        subEl.textContent   = c.sub;
+        factsEl.innerHTML   = '';
+        c.facts.forEach(function (f) {
+          var li = document.createElement('li');
+          li.textContent = f;
+          factsEl.appendChild(li);
+        });
+        verdictEl.textContent = '';
+        verdictEl.style.display = 'none';
+        cardEl.className = 'tinder-card';
       }
-    });
 
-    document.getElementById('restart-btn').addEventListener('click', function() {
-      currentCard = 0;
-      decisions = [];
-      document.getElementById('summary-section').style.display = 'none';
-      document.getElementById('tinder-card-area').style.display = '';
-      document.getElementById('score-label').textContent = 'Döntések: 0';
-      document.getElementById('tinder-progress').style.width = '0%';
+      var verdictMap = {
+        ok: { emoji: '✅', label: 'Oké' },
+        review: { emoji: '👁', label: 'Átnézném' },
+        trash: { emoji: '🗑', label: 'Kuka' },
+        idk: { emoji: '🤷', label: 'Fogalmam sincs' }
+      };
+
+      function decide(type, animClass) {
+        decisions.push({ card: cards[current], type: type });
+        verdictEl.textContent = verdictMap[type].emoji;
+        verdictEl.style.display = 'block';
+        cardEl.classList.add(animClass);
+        setTimeout(function () {
+          current++;
+          updateDots();
+          if (current < cards.length) {
+            showCard(current);
+          } else {
+            showSummary();
+          }
+        }, 480);
+      }
+
+      document.getElementById('btnOk').addEventListener('click',     function () { decide('ok', 'animating-yes'); });
+      document.getElementById('btnReview').addEventListener('click', function () { decide('review', 'animating-maybe'); });
+      document.getElementById('btnTrash').addEventListener('click',  function () { decide('trash', 'animating-no'); });
+      document.getElementById('btnIdk').addEventListener('click',    function () { decide('idk', 'animating-maybe'); });
+
+      function showSummary() {
+        cardArea.style.display = 'none';
+        sumListEl.innerHTML = '';
+        decisions.forEach(function (d) {
+          var v = verdictMap[d.type];
+          var row = document.createElement('div');
+          row.className = 'tinder-sum-item';
+          row.innerHTML = '<span class="tinder-sum-icon">' + v.emoji + '</span><span><strong>' + d.card.tag + '</strong> – ' + d.card.title.split('–')[0].trim() + ' → <em>' + v.label + '</em></span>';
+          sumListEl.appendChild(row);
+        });
+        summaryEl.classList.add('visible');
+        summaryEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Init
       showCard(0);
-    });
-  });
-  </script>
-</body>
+    })();
+    </script>
+  </body>
 </html>

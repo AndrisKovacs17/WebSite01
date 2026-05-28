@@ -1,340 +1,278 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="utf-8" />
-  <title>Biztosítási Bullshit Fordító – Érthetően, emberi nyelven | Biztor Alkusz</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="15 valódi biztosítási mondat, emberi fordítással és magyarázattal. Tudd meg, mit jelent az a sor a kötvényedben – érthetően." />
-  <link rel="canonical" href="https://biztor.hu/jatekzona/bullshit-fordito/" />
-  <meta property="og:title" content="Biztosítási Bullshit Fordító – Érthetően, emberi nyelven | Biztor" />
-  <meta property="og:description" content="15 valódi biztosítási mondat fordítva emberi nyelvre. Kiderül, mit rejt a kötvényszöveg." />
-  <meta property="og:url" content="https://biztor.hu/jatekzona/bullshit-fordito/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Biztor Alkusz Kft." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Biztor Alkusz Kft." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
-          { "@type": "ListItem", "position": 2, "name": "Játékzóna", "item": "https://biztor.hu/jatekzona/" },
-          { "@type": "ListItem", "position": 3, "name": "Bullshit Fordító", "item": "https://biztor.hu/jatekzona/bullshit-fordito/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://biztor.hu/jatekzona/bullshit-fordito/",
-        "name": "Biztosítási Bullshit Fordító",
-        "description": "15 valódi biztosítási mondat emberi fordítással. Edukációs eszköz – érthetően, mindenféle jogilag kockázatos állítás nélkül.",
-        "inLanguage": "hu-HU",
-        "dateModified": "2026-05-27",
-        "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
-        "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" href="/img/icon/favicon.ico" />
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/lib/animate/animate.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .phrase-card { border-left: 4px solid var(--primary, #FFA726); transition: box-shadow 0.2s; }
-    .phrase-original { font-style: italic; color: #555; font-size: 0.95rem; }
-    .phrase-translation { display: none; background: #fff8e1; border-radius: 8px; padding: 0.85rem 1rem; margin-top: 0.75rem; }
-    .phrase-note { display: none; font-size: 0.85rem; color: #666; margin-top: 0.5rem; border-top: 1px dashed #ddd; padding-top: 0.5rem; }
-    .phrase-card.revealed .phrase-translation,
-    .phrase-card.revealed .phrase-note { display: block; }
-    .phrase-card.revealed .btn-forditas { display: none; }
-    .phrase-counter { font-size: 0.8rem; color: #aaa; }
-  </style>
-</head>
-<body>
-  <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
-  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
-  </div>
-  <!-- Topbar -->
-  <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
-    <div class="row gx-0 align-items-center">
-      <div class="col d-flex align-items-center gap-3">
-        <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-clock me-1"></i>H: 09:00–16:00, K-P: 8:00–16:00, Szo-V: Zárva</small>
-      </div>
-      <div class="col-auto d-flex align-items-center">
-        <a href="https://www.facebook.com/biztoralkusz?locale=hu_HU" class="text-dark ms-3 small fw-light" aria-label="Biztor Facebook oldal"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Biztor Instagram oldal"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- Navbar -->
-  <div class="insure-navbar sticky-top">
-    <div class="insure-navbar-container d-flex align-items-center justify-content-between">
-      <a href="/" class="insure-navbar-brand d-flex align-items-center">
-        <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
-      </a>
-      <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="insure-icon-menu d-none d-lg-flex">
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span><a class="title" href="/rolunk">Rólunk</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="book-outline"></ion-icon></span><a class="title" href="/infok">Infók</a></li>
-      </ul>
-    </div>
-    <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
-      <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
-        <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
-        <li class="nav-item"><a href="/rolunk" class="nav-link">Rólunk</a></li>
-        <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
-        <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
-        <li class="nav-item"><a href="/infok" class="nav-link">Infók</a></li>
-      </ul>
-    </div>
-  </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bullshit Fordító – Biztosítási zsargon magyarul | Biztor Játékzóna</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Keresd meg a biztosítási zsargon emberi fordítását. A Bullshit Fordító megmutatja, mit rejt a szaknyelv." />
+    <meta name="theme-color" content="#FFA726" />
+    <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/jatekzona.css" />
+  </head>
 
-  <!-- Fő tartalom -->
-  <div class="container-xxl py-5" id="fo-tartalom">
-    <div class="container">
+  <body>
+    <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
+    </div>
 
-      <!-- Header -->
-      <div class="row mb-4">
-        <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-          <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Kezdőlap</a></li>
-              <li class="breadcrumb-item"><a href="/jatekzona/">Játékzóna</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Bullshit Fordító</li>
-            </ol>
-          </nav>
-          <div class="fs-1 mb-2">🔄</div>
-          <h1 class="display-5 mb-3">Bullshit Fordító</h1>
-          <p class="lead mb-2">Biztosítós mondat → emberi fordítás.</p>
-          <p class="text-muted">15 valódi kötvényszöveg, érthetőre lefordítva. Kattints a „Fordítás" gombra, és kiderül, mit jelent az a sor valójában.</p>
-          <p class="text-muted small"><em>Megjegyzés: Ez egy edukációs eszköz. A fordítások egyszerűsített magyarázatok, nem jogtanácsok. Konkrét szerződéssel kapcsolatban keresd alkuszunkat.</em></p>
+    <!-- Topbar -->
+    <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+      <div class="row gx-0 align-items-center">
+        <div class="col d-flex align-items-center gap-3">
+          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
         </div>
       </div>
+    </div>
 
-      <!-- Mondatok -->
-      <div class="row g-4 mb-5" id="phrases-container">
-        <!-- JS tölti fel -->
+    <!-- Navbar -->
+    <div class="insure-navbar sticky-top">
+      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+        <a href="/" class="insure-navbar-brand d-flex align-items-center">
+          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+        </a>
+        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="insure-icon-menu d-none d-lg-flex">
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
+        </ul>
       </div>
+      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+          <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
+          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
+        </ul>
+      </div>
+    </div>
 
-      <!-- Minden fordítás gomb -->
-      <div class="row mb-5">
-        <div class="col text-center">
-          <button class="btn btn-outline-primary rounded-pill px-4" id="reveal-all-btn">
-            <i class="fa fa-eye me-2"></i>Mindet megmutatom
+    <!-- HERO -->
+    <section class="game-hero" id="fo-tartalom">
+      <div class="container position-relative" style="z-index:2;">
+        <div class="jz-breadcrumb">
+          <a href="/jatekzona/">Játékzóna</a>
+          <span class="jz-breadcrumb-sep">›</span>
+          <span>Bullshit Fordító</span>
+        </div>
+        <div class="game-hero-badge"><i class="fa fa-language me-1"></i> Interaktív</div>
+        <h1>Bullshit <span>Fordító</span></h1>
+        <p>Biztosítási szakzsargon → emberi nyelv. Keresd ki a mondatot, és megtudod, mit jelent valójában.</p>
+      </div>
+    </section>
+
+    <!-- GAME SECTION -->
+    <section class="game-section">
+      <div class="container">
+        <div class="bs-container">
+
+          <h2 style="font-size:1.1rem;font-weight:700;color:#1c1c2e;margin-bottom:.5rem;">Válassz egy mondatot</h2>
+          <p style="font-size:.85rem;color:#6b7280;margin-bottom:1.25rem;">…vagy írj be bármilyen biztosítási szakszót.</p>
+
+          <!-- Gyors példák -->
+          <div class="bs-samples" id="bsSamples"></div>
+
+          <!-- Saját input -->
+          <div class="bs-input-wrap">
+            <textarea class="bs-textarea" id="bsInput" rows="3" placeholder="Pl. komplex kockázatkezelési megoldás..."></textarea>
+          </div>
+
+          <button class="bs-translate-btn" id="bsTranslateBtn">
+            <i class="fa fa-exchange-alt"></i> Fordítás
           </button>
-        </div>
-      </div>
 
-      <!-- CTA -->
-      <div class="row">
-        <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="card border-0 bg-light p-4 p-lg-5">
-            <div class="row align-items-center g-4">
-              <div class="col-lg-8">
-                <h3 class="mb-2">Átnéznéd a saját biztosításodat?</h3>
-                <p class="text-muted mb-0">Ha a kötvényedben is vannak ilyen mondatok – és persze vannak – segítünk érthetően elmagyarázni, mi van benne, és mi hiányzik belőle.</p>
-              </div>
-              <div class="col-lg-4 d-flex flex-column flex-sm-row flex-lg-column gap-2">
-                <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-primary rounded-pill px-4 py-2"><i class="fa fa-file-alt me-2"></i>Ajánlatkérés</a>
-                <a href="/kapcsolat" class="btn btn-outline-primary rounded-pill px-4 py-2"><i class="fa fa-search me-2"></i>Átnézetem</a>
-              </div>
+          <!-- Eredmény -->
+          <div class="bs-result" id="bsResult">
+            <div class="bs-result-label">Emberi fordítás:</div>
+            <div class="bs-result-text" id="bsResultText"></div>
+            <div class="bs-result-sub" id="bsResultSub"></div>
+          </div>
+
+          <!-- Game CTA -->
+          <div class="game-cta mt-4">
+            <h4>Komolyra fordítva</h4>
+            <p>Ha van egy biztosítási kérdésed, amelyre valódi választ szeretnél – hívj minket.</p>
+            <div class="game-cta-btns">
+              <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Ajánlatkérés</a>
+              <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
+              <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza a játékzónához</a>
             </div>
           </div>
+
         </div>
       </div>
+    </section>
 
-      <!-- Vissza a Játékzónába -->
-      <div class="mt-4 text-center">
-        <a href="/jatekzona/" class="btn btn-link text-muted"><i class="fa fa-arrow-left me-1"></i>Vissza a Játékzónába</a>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-      <div class="row g-5">
-        <div class="col-lg-3 col-md-6">
-          <div class="text-white mb-4"><img class="img-fluid me-3" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
-          <p>BIZTOR Alkusz Kft.<br>4400 Nyíregyháza Liliom utca 27/A.<br>MNB engedélyszám: 208080710804</p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail küldése"><i class="fas fa-envelope"></i></a>
-            <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square me-1 phone-link" href="tel:+36706258201" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
-            <a class="btn btn-square me-0" href="https://linkedin.com/company/biztor-alkusz-kft" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <!-- Footer -->
+    <div class="container-fluid bg-dark footer mt-0 pt-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
+            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+              <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-square me-1 phone-link" href="tel:+36425952480" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Gyors linkek</h5>
+            <a class="btn btn-link" href="/">Kezdőlap</a>
+            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Más játékok</h5>
+            <a class="btn btn-link" href="/jatekzona/biztositas-tinder/">Biztosítás Tinder</a>
+            <a class="btn btn-link" href="/jatekzona/horoszkop/">Horoszkóp</a>
+            <a class="btn btn-link" href="/jatekzona/kartya-huzas/">Kártyahúzás</a>
+            <a class="btn btn-link" href="/jatekzona/kotvenymuzeum/">Kötvénymúzeum</a>
+            <a class="btn btn-link" href="/jatekzona/papirdarlo/">Papírdaráló</a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Elérhetőség</h5>
-          <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
-          <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
-          <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Gyors linkek</h5>
-          <a class="btn btn-link" href="/rolunk">Rólunk</a>
-          <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
-          <a class="btn btn-link" href="/szolgaltatasok">Szolgáltatásaink</a>
-          <a class="btn btn-link" href="/impresszum">Impresszum</a>
-          <a class="btn btn-link" href="/Adatkezelesi_szabalyzat_biztor_alkusz.pdf">Adatkezelési szabályzat</a>
-          <a class="btn btn-link" href="/Adatkezelesi_tajekoztato_biztor_alkusz.pdf">Adatkezelési tájékoztató</a>
-          <a class="btn btn-link" href="/panaszkezeles">Panaszkezelés</a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Dokumentumok</h5>
-          <a class="btn btn-link" href="/fentarthatosagi_kovetelmenyek.pdf">Fenntarthatósági követelmények tájékoztatás</a>
-          <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
-        </div>
       </div>
+      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div></div></div></div>
     </div>
-    <div class="container-fluid copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center mb-3 mb-md-0">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-  <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
-  <div class="mobile-action-bar d-lg-none" aria-label="Gyors elérhetőség">
-    <a href="/kotelezo-biztositas-ajanlatkeres" class="mobile-action-bar__primary hover-lift"><i class="fa fa-file-alt"></i> Ajánlatkérés</a>
-    <a href="tel:+36706258201" class="mobile-action-bar__secondary hover-lift phone-link" aria-label="Telefonhívás" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,167,38,0.5);color:var(--primary);"><i class="fa fa-phone-alt"></i></a>
-  </div>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/lib/wow/wow.min.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script defer src="/lib/wow/wow.min.js"></script>
-  <script defer src="/lib/easing/easing.min.js"></script>
-  <script defer src="/lib/waypoints/waypoints.min.js"></script>
-  <script defer src="/js/main.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+    (function () {
+      var dict = [
+        {
+          input: 'Komplex kockázatkezelési megoldás',
+          output: 'Biztosítás',
+          sub: 'Igen, ennyi. A „komplex kockázatkezelési megoldás" csupán egy módszer arra, hogy drágábban hangozzon az, amit biztosításnak hívunk.'
+        },
+        {
+          input: 'Káresemény-bekövetkezési valószínűség optimalizáció',
+          output: 'Annak kiszámítása, mennyit fizetsz',
+          sub: 'A biztosító kiszámolja, milyen valószínűséggel érsz el kárt – és az alapján állapítja meg a díjadat.'
+        },
+        {
+          input: 'Deduktibilis önrész alkalmazása',
+          output: 'Ebből te fizetsz',
+          sub: 'Az önrész az a rész, amelyet kár esetén neked kell állnod. Az „deduktibilis" verzió csak angolul hangzik jobban.'
+        },
+        {
+          input: 'Szerződéses kötelezettségvállalás kárbekövetkezés esetén',
+          output: 'Ha baj van, fizetünk',
+          sub: 'A biztosítás lényege: ha bekövetkezik a biztosított esemény, a biztosító teljesít. Ennyi.'
+        },
+        {
+          input: 'Kármegelőzési és kárenyhítési kötelezettség',
+          output: 'Ha tűz van, hívj tűzoltót',
+          sub: 'A biztosított köteles mindent megtenni a kár megelőzéséért és csökkentéséért – például nem nézni tétlenül a lángokat.'
+        },
+        {
+          input: 'Indexált díjfelülvizsgálat',
+          output: 'Drágább lett az idei díjad',
+          sub: 'A biztosítók rendszeresen felülvizsgálják a díjakat az inflációhoz igazítva. Az „indexált" szó erre utal.'
+        },
+        {
+          input: 'Záradékos kiegészítő fedezet',
+          output: 'Plusz biztosítás, külön fizetve',
+          sub: 'A záradék egy extra felár ellenében kibővíti az alap fedezetet – például casco mellé üvegkár-biztosítás.'
+        },
+        {
+          input: 'Bonus-malus besorolás',
+          output: 'Mennyi baleseted volt, ez dönti el az áradat',
+          sub: 'A bonus-malus rendszer jutalmazza a kármentes éveket (bonus = olcsóbb), és bünteti a károkat (malus = drágább).'
+        },
+        {
+          input: 'Pénzügyi intézményi jelzálogjog-érvényesítési kikötés',
+          output: 'A bank is rajta van a kötvényen',
+          sub: 'Ha a lakásod jelzáloggal terhelt, a bank engedményesként szerepel a biztosításban – azaz kár esetén ők is érintettek.'
+        },
+        {
+          input: 'Vagyonvédelmi instrumentum',
+          output: 'Biztosítás (megint)',
+          sub: 'Ez csak egy másik módja ugyanannak. Minden vagyonvédelmi instrumentum valamilyen formájú biztosítás vagy befektetési eszköz.'
+        }
+      ];
 
-  <script>
-  var phrases = [
-    {
-      original: "Az esetleges természeti katasztrófa esetén felmerülő, alapfedezetbe nem sorolt káreseményekre vonatkozó kizáró rendelkezések értelmében a biztosítót mentesítési jog illeti meg.",
-      translation: "Ha árvíz, vihar vagy más természeti katasztrófa okoz kárt, és azt nem vette meg fedezetként, a biztosító nem fizet.",
-      note: "A „kizáró rendelkezések" pontosan azt jelölik, mire NEM vonatkozik a biztosítás. Ezeket érdemes elolvasni szerződéskötés előtt."
-    },
-    {
-      original: "A kárrendezés kifizetésének feltétele a kárbejelentési kötelezettség 8 napon belüli teljesítése; ennek elmulasztása esetén a biztosítottnak a térítési igény elvesztésével kell számolnia.",
-      translation: "Ha 8 napon belül nem jelented be a kárt a biztosítónak, előfordulhat, hogy egyáltalán nem kapsz kárpénzt.",
-      note: "A határidő biztosítónként eltérhet. Mindig keresd meg a kárbejelentési fejezetben a pontos napot."
-    },
-    {
-      original: "Alulbiztosítottság esetén a biztosítási összeg és a biztosítási érték hányadosának arányában kerül megállapításra a kártalanítás mértéke.",
-      translation: "Ha az ingatlanodat 10 millióra biztosítottad, de 20 milliót ér, kárkor csak a fele jár – vagyis 5 millió forint.",
-      note: "Ezt hívják arányos kártalanításnak (pro rata). Az inflációval az ingatlanok értéke nő, a biztosítási összeg nem feltétlenül."
-    },
-    {
-      original: "A deductible összegéig terjedő károkat a biztosított viseli; a biztosítási szolgáltatás csak ezen összeg felett érvényesíthető.",
-      translation: "Az önrész az a rész, amit te fizetsz. A biztosítás csak az önrész feletti részt állja.",
-      note: "100 000 Ft-os önrésznél egy 80 000 Ft-os kárért semmit nem fizet a biztosító. Egy 500 000 Ft-os kárnál viszont 400 000 Ft-ot fizet."
-    },
-    {
-      original: "A biztosítási szerződés hatályban tartásának feltétele a biztosítási díj esedékességkor történő rendezése; az elmulasztott díjfizetés a fedezet megszűnéséhez vezet.",
-      translation: "Ha nem fizeted be a díjat, a biztosítás megszűnik. Ha közben kár éri az ingatlanodat vagy az autódat, nem kapsz semmit.",
-      note: "Érdemes közvetlen terhelést vagy automatikus utalást beállítani, hogy ne kelljen fejben tartani a fizetési határidőt."
-    },
-    {
-      original: "A szándékos károkozás tényállásának bizonyítottsága esetén a biztosító mentesül a kártalanítási kötelezettség teljesítése alól.",
-      translation: "Ha te magad okoztad a kárt szándékosan, a biztosító nem fizet.",
-      note: "Ez vonatkozik arra is, ha valaki szándékosan gyújtja a tüzet, vagy szándékosan rongálja az autóját."
-    },
-    {
-      original: "A biztosítási esemény kapcsán felmerülő kármegelőzési és kárcsökkentési intézkedések indokolt költségei a biztosítási összeg mértékéig téríthetők.",
-      translation: "Ha kár fenyeget, megteheted a szükséges óvintézkedéseket – és a biztosítás fizeti ezek ésszerű költségeit is.",
-      note: "Ha szivárog a tető és kifizetsz egy vészjavítást, hogy elkerüld a nagyobb kárt, ezt visszaigényelheted."
-    },
-    {
-      original: "A biztosított vagyontárgy értékcsökkenése és a pótlási értéken alapuló számítás között eltérés mutatkozhat az amortizáció alkalmazása következtében.",
-      translation: "A biztosító nem feltétlenül az új értékét fizeti a tönkrement tárgynak, hanem a kora alapján lecsökkentett összeget.",
-      note: "Ha 10 éves a TV-d, az „amortizált" értéke sokkal alacsonyabb az új árnál. Ezért érdemes „új értéken" fedezettel biztosítani az eszközöket."
-    },
-    {
-      original: "A KGFB-fedezet kizárólag a harmadik személynek okozott kárra terjed ki; a biztosított saját gépjárművében keletkezett kárt nem tartalmazza.",
-      translation: "A kötelező biztosítás a MÁSIKnak okozott kárt fizeti. Ha megkarcolod a saját autódat, ahhoz CASCO kell.",
-      note: "Rengeteg ügyfél meglepődik ezen. A „kötelező" csak a te felelősségedet fedezi, nem a saját káraidat."
-    },
-    {
-      original: "A jogi védelem biztosítás keretében az érdekérvényesítési eljárás jogász-díjait és a peres eljárás illetékeit a biztosítási összeg határain belül a biztosító viseli.",
-      translation: "A jogvédelmi biztosítás megfizeti az ügyvédet és a perköltséget, ha bírósági útra kerül az ügyöd.",
-      note: "Hasznos lehet bérleti vitáknál, munkaügyi perekben, vagy ha balesetednél kifizetést nem hajlandó az ellenoldal teljesíteni."
-    },
-    {
-      original: "A biztosítási kötvény tartalmi és formai érvényességének feltétele az ajánlat mindkét fél általi aláírása és a biztosítási díj első részletének megfizetése.",
-      translation: "A biztosítás csak akkor érvényes, ha aláírod a szerződést ÉS befizeted az első díjrészletet.",
-      note: "Ha az ügynök elmondta és te bólogattál, de nem írtad alá és nem fizetted be, még nincs biztosításod."
-    },
-    {
-      original: "A folyamatos biztosítási jogviszony fenntartása érdekében a biztosítottat kárbejelentési, kárcsökkentési és együttműködési kötelezettség terheli.",
-      translation: "Kár esetén: 1) Jelentsd be. 2) Tegyél meg mindent a kár csökkentéséért. 3) Működj együtt a biztosítóval.",
-      note: "Ha nem jelented be időben, vagy nem működsz együtt, a biztosító megtagadhatja a kifizetést."
-    },
-    {
-      original: "A bonus-malus rendszer keretében a káresemény-mentes évet B/M-fokozat javulásként, a kárral zárt évet B/M-fokozat romlásként kell nyilvántartani.",
-      translation: "Ha nincs károd, évről évre jobb bónuszba kerülsz, és kevesebbet fizetsz. Ha van károd, rosszabb fokozatba csúszol, és a díjad nő.",
-      note: "A bónusz az egyik legerősebb ösztönzője annak, hogy kisebb károkat ne jelentsd be. Mindig érdemes kiszámolni, megéri-e."
-    },
-    {
-      original: "A fedezet területi hatályára vonatkozó rendelkezések meghatározzák, hogy a biztosítási esemény hol következhet be ahhoz, hogy a kárrendezési eljárás megindítható legyen.",
-      translation: "A biztosítás csak azon a területen érvényes, amit a szerződésben megjelöltél. Külföldi kárhoz gyakran külön fedezet kell.",
-      note: "Az utasbiztosítás például külföldre szól. A lakásbiztosítás általában a megjelölt ingatlanra érvényes."
-    },
-    {
-      original: "Az élet- és balesetbiztosítási termékek kumulációs szabályai alapján a biztosított egyszerre több biztosítónál is fenntarthat fedezetet; a kifizetések összeadódhatnak.",
-      translation: "Életbiztosítás esetén több helyről is kaphatsz pénzt egyszerre – a kifizetések nem vonják le egymást.",
-      note: "Ez fontos különbség a vagyonbiztosításhoz képest, ahol duplikált fedezet esetén általában csak az egyik fizet."
-    }
-  ];
+      var samplesEl = document.getElementById('bsSamples');
+      var inputEl   = document.getElementById('bsInput');
+      var btn       = document.getElementById('bsTranslateBtn');
+      var resultEl  = document.getElementById('bsResult');
+      var resultTxt = document.getElementById('bsResultText');
+      var resultSub = document.getElementById('bsResultSub');
+      var currentMatch = null;
 
-  function buildPhrases() {
-    var container = document.getElementById('phrases-container');
-    if (!container) return;
-    phrases.forEach(function(p, i) {
-      var col = document.createElement('div');
-      col.className = 'col-md-6 col-lg-4';
-      col.innerHTML = '<div class="card h-100 phrase-card p-3" data-index="' + i + '">' +
-        '<div class="phrase-counter mb-1">' + (i+1) + ' / ' + phrases.length + '</div>' +
-        '<p class="phrase-original mb-2">\u201E' + p.original + '\u201D</p>' +
-        '<button class="btn btn-sm btn-primary rounded-pill btn-forditas"><i class="fa fa-language me-1"></i>Fordítás</button>' +
-        '<div class="phrase-translation"><strong>Emberi fordítás:</strong><br>' + p.translation + '</div>' +
-        '<div class="phrase-note"><i class="fa fa-info-circle me-1 text-primary"></i>' + p.note + '</div>' +
-        '</div>';
-      container.appendChild(col);
-    });
+      // Build sample buttons
+      dict.forEach(function (item, i) {
+        var b = document.createElement('button');
+        b.className = 'bs-sample-btn';
+        b.textContent = item.input;
+        b.dataset.idx = i;
+        b.addEventListener('click', function () {
+          document.querySelectorAll('.bs-sample-btn').forEach(function (x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          inputEl.value = item.input;
+          currentMatch = item;
+        });
+        samplesEl.appendChild(b);
+      });
 
-    container.addEventListener('click', function(e) {
-      var btn = e.target.closest('.btn-forditas');
-      if (btn) {
-        btn.closest('.phrase-card').classList.add('revealed');
-      }
-    });
+      // Translate button
+      btn.addEventListener('click', function () {
+        var val = inputEl.value.trim();
+        if (!val) return;
+        btn.classList.add('loading');
+        btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Fordítás...';
 
-    document.getElementById('reveal-all-btn').addEventListener('click', function() {
-      document.querySelectorAll('.phrase-card').forEach(function(c) { c.classList.add('revealed'); });
-      this.textContent = 'Minden fordítás látható';
-      this.disabled = true;
-    });
-  }
+        setTimeout(function () {
+          btn.classList.remove('loading');
+          btn.innerHTML = '<i class="fa fa-exchange-alt"></i> Fordítás';
 
-  document.addEventListener('DOMContentLoaded', buildPhrases);
-  </script>
-</body>
+          // Try to find exact match first
+          var match = currentMatch;
+          if (!match) {
+            var lower = val.toLowerCase();
+            match = dict.find(function (d) { return d.input.toLowerCase() === lower; });
+          }
+          if (!match) {
+            match = dict.find(function (d) { return lower.includes(d.input.toLowerCase().split(' ')[0]); });
+          }
+          if (!match) {
+            // Generic fallback
+            match = {
+              output: 'Biztosítási zsargon',
+              sub: 'Ez a kifejezés valószínűleg egyszerűbben is elmondható lenne. Kérdezd meg a Biztort – megmagyarázzák emberi nyelven is.'
+            };
+          }
+
+          resultTxt.textContent = match.output;
+          resultSub.textContent = match.sub || '';
+          resultEl.classList.add('visible');
+          resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          currentMatch = null;
+        }, 600);
+      });
+
+      // Allow Enter key
+      inputEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); btn.click(); }
+      });
+    })();
+    </script>
+  </body>
 </html>

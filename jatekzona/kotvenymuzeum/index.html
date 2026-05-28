@@ -1,324 +1,235 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-  <meta charset="utf-8" />
-  <title>Kötvénymúzeum – A biztosítás rövid története | Biztor Alkusz</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="Hat biztosítási kötvénytípus idővonalon. Miért elavultak a régi kötvények? Mit érdemes ma átnézetni? Edukációs, múzeum jellegű Biztor oldal." />
-  <link rel="canonical" href="https://biztor.hu/jatekzona/kotvenymuzeum/" />
-  <meta property="og:title" content="Kötvénymúzeum – Régi kötvények, régi hibák | Biztor Játékzóna" />
-  <meta property="og:description" content="6 biztosítási kiállítási tárgy az évtizedekből. Nézd meg, mennyit változott a világ – és hogy a régi kötvényed még mindig aktuális-e." />
-  <meta property="og:url" content="https://biztor.hu/jatekzona/kotvenymuzeum/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Biztor Alkusz Kft." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Biztor Alkusz Kft." />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Kezdőlap", "item": "https://biztor.hu/" },
-          { "@type": "ListItem", "position": 2, "name": "Játékzóna", "item": "https://biztor.hu/jatekzona/" },
-          { "@type": "ListItem", "position": 3, "name": "Kötvénymúzeum", "item": "https://biztor.hu/jatekzona/kotvenymuzeum/" }
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "url": "https://biztor.hu/jatekzona/kotvenymuzeum/",
-        "name": "Kötvénymúzeum – A biztosítás rövid története",
-        "description": "Edukációs kártyás kiállítás régi biztosítási kötvénytípusokról, tipikus hibákról és tanulságokról.",
-        "inLanguage": "hu-HU",
-        "dateModified": "2026-05-27",
-        "isPartOf": { "@type": "WebSite", "url": "https://biztor.hu/" },
-        "publisher": { "@type": "Organization", "name": "Biztor Alkusz Kft.", "url": "https://biztor.hu/" }
-      }
-    ]
-  }
-  </script>
-  <link rel="icon" href="/img/icon/favicon.ico" />
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/lib/animate/animate.min.css" />
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <style>
-    .museum-card { transition: transform .22s, box-shadow .22s; border-left: 4px solid #FFA726; }
-    .museum-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(255,167,38,.18) !important; }
-    .era-badge { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-    .museum-icon { font-size: 2rem; min-width: 2.5rem; }
-    .ghost-easter-egg { position: fixed; bottom: 110px; right: 22px; font-size: 1.6rem; opacity: 0.06; cursor: pointer; transition: opacity .3s, transform .3s; z-index: 999; user-select: none; }
-    .ghost-easter-egg:hover { opacity: 0.7; transform: scale(1.2) rotate(-8deg); }
-    .ghost-toast { position: fixed; bottom: 160px; right: 22px; max-width: 240px; z-index: 1000; display: none; }
-    .ghost-toast.show { display: block; animation: fadeInRight .4s; }
-    @keyframes fadeInRight { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
-  </style>
-</head>
-<body>
-  <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
-  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
-  </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kötvénymúzeum – A biztosítás históriája | Biztor Játékzóna</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="A biztosítás históriája retró stílusban. Nézd meg a Kötvénymúzeumot – és keresd meg a rejtett kötvényszellemet!" />
+    <meta name="theme-color" content="#FFA726" />
+    <link href="/img/icon/favicon.ico" rel="icon" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/output.css" />
+    <link rel="stylesheet" href="/css/jatekzona.css" />
+  </head>
 
-  <!-- Kötvényszellem easter egg -->
-  <button class="ghost-easter-egg" id="ghost-btn" aria-label="Titkos elem" title="👻">👻</button>
-  <div class="ghost-toast" id="ghost-toast">
-    <div class="card border-warning shadow-sm p-3">
-      <p class="small mb-1 fw-bold text-warning">Üzenet a Kötvényszellemtől:</p>
-      <p class="small mb-0 text-muted">„Én azokat az elfelejtett kötvényeket kísérem, amelyeket senki sem nézett meg 10 éve. Átnézeted a tiédet?"</p>
+  <body>
+    <a href="#fo-tartalom" class="visually-hidden-focusable">Ugrás a tartalomra</a>
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Betöltés...</span></div>
     </div>
-  </div>
 
-  <!-- Topbar -->
-  <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
-    <div class="row gx-0 align-items-center">
-      <div class="col d-flex align-items-center gap-3">
-        <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
-        <small class="d-flex align-items-center small fw-light"><i class="far fa-clock me-1"></i>H: 09:00–16:00, K-P: 8:00–16:00, Szo-V: Zárva</small>
-      </div>
-      <div class="col-auto d-flex align-items-center">
-        <a href="https://www.facebook.com/biztoralkusz?locale=hu_HU" class="text-dark ms-3 small fw-light" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </div>
-  <!-- Navbar -->
-  <div class="insure-navbar sticky-top">
-    <div class="insure-navbar-container d-flex align-items-center justify-content-between">
-      <a href="/" class="insure-navbar-brand d-flex align-items-center">
-        <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
-      </a>
-      <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <ul class="insure-icon-menu d-none d-lg-flex">
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span><a class="title" href="/rolunk">Rólunk</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
-        <li class="insure-menu-item"><span class="icon"><ion-icon name="book-outline"></ion-icon></span><a class="title" href="/infok">Infók</a></li>
-      </ul>
-    </div>
-    <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
-      <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
-        <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
-        <li class="nav-item"><a href="/rolunk" class="nav-link">Rólunk</a></li>
-        <li class="nav-item"><a href="/szolgaltatasok" class="nav-link">Biztosítások</a></li>
-        <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
-        <li class="nav-item"><a href="/infok" class="nav-link">Infók</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Fő tartalom -->
-  <div class="container-xxl py-5" id="fo-tartalom">
-    <div class="container">
-
-      <div class="row mb-5 justify-content-center">
-        <div class="col-lg-8 wow fadeInUp text-center" data-wow-delay="0.1s">
-          <nav aria-label="breadcrumb" class="mb-3 d-flex justify-content-center">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/">Kezdőlap</a></li>
-              <li class="breadcrumb-item"><a href="/jatekzona/">Játékzóna</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Kötvénymúzeum</li>
-            </ol>
-          </nav>
-          <div class="fs-1 mb-2">🏛️</div>
-          <h1 class="display-5 mb-3">Kötvénymúzeum</h1>
-          <p class="lead mb-2">Régi kötvények, régi problémák. Tanulságok ma is.</p>
-          <p class="text-muted">Nem valódi múzeum – de nagyon is valódi hibák. Nézd meg, hogyan változott a biztosítás az elmúlt évtizedekben, és mit érdemes ma átnézetni.</p>
-          <p class="text-muted small fst-italic">Psszt: valahol az oldalon bujkál egy Kötvényszellem is. 👻</p>
-        </div>
-      </div>
-
-      <!-- Kiállítási tárgyak -->
-      <div class="row g-4 mb-5">
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">📜</div>
-              <div>
-                <span class="badge bg-warning text-dark era-badge mb-2">1970-1980-as évek</span>
-                <h3 class="h5 fw-bold mb-2">A Kézíratos Kötvény</h3>
-                <p class="text-muted small mb-2">Kézzel írott, pecsételt biztosítási kötvények. Sok esetben a fedezet pontos terjedelme csak szóbeli megállapodásból volt ismert. Jogvitánál a szóbeli igéret nem számított.</p>
-                <p class="small fw-semibold text-warning">Tanulság: Mindig olvasd el a papírokat – a szóbeli ígéret nem köt senkit.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.15s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">📚</div>
-              <div>
-                <span class="badge bg-secondary era-badge mb-2">1990-2000-es évek</span>
-                <h3 class="h5 fw-bold mb-2">A 40 Oldalas Különfeltétel</h3>
-                <p class="text-muted small mb-2">Az első digitalizált kötvények megjelentek, de a feltételek sűrűsödtek. Egy átlagos lakásbiztosítás általános feltételei 40-80 oldalra nőttek. Az ügyfelek ritkán olvasták végig.</p>
-                <p class="small fw-semibold text-warning">Tanulság: Ma sem rövidebb – de alkusz összefoglalja, mi van benne.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">🟢</div>
-              <div>
-                <span class="badge bg-success era-badge mb-2">2000-es évek eleje</span>
-                <h3 class="h5 fw-bold mb-2">A Papír Zöldkártya</h3>
-                <p class="text-muted small mb-2">A kötelező biztosítás igazolása papíron utazott minden autóban. Lejárt zöldkártyával közlekedni súlyos büntetést és fedezethiányt jelentett. Sokan csak ellenőrzésnél szembesültek az elavult papírral.</p>
-                <p class="small fw-semibold text-warning">Tanulság: Ma is érdemes ellenőrizni az érvényességi dátumot – nemcsak az autón, minden biztosításon.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.25s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">📈</div>
-              <div>
-                <span class="badge bg-info text-dark era-badge mb-2">2005-2010</span>
-                <h3 class="h5 fw-bold mb-2">Az Indexált Összeg</h3>
-                <p class="text-muted small mb-2">Az ingatlanbiztosítások automatikusan indexálódtak – az összeg nőtt, de az ár is. Sok ügyfél csak a díjemelést vette észre, az értéknövekedést nem. Alulbiztosítottság ma is létezik, ha az automatika elmarad.</p>
-                <p class="small fw-semibold text-warning">Tanulság: Nem elég, hogy nő a biztosítási összeg – mindig hasonlítsd az ingatlan valódi értékéhez.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">📉</div>
-              <div>
-                <span class="badge bg-danger era-badge mb-2">2008-2015</span>
-                <h3 class="h5 fw-bold mb-2">A Unit-Linked Kötvény</h3>
-                <p class="text-muted small mb-2">Befektetési elemmel kombinált életbiztosítások robbantak be a piacra. Magas jutalékok, hosszú futamidő, korai visszavásárlási veszteség. 2008 után sok ügyfél veszteséggel járt. Szabályozás azóta szigorodott.</p>
-                <p class="small fw-semibold text-warning">Tanulság: A biztosítás és befektetés keverése nem mindig jó ötlet. Értsd meg, mit veszel meg.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.35s">
-          <div class="card border-0 shadow-sm p-4 h-100 museum-card">
-            <div class="d-flex align-items-start gap-3">
-              <div class="museum-icon">✉️</div>
-              <div>
-                <span class="badge bg-warning text-dark era-badge mb-2">Örök klasszikus</span>
-                <h3 class="h5 fw-bold mb-2">A Díjfizetési Értesítő</h3>
-                <p class="text-muted small mb-2">A boríték, amit sokan azonnal kidobnak. Pedig tartalmazza: mikor kell fizetni, mennyit, és mi változott az előző évhez képest. Sok szerződés azon szűnik meg, hogy a díjat elfelejtik befizetni.</p>
-                <p class="small fw-semibold text-warning">Tanulság: A biztosítás csak addig véd, amíg érvényes. Ellenőrizd a díjfizetési státuszt.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- CTA -->
-      <div class="row justify-content-center mb-4">
-        <div class="col-lg-8 text-center">
-          <div class="bg-light rounded p-4 p-lg-5">
-            <div class="fs-2 mb-2">🔍</div>
-            <h2 class="h4 fw-bold mb-3">A te kötvényed melyikre hasonlít a legjobban?</h2>
-            <p class="text-muted mb-4">Ha valamelyik kiállítási tárgy ismerősen cseng, érdemes megnézetni a saját szerződéseidet egy független alkusszal. Nem változtatáshoz – csak azért, hogy biztosan tudd, mi van benne.</p>
-            <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
-              <a href="/kapcsolat" class="btn btn-primary rounded-pill px-4"><i class="fa fa-search me-2"></i>Átnézetem</a>
-              <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-outline-primary rounded-pill px-4"><i class="fa fa-file-alt me-2"></i>Ajánlatkérés</a>
-              <a href="/jatekzona/" class="btn btn-outline-secondary rounded-pill px-4"><i class="fa fa-arrow-left me-2"></i>Vissza</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="container-fluid bg-dark footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-      <div class="row g-5">
-        <div class="col-lg-3 col-md-6">
-          <div class="text-white mb-4"><img class="img-fluid me-3" src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" width="279" height="105" decoding="async"></div>
-          <p>BIZTOR Alkusz Kft.<br>4400 Nyíregyháza Liliom utca 27/A.<br>MNB engedélyszám: 208080710804</p>
-          <div class="d-flex pt-2">
-            <a class="btn btn-square me-1 phone-link" href="mailto:iroda@biztor.hu" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
-            <a class="btn btn-square me-1" href="https://www.facebook.com/biztoralkusz?locale=hu_HU" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square me-1 phone-link" href="tel:+36706258201" aria-label="Telefon"><i class="fas fa-phone-alt"></i></a>
-            <a class="btn btn-square me-0" href="https://linkedin.com/company/biztor-alkusz-kft" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Elérhetőség</h5>
-          <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
-          <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
-          <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Gyors linkek</h5>
-          <a class="btn btn-link" href="/rolunk">Rólunk</a>
-          <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
-          <a class="btn btn-link" href="/szolgaltatasok">Szolgáltatásaink</a>
-          <a class="btn btn-link" href="/impresszum">Impresszum</a>
-          <a class="btn btn-link" href="/Adatkezelesi_szabalyzat_biztor_alkusz.pdf">Adatkezelési szabályzat</a>
-          <a class="btn btn-link" href="/Adatkezelesi_tajekoztato_biztor_alkusz.pdf">Adatkezelési tájékoztató</a>
-          <a class="btn btn-link" href="/panaszkezeles">Panaszkezelés</a>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-light mb-4">Dokumentumok</h5>
-          <a class="btn btn-link" href="/fentarthatosagi_kovetelmenyek.pdf">Fenntarthatósági követelmények tájékoztatás</a>
-          <a class="btn btn-link" href="/torveny-2023">2023. évi XXV. törvény</a>
+    <!-- Topbar -->
+    <div class="container-fluid bg-warning bg-opacity-75 text-dark py-1 px-3 d-none d-lg-block">
+      <div class="row gx-0 align-items-center">
+        <div class="col d-flex align-items-center gap-3">
+          <small class="d-flex align-items-center small fw-light"><i class="fa fa-phone-alt me-1"></i><a href="tel:+36706258201" class="phone-link">+36 70 625 8201</a></small>
+          <small class="d-flex align-items-center small fw-light"><i class="far fa-envelope-open me-1"></i><a href="mailto:iroda@biztor.hu" class="phone-link">iroda@biztor.hu</a></small>
         </div>
       </div>
     </div>
-    <div class="container-fluid copyright">
+
+    <!-- Navbar -->
+    <div class="insure-navbar sticky-top">
+      <div class="insure-navbar-container d-flex align-items-center justify-content-between">
+        <a href="/" class="insure-navbar-brand d-flex align-items-center">
+          <img src="/img/icon/biztorlogo.png" alt="Biztor Alkusz Kft. logó" class="insure-logo" width="279" height="105" decoding="async">
+        </a>
+        <button class="insure-navbar-toggler navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#insureNavbarCollapse" aria-controls="insureNavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="insure-icon-menu d-none d-lg-flex">
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><a class="title" href="/">Kezdőlap</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="briefcase-outline"></ion-icon></span><a class="title" href="/szolgaltatasok">Biztosítások</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="mail-outline"></ion-icon></span><a class="title" href="/kapcsolat">Kapcsolat</a></li>
+          <li class="insure-menu-item"><span class="icon"><ion-icon name="game-controller-outline"></ion-icon></span><a class="title" href="/jatekzona/">Játékzóna</a></li>
+        </ul>
+      </div>
+      <div class="collapse insure-navbar-collapse" id="insureNavbarCollapse">
+        <ul class="insure-mobile-menu navbar-nav mx-auto rounded pe-4 py-3">
+          <li class="nav-item"><a href="/" class="nav-link">Kezdőlap</a></li>
+          <li class="nav-item"><a href="/jatekzona/" class="nav-link">Játékzóna</a></li>
+          <li class="nav-item"><a href="/kapcsolat" class="nav-link">Kapcsolat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="game-hero" id="fo-tartalom">
+      <div class="container position-relative" style="z-index:2;">
+        <div class="jz-breadcrumb">
+          <a href="/jatekzona/">Játékzóna</a>
+          <span class="jz-breadcrumb-sep">›</span>
+          <span>Kötvénymúzeum</span>
+        </div>
+        <div class="game-hero-badge"><i class="fa fa-landmark me-1"></i> Múzeum</div>
+        <h1>Kötvény<span>múzeum</span></h1>
+        <p>A biztosítás históriája – retró stílusban. Böngészd a kiállítást, és keresd meg a rejtett kötvényszellemet! 👻</p>
+      </div>
+    </section>
+
+    <!-- MÚZEUM -->
+    <section class="game-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center mb-3 mb-md-0">&copy; <a href="/">BIZTOR Alkusz Kft.</a>, Minden jog fenntartva.</div>
+
+        <div class="museum-intro">
+          <h2>Üdvözlünk a Kötvénymúzeumban</h2>
+          <p>Hat kiállítási tárgy mutatja be a biztosítás históriáját Magyarországon. Böngéssd nyugodtan – és ha megtalálod a rejtett szellemet, jár a jutalom.</p>
         </div>
+
+        <div class="row g-4 position-relative" id="museumGrid">
+
+          <!-- 1. tárlat -->
+          <div class="col-md-6 col-lg-4">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">📜</div>
+              <span class="museum-era">1991</span>
+              <h3>Az Első Kötelező</h3>
+              <p>1991-ben jelent meg Magyarországon az első kötelező gépjármű-felelősségbiztosítási rendszer. Azóta minden autótulajdonosnak kötelező.</p>
+              <span class="museum-stamp">Eredeti dokumentum</span>
+            </article>
+          </div>
+
+          <!-- 2. tárlat -->
+          <div class="col-md-6 col-lg-4">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">🔥</div>
+              <span class="museum-era">1920-as évek</span>
+              <h3>A Tűzkár Dokum.</h3>
+              <p>A 20. század elején a tűz elleni biztosítás volt a legfontosabb. Azelőtt, hogy a gépkocsi elterjedt, az ingatlan volt a legfőbb védendő érték.</p>
+              <span class="museum-stamp">Vintage</span>
+            </article>
+          </div>
+
+          <!-- 3. tárlat – hidden ghost itt -->
+          <div class="col-md-6 col-lg-4 position-relative">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">⭐</div>
+              <span class="museum-era">1950–1989</span>
+              <h3>Az Állami Biztosító</h3>
+              <p>Évtizedekig az Állami Biztosító volt az egyetlen lehetőség Magyarországon. Nem volt verseny – de a kárrendezés is máshogy működött.</p>
+              <span class="museum-stamp">Ritka</span>
+
+              <!-- Kötvényszellem easter egg -->
+              <div class="jz-ghost" id="jzGhost" aria-label="Rejtett kötvényszellem" tabindex="0" role="button">
+                👻
+                <div class="jz-ghost-tooltip">Ez a kötvény már lejárt. De a tiéd? 🔍</div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 4. tárlat -->
+          <div class="col-md-6 col-lg-4">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">💻</div>
+              <span class="museum-era">~2005</span>
+              <h3>Az Első Online Ajánlat</h3>
+              <p>A 2000-es évek közepén jelentek meg az első online biztosítási kalkulátorok. Forradalmi volt – és ma már természetes.</p>
+              <span class="museum-stamp">Digitális korszak</span>
+            </article>
+          </div>
+
+          <!-- 5. tárlat -->
+          <div class="col-md-6 col-lg-4">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">📄</div>
+              <span class="museum-era">2000-es évek</span>
+              <h3>A Papíros Kötvény</h3>
+              <p>Mielőtt a PDF általánossá vált, minden kötvényt papíron adtak át. Vannak, akik még ma is a fiókban keresik a nyomatott szerződésüket.</p>
+              <span class="museum-stamp">Gyűjteményes</span>
+            </article>
+          </div>
+
+          <!-- 6. tárlat -->
+          <div class="col-md-6 col-lg-4">
+            <article class="museum-item">
+              <div class="museum-item-icon" aria-hidden="true">🏅</div>
+              <span class="museum-era">1992</span>
+              <h3>Az Első Bónusz</h3>
+              <p>A bonus-malus rendszer bevezetése 1992-ben jutalmazza a balesetmentes autóvezetőket – és bünteti azokat, akiknek káruk volt.</p>
+              <span class="museum-stamp">Mérföldkő</span>
+            </article>
+          </div>
+
+        </div>
+
+        <!-- CTA blokk -->
+        <div class="game-cta" style="max-width:640px;margin:2.5rem auto 0;">
+          <h4>A te kötvényeid is múzeumi darabok?</h4>
+          <p>Ha a biztosításaid nem frissültek az elmúlt években, érdemes átnézni őket. Ingyenes konzultáció, semmi kötelezettség.</p>
+          <div class="game-cta-btns">
+            <a href="/kapcsolat" class="btn btn-cta-primary"><i class="fa fa-arrow-right"></i> Átnézetem</a>
+            <a href="tel:+36706258201" class="btn btn-cta-outline"><i class="fa fa-phone-alt"></i> Visszahívást kérek</a>
+            <a href="/jatekzona/" class="btn btn-cta-outline"><i class="fa fa-gamepad"></i> Vissza</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ghost overlay -->
+    <div class="jz-secret-overlay" id="ghostOverlay" role="dialog" aria-modal="true" aria-label="Kötvényszellem üzenete">
+      <div class="jz-secret-card">
+        <button class="jz-secret-close" id="ghostClose" aria-label="Bezárás">✕</button>
+        <div style="font-size:3rem;margin-bottom:.75rem;">👻</div>
+        <h3>Kötvényszellem üzen!</h3>
+        <p>Megtaláltál! Az üzenetem: sok kötvény lejár, megújul, vagy elavul anélkül, hogy a tulajdonosa tudna róla. Az enyém is ilyen volt egykor. A tiéd rendben van?</p>
+        <a href="/kapcsolat" class="btn btn-cta-primary mt-3 rounded-pill px-4">
+          <i class="fa fa-arrow-right me-2"></i> Átnézetem
+        </a>
       </div>
     </div>
-  </div>
 
-  <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
-  <div class="mobile-action-bar d-lg-none" aria-label="Gyors elérhetőség">
-    <a href="/kotelezo-biztositas-ajanlatkeres" class="mobile-action-bar__primary hover-lift"><i class="fa fa-file-alt"></i> Ajánlatkérés</a>
-    <a href="tel:+36706258201" class="mobile-action-bar__secondary hover-lift phone-link" aria-label="Telefonhívás" style="background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,167,38,0.5);color:var(--primary);"><i class="fa fa-phone-alt"></i></a>
-  </div>
+    <!-- Footer -->
+    <div class="container-fluid bg-dark footer mt-0 pt-5">
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="text-white mb-4"><img class="img-fluid" src="/img/icon/biztorlogo.png" alt="Biztor logó" width="279" height="105" decoding="async"></div>
+            <p>BIZTOR Alkusz Kft. · 4400 Nyíregyháza Liliom utca 27/A.</p>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Gyors linkek</h5>
+            <a class="btn btn-link" href="/">Kezdőlap</a>
+            <a class="btn btn-link" href="/kapcsolat">Kapcsolat</a>
+            <a class="btn btn-link" href="/jatekzona/">Játékzóna</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-light mb-4">Más játékok</h5>
+            <a class="btn btn-link" href="/jatekzona/bullshit-fordito/">Bullshit Fordító</a>
+            <a class="btn btn-link" href="/jatekzona/biztositas-tinder/">Biztosítás Tinder</a>
+            <a class="btn btn-link" href="/jatekzona/horoszkop/">Horoszkóp</a>
+            <a class="btn btn-link" href="/jatekzona/papirdarlo/">Papírdaráló</a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid copyright"><div class="container"><div class="row"><div class="col-md-12 text-center mb-3">&copy; <a href="/">BIZTOR Alkusz Kft.</a></div></div></div></div>
+    </div>
+    <button type="button" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script defer src="/lib/wow/wow.min.js"></script>
-  <script defer src="/lib/easing/easing.min.js"></script>
-  <script defer src="/lib/waypoints/waypoints.min.js"></script>
-  <script defer src="/js/main.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/lib/wow/wow.min.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var ghostBtn = document.getElementById('ghost-btn');
-    var ghostToast = document.getElementById('ghost-toast');
-    var toastVisible = false;
-    ghostBtn.addEventListener('click', function() {
-      toastVisible = !toastVisible;
-      ghostToast.classList.toggle('show', toastVisible);
-      if (toastVisible) {
-        setTimeout(function() {
-          toastVisible = false;
-          ghostToast.classList.remove('show');
-        }, 5000);
+    <script>
+    (function () {
+      var ghost = document.getElementById('jzGhost');
+      var overlay = document.getElementById('ghostOverlay');
+      var close = document.getElementById('ghostClose');
+      if (ghost) {
+        function showGhost() { overlay.classList.add('visible'); }
+        ghost.addEventListener('click', showGhost);
+        ghost.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showGhost(); } });
       }
-    });
-  });
-  </script>
-</body>
+      if (close) close.addEventListener('click', function () { overlay.classList.remove('visible'); });
+      if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) overlay.classList.remove('visible'); });
+    })();
+    </script>
+  </body>
 </html>
