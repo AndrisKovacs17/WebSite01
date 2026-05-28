@@ -1,0 +1,726 @@
+/* =========================================================
+   Bullshit Fordító — oldal-specifikus CSS
+   Prefix: bf-
+   Örököl: css/jatekzona.css változóiból
+   ========================================================= */
+
+/* ── Alap változók (helyi override is lehetséges) ─────── */
+:root {
+  --bf-blue:    #3b82f6;
+  --bf-green:   #22c55e;
+  --bf-amber:   #f59e0b;
+  --bf-red:     #ef4444;
+  --bf-purple:  #8b5cf6;
+  --bf-bg:      #f8fafc;
+  --bf-card:    #ffffff;
+  --bf-border:  #e2e8f0;
+  --bf-text:    #1e293b;
+  --bf-muted:   #64748b;
+  --bf-radius:  1.25rem;
+  --bf-shadow:  0 4px 24px rgba(0,0,0,.08);
+  --bf-shadow-lg: 0 12px 48px rgba(0,0,0,.14);
+  --bf-transition: 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Hero / breadcrumb ───────────────────────────────── */
+.bf-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 60%, #1a2d4a 100%);
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.bf-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(59,130,246,.15), transparent 70%),
+              radial-gradient(ellipse 40% 60% at 20% 70%, rgba(139,92,246,.12), transparent 70%);
+  pointer-events: none;
+}
+.bf-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: rgba(59,130,246,.15);
+  border: 1px solid rgba(59,130,246,.35);
+  color: #93c5fd;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .28rem .75rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.bf-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: .75rem;
+}
+.bf-hero-sub {
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,.72);
+  max-width: 540px;
+  line-height: 1.6;
+  margin-bottom: .5rem;
+}
+.bf-hero-note {
+  font-size: .875rem;
+  color: rgba(255,255,255,.48);
+  max-width: 480px;
+}
+.bf-hero-emoji {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,.3));
+}
+
+/* ── Szekció alap ────────────────────────────────────── */
+.bf-section {
+  padding: 4rem 0;
+}
+.bf-section-dark {
+  background: #f1f5f9;
+}
+.bf-section-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--bf-text);
+  margin-bottom: .5rem;
+}
+.bf-section-sub {
+  font-size: .9375rem;
+  color: var(--bf-muted);
+  margin-bottom: 2.5rem;
+}
+
+/* ── Fordítógép wrap ─────────────────────────────────── */
+.bf-machine-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bf-card);
+  border-radius: var(--bf-radius);
+  box-shadow: var(--bf-shadow-lg);
+  padding: 2.25rem 2rem 2rem;
+  border: 1px solid var(--bf-border);
+  position: relative;
+  overflow: hidden;
+}
+.bf-machine-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bf-blue), var(--bf-purple), var(--bf-blue));
+  background-size: 200% 100%;
+  animation: bfGradientMove 3s linear infinite;
+}
+@keyframes bfGradientMove {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Input group ─────────────────────────────────────── */
+.bf-input-label {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--bf-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: .5rem;
+}
+.bf-input-row {
+  display: flex;
+  gap: .75rem;
+  align-items: stretch;
+}
+.bf-input-field {
+  flex: 1;
+  border: 2px solid var(--bf-border);
+  border-radius: .75rem;
+  padding: .875rem 1.1rem;
+  font-size: 1.0625rem;
+  font-family: inherit;
+  color: var(--bf-text);
+  background: #f8fafc;
+  outline: none;
+  transition: border-color var(--bf-transition), box-shadow var(--bf-transition), background var(--bf-transition);
+  min-width: 0;
+}
+.bf-input-field::placeholder { color: #94a3b8; }
+.bf-input-field:focus {
+  border-color: var(--bf-blue);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+}
+.bf-translate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .875rem 1.5rem;
+  background: linear-gradient(135deg, var(--bf-blue) 0%, #2563eb 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: .75rem;
+  cursor: pointer;
+  transition: transform var(--bf-transition), box-shadow var(--bf-transition), filter var(--bf-transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.bf-translate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59,130,246,.35);
+  filter: brightness(1.05);
+}
+.bf-translate-btn:active { transform: translateY(0); }
+.bf-translate-btn .btn-arrow {
+  display: inline-block;
+  transition: transform var(--bf-transition);
+}
+.bf-translate-btn:hover .btn-arrow { transform: translateX(3px); }
+.bf-translate-btn.loading { cursor: not-allowed; filter: brightness(.9); }
+
+/* ── Chips ───────────────────────────────────────────── */
+.bf-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: 1rem;
+}
+.bf-chips-label {
+  width: 100%;
+  font-size: .75rem;
+  color: var(--bf-muted);
+  font-weight: 500;
+  margin-bottom: .1rem;
+}
+.bf-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .3rem .75rem;
+  background: #f1f5f9;
+  border: 1px solid var(--bf-border);
+  border-radius: 999px;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--bf-text);
+  cursor: pointer;
+  transition: background var(--bf-transition), border-color var(--bf-transition), transform var(--bf-transition);
+  user-select: none;
+}
+.bf-chip:hover {
+  background: #e0e7ff;
+  border-color: #a5b4fc;
+  transform: translateY(-1px);
+}
+.bf-chip:active { transform: translateY(0); }
+
+/* ── Validáció / hiba üzenet ─────────────────────────── */
+.bf-error-msg {
+  font-size: .875rem;
+  color: var(--bf-amber);
+  margin-top: .5rem;
+  min-height: 1.25em;
+  display: none;
+}
+.bf-error-msg.visible { display: block; }
+
+/* ── Scanner animáció ────────────────────────────────── */
+.bf-scanner-wrap {
+  margin-top: 1.75rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+}
+.bf-scanner-wrap.active { display: flex; }
+.bf-scanner-bg {
+  width: 100%;
+  max-width: 360px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: .875rem;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+}
+.bf-scanner-term {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .02em;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.bf-scanner-line {
+  position: absolute;
+  top: 0; left: -100%; right: auto;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(59,130,246,.55) 40%, rgba(139,92,246,.65) 60%, transparent 100%);
+  z-index: 1;
+  animation: bfScanLine 1.1s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes bfScanLine {
+  0%   { left: -70%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 110%; opacity: 0; }
+}
+.bf-scanner-status {
+  font-size: .8125rem;
+  color: #94a3b8;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── Eredmény kártya ─────────────────────────────────── */
+.bf-result-card {
+  margin-top: 1.75rem;
+  background: var(--bf-card);
+  border: 1px solid var(--bf-border);
+  border-radius: var(--bf-radius);
+  overflow: hidden;
+  display: none;
+  animation: bfSlideUp .35s cubic-bezier(.4,0,.2,1) both;
+}
+.bf-result-card.active { display: block; }
+@keyframes bfSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.bf-result-header {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: 1.125rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.bf-result-term-text {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: #fff;
+}
+.bf-result-cat-badge {
+  font-size: .7rem;
+  font-weight: 600;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  background: rgba(59,130,246,.2);
+  border: 1px solid rgba(59,130,246,.4);
+  color: #93c5fd;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.bf-result-body {
+  padding: 0;
+}
+.bf-result-section {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  gap: .875rem;
+  align-items: flex-start;
+}
+.bf-result-section:last-child { border-bottom: none; }
+.bf-result-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+.bf-result-icon.explain  { background: #eff6ff; }
+.bf-result-icon.why      { background: #f0fdf4; }
+.bf-result-icon.check    { background: #fffbeb; }
+.bf-result-icon.mistake  { background: #fef2f2; }
+.bf-result-icon.example  { background: #f5f3ff; }
+.bf-result-content-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: .25rem;
+}
+.explain  .bf-result-content-label { color: var(--bf-blue); }
+.why      .bf-result-content-label { color: var(--bf-green); }
+.check    .bf-result-content-label { color: var(--bf-amber); }
+.mistake  .bf-result-content-label { color: var(--bf-red); }
+.example  .bf-result-content-label { color: var(--bf-purple); }
+.bf-result-content-text {
+  font-size: .9375rem;
+  color: var(--bf-text);
+  line-height: 1.65;
+}
+.bf-result-cta {
+  padding: 1.25rem 1.5rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--bf-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .625rem;
+  align-items: center;
+}
+.bf-result-cta-hint {
+  flex: 1;
+  min-width: 200px;
+  font-size: .8375rem;
+  color: var(--bf-muted);
+  line-height: 1.5;
+}
+.bf-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .55rem 1.2rem;
+  background: var(--bf-blue);
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: .625rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--bf-transition), transform var(--bf-transition);
+}
+.bf-cta-btn-primary:hover { background: #2563eb; transform: translateY(-1px); color: #fff; text-decoration: none; }
+.bf-cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .55rem 1.2rem;
+  background: transparent;
+  border: 1.5px solid var(--bf-border);
+  color: var(--bf-text);
+  font-size: .875rem;
+  font-weight: 600;
+  border-radius: .625rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--bf-transition), background var(--bf-transition), transform var(--bf-transition);
+}
+.bf-cta-btn-outline:hover { border-color: var(--bf-blue); color: var(--bf-blue); background: #eff6ff; transform: translateY(-1px); text-decoration: none; }
+
+/* ── Nincs találat kártya ────────────────────────────── */
+.bf-no-match-card {
+  margin-top: 1.75rem;
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: var(--bf-radius);
+  padding: 1.5rem;
+  display: none;
+  animation: bfSlideUp .35s cubic-bezier(.4,0,.2,1) both;
+}
+.bf-no-match-card.active { display: block; }
+.bf-no-match-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: .35rem;
+}
+.bf-no-match-body {
+  font-size: .9rem;
+  color: #78350f;
+  margin-bottom: 1rem;
+}
+.bf-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.bf-suggestion-btn {
+  padding: .35rem .85rem;
+  background: #fff;
+  border: 1.5px solid #fbbf24;
+  border-radius: 999px;
+  font-size: .8125rem;
+  font-weight: 600;
+  color: #92400e;
+  cursor: pointer;
+  transition: background var(--bf-transition), border-color var(--bf-transition);
+  text-align: left;
+}
+.bf-suggestion-btn:hover { background: #fef3c7; border-color: #f59e0b; }
+
+/* ── Fogalomtár szekció ──────────────────────────────── */
+.bf-glossary {
+  padding: 4rem 0;
+  background: #f8fafc;
+}
+.bf-cat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+.bf-cat-tab {
+  padding: .5rem 1.1rem;
+  background: #fff;
+  border: 1.5px solid var(--bf-border);
+  border-radius: 999px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--bf-muted);
+  cursor: pointer;
+  transition: background var(--bf-transition), border-color var(--bf-transition), color var(--bf-transition);
+  user-select: none;
+}
+.bf-cat-tab:hover { border-color: var(--bf-blue); color: var(--bf-blue); }
+.bf-cat-tab.active {
+  background: var(--bf-blue);
+  border-color: var(--bf-blue);
+  color: #fff;
+}
+.bf-terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.bf-term-card {
+  background: var(--bf-card);
+  border: 1px solid var(--bf-border);
+  border-radius: .875rem;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  transition: box-shadow var(--bf-transition), transform var(--bf-transition), border-color var(--bf-transition);
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.bf-term-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.10);
+  transform: translateY(-3px);
+  border-color: var(--bf-blue);
+}
+.bf-term-card-icon {
+  font-size: 1.25rem;
+}
+.bf-term-card-name {
+  font-size: .9375rem;
+  font-weight: 700;
+  color: var(--bf-text);
+}
+.bf-term-card-cat {
+  font-size: .75rem;
+  color: var(--bf-muted);
+}
+.bf-term-card-peek {
+  font-size: .8125rem;
+  color: #475569;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Edukációs blokk ─────────────────────────────────── */
+.bf-edu {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #fff;
+}
+.bf-edu-title {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.bf-edu-sub {
+  font-size: .9375rem;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 2rem;
+}
+.bf-edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.bf-edu-point {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem;
+  transition: background var(--bf-transition);
+}
+.bf-edu-point:hover { background: rgba(255,255,255,.1); }
+.bf-edu-point-icon {
+  font-size: 1.75rem;
+  margin-bottom: .5rem;
+}
+.bf-edu-point-title {
+  font-size: .9375rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .35rem;
+}
+.bf-edu-point-text {
+  font-size: .85rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.6;
+}
+
+/* ── Záró CTA ────────────────────────────────────────── */
+.bf-final-cta {
+  padding: 5rem 0;
+  text-align: center;
+  background: #f8fafc;
+}
+.bf-final-cta-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.bf-final-cta h2 {
+  font-size: clamp(1.375rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--bf-text);
+  margin-bottom: .5rem;
+}
+.bf-final-cta-sub {
+  font-size: 1rem;
+  color: var(--bf-muted);
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bf-final-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: center;
+}
+.bf-final-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .875rem 2rem;
+  background: linear-gradient(135deg, var(--bf-blue) 0%, #2563eb 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: .875rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--bf-transition), box-shadow var(--bf-transition);
+}
+.bf-final-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,.35); color: #fff; text-decoration: none; }
+.bf-final-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .875rem 2rem;
+  background: transparent;
+  border: 2px solid var(--bf-border);
+  color: var(--bf-text);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: .875rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--bf-transition), color var(--bf-transition), transform var(--bf-transition);
+}
+.bf-final-btn-outline:hover { border-color: var(--bf-blue); color: var(--bf-blue); transform: translateY(-2px); text-decoration: none; }
+
+/* ── Vissza a Játékzónába link ────────────────────────── */
+.bf-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .875rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+  transition: color var(--bf-transition);
+  margin-bottom: 1.25rem;
+}
+.bf-back-link:hover { color: #fff; text-decoration: none; }
+
+/* ── Reszponzivitás ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .bf-machine-wrap {
+    padding: 1.5rem 1rem 1.25rem;
+    border-radius: 1rem;
+  }
+  .bf-input-row {
+    flex-direction: column;
+  }
+  .bf-translate-btn {
+    width: 100%;
+    justify-content: center;
+    padding: .9rem 1.25rem;
+  }
+  .bf-result-section {
+    padding: .9rem 1rem;
+    gap: .625rem;
+  }
+  .bf-result-header {
+    padding: .875rem 1rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .bf-result-cta {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+  .bf-result-cta-hint {
+    min-width: unset;
+  }
+  .bf-terms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .bf-edu-grid {
+    grid-template-columns: 1fr;
+  }
+  .bf-final-cta-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bf-final-btn-primary,
+  .bf-final-btn-outline {
+    width: 100%;
+    max-width: 340px;
+    justify-content: center;
+  }
+  .bf-hero {
+    padding: 2.5rem 0 2rem;
+  }
+  .bf-hero h1 { font-size: 1.75rem; }
+  .bf-no-match-card { padding: 1.125rem; }
+}
+@media (max-width: 400px) {
+  .bf-chip { font-size: .75rem; padding: .25rem .6rem; }
+  .bf-terms-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Akadálymentesség — fókusz állapot ───────────────── */
+.bf-input-field:focus-visible,
+.bf-translate-btn:focus-visible,
+.bf-chip:focus-visible,
+.bf-cat-tab:focus-visible,
+.bf-term-card:focus-visible,
+.bf-suggestion-btn:focus-visible,
+.bf-cta-btn-primary:focus-visible,
+.bf-cta-btn-outline:focus-visible,
+.bf-final-btn-primary:focus-visible,
+.bf-final-btn-outline:focus-visible {
+  outline: 2.5px solid var(--bf-blue);
+  outline-offset: 2px;
+}
