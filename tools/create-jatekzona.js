@@ -3,6 +3,20 @@
  * tools/create-jatekzona.js
  * Generates the Biztor Játékzóna hub + 6 game pages in clean URL structure.
  * Run: node tools/create-jatekzona.js
+ *
+ * FIGYELEM: Ez a script csak akkor futtatandó, ha teljesen új játékoldalakat
+ * kell létrehozni. A jelenlegi játékoldalak (bullshit-fordito/, biztositas-tinder/,
+ * stb.) már kész, működő tartalmat tartalmaznak – ezt a scriptet nem szabad
+ * rajtuk futtatni, mert felülírná a valós game-logikát placeholder tartalommal.
+ *
+ * Végleges URL-struktúra:
+ *   /jatekzona/
+ *   /bullshit-fordito/
+ *   /biztositas-tinder/
+ *   /biztositasi-horoszkop/
+ *   /biztositasi-kartyahuzas/
+ *   /kotvenymuzeum/
+ *   /papirdaralo/
  */
 const fs = require("fs");
 const path = require("path");
