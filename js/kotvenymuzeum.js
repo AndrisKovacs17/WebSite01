@@ -41,39 +41,78 @@
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
+  /* ── GENERÁLT KÖTVÉNYLAP (HTML/CSS, nincs képfájl) ──────────── */
+  var COND_LABEL = { old: "régi, átnézendő", "new": "rendben tartott", warning: "ellenőrizendő" };
+
+  function docLines(n) {
+    var s = "";
+    for (var i = 0; i < n; i++) {
+      var w = 58 + ((i * 37 + 11) % 40); /* determinisztikus 58–97% szélesség */
+      s += '<span style="width:' + w + '%"></span>';
+    }
+    return s;
+  }
+
+  function policyDoc(data, large) {
+    var cond = data.condition || "old";
+    var kw = (data.policyKeywords || []).slice(0, 4);
+    var kwHtml = kw.map(function (k) {
+      return '<li class="museum-policy-doc__kw">' + esc(k) + '</li>';
+    }).join("");
+    var sealIcon = cond === "new" ? "fa-check"
+                 : (cond === "warning" ? "fa-exclamation" : "fa-stamp");
+    return '' +
+      '<div class="museum-policy-doc museum-policy-doc--' + esc(cond) +
+        (large ? " is-large" : "") + '" aria-hidden="true">' +
+        (cond === "new" ? '<span class="museum-policy-doc__shine"></span>' : "") +
+        (cond === "old" ? '<span class="museum-policy-doc__dust-tex"></span>' : "") +
+        '<span class="museum-policy-doc__corner"></span>' +
+        '<div class="museum-policy-doc__header">' +
+          '<span class="museum-policy-doc__brand"><i class="fas fa-file-contract"></i> Kötvény</span>' +
+          '<span class="museum-policy-doc__meta">' + esc(data.era || "") + '</span>' +
+        '</div>' +
+        '<div class="museum-policy-doc__title">' + esc(data.policyTitle || data.category || "") + '</div>' +
+        '<div class="museum-policy-doc__cat">' + esc(data.category || "") + '</div>' +
+        '<div class="museum-policy-doc__lines">' + docLines(large ? 6 : 4) + '</div>' +
+        (kwHtml ? '<ul class="museum-policy-doc__keywords">' + kwHtml + '</ul>' : "") +
+        '<span class="museum-policy-doc__seal"><i class="fas ' + sealIcon + '"></i></span>' +
+        (data.stamp ? '<span class="museum-policy-doc__stamp">' + esc(data.stamp) + '</span>' : "") +
+      '</div>';
+  }
+
+  function ariaLabelFor(ex, hint) {
+    var cond = COND_LABEL[ex.condition || "old"] || "";
+    return ex.title + " – " + ex.category +
+      (cond ? ". Állapot: " + cond : "") +
+      (ex.lesson ? ". Tanulság: " + ex.lesson : "") +
+      ". " + hint;
+  }
+
   /* ── FRAME MARKUP ─────────────────────────────────────────── */
   function frameMarkup(ex) {
-    var hasImg = ex.image ? true : false;
     var artLayers = "";
 
-    /* alap papír-placeholder (mindig ott van, a kép mögött) */
-    artLayers +=
-      '<div class="km-art-fallback" aria-hidden="true">' +
-        '<span class="km-art-ph-label">Kép helye</span>' +
-        '<span class="km-art-ph-cat">' + esc(ex.category) + '</span>' +
-      '</div>';
-
-    if (hasImg) {
-      artLayers +=
-        '<img class="km-art-img" src="' + esc(ex.image) + '" alt="' +
-        esc(ex.title) + ' – kiállított szerződés (illusztráció)"' +
-        ' onerror="this.remove()">';
-    }
+    /* alap generált kötvénylap (mindig ott van) */
+    artLayers += policyDoc(ex, false);
 
     /* átszakadó (tearable) rétegek */
     if (ex.tearable) {
-      artLayers += '<div class="km-hidden-art" aria-hidden="true">';
-      if (ex.hidden) {
-        artLayers += '<img class="km-hidden-img" src="' + esc(ex.hidden) +
-          '" alt="" onerror="this.remove()">';
-      }
+      var hiddenDoc = policyDoc({
+        condition: ex.hiddenCondition || "warning",
+        era: "Rejtett",
+        category: ex.category,
+        policyTitle: ex.hiddenTitle || "Rejtett tétel",
+        policyKeywords: ex.hiddenKeywords || [],
+        stamp: ex.hiddenStamp || "MEGTALÁLVA"
+      }, false);
       artLayers +=
-          '<i class="fas fa-folder-open"></i>' +
-          '<span>A fal mögött találtunk még valamit.</span>' +
+        '<div class="km-hidden-art" aria-hidden="true">' +
+          hiddenDoc +
+          '<span class="km-hidden-cap"><i class="fas fa-folder-open"></i> A fal mögött találtunk még valamit.</span>' +
         '</div>' +
         '<div class="km-front" aria-hidden="true">' +
-          '<div class="km-front-half km-front-l"><span class="km-front-mark">Régi kötvény</span></div>' +
-          '<div class="km-front-half km-front-r"><span class="km-front-mark">Régi kötvény</span></div>' +
+          '<div class="km-front-half km-front-l"><span class="km-front-mark">' + esc(ex.policyTitle || ex.category) + '</span></div>' +
+          '<div class="km-front-half km-front-r"><span class="km-front-mark">' + esc(ex.policyTitle || ex.category) + '</span></div>' +
         '</div>' +
         '<div class="km-crack" aria-hidden="true"></div>';
     }
@@ -94,10 +133,10 @@
       : (ex.dusty ? "Tipp: törölje le róla a port." : "Kattintson a részletekért.");
 
     return '' +
-      '<div class="km-frame' + (ex.dusty ? " is-dusty" : "") + '"' +
+      '<div class="km-frame km-frame--' + esc(ex.condition || "old") + (ex.dusty ? " is-dusty" : "") + '"' +
         ' role="button" tabindex="0"' +
         ' data-id="' + esc(ex.id) + '"' +
-        ' aria-label="' + esc(ex.title) + ' – ' + esc(ex.category) + '. ' + hint + '">' +
+        ' aria-label="' + esc(ariaLabelFor(ex, hint)) + '">' +
         '<div class="km-frame-art">' + artLayers + '</div>' +
         '<div class="km-plaque">' +
           '<div class="km-plaque-cat">' + esc(ex.category) + '</div>' +
@@ -352,15 +391,7 @@
 
   /* ── MODAL (nagyított nézet) ──────────────────────────────── */
   function modalArt(ex) {
-    var html = '<div class="km-art-fallback" aria-hidden="true">' +
-        '<span class="km-art-ph-label">Kép helye</span>' +
-        '<span class="km-art-ph-cat">' + esc(ex.category) + '</span>' +
-      '</div>';
-    if (ex.image) {
-      html += '<img class="km-art-img" src="' + esc(ex.image) + '" alt="' +
-        esc(ex.title) + ' – kiállított szerződés (illusztráció)" onerror="this.remove()">';
-    }
-    return html;
+    return policyDoc(ex, true);
   }
 
   function openModal(ex) {
