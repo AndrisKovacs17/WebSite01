@@ -867,6 +867,18 @@
   transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,167,38,.45);
   color: #fff; text-decoration: none;
 }
+.btn-jz-teaser i {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-jz-teaser:hover i {
+  transform: translateX(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-jz-teaser i { transition: none; }
+  .btn-jz-teaser:hover i { transform: none; }
+}
 
 /* Teaser pills wrapper */
 .jz-teaser-pills {

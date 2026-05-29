@@ -880,7 +880,7 @@
 }
 
 .single-arrow-button:hover ion-icon {
-  transform: scale(0);
+  transform: translateX(6px) scale(0);
   color: #fff;
   transition-delay: 0s;
 }
