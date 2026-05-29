@@ -1,21 +1,23 @@
 /* ================================================================
    kotvenymuzeum-data.js  –  Kötvénymúzeum
    Kiállítási termek és tárgyak. Frontend-only, nincs adatmentés.
-   A képek PLACEHOLDER útvonalak — később manuálisan cserélhetők:
-     /assets/images/museum-placeholders/kotveny-XX.jpg  (kiállított lap)
-     /assets/images/museum-placeholders/hidden-0X.jpg   (rejtett, átszakadás mögötti)
-   Ha a fájl nem létezik, elegáns CSS papír-placeholder marad.
+   A kötvénylapok HTML/CSS-ből generáltak — nincs szükség képfájlra.
+   Vizuális állapot: condition ("old" | "new" | "warning").
+   A régi `image`/`hidden` mezők kompatibilitásból maradnak, de nem
+   használtak; a megjelenést a condition + policyTitle + policyKeywords
+   + stamp mezők vezérlik (lásd kotvenymuzeum.js policyDoc()).
    ================================================================ */
 (function () {
   "use strict";
 
   /* Mezők:
      id, title, era, category, label (rövid múzeumi címke),
-     dusty (poros példány), tearable (háromszori kattintásra átszakad),
-     image (placeholder), hidden (átszakadás mögötti placeholder),
-     why (miért érdekes), watchOut (mire figyelj),
-     reviewNow (mit érdemes átnézni), curator (kurátori magyarázat),
-     lesson (tanulság). */
+     condition ("old" | "new" | "warning") — generált kötvény stílusa,
+     policyTitle (a lapon megjelenő rövid cím),
+     policyKeywords (rövid kulcsszavak a lapon), stamp (pecsétfelirat),
+     dusty (poros canvas réteg), tearable (háromszori kattintásra átszakad),
+     hiddenTitle/hiddenKeywords/hiddenStamp/hiddenCondition (átszakadás mögötti
+     generált rejtett kötvény), why/watchOut/reviewNow/curator/lesson (szöveg). */
 
   window.KM_ROOMS = [
     {
@@ -26,6 +28,8 @@
       exhibits: [
         {
           id: "lakas-12ev",
+          condition: "old", policyTitle: "Lakásbiztosítás",
+          policyKeywords: ["2012", "Régi összeg", "Poros példány"], stamp: "ARCHÍV",
           title: "A 12 éve nem látott lakásbiztosítás",
           era: "12 év",
           category: "Lakásbiztosítás",
@@ -41,6 +45,8 @@
         },
         {
           id: "felujitott-haz",
+          condition: "old", policyTitle: "Lakásbiztosítás",
+          policyKeywords: ["Felújítás után", "Összeg nem frissült", "Ellenőrizendő"], stamp: "ELLENŐRIZENDŐ",
           title: "A felújított ház régi biztosítási összeggel",
           era: "8 év",
           category: "Lakásbiztosítás",
@@ -56,6 +62,8 @@
         },
         {
           id: "regi-motor",
+          condition: "old", policyTitle: "Gépjármű",
+          policyKeywords: ["Régi motor", "Garázs", "Átnézendő"], stamp: "ARCHÍV",
           title: "A régi motor biztosítása a garázs mélyéről",
           era: "15 év",
           category: "Gépjármű",
@@ -79,6 +87,8 @@
       exhibits: [
         {
           id: "casco-onresz",
+          condition: "warning", policyTitle: "CASCO",
+          policyKeywords: ["Magas önrész", "20%", "Kárnál fájhat"], stamp: "ELLENŐRIZENDŐ",
           title: "A casco, amit csak az önrész tart össze",
           era: "5 év",
           category: "Casco",
@@ -94,6 +104,10 @@
         },
         {
           id: "kizaras-vegig-ott",
+          condition: "warning", policyTitle: "Feltételek",
+          policyKeywords: ["Kizárás", "Apróbetű", "Olvasandó"], stamp: "ELLENŐRIZENDŐ",
+          hiddenTitle: "Kizárás", hiddenKeywords: ["Apróbetű", "Végig benne volt", "Most megvan"],
+          hiddenStamp: "MEGTALÁLVA", hiddenCondition: "warning",
           title: "A kizárás, ami végig ott volt",
           era: "7 év",
           category: "Feltételek",
@@ -109,6 +123,8 @@
         },
         {
           id: "kotveny-kar-utan",
+          condition: "old", policyTitle: "Szerződés",
+          policyKeywords: ["Kár után elővéve", "Feltételek", "Későn olvasva"], stamp: "ARCHÍV",
           title: "A kötvény, amit csak kár után olvastak el",
           era: "9 év",
           category: "Szerződés",
@@ -132,6 +148,8 @@
       exhibits: [
         {
           id: "kgfb-dijnemfizetes",
+          condition: "warning", policyTitle: "KGFB",
+          policyKeywords: ["Díjfizetés", "Határidő", "Majdnem törölve"], stamp: "ELLENŐRIZENDŐ",
           title: "A KGFB, ami majdnem díjnemfizetéssel törlődött",
           era: "3 év",
           category: "Kötelező gfb",
@@ -147,6 +165,10 @@
         },
         {
           id: "elet-ures-kedvezmenyezett",
+          condition: "warning", policyTitle: "Életbiztosítás",
+          policyKeywords: ["Kedvezményezett?", "Hiányzó adat", "Pótolandó"], stamp: "ELLENŐRIZENDŐ",
+          hiddenTitle: "Kedvezményezett", hiddenKeywords: ["Üres mező", "Hiányzó adat", "Pótolandó"],
+          hiddenStamp: "HIÁNYZIK", hiddenCondition: "warning",
           title: "Az életbiztosítás üres kedvezményezettel",
           era: "11 év",
           category: "Életbiztosítás",
@@ -162,6 +184,8 @@
         },
         {
           id: "majd-egyszer-atnezem",
+          condition: "old", policyTitle: "Vegyes",
+          policyKeywords: ["Halogatva", "Poros példány", "Majd egyszer"], stamp: "ARCHÍV",
           title: "A „majd egyszer átnézem” típusú szerződés",
           era: "6 év",
           category: "Vegyes",
@@ -177,6 +201,8 @@
         },
         {
           id: "tulbiztositott-funyirotraktor",
+          condition: "warning", policyTitle: "Vagyon",
+          policyKeywords: ["Túlbiztosítva?", "Fűnyírótraktor", "Kérdéses fedezet"], stamp: "ELLENŐRIZENDŐ",
           title: "A túlbiztosított garázsban álló fűnyírótraktor",
           era: "4 év",
           category: "Vagyon",
@@ -200,6 +226,8 @@
       exhibits: [
         {
           id: "utasbiztositas-jo",
+          condition: "new", policyTitle: "Utasbiztosítás",
+          policyKeywords: ["Assistance", "Poggyász", "Rendben"], stamp: "RENDBEN",
           title: "Az utasbiztosítás, ami tényleg jól sikerült",
           era: "Friss",
           category: "Utasbiztosítás",
@@ -215,6 +243,8 @@
         },
         {
           id: "vallalkozoi-felelosseg-ido",
+          condition: "new", policyTitle: "Felelősség",
+          policyKeywords: ["Vállalkozás", "Időben kötve", "Jó példa"], stamp: "ÁTNÉZVE",
           title: "A vállalkozói felelősségbiztosítás, ami időben érkezett",
           era: "2 év",
           category: "Vállalkozás",
@@ -230,6 +260,8 @@
         },
         {
           id: "rendben-iratmappa",
+          condition: "new", policyTitle: "Iratmappa",
+          policyKeywords: ["Rendezett", "Átnézve", "Naprakész"], stamp: "RENDBEN",
           title: "A rendben tartott iratmappa dicsősége",
           era: "Folyamatos",
           category: "Rendszerezés",
@@ -245,6 +277,8 @@
         },
         {
           id: "csotores-szamla",
+          condition: "new", policyTitle: "Számla",
+          policyKeywords: ["Csőtörés", "Megőrizni", "Kárügy"], stamp: "MEGŐRIZNI",
           title: "A csőtörés után előkerült számla",
           era: "1 év",
           category: "Lakásbiztosítás",
@@ -260,6 +294,8 @@
         },
         {
           id: "cyber-elso",
+          condition: "new", policyTitle: "Cyber",
+          policyKeywords: ["Phishing", "Adatvédelem", "Modern kockázat"], stamp: "MODERN",
           title: "A cyber biztosítás első példánya",
           era: "Új korszak",
           category: "Cyber",
@@ -275,6 +311,8 @@
         },
         {
           id: "flotta-rendszerezve",
+          condition: "new", policyTitle: "Flotta",
+          policyKeywords: ["Járműlista", "Rendezett", "Frissítve"], stamp: "FRISSÍTVE",
           title: "A flottaszerződés, ahol végre minden rendszerezve lett",
           era: "3 év",
           category: "Flotta",
@@ -300,6 +338,8 @@
     exhibits: [
       {
         id: "mindenki-kereste",
+        condition: "old", policyTitle: "Legenda",
+        policyKeywords: ["Keresett", "Fiók mélye", "Kárnál eltűnt"], stamp: "LEGENDA",
         title: "A kötvény, amit mindenki keresett, de senki nem nyitott meg",
         era: "Ismeretlen",
         category: "Legenda",
@@ -315,6 +355,8 @@
       },
       {
         id: "tul-olcso",
+        condition: "new", policyTitle: "Legenda",
+        policyKeywords: ["Túl olcsó", "Szűk fedezet", "Kérdőjel"], stamp: "GYANÚS",
         title: "A biztosítás, ami túl olcsó volt, hogy igaz legyen",
         era: "Ismeretlen",
         category: "Legenda",
@@ -330,6 +372,8 @@
       },
       {
         id: "vegre-minden-rendben",
+        condition: "new", policyTitle: "Iratmappa",
+        policyKeywords: ["Naprakész", "Kitöltve", "Nyugalom"], stamp: "RENDBEN",
         title: "A mappa, amiben végre minden rendben volt",
         era: "Ritkaság",
         category: "Legenda",
