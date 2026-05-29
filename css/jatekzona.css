@@ -867,6 +867,18 @@
   transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,167,38,.45);
   color: #fff; text-decoration: none;
 }
+.btn-jz-teaser i {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.btn-jz-teaser:hover i {
+  transform: translateX(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-jz-teaser i { transition: none; }
+  .btn-jz-teaser:hover i { transform: none; }
+}
 
 /* Teaser pills wrapper */
 .jz-teaser-pills {
@@ -998,4 +1010,137 @@
   .game-cta-btns { flex-direction: column; align-items: stretch; }
   .game-cta-btns .btn { justify-content: center; }
   .tinder-btns { grid-template-columns: 1fr 1fr; }
+}
+
+/* ================================================================
+   FŐOLDALI JÁTÉKZÓNA TEASER – PRÉMIUM REDESIGN
+   ================================================================ */
+.jz-teaser-section {
+  background: #F6F7FC;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.jz-ts-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(255, 167, 38, .12);
+  border: 1px solid rgba(255, 167, 38, .30);
+  color: #C46A00;
+  border-radius: 2rem;
+  padding: .3rem .9rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+.jz-teaser-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #15233C;
+  line-height: 1.25;
+  margin-bottom: .75rem;
+}
+
+.jz-ts-sub {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: .6rem;
+}
+
+.jz-ts-body {
+  font-size: .95rem;
+  color: #6B7280;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.jz-teaser-section .btn-jz-teaser {
+  color: #15233C;
+  margin-top: 1.75rem;
+}
+
+.jz-teaser-section .btn-jz-teaser:hover {
+  color: #15233C;
+}
+
+/* 2×2 előnézeti kártyák */
+.jz-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.jz-preview-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #F3F4F6;
+  border-radius: .875rem;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+}
+
+.jz-preview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .10);
+  border-color: rgba(255, 167, 38, .40);
+  text-decoration: none;
+  color: inherit;
+}
+
+.jz-preview-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: .6rem;
+  background: linear-gradient(135deg, #FFA726, #E67E22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 10px rgba(255, 167, 38, .30);
+}
+
+.jz-preview-title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: #15233C;
+  margin-bottom: .25rem;
+  line-height: 1.3;
+}
+
+.jz-preview-desc {
+  font-size: .82rem;
+  color: #6B7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 767.98px) {
+  .jz-teaser-section {
+    padding: 3.5rem 0;
+  }
+  .jz-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jz-preview-card {
+    transition: none;
+  }
+  .jz-preview-card:hover {
+    transform: none;
+  }
 }

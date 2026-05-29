@@ -217,7 +217,9 @@
     var suggestTxt = (doc.decision === "shred") ? "Ezt nyugodtan ledarálhattad." : "Ezt érdemes előbb átnézni.";
 
     var wasShowing = feedbackEl.classList.contains("is-show");
-    feedbackEl.className = "pd-feedback " + (correct ? "is-good" : "is-wrong");
+    /* Csak a verdict-osztályt cseréljük — is-show érintetlen marad ha már látható */
+    feedbackEl.classList.remove("is-good", "is-wrong");
+    feedbackEl.classList.add(correct ? "is-good" : "is-wrong");
     feedbackEl.innerHTML =
       '<p class="pd-feedback-verdict"><i class="fa ' + verdictIcon + '" aria-hidden="true"></i>' + esc(verdictTxt) + '</p>' +
       '<div class="pd-fb-row"><strong>Dokumentum:</strong> ' + esc(doc.title) + '</div>' +
@@ -230,10 +232,8 @@
         '<span>Átnézésre: <b>' + STATE.reviewCount + '</b></span>' +
       '</div>';
 
-    /* Ha a panel már látható volt, azonnal is-show — nem villan */
-    if (wasShowing) {
-      feedbackEl.classList.add("is-show");
-    } else {
+    /* Csak ha még nem volt látható – első megjelenéskor animál be */
+    if (!wasShowing) {
       requestAnimationFrame(function () { feedbackEl.classList.add("is-show"); });
     }
     announce(verdictTxt + " " + doc.lesson);
