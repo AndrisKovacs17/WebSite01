@@ -18,13 +18,18 @@
     {
       id: "kulugyi-titkos",
       title: "KÜLÜGYI TITKOS ANYAG",
-      type: "fiktív titkosított papír",
+      type: "fiktív külügyi papír",
       stamp: "TITKOS",
-      lines: ["Iktatószám: ████ / 20██", "Tárgy: ███████████████", "Minősítés: ██████████"],
+      lines: [
+        "Nem hivatalos diplomáciai fecni",
+        "Szijjártó-kompatibilis papírzizegés",
+        "Belső megjegyzés: előbb olvasni, aztán darálni"
+      ],
       decision: "review",
-      good: "Jó döntés. A túl komolynak tűnő papírt előbb azonosítottad.",
-      suggest: "Az ilyen, fontosnak látszó papírt előbb érdemes azonosítani, nem azonnal darálni.",
-      lesson: "A túl komolynak tűnő papírokat előbb érdemes azonosítani."
+      good: "Jó döntés. A túl komolyan öltöztetett papírokat előbb azonosítjuk, csak utána küldjük nyugdíjba.",
+      suggest: "Amit túl hivatalosnak néz ki, azt nem daráljuk lendületből.",
+      lesson: "Van papír, amit viccből sem érdemes azonnal ledarálni. Előbb derüljön ki, hogy reklámszórólap, régi szerződés, vagy csak túl komolyan öltöztetett közéleti poén.",
+      badShred: "A daráló most úgy tett, mintha nem látott volna semmit."
     },
     {
       id: "lakas-2009",

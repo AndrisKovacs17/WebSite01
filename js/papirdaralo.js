@@ -24,7 +24,8 @@
     reviewCount: 0,
     correct: 0,
     keptImportant: 0,
-    log: []
+    log: [],
+    advanceTimer: null
   };
 
   /* DOM */
@@ -40,7 +41,7 @@
   function announce(msg) { if (liveEl) liveEl.textContent = msg; }
 
   /* ── AKTUÁLIS DOKUMENTUM RENDER ──────────────────────────── */
-  function renderDoc() {
+  function renderDoc(withEntrance) {
     var doc = DOCS[STATE.index];
     if (!doc) { showResult(); return; }
 
@@ -58,12 +59,21 @@
     docEl.style.display = "";
     docEl.style.transform = "";
     docEl.style.opacity = "";
-    docEl.classList.remove("is-dragging");
+    docEl.classList.remove("is-dragging", "is-entering");
+
+    if (withEntrance && !REDUCED) {
+      void docEl.offsetWidth; // reflow, hogy az animáció újrainduljon
+      docEl.classList.add("is-entering");
+    }
 
     progressEl.textContent = (STATE.index + 1) + " / " + DOCS.length + " dokumentum";
 
     setActionsDisabled(false);
     STATE.busy = false;
+
+    if (withEntrance) {
+      docEl.focus();
+    }
   }
 
   function setActionsDisabled(d) {
@@ -198,15 +208,13 @@
     } else {
       verdictIcon = "fa-exclamation-circle";
       pool = (choice === "shred") ? FEEDBACK.badShred : FEEDBACK.badReview;
-      verdictTxt = pick(pool);
+      verdictTxt = (choice === "shred" && doc.badShred) ? doc.badShred
+                 : (choice === "review" && doc.badReview) ? doc.badReview
+                 : pick(pool);
     }
 
     var choiceTxt = (choice === "shred") ? "Darálóba tetted" : "Átnézésre tetted";
     var suggestTxt = (doc.decision === "shred") ? "Ezt nyugodtan ledarálhattad." : "Ezt érdemes előbb átnézni.";
-
-    var lastDoc = (STATE.index >= DOCS.length - 1);
-    var nextLabel = lastDoc ? '<i class="fa fa-flag-checkered" aria-hidden="true"></i> Eredmény'
-                            : '<i class="fa fa-arrow-right" aria-hidden="true"></i> Következő dokumentum';
 
     feedbackEl.className = "pd-feedback " + (correct ? "is-good" : "is-wrong");
     feedbackEl.innerHTML =
@@ -219,23 +227,30 @@
         '<span>Jól kezelt: <b>' + STATE.correct + '</b></span>' +
         '<span>Ledarálva: <b>' + STATE.shredCount + '</b></span>' +
         '<span>Átnézésre: <b>' + STATE.reviewCount + '</b></span>' +
-      '</div>' +
-      '<div style="margin-top:1rem;"><button type="button" class="pd-btn" id="pdNext">' + nextLabel + '</button></div>';
+      '</div>';
 
     requestAnimationFrame(function () { feedbackEl.classList.add("is-show"); });
     announce(verdictTxt + " " + doc.lesson);
 
-    var nextBtn = document.getElementById("pdNext");
-    nextBtn.addEventListener("click", function () {
-      nextBtn.disabled = true;
-      feedbackEl.classList.remove("is-show");
-      machineEl.classList.remove("is-good", "is-wrong");
-      setTimeout(function () { feedbackEl.innerHTML = ""; }, REDUCED ? 0 : 320);
+    /* automatikus továbblépés – nincs szükség "Következő" gombra */
+    if (STATE.advanceTimer) clearTimeout(STATE.advanceTimer);
+    STATE.advanceTimer = setTimeout(advanceToNext, REDUCED ? 400 : 1600);
+  }
+
+  function advanceToNext() {
+    STATE.advanceTimer = null;
+    feedbackEl.classList.remove("is-show");
+    machineEl.classList.remove("is-good", "is-wrong");
+    var fadeDelay = REDUCED ? 0 : 300;
+    setTimeout(function () {
+      feedbackEl.innerHTML = "";
       STATE.index++;
-      if (STATE.index >= DOCS.length) showResult();
-      else renderDoc();
-    });
-    nextBtn.focus();
+      if (STATE.index >= DOCS.length) {
+        showResult();
+      } else {
+        renderDoc(true);
+      }
+    }, fadeDelay);
   }
 
   /* ── EREDMÉNYKÉPERNYŐ ────────────────────────────────────── */
@@ -247,6 +262,7 @@
   }
 
   function showResult() {
+    if (STATE.advanceTimer) { clearTimeout(STATE.advanceTimer); STATE.advanceTimer = null; }
     var r = chooseResult() || { title: "Eredmény", text: "" };
     gameEl.hidden = true;
     resultEl.hidden = false;
@@ -281,6 +297,7 @@
   }
 
   function restartGame() {
+    if (STATE.advanceTimer) { clearTimeout(STATE.advanceTimer); STATE.advanceTimer = null; }
     STATE.index = 0; STATE.busy = false;
     STATE.shredCount = 0; STATE.reviewCount = 0; STATE.correct = 0; STATE.keptImportant = 0;
     STATE.log = [];

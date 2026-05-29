@@ -223,9 +223,16 @@
 }
 .paper-shred.is-static { animation: none; opacity: 1; transform: translateY(var(--pd-end,160px)) rotate(var(--pd-rot,0deg)); }
 
+/* dokumentum belépési animáció */
+@keyframes pdDocEnter {
+  from { opacity: 0; transform: translateY(-14px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pd-doc.is-entering { animation: pdDocEnter .38s cubic-bezier(.25,.46,.45,.94) forwards; }
+
 /* ── ÁLLAPOT / VISSZAJELZÉS ── */
 .pd-feedback {
-  margin-top: 1.6rem; background: #fff; border: 1px solid var(--pd-line);
+  margin-top: .8rem; background: #fff; border: 1px solid var(--pd-line);
   border-left: 5px solid var(--pd-line); border-radius: var(--pd-radius);
   box-shadow: var(--pd-shadow); padding: 1.2rem 1.4rem;
   opacity: 0; transform: translateY(8px); transition: opacity var(--pd-ease), transform var(--pd-ease), border-color var(--pd-ease);
