@@ -80,6 +80,24 @@
 .km-btn-ghost { background: #fff; color: var(--km-ink); border: 1.5px solid var(--km-line); box-shadow: none; }
 .km-btn-ghost:hover { color: var(--km-ink); border-color: var(--km-orange); box-shadow: var(--km-shadow); transform: translateY(-2px); }
 
+/* ───────────────────── RÉSZLETEK GOMB ───────────────────── */
+.km-frame-detail {
+  display: block; width: 100%; text-align: center;
+  cursor: pointer; font-weight: 700; font-size: .8rem; letter-spacing: .03em;
+  padding: .44rem .8rem; border-radius: 999px; margin-top: .55rem;
+  background: transparent; color: var(--km-orange-d);
+  border: 1.5px solid var(--km-orange); box-shadow: none;
+  transition: background var(--km-ease), color var(--km-ease), transform var(--km-ease), box-shadow var(--km-ease), border-color var(--km-ease);
+  line-height: 1.3;
+}
+.km-frame-detail:hover {
+  background: linear-gradient(135deg, var(--km-orange), var(--km-orange-d));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 6px 16px rgba(251,140,0,.38); transform: translateY(-1px);
+}
+.km-frame-detail:active { transform: translateY(0); box-shadow: none; }
+.km-frame-detail:focus-visible { outline: 3px solid rgba(255,167,38,.55); outline-offset: 3px; }
+
 /* ───────────────────── MÚZEUM ───────────────────── */
 .km-museum-section { padding: 2.4rem 0 3.5rem; }
 
@@ -403,7 +421,7 @@
 /* ───────────────────── REDUCED MOTION ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .km-frame-art, .km-front-half, .km-crack, .km-secret-inner,
-  .km-modal, .km-modal-card, .km-toast, .km-dust, .km-btn, .km-btn-ghost { transition: none !important; }
+  .km-modal, .km-modal-card, .km-toast, .km-dust, .km-btn, .km-btn-ghost, .km-frame-detail { transition: none !important; }
   .km-frame.cc2 .km-front { animation: none !important; }
   .km-frame:hover .km-frame-art, .km-frame:focus-visible .km-frame-art { transform: none; }
   .km-frame.is-torn .km-front-l, .km-frame.is-torn .km-front-r { transform: none; opacity: 0; }
