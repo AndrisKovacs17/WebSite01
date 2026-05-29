@@ -197,25 +197,74 @@
   50% { transform: translate(0px,16px) rotate(3deg); }
 }
 
-/* ───────────────────── KIHÚZOTT KÁRTYÁK ───────────────────── */
+/* ───────────── KIHÚZOTT KÁRTYÁK (lefelé fordítva, egyenként) ───────────── */
 .bk-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
+  align-items: start;            /* fel nem fordított oszlopok ne nyúljanak */
 }
-.bk-card {
-  background: var(--bk-card); border: 1px solid var(--bk-line);
-  border-radius: var(--bk-radius); box-shadow: var(--bk-shadow);
-  overflow: hidden; display: flex; flex-direction: column;
-  opacity: 0; transform: perspective(900px) rotateY(-12deg) translateY(14px);
-  animation: bkFlipIn .6s cubic-bezier(.25,.46,.45,.94) forwards;
+.bk-draw {
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(14px);
+  animation: bkDealIn .5s cubic-bezier(.25,.46,.45,.94) forwards;
 }
-.bk-card.d0 { animation-delay: .05s; }
-.bk-card.d1 { animation-delay: .22s; }
-.bk-card.d2 { animation-delay: .39s; }
+.bk-draw.d0 { animation-delay: .05s; }
+.bk-draw.d1 { animation-delay: .20s; }
+.bk-draw.d2 { animation-delay: .35s; }
+@keyframes bkDealIn { to { opacity: 1; transform: translateY(0); } }
 
-@keyframes bkFlipIn {
-  to { opacity: 1; transform: perspective(900px) rotateY(0) translateY(0); }
+/* ── FLIP KÁRTYA ── */
+.bk-flip {
+  position: relative; width: 100%; height: 320px;
+  cursor: pointer; border-radius: var(--bk-radius);
+  perspective: 1100px; -webkit-tap-highlight-color: transparent;
+}
+.bk-flip:focus-visible { outline: 3px solid var(--bk-orange); outline-offset: 3px; }
+.bk-flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.4,.15,.2,1);
+}
+.bk-flip.is-flipped .bk-flip-inner { transform: rotateY(180deg); }
+.bk-flip:not(.is-flipped):hover .bk-flip-inner { transform: translateY(-4px); }
+.bk-flip.is-flipped:hover .bk-flip-inner { transform: rotateY(180deg) translateY(-4px); }
+.bk-flip-face {
+  position: absolute; inset: 0; overflow: hidden;
+  border-radius: var(--bk-radius);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  background: var(--bk-card); border: 1px solid var(--bk-line);
+  box-shadow: var(--bk-shadow);
+  display: flex; flex-direction: column;
+}
+.bk-flip-front { transform: rotateY(180deg); }
+
+/* ── KÁRTYAHÁTLAP (Biztor-stílus) ── */
+.bk-flip-back { align-items: center; justify-content: center; }
+.bk-back-art {
+  position: relative; z-index: 1; width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .6rem; padding: 1.2rem; text-align: center;
+  background: radial-gradient(circle at 50% 32%, #fffaf2, #ffffff 65%);
+}
+.bk-back-pattern {
+  position: absolute; inset: 10px; z-index: 0; border-radius: 1rem;
+  border: 2px solid rgba(255,167,38,.32);
+  background:
+    repeating-linear-gradient(45deg, rgba(255,167,38,.06) 0 10px, transparent 10px 20px),
+    repeating-linear-gradient(-45deg, rgba(255,167,38,.05) 0 10px, transparent 10px 20px);
+}
+.bk-back-logo {
+  position: relative; z-index: 1;
+  width: 62px; height: 62px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(150deg, var(--bk-orange), var(--bk-orange-d));
+  color: #fff; font-size: 1.55rem; box-shadow: 0 6px 18px rgba(251,140,0,.35);
+}
+.bk-back-label { position: relative; z-index: 1; font-weight: 800; color: var(--bk-navy); font-size: 1rem; letter-spacing: .02em; }
+.bk-back-hint {
+  position: relative; z-index: 1; font-size: .78rem; font-weight: 600; color: var(--bk-orange-d);
+  display: inline-flex; align-items: center; gap: .35rem;
 }
 
 .bk-card-visual {
@@ -244,19 +293,17 @@
 .bk-card-sub { font-size: .82rem; color: var(--bk-orange-d); font-weight: 600; margin: 0 0 .7rem; }
 .bk-card-line { font-size: .9rem; color: var(--bk-muted); margin: 0; line-height: 1.45; font-style: italic; }
 
-/* ───────────────────── MAGYARÁZÓ CSÍKOK ───────────────────── */
-.bk-explanations { margin-top: 1.6rem; display: flex; flex-direction: column; gap: 1.1rem; }
+/* ───────────── PER-KÁRTYA MAGYARÁZÓ BLOKK (a saját lap alatt) ───────────── */
+.bk-explain-slot:empty { display: none; }
+.bk-explain-slot { margin-top: 1rem; }
 .bk-explain {
   background: var(--bk-card); border: 1px solid var(--bk-line);
   border-left: 5px solid var(--bk-orange);
   border-radius: 1rem; box-shadow: var(--bk-shadow);
-  padding: 1.3rem 1.4rem;
-  opacity: 0; transform: translateY(14px);
-  animation: bkRise .5s ease forwards;
+  padding: 1.2rem 1.25rem;
+  opacity: 0; transform: translateY(10px);
+  animation: bkRise .42s ease forwards;
 }
-.bk-explain.d0 { animation-delay: .30s; }
-.bk-explain.d1 { animation-delay: .42s; }
-.bk-explain.d2 { animation-delay: .54s; }
 
 @keyframes bkRise { to { opacity: 1; transform: translateY(0); } }
 
@@ -273,7 +320,7 @@
 .bk-explain-titles h3 { font-size: 1.1rem; font-weight: 800; color: var(--bk-navy); margin: 0; line-height: 1.2; }
 .bk-explain-titles span { font-size: .8rem; color: var(--bk-orange-d); font-weight: 600; }
 
-.bk-explain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.4rem; }
+.bk-explain-grid { display: grid; grid-template-columns: 1fr; gap: .8rem; }
 .bk-explain-block dt {
   font-size: .76rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: .04em; color: var(--bk-orange-d); margin-bottom: .25rem;
@@ -306,9 +353,8 @@
   .bk-panel .bk-btn { width: auto; flex: 1 1 auto; }
 }
 @media (max-width: 720px) {
-  .bk-cards { grid-template-columns: 1fr; gap: 1rem; }
+  .bk-cards { grid-template-columns: 1fr; gap: 1.4rem; }
   .bk-card-visual { height: 100px; }
-  .bk-explain-grid { grid-template-columns: 1fr; gap: .8rem; }
 }
 @media (max-width: 380px) {
   .bk-panel, .bk-deck-stage, .bk-explain { padding-left: 1.05rem; padding-right: 1.05rem; }
@@ -316,9 +362,18 @@
 
 /* ───────────────────── REDUCED MOTION ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .bk-card, .bk-explain {
+  .bk-draw, .bk-explain {
     opacity: 1; transform: none; animation: none !important;
   }
+  /* Flip helyett egyszerű állapotváltás */
+  .bk-flip-inner { transition: none !important; transform: none !important; }
+  .bk-flip-face { -webkit-backface-visibility: visible; backface-visibility: visible; }
+  .bk-flip-front { transform: none; opacity: 0; }
+  .bk-flip-back { opacity: 1; }
+  .bk-flip.is-flipped .bk-flip-front { opacity: 1; }
+  .bk-flip.is-flipped .bk-flip-back { opacity: 0; }
+  .bk-flip:not(.is-flipped):hover .bk-flip-inner,
+  .bk-flip.is-flipped:hover .bk-flip-inner { transform: none !important; }
   .bk-deck.is-shuffling .bk-deck-c1,
   .bk-deck.is-shuffling .bk-deck-c2,
   .bk-deck.is-shuffling .bk-deck-c3 { animation: none !important; }
