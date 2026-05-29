@@ -42,8 +42,8 @@
         '<p class="mb-2 small">Pontos ajánlathoz vegye fel velünk a kapcsolatot:</p>' +
         '<a href="./kapcsolat.html" class="btn btn-primary btn-sm me-2">' +
           '<i class="fa fa-envelope me-2"></i>Ajánlatot kérek</a>' +
-        '<a href="tel:+36425952480" class="btn btn-outline-primary btn-sm">' +
-          '<i class="fa fa-phone me-2"></i>+36 42 595 248</a>' +
+        '<a href="tel:+36706258201" class="btn btn-outline-primary btn-sm">' +
+          '<i class="fa fa-phone me-2"></i>+36 70 625 8201</a>' +
       '</div>';
   }
 
@@ -178,8 +178,8 @@
         '<hr class="my-3">' +
         '<a href="./kapcsolat.html" class="btn btn-primary btn-sm me-2">' +
           '<i class="fa fa-envelope me-2"></i>Ajánlatot kérek</a>' +
-        '<a href="tel:+36425952480" class="btn btn-outline-primary btn-sm">' +
-          '<i class="fa fa-phone me-2"></i>+36 42 595 248</a>' +
+        '<a href="tel:+36706258201" class="btn btn-outline-primary btn-sm">' +
+          '<i class="fa fa-phone me-2"></i>+36 70 625 8201</a>' +
       '</div>';
   }
 
