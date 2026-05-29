@@ -19,7 +19,8 @@
    HERO – Játékzóna landing
    ================================================================ */
 .jz-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 50%, #1c2e2e 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid #FFA726;
   padding: 5rem 0 4rem;
   position: relative;
   overflow: hidden;
@@ -39,7 +40,7 @@
   gap: .5rem;
   background: rgba(255,167,38,.15);
   border: 1px solid rgba(255,167,38,.35);
-  color: #FFA726;
+  color: #92400e;
   border-radius: 2rem;
   padding: .35rem 1rem;
   font-size: .8rem;
@@ -52,12 +53,12 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: clamp(2rem, 5vw, 3rem);
-  color: #fff;
+  color: #1c1c2e;
   line-height: 1.2;
 }
 .jz-hero h1 span { color: #FFA726; }
 .jz-hero p {
-  color: rgba(255,255,255,.72);
+  color: #6b7280;
   font-size: 1.05rem;
   max-width: 560px;
 }
@@ -171,9 +172,10 @@
    GAME PAGE – Általános
    ================================================================ */
 .game-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid #FFA726;
   padding: 3.5rem 0 2.5rem;
-  color: #fff;
+  color: #1c1c2e;
   position: relative;
   overflow: hidden;
 }
@@ -186,13 +188,13 @@
 .game-hero-badge {
   display: inline-flex; align-items: center; gap: .4rem;
   background: rgba(255,167,38,.15); border: 1px solid rgba(255,167,38,.3);
-  color: #FFA726; border-radius: 2rem;
+  color: #92400e; border-radius: 2rem;
   padding: .3rem .9rem; font-size: .75rem; font-weight: 600;
   letter-spacing: .04em; text-transform: uppercase; margin-bottom: 1rem;
 }
-.game-hero h1 { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 700; margin-bottom: .6rem; }
+.game-hero h1 { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 700; margin-bottom: .6rem; color: #1c1c2e; }
 .game-hero h1 span { color: #FFA726; }
-.game-hero p { color: rgba(255,255,255,.72); max-width: 520px; font-size: .97rem; }
+.game-hero p { color: #6b7280; max-width: 520px; font-size: .97rem; }
 
 .game-section { padding: 3rem 0 5rem; background: #f7f8fc; min-height: 60vh; }
 
@@ -200,10 +202,11 @@
    GAME CTA BLOKK (minden játék vége)
    ================================================================ */
 .game-cta {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d1f3d 100%);
+  background: linear-gradient(135deg, #fff8ef 0%, #fff3e0 100%);
+  border: 1px solid rgba(255,167,38,.25);
   border-radius: var(--jz-radius);
   padding: 2.5rem 2rem;
-  color: #fff;
+  color: #1c1c2e;
   text-align: center;
   margin-top: 3rem;
   position: relative;
@@ -215,8 +218,8 @@
   background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,167,38,.15) 0%, transparent 70%);
   pointer-events: none;
 }
-.game-cta h4 { font-weight: 700; font-size: 1.3rem; margin-bottom: .5rem; }
-.game-cta p  { color: rgba(255,255,255,.7); font-size: .9rem; margin-bottom: 1.5rem; }
+.game-cta h4 { font-weight: 700; font-size: 1.3rem; margin-bottom: .5rem; color: #1c1c2e; }
+.game-cta p  { color: #6b7280; font-size: .9rem; margin-bottom: 1.5rem; }
 .game-cta-btns { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
 .game-cta-btns .btn {
   border-radius: 2rem;
@@ -233,10 +236,10 @@
 }
 .btn-cta-outline {
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,.4);
-  color: #fff;
+  border: 1.5px solid rgba(28,28,46,.25);
+  color: #1c1c2e;
 }
-.btn-cta-outline:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.65); color: #fff; }
+.btn-cta-outline:hover { border-color: #FFA726; color: #FB8C00; }
 
 /* ================================================================
    BULLSHIT FORDÍTÓ
@@ -565,7 +568,7 @@
   flex-direction: column; padding: .75rem;
 }
 .tarot-card-front {
-  background: linear-gradient(135deg, #2d1f3d, #1c2e2e);
+  background: linear-gradient(135deg, #1c2340, #1a2d3a);
   border: 2px solid rgba(255,167,38,.3);
 }
 .tarot-card-front-pattern {
@@ -930,9 +933,9 @@
    ================================================================ */
 .jz-breadcrumb {
   display: flex; align-items: center; gap: .5rem;
-  font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: .75rem;
+  font-size: .8rem; color: #6b7280; margin-bottom: .75rem;
 }
-.jz-breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; }
+.jz-breadcrumb a { color: #6b7280; text-decoration: none; }
 .jz-breadcrumb a:hover { color: #FFA726; }
 .jz-breadcrumb-sep { opacity: .4; }
 

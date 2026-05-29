@@ -28,40 +28,41 @@
 
 /* ───────────────────── HERO ───────────────────── */
 .km-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d2342 52%, #1c2630 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid var(--km-orange);
   padding: 2.4rem 0 3rem;
-  position: relative; overflow: hidden; color: #fff;
+  position: relative; overflow: hidden; color: var(--km-ink);
 }
 .km-hero::before {
   content: ""; position: absolute; top: -40%; right: -8%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  background: radial-gradient(circle, rgba(255,167,38,.12), transparent 62%);
   pointer-events: none;
 }
 .km-back-link {
   display: inline-flex; align-items: center; gap: .5rem;
-  color: rgba(255,255,255,.78); font-size: .92rem; text-decoration: none;
+  color: #6b7280; font-size: .92rem; text-decoration: none;
   margin-bottom: 1rem; transition: color var(--km-ease);
 }
 .km-back-link:hover { color: var(--km-orange); }
 .km-breadcrumb {
   list-style: none; display: flex; flex-wrap: wrap; align-items: center;
   gap: .45rem; padding: 0; margin: 0 0 1.1rem;
-  font-size: .82rem; color: rgba(255,255,255,.6);
+  font-size: .82rem; color: #6b7280;
 }
-.km-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.km-breadcrumb a { color: #6b7280; text-decoration: none; }
 .km-breadcrumb a:hover { color: var(--km-orange); }
-.km-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.km-breadcrumb-sep { color: #d1d5db; }
 .km-hero-badge {
   display: inline-flex; align-items: center; gap: .4rem;
   background: rgba(255,167,38,.16); border: 1px solid rgba(255,167,38,.4);
-  color: var(--km-orange-l); padding: .32rem .85rem; border-radius: 999px;
+  color: #92400e; padding: .32rem .85rem; border-radius: 999px;
   font-size: .8rem; font-weight: 600; margin-bottom: 1rem;
 }
-.km-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; }
+.km-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; color: var(--km-ink); }
 .km-hero h1 span { color: var(--km-orange); }
-.km-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--km-orange-l); margin: 0 0 .7rem; }
-.km-hero p.km-hero-lead { max-width: 660px; color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
+.km-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--km-orange-d); margin: 0 0 .7rem; }
+.km-hero p.km-hero-lead { max-width: 660px; color: var(--km-muted); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
 
 /* ───────────────────── BUTTONS ───────────────────── */
 .km-btn {
@@ -293,7 +294,7 @@
 .km-secret[hidden] { display: none; }
 .km-secret-inner {
   border: 1px solid rgba(255,167,38,.4);
-  background: linear-gradient(180deg, #211b2e, #181523);
+  background: linear-gradient(180deg, #1a2035, #151d2e);
   border-radius: var(--km-radius); padding: 2rem 1.6rem 2.4rem; color: #fff;
   box-shadow: var(--km-shadow-h);
   opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease;

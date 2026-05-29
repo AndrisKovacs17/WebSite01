@@ -24,23 +24,24 @@
 
 /* ───────────────────── HERO ───────────────────── */
 .bh-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d2342 52%, #1c2630 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid var(--bh-orange);
   padding: 2.4rem 0 3rem;
   position: relative;
   overflow: hidden;
-  color: #fff;
+  color: var(--bh-ink);
 }
 .bh-hero::before {
   content: "";
   position: absolute;
   top: -40%; right: -10%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  background: radial-gradient(circle, rgba(255,167,38,.12), transparent 62%);
   pointer-events: none;
 }
 .bh-back-link {
   display: inline-flex; align-items: center; gap: .5rem;
-  color: rgba(255,255,255,.78);
+  color: #6b7280;
   font-size: .92rem; text-decoration: none;
   margin-bottom: 1rem; transition: color var(--bh-ease);
 }
@@ -49,32 +50,32 @@
 .bh-breadcrumb {
   list-style: none; display: flex; flex-wrap: wrap; align-items: center;
   gap: .45rem; padding: 0; margin: 0 0 1.1rem;
-  font-size: .82rem; color: rgba(255,255,255,.6);
+  font-size: .82rem; color: #6b7280;
 }
-.bh-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.bh-breadcrumb a { color: #6b7280; text-decoration: none; }
 .bh-breadcrumb a:hover { color: var(--bh-orange); }
-.bh-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.bh-breadcrumb-sep { color: #d1d5db; }
 
 .bh-hero-badge {
   display: inline-flex; align-items: center; gap: .4rem;
   background: rgba(255,167,38,.16);
   border: 1px solid rgba(255,167,38,.4);
-  color: var(--bh-orange-l);
+  color: #92400e;
   padding: .32rem .85rem; border-radius: 999px;
   font-size: .8rem; font-weight: 600; margin-bottom: 1rem;
 }
 .bh-hero h1 {
   font-size: clamp(1.9rem, 5vw, 3rem);
-  font-weight: 800; line-height: 1.08; margin: 0 0 .65rem;
+  font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; color: var(--bh-ink);
 }
 .bh-hero h1 span { color: var(--bh-orange); }
 .bh-hero-sub {
   font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-  font-weight: 600; color: var(--bh-orange-l);
+  font-weight: 600; color: var(--bh-orange-d);
   margin: 0 0 .7rem;
 }
 .bh-hero p.bh-hero-lead {
-  max-width: 640px; color: rgba(255,255,255,.82);
+  max-width: 640px; color: var(--bh-muted);
   font-size: 1rem; line-height: 1.6; margin: 0;
 }
 
@@ -307,14 +308,16 @@
 
 /* CTA */
 .bh-cta {
-  background: linear-gradient(135deg,#1c1c2e,#2a2a3e); color: #fff;
+  background: linear-gradient(135deg, #fff8ef 0%, #fff3e0 100%);
+  border: 1px solid rgba(255,167,38,.2);
+  color: var(--bh-ink);
   border-radius: var(--bh-radius); padding: 1.6rem 1.5rem; text-align: center;
 }
 .bh-cta h4 { font-size: 1.2rem; font-weight: 800; margin: 0 0 .5rem; }
-.bh-cta p { color: rgba(255,255,255,.8); margin: 0 0 1.2rem; font-size: .95rem; }
+.bh-cta p { color: var(--bh-muted); margin: 0 0 1.2rem; font-size: .95rem; }
 .bh-cta-btns { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; }
-.bh-cta-btns .bh-btn-ghost { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.25); }
-.bh-cta-btns .bh-btn-ghost:hover { color: #fff; border-color: var(--bh-orange); background: rgba(255,255,255,.14); }
+.bh-cta-btns .bh-btn-ghost { background: #fff; color: var(--bh-ink); border-color: rgba(28,28,46,.2); }
+.bh-cta-btns .bh-btn-ghost:hover { color: var(--bh-orange-d); border-color: var(--bh-orange); background: #fff; }
 
 /* screen-reader live region */
 .bh-sr-only {

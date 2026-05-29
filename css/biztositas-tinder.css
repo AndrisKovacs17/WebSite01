@@ -20,7 +20,8 @@
 
 /* ── Hero ─────────────────────────────────────────────── */
 .bt-page .bt-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2a2238 55%, #2a1f17 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid var(--bt-orange);
   padding: 3.25rem 0 3rem;
   position: relative;
   overflow: hidden;
@@ -29,13 +30,13 @@
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 55% 50% at 18% 85%, rgba(255,167,38,.14) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 55% at 82% 15%, rgba(251,140,0,.10) 0%, transparent 70%);
+    radial-gradient(ellipse 55% 50% at 18% 85%, rgba(255,167,38,.08) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 82% 15%, rgba(251,140,0,.06) 0%, transparent 70%);
   pointer-events: none;
 }
 .bt-page .bt-back-link {
   display: inline-flex; align-items: center; gap: .45rem;
-  color: rgba(255,255,255,.7);
+  color: #6b7280;
   font-size: .85rem; font-weight: 500;
   text-decoration: none; margin-bottom: 1rem;
   transition: color var(--bt-ease), transform var(--bt-ease);
@@ -45,30 +46,30 @@
   list-style: none; display: flex; flex-wrap: wrap; align-items: center;
   gap: .4rem; padding: 0; margin: 0 0 1rem; font-size: .8rem;
 }
-.bt-page .bt-breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; }
+.bt-page .bt-breadcrumb a { color: #6b7280; text-decoration: none; }
 .bt-page .bt-breadcrumb a:hover { color: var(--bt-orange); }
-.bt-page .bt-breadcrumb li[aria-current] { color: rgba(255,255,255,.92); }
-.bt-page .bt-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.bt-page .bt-breadcrumb li[aria-current] { color: var(--bt-ink); font-weight: 600; }
+.bt-page .bt-breadcrumb-sep { color: #d1d5db; }
 .bt-page .bt-hero-badge {
   display: inline-flex; align-items: center; gap: .5rem;
   background: rgba(255,167,38,.15);
   border: 1px solid rgba(255,167,38,.35);
-  color: var(--bt-orange);
+  color: #92400e;
   border-radius: 2rem; padding: .35rem 1rem;
   font-size: .78rem; font-weight: 600; letter-spacing: .04em;
   text-transform: uppercase; margin-bottom: 1.1rem;
 }
 .bt-page .bt-hero h1 {
   font-family: 'Poppins', sans-serif; font-weight: 700;
-  font-size: clamp(1.9rem, 5vw, 2.9rem); color: #fff;
+  font-size: clamp(1.9rem, 5vw, 2.9rem); color: var(--bt-ink);
   line-height: 1.15; margin-bottom: .6rem;
 }
 .bt-page .bt-hero h1 span { color: var(--bt-orange); }
 .bt-page .bt-hero-sub {
-  color: #fff; font-size: clamp(1rem,2.4vw,1.18rem);
+  color: var(--bt-ink); font-size: clamp(1rem,2.4vw,1.18rem);
   font-weight: 600; margin-bottom: .5rem;
 }
-.bt-page .bt-hero p { color: rgba(255,255,255,.72); max-width: 560px; font-size: .95rem; margin: 0; }
+.bt-page .bt-hero p { color: var(--bt-muted); max-width: 560px; font-size: .95rem; margin: 0; }
 
 /* ── Játéktér ─────────────────────────────────────────── */
 .bt-page .bt-game-section { background: #f7f8fb; padding: 2.5rem 0 3.5rem; }
@@ -313,27 +314,28 @@
 
 /* Záró CTA (sötét panel) */
 .bt-page .bt-result-cta {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d2238 100%);
+  background: linear-gradient(135deg, #fff8ef 0%, #fff3e0 100%);
+  border: 1px solid rgba(255,167,38,.2);
   border-radius: var(--bt-radius); padding: 1.75rem 1.5rem; margin-top: 1.25rem;
-  color: #fff; text-align: center; position: relative; overflow: hidden;
+  color: var(--bt-ink); text-align: center; position: relative; overflow: hidden;
 }
 .bt-page .bt-result-cta::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,167,38,.16) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,167,38,.1) 0%, transparent 70%);
   pointer-events: none;
 }
 .bt-page .bt-result-cta h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: .4rem; position: relative; }
-.bt-page .bt-result-cta p { color: rgba(255,255,255,.72); font-size: .9rem; margin-bottom: 1.3rem; position: relative; }
+.bt-page .bt-result-cta p { color: var(--bt-muted); font-size: .9rem; margin-bottom: 1.3rem; position: relative; }
 .bt-page .bt-cta-btns { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; position: relative; }
 .bt-page .bt-cta-btn {
   border-radius: 2rem; padding: .58rem 1.35rem; font-size: .88rem; font-weight: 600;
   display: inline-flex; align-items: center; gap: .45rem; text-decoration: none;
   transition: transform .2s, box-shadow .2s, background var(--bt-ease);
 }
-.bt-page .bt-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.25); text-decoration: none; }
+.bt-page .bt-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.12); text-decoration: none; }
 .bt-page .bt-cta-primary { background: linear-gradient(90deg, var(--bt-orange), var(--bt-orange-d)); color: #fff; }
-.bt-page .bt-cta-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
-.bt-page .bt-cta-outline:hover { background: rgba(255,255,255,.08); color: #fff; }
+.bt-page .bt-cta-outline { background: transparent; border: 1.5px solid rgba(28,28,46,.25); color: var(--bt-ink); }
+.bt-page .bt-cta-outline:hover { border-color: var(--bt-orange); color: var(--bt-orange-d); }
 
 /* aria-live státusz (vizuálisan rejtett) */
 .bt-page .bt-sr-status {

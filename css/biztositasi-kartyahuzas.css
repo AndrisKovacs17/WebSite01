@@ -25,23 +25,24 @@
 
 /* ───────────────────── HERO ───────────────────── */
 .bk-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2d2342 52%, #1c2630 100%);
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid var(--bk-orange);
   padding: 2.4rem 0 3rem;
   position: relative;
   overflow: hidden;
-  color: #fff;
+  color: var(--bk-ink);
 }
 .bk-hero::before {
   content: "";
   position: absolute;
   top: -40%; right: -8%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  background: radial-gradient(circle, rgba(255,167,38,.12), transparent 62%);
   pointer-events: none;
 }
 .bk-back-link {
   display: inline-flex; align-items: center; gap: .5rem;
-  color: rgba(255,255,255,.78);
+  color: #6b7280;
   font-size: .92rem; text-decoration: none;
   margin-bottom: 1rem; transition: color var(--bk-ease);
 }
@@ -50,32 +51,32 @@
 .bk-breadcrumb {
   list-style: none; display: flex; flex-wrap: wrap; align-items: center;
   gap: .45rem; padding: 0; margin: 0 0 1.1rem;
-  font-size: .82rem; color: rgba(255,255,255,.6);
+  font-size: .82rem; color: #6b7280;
 }
-.bk-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.bk-breadcrumb a { color: #6b7280; text-decoration: none; }
 .bk-breadcrumb a:hover { color: var(--bk-orange); }
-.bk-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.bk-breadcrumb-sep { color: #d1d5db; }
 
 .bk-hero-badge {
   display: inline-flex; align-items: center; gap: .4rem;
   background: rgba(255,167,38,.16);
   border: 1px solid rgba(255,167,38,.4);
-  color: var(--bk-orange-l);
+  color: #92400e;
   padding: .32rem .85rem; border-radius: 999px;
   font-size: .8rem; font-weight: 600; margin-bottom: 1rem;
 }
 .bk-hero h1 {
   font-size: clamp(1.9rem, 5vw, 3rem);
-  font-weight: 800; line-height: 1.08; margin: 0 0 .65rem;
+  font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; color: var(--bk-ink);
 }
 .bk-hero h1 span { color: var(--bk-orange); }
 .bk-hero-sub {
   font-size: clamp(1.05rem, 2.4vw, 1.35rem);
-  font-weight: 600; color: var(--bk-orange-l);
+  font-weight: 600; color: var(--bk-orange-d);
   margin: 0 0 .7rem;
 }
 .bk-hero p.bk-hero-lead {
-  max-width: 640px; color: rgba(255,255,255,.82);
+  max-width: 640px; color: var(--bk-muted);
   font-size: 1rem; line-height: 1.6; margin: 0;
 }
 

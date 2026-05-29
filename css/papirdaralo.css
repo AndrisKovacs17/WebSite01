@@ -26,26 +26,27 @@
 
 /* ───────────────────── HERO ───────────────────── */
 .pd-hero {
-  background: linear-gradient(135deg, #1c1c2e 0%, #2a2a3e 55%, #232a33 100%);
-  padding: 2.4rem 0 3rem; position: relative; overflow: hidden; color: #fff;
+  background: linear-gradient(150deg, #fff 0%, #fffbf3 55%, #fff7ec 100%);
+  border-top: 3px solid var(--pd-orange);
+  padding: 2.4rem 0 3rem; position: relative; overflow: hidden; color: var(--pd-ink);
 }
 .pd-hero::before {
   content: ""; position: absolute; top: -40%; right: -8%;
   width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  background: radial-gradient(circle, rgba(255,167,38,.12), transparent 62%);
   pointer-events: none;
 }
-.pd-back-link { display: inline-flex; align-items: center; gap: .5rem; color: rgba(255,255,255,.78); font-size: .92rem; text-decoration: none; margin-bottom: 1rem; transition: color var(--pd-ease); }
+.pd-back-link { display: inline-flex; align-items: center; gap: .5rem; color: #6b7280; font-size: .92rem; text-decoration: none; margin-bottom: 1rem; transition: color var(--pd-ease); }
 .pd-back-link:hover { color: var(--pd-orange); }
-.pd-breadcrumb { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; padding: 0; margin: 0 0 1.1rem; font-size: .82rem; color: rgba(255,255,255,.6); }
-.pd-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.pd-breadcrumb { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; padding: 0; margin: 0 0 1.1rem; font-size: .82rem; color: #6b7280; }
+.pd-breadcrumb a { color: #6b7280; text-decoration: none; }
 .pd-breadcrumb a:hover { color: var(--pd-orange); }
-.pd-breadcrumb-sep { color: rgba(255,255,255,.35); }
-.pd-hero-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,167,38,.16); border: 1px solid rgba(255,167,38,.4); color: var(--pd-orange-l); padding: .32rem .85rem; border-radius: 999px; font-size: .8rem; font-weight: 600; margin-bottom: 1rem; }
-.pd-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; }
+.pd-breadcrumb-sep { color: #d1d5db; }
+.pd-hero-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,167,38,.16); border: 1px solid rgba(255,167,38,.4); color: #92400e; padding: .32rem .85rem; border-radius: 999px; font-size: .8rem; font-weight: 600; margin-bottom: 1rem; }
+.pd-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; color: var(--pd-ink); }
 .pd-hero h1 span { color: var(--pd-orange); }
-.pd-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--pd-orange-l); margin: 0 0 .7rem; }
-.pd-hero-lead { max-width: 660px; color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
+.pd-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--pd-orange-d); margin: 0 0 .7rem; }
+.pd-hero-lead { max-width: 660px; color: var(--pd-muted); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
 
 /* ───────────────────── BUTTONS ───────────────────── */
 .pd-btn {
