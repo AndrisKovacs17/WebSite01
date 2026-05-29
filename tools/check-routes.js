@@ -60,6 +60,23 @@ function collectRoutes() {
   for (const group of config.generatedGroups || []) {
     const sourceDir = path.join(ROOT, group.sourceDir);
     if (!fs.existsSync(sourceDir)) continue;
+
+    if (group.dirMode) {
+      // New structure: each subdirectory with index.html is a route.
+      // ROUTE/SLUG/index.html → pathPrefix/SLUG (mirrors build-static.js)
+      for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+        if (!entry.isDirectory()) continue;
+        const indexFile = path.join(sourceDir, entry.name, "index.html");
+        if (!fs.existsSync(indexFile)) continue;
+        const rel = path.relative(ROOT, indexFile).split(path.sep).join("/");
+        if (seenSources.has(rel)) continue;
+        routes.push({ source: rel, path: `${group.pathPrefix}/${entry.name}` });
+        seenSources.add(rel);
+      }
+      continue;
+    }
+
+    // Legacy structure: flat .html files in sourceDir.
     for (const file of walk(sourceDir)) {
       if (!file.endsWith(".html")) continue;
       const rel = path.relative(ROOT, file).split(path.sep).join("/");
