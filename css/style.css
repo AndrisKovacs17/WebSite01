@@ -3122,7 +3122,6 @@ html, body {
 /* Nyíl maradjon eredeti sötét szín – felülírja a korábbi brightness filter-t */
 .accordion-button:not(.collapsed)::after {
   filter: none !important;
-}
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 @keyframes accordionBodyIn {
