@@ -171,11 +171,12 @@
           <a
             href="https://www.facebook.com/biztoralkusz?locale=hu_HU"
             class="text-dark ms-3 small fw-light"
-            ><i class="fab fa-facebook-f"></i
+            aria-label="Biztor Facebook oldal"
+            ><i class="fab fa-facebook-f" aria-hidden="true"></i
           ></a>
 
-          <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light"
-            ><i class="fab fa-instagram"></i
+          <a href="https://www.instagram.com/biztor_alkusz/" class="text-dark ms-3 small fw-light" aria-label="Biztor Instagram oldal"
+            ><i class="fab fa-instagram" aria-hidden="true"></i
           ></a>
         </div>
       </div>
@@ -291,7 +292,7 @@
 
     <!-- Rólunk Section Start -->
     <!-- Hero Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="fo-tartalom">
       <div class="container">
         <!-- Header Section -->
         <div
@@ -322,9 +323,17 @@
             <p class="mb-4">
               A Biztor Alkusz Kft.-t Cidor Mihály alapította 2008 augusztusában Nyíregyházán. Kezdettől az volt a célunk, hogy az ügyfelek ne egyedül próbáljanak eligazodni a biztosítók feltételei között, hanem legyen mellettük egy elérhető, független szakmai partner.
             </p>
-            <p class="mb-0">
-              Ha kíváncsi rá, miben tudunk segíteni, nézze meg <a href="/szolgaltatasok/">szolgáltatásainkat</a>, vagy kérjen visszahívást a <a href="/kapcsolat/">kapcsolat oldalon</a>.
+            <p class="mb-4">
+              Ha kíváncsi rá, miben tudunk segíteni, nézze meg <a href="/szolgaltatasok/" class="biztor-inline-link">szolgáltatásainkat</a>, vagy kérjen visszahívást a <a href="/kapcsolat/" class="biztor-inline-link">kapcsolat oldalon</a>.
             </p>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-primary btn-lg rounded-pill px-4 py-3 hover-lift">
+                <i class="fa fa-file-text me-2" aria-hidden="true"></i>Ajánlatkérés
+              </a>
+              <a href="/kapcsolat/" class="btn btn-outline-primary btn-lg rounded-pill px-4 py-3 hover-lift">
+                <i class="fa fa-envelope me-2" aria-hidden="true"></i>Kapcsolat
+              </a>
+            </div>
           </div>
         </div>
 
@@ -404,20 +413,23 @@
         <div class="row g-5 mt-4">
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
             <h3 class="mb-4">Szolgáltatásaink</h3>
-            <div class="bg-light rounded p-4">
+            <div class="bg-white rounded-3 p-4 shadow-sm">
               <ul class="list-unstyled mb-0">
-                <li class="mb-3">
-                  <i class="fa fa-check text-primary me-2"></i>Ügyfelek
-                  képviselete minden biztosítást érintő helyzetben
+                <li class="mb-3 d-flex align-items-start gap-2">
+                  <i class="fa fa-check-circle text-primary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                  <span>Ügyfelek képviselete minden biztosítást érintő helyzetben</span>
                 </li>
-                <li class="mb-3">
-                  <i class="fa fa-check text-primary me-2"></i>Biztosítói ajánlatok összehasonlítása és a kötés lebonyolítása
+                <li class="mb-3 d-flex align-items-start gap-2">
+                  <i class="fa fa-check-circle text-primary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                  <span>Biztosítói ajánlatok összehasonlítása és a kötés lebonyolítása</span>
                 </li>
-                <li class="mb-3">
-                  <i class="fa fa-check text-primary me-2"></i>Kapcsolattartás az ügyfél és a biztosító között: ügyintézés, hiánypótlás, díjrendezés
+                <li class="mb-3 d-flex align-items-start gap-2">
+                  <i class="fa fa-check-circle text-primary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                  <span>Kapcsolattartás az ügyfél és a biztosító között: ügyintézés, hiánypótlás, díjrendezés</span>
                 </li>
-                <li class="mb-3">
-                  <i class="fa fa-check text-primary me-2"></i>Kárbejelentés előkészítése, dokumentálás, ügyintézési segítség
+                <li class="d-flex align-items-start gap-2">
+                  <i class="fa fa-check-circle text-primary mt-1 flex-shrink-0" aria-hidden="true"></i>
+                  <span>Kárbejelentés előkészítése, dokumentálás, ügyintézési segítség</span>
                 </li>
               </ul>
             </div>
@@ -880,6 +892,25 @@
       </div>
     </div>
     <!-- /Ügyfélvélemények -->
+
+    <!-- CTA Strip -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="cta-strip text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h3 class="mb-2">Kérdése van? Segítünk eligazodni.</h3>
+          <p class="lead mb-4">Kérjen ajánlatot online, vagy hívjon minket – egyszerűen és gyorsan.</p>
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <a href="/kotelezo-biztositas-ajanlatkeres" class="btn btn-light btn-lg rounded-pill py-2 py-md-3 px-4 px-md-5 w-100 w-md-auto hover-lift">
+              <i class="fa fa-file-text me-2" aria-hidden="true"></i>Ajánlatkérés
+            </a>
+            <a href="/kapcsolat/" class="btn btn-outline-light btn-lg rounded-pill hover-lift py-2 py-md-3 px-4 px-md-5 w-100 w-md-auto">
+              <i class="fa fa-envelope me-2" aria-hidden="true"></i>Kapcsolat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /CTA Strip -->
 
     <!-- Footer Start -->
     <div

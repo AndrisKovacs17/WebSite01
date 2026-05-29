@@ -1277,6 +1277,25 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* ── Orange animated inline links for body text ── */
+.biztor-inline-link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s ease, text-underline-offset .2s ease;
+}
+.biztor-inline-link:hover {
+  color: #E67E22;
+  text-underline-offset: 5px;
+  text-decoration: underline;
+}
+.biztor-inline-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .info-topic-link {
     display: inline-flex;
     align-items: center;
