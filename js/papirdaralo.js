@@ -216,6 +216,7 @@
     var choiceTxt = (choice === "shred") ? "Darálóba tetted" : "Átnézésre tetted";
     var suggestTxt = (doc.decision === "shred") ? "Ezt nyugodtan ledarálhattad." : "Ezt érdemes előbb átnézni.";
 
+    var wasShowing = feedbackEl.classList.contains("is-show");
     feedbackEl.className = "pd-feedback " + (correct ? "is-good" : "is-wrong");
     feedbackEl.innerHTML =
       '<p class="pd-feedback-verdict"><i class="fa ' + verdictIcon + '" aria-hidden="true"></i>' + esc(verdictTxt) + '</p>' +
@@ -229,7 +230,12 @@
         '<span>Átnézésre: <b>' + STATE.reviewCount + '</b></span>' +
       '</div>';
 
-    requestAnimationFrame(function () { feedbackEl.classList.add("is-show"); });
+    /* Ha a panel már látható volt, azonnal is-show — nem villan */
+    if (wasShowing) {
+      feedbackEl.classList.add("is-show");
+    } else {
+      requestAnimationFrame(function () { feedbackEl.classList.add("is-show"); });
+    }
     announce(verdictTxt + " " + doc.lesson);
 
     /* automatikus továbblépés – nincs szükség "Következő" gombra */
@@ -239,18 +245,14 @@
 
   function advanceToNext() {
     STATE.advanceTimer = null;
-    feedbackEl.classList.remove("is-show");
     machineEl.classList.remove("is-good", "is-wrong");
-    var fadeDelay = REDUCED ? 0 : 300;
-    setTimeout(function () {
-      feedbackEl.innerHTML = "";
-      STATE.index++;
-      if (STATE.index >= DOCS.length) {
-        showResult();
-      } else {
-        renderDoc(true);
-      }
-    }, fadeDelay);
+    /* A feedback panel érintetlen marad — csak új döntés írja felül */
+    STATE.index++;
+    if (STATE.index >= DOCS.length) {
+      showResult();
+    } else {
+      renderDoc(true);
+    }
   }
 
   /* ── EREDMÉNYKÉPERNYŐ ────────────────────────────────────── */
@@ -263,6 +265,8 @@
 
   function showResult() {
     if (STATE.advanceTimer) { clearTimeout(STATE.advanceTimer); STATE.advanceTimer = null; }
+    feedbackEl.classList.remove("is-show");
+    feedbackEl.innerHTML = "";
     var r = chooseResult() || { title: "Eredmény", text: "" };
     gameEl.hidden = true;
     resultEl.hidden = false;
