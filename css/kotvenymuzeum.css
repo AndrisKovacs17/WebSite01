@@ -1,0 +1,409 @@
+/* ================================================================
+   kotvenymuzeum.css  –  Kötvénymúzeum
+   .km-page névtér. Biztor brand: narancs / fehér / sötétkék.
+   Múzeumi terem-hangulat: fal, képkeretek, spotlámpák, címkék.
+   ================================================================ */
+
+.km-page {
+  --km-orange:   #FFA726;
+  --km-orange-d: #FB8C00;
+  --km-orange-l: #FFE0B2;
+  --km-navy:     #1c1c2e;
+  --km-ink:      #2b2b38;
+  --km-muted:    #6b6b7b;
+  --km-line:     #e6e1d6;
+  --km-wall:     #f3efe7;
+  --km-wall2:    #ece6db;
+  --km-frame1:   #d9c9a6;
+  --km-frame2:   #b9a274;
+  --km-paper:    #f7f2e8;
+  --km-radius:   1.1rem;
+  --km-shadow:   0 8px 32px rgba(0,0,0,.10);
+  --km-shadow-h: 0 18px 48px rgba(0,0,0,.18);
+  --km-ease:     .32s cubic-bezier(.25,.46,.45,.94);
+}
+
+.km-page { background: #f6f6fa; color: var(--km-ink); }
+.km-page .container { max-width: 1200px; }
+
+/* ───────────────────── HERO ───────────────────── */
+.km-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d2342 52%, #1c2630 100%);
+  padding: 2.4rem 0 3rem;
+  position: relative; overflow: hidden; color: #fff;
+}
+.km-hero::before {
+  content: ""; position: absolute; top: -40%; right: -8%;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  pointer-events: none;
+}
+.km-back-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  color: rgba(255,255,255,.78); font-size: .92rem; text-decoration: none;
+  margin-bottom: 1rem; transition: color var(--km-ease);
+}
+.km-back-link:hover { color: var(--km-orange); }
+.km-breadcrumb {
+  list-style: none; display: flex; flex-wrap: wrap; align-items: center;
+  gap: .45rem; padding: 0; margin: 0 0 1.1rem;
+  font-size: .82rem; color: rgba(255,255,255,.6);
+}
+.km-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.km-breadcrumb a:hover { color: var(--km-orange); }
+.km-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.km-hero-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(255,167,38,.16); border: 1px solid rgba(255,167,38,.4);
+  color: var(--km-orange-l); padding: .32rem .85rem; border-radius: 999px;
+  font-size: .8rem; font-weight: 600; margin-bottom: 1rem;
+}
+.km-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; }
+.km-hero h1 span { color: var(--km-orange); }
+.km-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--km-orange-l); margin: 0 0 .7rem; }
+.km-hero p.km-hero-lead { max-width: 660px; color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
+
+/* ───────────────────── BUTTONS ───────────────────── */
+.km-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  border: none; cursor: pointer; font-weight: 700; font-size: 1rem;
+  padding: .85rem 1.8rem; border-radius: 999px;
+  background: linear-gradient(135deg, var(--km-orange), var(--km-orange-d));
+  color: #fff; box-shadow: 0 8px 22px rgba(251,140,0,.35);
+  transition: transform var(--km-ease), box-shadow var(--km-ease);
+  text-decoration: none;
+}
+.km-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(251,140,0,.45); color: #fff; }
+.km-btn:active { transform: translateY(0); }
+.km-btn:focus-visible { outline: 3px solid rgba(255,167,38,.55); outline-offset: 3px; }
+.km-btn-ghost { background: #fff; color: var(--km-ink); border: 1.5px solid var(--km-line); box-shadow: none; }
+.km-btn-ghost:hover { color: var(--km-ink); border-color: var(--km-orange); box-shadow: var(--km-shadow); transform: translateY(-2px); }
+
+/* ───────────────────── MÚZEUM ───────────────────── */
+.km-museum-section { padding: 2.4rem 0 3.5rem; }
+
+.km-intro {
+  max-width: 620px; margin: 0 auto 2.4rem; text-align: center;
+  background: #fff; border: 1px solid var(--km-line);
+  border-radius: var(--km-radius); box-shadow: var(--km-shadow);
+  padding: 2.2rem 1.8rem;
+}
+.km-intro h2 { font-size: 1.4rem; font-weight: 800; color: var(--km-navy); margin: 0 0 .6rem; }
+.km-intro p { color: var(--km-muted); line-height: 1.6; margin: 0 0 1.3rem; }
+.km-intro-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.3rem; font-size: .85rem; color: var(--km-muted); }
+.km-intro-meta span { display: inline-flex; align-items: center; gap: .4rem; }
+
+/* Kurátori megjegyzés blokk */
+.km-curator-note {
+  max-width: 760px; margin: 0 auto 2.4rem;
+  background: linear-gradient(180deg, #fffaf2, #fff);
+  border: 1px solid var(--km-line); border-left: 5px solid var(--km-orange);
+  border-radius: var(--km-radius); box-shadow: var(--km-shadow);
+  padding: 1.3rem 1.5rem;
+}
+.km-curator-note .km-curator-k { font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--km-orange-d); display: inline-flex; align-items: center; gap: .45rem; margin-bottom: .4rem; }
+.km-curator-note p { margin: 0; color: var(--km-ink); line-height: 1.6; font-style: italic; }
+
+/* Szűrők */
+.km-filters { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: center; margin-bottom: 2rem; }
+.km-filter {
+  border: 1.5px solid var(--km-line); background: #fff; color: var(--km-ink);
+  border-radius: 999px; padding: .5rem 1.05rem; font-size: .88rem; font-weight: 600;
+  cursor: pointer; transition: all var(--km-ease);
+}
+.km-filter:hover { border-color: var(--km-orange); }
+.km-filter.is-active { background: linear-gradient(135deg, var(--km-orange), var(--km-orange-d)); color: #fff; border-color: transparent; }
+.km-filter:focus-visible { outline: 3px solid rgba(255,167,38,.5); outline-offset: 2px; }
+
+/* ───────────────────── TEREM ───────────────────── */
+.km-room { margin-bottom: 2.8rem; }
+.km-room-head { display: flex; align-items: baseline; gap: .9rem; margin-bottom: .3rem; flex-wrap: wrap; }
+.km-room-num {
+  font-size: .8rem; font-weight: 800; letter-spacing: .08em;
+  color: #fff; background: var(--km-navy); border-radius: .5rem;
+  padding: .25rem .6rem; flex: 0 0 auto;
+}
+.km-room-head h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 800; color: var(--km-navy); margin: 0; }
+.km-room-intro { color: var(--km-muted); margin: 0 0 1.3rem; max-width: 760px; line-height: 1.55; }
+
+/* A galéria-fal */
+.km-wall {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(255,255,255,.7), transparent 60%),
+    linear-gradient(180deg, var(--km-wall) 0%, var(--km-wall2) 100%);
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), var(--km-shadow);
+  padding: 2.2rem 1.6rem 2.6rem;
+  overflow: hidden;
+}
+/* padlószegély / lábazat */
+.km-wall::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 26px;
+  background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.12));
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.km-frames {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  gap: 2rem 1.8rem; position: relative; z-index: 1;
+}
+
+/* ───────────────────── KÉPKERET ───────────────────── */
+.km-frame {
+  position: relative; display: flex; flex-direction: column;
+  cursor: pointer; background: none; border: none; padding: 0; margin: 0;
+  text-align: left; font: inherit; color: inherit;
+}
+/* spotlámpa a keret fölött */
+.km-frame::before {
+  content: ""; position: absolute; left: 50%; top: -22px;
+  width: 150px; height: 60px; transform: translateX(-50%);
+  background: radial-gradient(ellipse at center top, rgba(255,243,214,.9), transparent 70%);
+  opacity: .65; pointer-events: none; z-index: 0;
+  transition: opacity var(--km-ease);
+}
+.km-frame:hover::before, .km-frame:focus-visible::before { opacity: 1; }
+
+.km-frame-art {
+  position: relative; width: 100%; aspect-ratio: 3 / 4;
+  border-radius: .35rem; overflow: hidden;
+  border: 11px solid;
+  border-image: linear-gradient(145deg, var(--km-frame1), var(--km-frame2)) 1;
+  background: var(--km-paper);
+  box-shadow: var(--km-shadow), inset 0 0 0 2px rgba(0,0,0,.06);
+  transition: transform var(--km-ease), box-shadow var(--km-ease);
+}
+.km-frame:hover .km-frame-art, .km-frame:focus-visible .km-frame-art {
+  transform: translateY(-4px) rotate(-.5deg); box-shadow: var(--km-shadow-h), inset 0 0 0 2px rgba(0,0,0,.06);
+}
+.km-frame:focus-visible { outline: none; }
+.km-frame:focus-visible .km-frame-art { outline: 3px solid var(--km-orange); outline-offset: 3px; }
+
+/* CSS papír-placeholder (ha nincs valódi kép) */
+.km-art-fallback {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 17px, rgba(28,28,46,.07) 17px 18px),
+    linear-gradient(180deg, #fbf7ee, #f1e9d8);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem;
+  padding: 1rem;
+}
+.km-art-fallback::before { /* pecsét helye */
+  content: ""; width: 56px; height: 56px; border-radius: 50%;
+  border: 2px dashed rgba(251,140,0,.55);
+  background: radial-gradient(circle, rgba(255,167,38,.12), transparent 70%);
+}
+.km-art-ph-label { font-size: .72rem; letter-spacing: .04em; color: rgba(43,43,56,.45); text-transform: uppercase; }
+.km-art-ph-cat { font-size: .9rem; font-weight: 700; color: rgba(28,28,46,.6); text-align: center; line-height: 1.25; }
+
+/* valódi placeholder kép (ha létezik) a fallback fölött */
+.km-art-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
+
+/* ── REJTETT (átszakadás mögötti) réteg ── */
+.km-hidden-art {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 16px, rgba(28,28,46,.06) 16px 17px),
+    linear-gradient(160deg, #2a2a3e, #1c1c2e);
+  color: var(--km-orange-l);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem;
+  padding: 1rem; text-align: center;
+}
+.km-hidden-art i { font-size: 1.6rem; color: var(--km-orange); }
+.km-hidden-art span { font-size: .82rem; line-height: 1.3; color: rgba(255,255,255,.82); }
+.km-hidden-img { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; }
+
+/* ── ELÜLSŐ (átszakadó) réteg, két fél ── */
+.km-front { position: absolute; inset: 0; z-index: 4; }
+.km-front-half {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 17px, rgba(28,28,46,.07) 17px 18px),
+    linear-gradient(180deg, #fbf7ee, #efe6d3);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .6s cubic-bezier(.5,.05,.4,1), opacity .6s ease;
+}
+.km-front-l { clip-path: polygon(0 0, 53% 0, 47% 11%, 54% 24%, 46% 38%, 53% 52%, 46% 66%, 54% 80%, 47% 92%, 50% 100%, 0 100%); }
+.km-front-r { clip-path: polygon(53% 0, 100% 0, 100% 100%, 50% 100%, 47% 92%, 54% 80%, 46% 66%, 53% 52%, 46% 38%, 54% 24%, 47% 11%); }
+.km-front-mark {
+  font-size: .72rem; color: rgba(43,43,56,.5); letter-spacing: .04em;
+  text-transform: uppercase; transform: translateX(-12%);
+}
+.km-front-r .km-front-mark { transform: translateX(12%); }
+
+/* repedés-vonal */
+.km-crack {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; z-index: 5;
+  transform: translateX(-50%) scaleY(0);
+  background: linear-gradient(180deg, transparent, rgba(28,28,46,.5), transparent);
+  transition: transform .3s ease, opacity .3s ease; opacity: 0;
+}
+
+/* TEAR állapotok */
+.km-frame.cc1 .km-frame-art { transform: scale(1.015); }
+.km-frame.cc2 .km-front { animation: kmShake .4s ease; }
+.km-frame.cc2 .km-crack { transform: translateX(-50%) scaleY(.6); opacity: .8; }
+@keyframes kmShake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-4px) rotate(-.6deg); }
+  40% { transform: translateX(4px) rotate(.6deg); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+.km-frame.is-torn .km-front-l { transform: translateX(-66%) rotate(-9deg); opacity: .9; }
+.km-frame.is-torn .km-front-r { transform: translateX(66%) rotate(9deg); opacity: .9; }
+.km-frame.is-torn .km-crack { opacity: 0; }
+
+/* ── POR (canvas) ── */
+.km-dust { position: absolute; inset: 0; z-index: 6; cursor: grab; touch-action: none; }
+.km-dust.is-clean { pointer-events: none; opacity: 0; transition: opacity .5s ease; }
+.km-frame.is-dusty .km-frame-art { cursor: grab; }
+
+/* "Ne nyúljon a kötvényhez" mini tábla */
+.km-donttouch {
+  position: absolute; z-index: 7; right: 6px; bottom: 6px;
+  background: rgba(28,28,46,.82); color: #fff; font-size: .6rem; font-weight: 600;
+  padding: .15rem .4rem; border-radius: .3rem; letter-spacing: .02em;
+  opacity: 0; transform: translateY(4px); transition: opacity var(--km-ease), transform var(--km-ease);
+  pointer-events: none;
+}
+.km-frame:hover .km-donttouch, .km-frame:focus-visible .km-donttouch { opacity: .9; transform: translateY(0); }
+
+/* ── MÚZEUMI CÍMKE (plakett) ── */
+.km-plaque {
+  margin-top: .9rem; background: var(--km-paper);
+  border: 1px solid var(--km-line); border-radius: .5rem;
+  padding: .7rem .85rem; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  position: relative; z-index: 1;
+}
+.km-plaque-cat { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--km-orange-d); }
+.km-plaque h3 { font-size: .98rem; font-weight: 800; color: var(--km-navy); margin: .15rem 0 .2rem; line-height: 1.22; }
+.km-plaque-era { font-size: .76rem; color: var(--km-muted); font-weight: 600; }
+.km-plaque-note { font-size: .82rem; color: var(--km-ink); margin: .35rem 0 0; line-height: 1.4; font-style: italic; }
+.km-dust-tag {
+  display: inline-flex; align-items: center; gap: .35rem; margin-top: .5rem;
+  font-size: .68rem; font-weight: 700; color: #8a6d2f;
+  background: #f3e7c9; border: 1px solid #e3d2a3; border-radius: 999px; padding: .15rem .55rem;
+}
+
+/* ───────────────────── TITKOS TEREM ───────────────────── */
+.km-secret { margin-top: 1rem; }
+.km-secret[hidden] { display: none; }
+.km-secret-inner {
+  border: 1px solid rgba(255,167,38,.4);
+  background: linear-gradient(180deg, #211b2e, #181523);
+  border-radius: var(--km-radius); padding: 2rem 1.6rem 2.4rem; color: #fff;
+  box-shadow: var(--km-shadow-h);
+  opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease;
+}
+.km-secret.is-open .km-secret-inner { opacity: 1; transform: translateY(0); }
+.km-secret-head { text-align: center; margin-bottom: 1.6rem; }
+.km-secret-badge {
+  display: inline-flex; align-items: center; gap: .4rem; font-size: .76rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--km-navy);
+  background: linear-gradient(135deg, var(--km-orange), var(--km-orange-d));
+  padding: .3rem .8rem; border-radius: 999px; margin-bottom: .7rem;
+}
+.km-secret-head h2 { font-size: 1.5rem; font-weight: 800; margin: 0 0 .3rem; }
+.km-secret-head p { color: rgba(255,255,255,.75); margin: 0; }
+.km-secret .km-frames { }
+.km-secret .km-art-fallback { background: repeating-linear-gradient(0deg, transparent 0 17px, rgba(255,255,255,.05) 17px 18px), linear-gradient(180deg, #2a2438, #211b2e); }
+.km-secret .km-art-ph-cat { color: var(--km-orange-l); }
+.km-secret .km-art-ph-label { color: rgba(255,255,255,.4); }
+.km-secret .km-plaque { background: #2a2438; border-color: rgba(255,255,255,.12); }
+.km-secret .km-plaque h3 { color: #fff; }
+.km-secret .km-plaque-note { color: rgba(255,255,255,.8); }
+.km-secret .km-plaque-era { color: rgba(255,255,255,.55); }
+
+/* ───────────────────── KURÁTORI TOAST ───────────────────── */
+.km-toast {
+  position: fixed; left: 50%; bottom: 90px; z-index: 1080;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--km-navy); color: #fff; border: 1px solid rgba(255,167,38,.4);
+  border-radius: .8rem; padding: .85rem 1.2rem; max-width: 90vw; width: max-content;
+  box-shadow: var(--km-shadow-h); font-size: .9rem; line-height: 1.4;
+  opacity: 0; pointer-events: none; transition: opacity .35s ease, transform .35s ease;
+}
+.km-toast .km-toast-k { color: var(--km-orange); font-weight: 700; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: .2rem; }
+.km-toast.is-show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ───────────────────── MODAL (nagyított nézet) ───────────────────── */
+.km-modal {
+  position: fixed; inset: 0; z-index: 1090; display: flex; align-items: center; justify-content: center;
+  padding: 1.2rem; background: rgba(18,16,28,.72); backdrop-filter: blur(3px);
+  opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease;
+}
+.km-modal.is-open { opacity: 1; visibility: visible; }
+.km-modal-card {
+  background: #fff; border-radius: var(--km-radius); box-shadow: var(--km-shadow-h);
+  max-width: 880px; width: 100%; max-height: 92vh; overflow: auto;
+  display: grid; grid-template-columns: 300px 1fr; gap: 0;
+  transform: translateY(16px) scale(.98); transition: transform .3s ease;
+}
+.km-modal.is-open .km-modal-card { transform: none; }
+.km-modal-art {
+  position: relative; min-height: 320px;
+  border-right: 1px solid var(--km-line);
+  background: var(--km-paper);
+}
+.km-modal-art .km-art-fallback, .km-modal-art .km-art-img { border-radius: var(--km-radius) 0 0 var(--km-radius); }
+.km-modal-body { padding: 1.6rem 1.7rem; position: relative; }
+.km-modal-close {
+  position: absolute; top: .8rem; right: .8rem; z-index: 3;
+  width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(28,28,46,.08); color: var(--km-navy); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; transition: background var(--km-ease);
+}
+.km-modal-close:hover { background: rgba(28,28,46,.16); }
+.km-modal-close:focus-visible { outline: 3px solid rgba(255,167,38,.6); outline-offset: 2px; }
+.km-modal-cat { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--km-orange-d); }
+.km-modal-body h2 { font-size: 1.35rem; font-weight: 800; color: var(--km-navy); margin: .2rem 2rem .15rem 0; line-height: 1.2; }
+.km-modal-era { font-size: .85rem; color: var(--km-muted); font-weight: 600; margin-bottom: 1rem; display: inline-block; }
+.km-modal-sec { margin-bottom: .95rem; }
+.km-modal-sec dt { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--km-orange-d); margin-bottom: .2rem; display: flex; align-items: center; gap: .4rem; }
+.km-modal-sec dd { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--km-ink); }
+.km-modal-curator {
+  background: #fffaf2; border: 1px solid var(--km-line); border-left: 4px solid var(--km-orange);
+  border-radius: .6rem; padding: .8rem 1rem; margin: 1rem 0; font-style: italic; color: var(--km-ink); line-height: 1.55;
+}
+.km-modal-curator span { display: block; font-style: normal; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--km-orange-d); margin-bottom: .3rem; }
+.km-modal-cta { margin-top: 1.2rem; }
+
+/* ───────────────────── CTA ───────────────────── */
+.km-cta {
+  margin-top: 2.6rem; text-align: center;
+  background: #fff; border: 1px solid var(--km-line);
+  border-radius: var(--km-radius); box-shadow: var(--km-shadow); padding: 2rem 1.6rem;
+}
+.km-cta h2 { font-size: 1.35rem; font-weight: 800; color: var(--km-navy); margin: 0 0 .5rem; }
+.km-cta p { max-width: 640px; margin: 0 auto 1.3rem; color: var(--km-ink); line-height: 1.6; }
+.km-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
+.km-cta-btns .km-btn { padding: .7rem 1.4rem; font-size: .95rem; }
+
+/* ───────────────────── SR-ONLY ───────────────────── */
+.km-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ───────────────────── RESPONSIVE ───────────────────── */
+@media (max-width: 720px) {
+  .km-modal-card { grid-template-columns: 1fr; }
+  .km-modal-art { min-height: 220px; border-right: none; border-bottom: 1px solid var(--km-line); }
+  .km-modal-art .km-art-fallback, .km-modal-art .km-art-img { border-radius: var(--km-radius) var(--km-radius) 0 0; }
+  .km-frames { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.6rem 1.2rem; }
+  .km-wall { padding: 1.8rem 1rem 2.2rem; }
+}
+@media (max-width: 480px) {
+  .km-frames { grid-template-columns: 1fr; gap: 1.8rem; }
+  .km-frame-art { max-width: 320px; margin: 0 auto; }
+  .km-plaque { max-width: 320px; margin-left: auto; margin-right: auto; }
+}
+
+/* ───────────────────── REDUCED MOTION ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .km-frame-art, .km-front-half, .km-crack, .km-secret-inner,
+  .km-modal, .km-modal-card, .km-toast, .km-dust, .km-btn, .km-btn-ghost { transition: none !important; }
+  .km-frame.cc2 .km-front { animation: none !important; }
+  .km-frame:hover .km-frame-art, .km-frame:focus-visible .km-frame-art { transform: none; }
+  .km-frame.is-torn .km-front-l, .km-frame.is-torn .km-front-r { transform: none; opacity: 0; }
+}
