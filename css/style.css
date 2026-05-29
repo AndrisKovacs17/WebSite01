@@ -2291,6 +2291,53 @@
   }
 }
 
+/* ── „Az Ön szakértője" szekció – biztosítási aloldalak ── */
+/* Warm gradient background az unalmas Bootstrap bg-light helyett */
+.szakerto-section.bg-light {
+  background: linear-gradient(180deg, rgba(255,167,38,.06) 0%, #fff 70%) !important;
+  border-top: 1px solid var(--border-warm);
+  border-bottom: 1px solid var(--border-warm);
+}
+
+/* Eyebrow label: pill badge (section-eyebrow stílus) */
+.szakerto-section p.fw-semibold.small.text-uppercase {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary-soft);
+  color: var(--warm-dark) !important;
+  border-radius: 999px;
+  padding: .25rem .85rem;
+  font-size: .72rem;
+  font-weight: 700 !important;
+  letter-spacing: .08em;
+  margin-bottom: 1rem !important;
+}
+
+/* Kártya: prémium bordered + hover-lift */
+.szakerto-section .bg-white.rounded-4 {
+  border: 1px solid var(--border-warm) !important;
+  border-top: 3px solid var(--primary) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: transform var(--ease-out), box-shadow var(--ease-out);
+}
+
+.szakerto-section .bg-white.rounded-4:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.10) !important;
+}
+
+/* Fotókör: narancs gyűrű */
+.szakerto-section img.rounded-circle {
+  box-shadow: 0 0 0 4px rgba(255,167,38,.18), 0 4px 16px rgba(0,0,0,.10);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .szakerto-section .bg-white.rounded-4 {
+    transition: none;
+  }
+}
+
 /* ── Flip kártya hátlap: szövegszín ── */
 .flip-card-back p,
 .flip-card-back .small {
