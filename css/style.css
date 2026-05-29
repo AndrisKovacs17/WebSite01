@@ -2317,6 +2317,7 @@
 .szakerto-section .bg-white.rounded-4 {
   border: 1px solid var(--border-warm) !important;
   border-top: 3px solid var(--primary) !important;
+  border-radius: 1.75rem !important;
   box-shadow: var(--shadow-card) !important;
   transition: transform var(--ease-out), box-shadow var(--ease-out);
 }
@@ -2328,6 +2329,8 @@
 
 /* Fotókör: narancs gyűrű */
 .szakerto-section img.rounded-circle {
+  width: 120px !important;
+  height: 120px !important;
   box-shadow: 0 0 0 4px rgba(255,167,38,.18), 0 4px 16px rgba(0,0,0,.10);
 }
 
