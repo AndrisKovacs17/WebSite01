@@ -2147,6 +2147,42 @@
   color: rgba(255, 255, 255, .85);
 }
 
+/* ── /rolunk/ stat kártyák prémium stílus ── */
+.rolunk-stat-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .07);
+  border: 1px solid rgba(255, 167, 38, .12);
+  border-top: 3px solid var(--primary);
+  text-align: center;
+  transition: transform var(--ease-out), box-shadow var(--ease-out);
+}
+.rolunk-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .11);
+}
+.rolunk-stat-icon {
+  font-size: 1.4rem;
+  color: var(--primary);
+  opacity: .85;
+}
+
+/* ── /rolunk/ CTA sáv — világos változat ── */
+.cta-strip.cta-strip--light {
+  background: #fff;
+  border: 1px solid rgba(255, 167, 38, .22);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .07);
+  color: inherit;
+}
+.cta-strip.cta-strip--light h2,
+.cta-strip.cta-strip--light h3 {
+  color: #111827;
+}
+.cta-strip.cta-strip--light .lead,
+.cta-strip.cta-strip--light p {
+  color: #374151;
+}
+
 /* ── Flip kártya hátlap: szövegszín ── */
 .flip-card-back p,
 .flip-card-back .small {
