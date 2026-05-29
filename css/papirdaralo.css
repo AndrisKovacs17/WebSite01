@@ -1,0 +1,293 @@
+/* ================================================================
+   papirdaralo.css  –  Papírdaráló
+   .papirdaralo-page névtér. Biztor brand: fehér / narancs / sötét.
+   Page-specific — nem írja felül a globális stílusokat.
+   ================================================================ */
+
+.papirdaralo-page {
+  --pd-orange:   #FFA726;
+  --pd-orange-d: #FB8C00;
+  --pd-orange-l: #FFE0B2;
+  --pd-navy:     #1c1c2e;
+  --pd-ink:      #2b2b38;
+  --pd-muted:    #6b6b7b;
+  --pd-line:     #ececf3;
+  --pd-paper:    #fdfcf8;
+  --pd-paper2:   #f2efe6;
+  --pd-metal:    #e9eaee;
+  --pd-metal2:   #cfd2da;
+  --pd-radius:   1.15rem;
+  --pd-shadow:   0 8px 32px rgba(0,0,0,.10);
+  --pd-shadow-h: 0 16px 44px rgba(0,0,0,.16);
+  --pd-ease:     .32s cubic-bezier(.25,.46,.45,.94);
+}
+.papirdaralo-page { background: #f6f6fa; color: var(--pd-ink); }
+.papirdaralo-page .container { max-width: 1200px; }
+
+/* ───────────────────── HERO ───────────────────── */
+.pd-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2a2a3e 55%, #232a33 100%);
+  padding: 2.4rem 0 3rem; position: relative; overflow: hidden; color: #fff;
+}
+.pd-hero::before {
+  content: ""; position: absolute; top: -40%; right: -8%;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(255,167,38,.22), transparent 62%);
+  pointer-events: none;
+}
+.pd-back-link { display: inline-flex; align-items: center; gap: .5rem; color: rgba(255,255,255,.78); font-size: .92rem; text-decoration: none; margin-bottom: 1rem; transition: color var(--pd-ease); }
+.pd-back-link:hover { color: var(--pd-orange); }
+.pd-breadcrumb { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; padding: 0; margin: 0 0 1.1rem; font-size: .82rem; color: rgba(255,255,255,.6); }
+.pd-breadcrumb a { color: rgba(255,255,255,.78); text-decoration: none; }
+.pd-breadcrumb a:hover { color: var(--pd-orange); }
+.pd-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.pd-hero-badge { display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,167,38,.16); border: 1px solid rgba(255,167,38,.4); color: var(--pd-orange-l); padding: .32rem .85rem; border-radius: 999px; font-size: .8rem; font-weight: 600; margin-bottom: 1rem; }
+.pd-hero h1 { font-size: clamp(1.9rem, 5vw, 3rem); font-weight: 800; line-height: 1.08; margin: 0 0 .65rem; }
+.pd-hero h1 span { color: var(--pd-orange); }
+.pd-hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.35rem); font-weight: 600; color: var(--pd-orange-l); margin: 0 0 .7rem; }
+.pd-hero-lead { max-width: 660px; color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.6; margin: 0 0 1.4rem; }
+
+/* ───────────────────── BUTTONS ───────────────────── */
+.pd-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  border: none; cursor: pointer; font-weight: 700; font-size: 1rem;
+  padding: .85rem 1.7rem; border-radius: 999px;
+  background: linear-gradient(135deg, var(--pd-orange), var(--pd-orange-d));
+  color: #fff; box-shadow: 0 8px 22px rgba(251,140,0,.35);
+  transition: transform var(--pd-ease), box-shadow var(--pd-ease), opacity var(--pd-ease);
+  text-decoration: none;
+}
+.pd-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(251,140,0,.45); color: #fff; }
+.pd-btn:active { transform: translateY(0); }
+.pd-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.pd-btn:focus-visible { outline: 3px solid rgba(255,167,38,.55); outline-offset: 3px; }
+.pd-btn-ghost { background: #fff; color: var(--pd-ink); border: 1.5px solid var(--pd-line); box-shadow: none; }
+.pd-btn-ghost:hover { color: var(--pd-ink); border-color: var(--pd-orange); box-shadow: var(--pd-shadow); transform: translateY(-2px); }
+
+/* ───────────────────── JÁTÉKFELÜLET ───────────────────── */
+.pd-game-section { padding: 2.4rem 0 3.5rem; }
+.paper-shredder-game {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 2rem; align-items: start;
+}
+
+/* ── BAL: dokumentumkupac ── */
+.document-stack { position: relative; }
+.pd-stack-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .9rem; flex-wrap: wrap; }
+.pd-stack-head h2 { font-size: 1.25rem; font-weight: 800; color: var(--pd-navy); margin: 0; }
+.pd-progress { font-size: .85rem; color: var(--pd-muted); font-weight: 600; }
+
+.pd-stack-area {
+  position: relative; max-width: 360px; margin: 0 auto 1.4rem;
+  aspect-ratio: 1 / 1.414;
+}
+/* a kupac mélységi rétegei (díszítő, üres lapok) */
+.pd-stack-peek {
+  position: absolute; inset: 0; border-radius: .4rem;
+  background: linear-gradient(180deg, var(--pd-paper), var(--pd-paper2));
+  border: 1px solid var(--pd-line); box-shadow: var(--pd-shadow);
+}
+.pd-stack-peek.p1 { transform: rotate(-3deg) translate(-8px, 6px); }
+.pd-stack-peek.p2 { transform: rotate(2.4deg) translate(7px, 3px); }
+.pd-stack-peek.p3 { transform: rotate(-1deg) translate(-2px, 2px); }
+
+/* az aktuális A4 dokumentum */
+.pd-doc {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; flex-direction: column; padding: 1.1rem 1.1rem 1rem;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 26px, rgba(28,28,46,.045) 26px 27px),
+    linear-gradient(180deg, #fff, var(--pd-paper));
+  border: 1px solid var(--pd-line); border-radius: .4rem;
+  box-shadow: var(--pd-shadow-h);
+  transition: transform var(--pd-ease), box-shadow var(--pd-ease), opacity var(--pd-ease);
+}
+.pd-doc::before { /* gemkapocs / fülecske */
+  content: ""; position: absolute; top: -8px; left: 24px; width: 18px; height: 34px;
+  border: 3px solid var(--pd-metal2); border-bottom: none; border-radius: 8px 8px 0 0;
+}
+.pd-doc-stamp {
+  align-self: flex-end; font-size: .64rem; font-weight: 800; letter-spacing: .08em;
+  color: var(--pd-orange-d); border: 1.5px solid var(--pd-orange); border-radius: .35rem;
+  padding: .2rem .5rem; transform: rotate(4deg); opacity: .85;
+}
+.pd-doc-title { font-size: clamp(1rem, 2.4vw, 1.25rem); font-weight: 800; color: var(--pd-navy); line-height: 1.2; margin: .4rem 0 .2rem; }
+.pd-doc-type { font-size: .76rem; color: var(--pd-muted); font-weight: 600; margin-bottom: .8rem; }
+.pd-doc-lines { margin-top: auto; display: flex; flex-direction: column; gap: .5rem; }
+.pd-doc-line { font-size: .78rem; color: rgba(43,43,56,.6); border-bottom: 1px dashed var(--pd-line); padding-bottom: .35rem; font-family: "Courier New", monospace; }
+
+/* húzás közben */
+.pd-doc[draggable="true"] { cursor: grab; }
+.pd-doc.is-dragging { opacity: .55; cursor: grabbing; }
+
+/* döntésgombok */
+.pd-actions { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; }
+.pd-actions .pd-btn { flex: 1 1 auto; min-width: 160px; }
+
+/* ── JOBB: gép + tároló ── */
+.pd-shredder-col { display: flex; flex-direction: column; }
+.pd-stage { position: relative; }
+
+/* etetett lap (a slot fölül csúszik be) */
+.pd-feed {
+  position: absolute; left: 50%; bottom: 100%; width: 62%; max-width: 240px;
+  transform: translateX(-50%); z-index: 1; pointer-events: none;
+  aspect-ratio: 1 / 1.2; border-radius: .35rem 0.35rem 0 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 16px, rgba(28,28,46,.05) 16px 17px),
+    linear-gradient(180deg, #fff, var(--pd-paper));
+  border: 1px solid var(--pd-line); border-bottom: none;
+  box-shadow: var(--pd-shadow); opacity: 0;
+  display: flex; align-items: flex-start; justify-content: center; padding-top: .6rem;
+  font-size: .7rem; font-weight: 700; color: var(--pd-navy); text-align: center;
+}
+.pd-feed.is-feeding { animation: pdFeed .85s cubic-bezier(.5,.05,.5,1) forwards; }
+@keyframes pdFeed {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(-4%); }
+  100% { opacity: .15; transform: translateX(-50%) translateY(86%); }
+}
+
+/* a gép */
+.shredder-machine { position: relative; z-index: 2; width: 100%; max-width: 380px; margin: 0 auto; }
+.pd-machine-top {
+  position: relative; z-index: 3; height: 64px; border-radius: 1rem 1rem .3rem .3rem;
+  background: linear-gradient(180deg, var(--pd-metal) 0%, var(--pd-metal2) 100%);
+  border: 1px solid #c2c5cd; box-shadow: inset 0 1px 0 rgba(255,255,255,.8), var(--pd-shadow);
+  display: flex; align-items: center; justify-content: center;
+}
+.pd-slot {
+  width: 72%; height: 10px; border-radius: 6px;
+  background: linear-gradient(180deg, #2a2a32, #16161c);
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.6);
+}
+.pd-led {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #b9c0a8; box-shadow: 0 0 0 2px rgba(0,0,0,.06);
+  transition: background var(--pd-ease), box-shadow var(--pd-ease);
+}
+.pd-brand { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: .64rem; font-weight: 800; letter-spacing: .12em; color: var(--pd-muted); }
+.pd-machine-body {
+  position: relative; z-index: 2; margin: 0 8px; height: 30px;
+  background: linear-gradient(180deg, #f3f4f7, #dfe2e9);
+  border: 1px solid #c8cbd3; border-top: none;
+  border-radius: 0 0 .4rem .4rem;
+  overflow: hidden;
+}
+.pd-teeth {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, #b9bdc7 0 6px, #9aa0ad 6px 12px);
+  opacity: .5;
+}
+.shredder-machine.is-shredding .pd-led { background: var(--pd-orange); box-shadow: 0 0 10px rgba(255,167,38,.9); }
+.shredder-machine.is-shredding .pd-teeth { animation: pdTeeth .25s linear infinite; }
+@keyframes pdTeeth { from { background-position: 0 0; } to { background-position: 12px 0; } }
+
+/* állapot-akcentus a gép körül */
+.shredder-machine.is-good .pd-machine-top { box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 0 0 3px rgba(76,175,80,.35), var(--pd-shadow); }
+.shredder-machine.is-wrong .pd-machine-top { box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 0 0 3px rgba(229,115,115,.4), var(--pd-shadow); }
+
+/* ── TÁROLÓ (bin) ── */
+.shred-bin {
+  position: relative; width: 100%; max-width: 380px; margin: -2px auto 0;
+  height: 200px; overflow: hidden;
+  background: linear-gradient(180deg, rgba(236,238,243,.5), rgba(214,218,226,.7));
+  border: 1px solid #c8cbd3; border-top: none;
+  border-radius: .4rem .4rem 1rem 1rem;
+  box-shadow: inset 0 8px 14px rgba(0,0,0,.08);
+}
+.shred-bin::before { /* átlátszó ablak-csillanás */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, rgba(255,255,255,.35) 0%, transparent 36%);
+}
+.pd-bin-shreds { position: absolute; inset: 0; }
+.pd-bin-label {
+  position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em; color: var(--pd-muted);
+  opacity: .7; z-index: 0;
+}
+
+/* egy cafat */
+.paper-shred {
+  position: absolute; top: -30px;
+  background: linear-gradient(180deg, #fff, #eee9dc);
+  border: 0.5px solid rgba(28,28,46,.10);
+  border-radius: 1px; will-change: transform;
+}
+.paper-shred.is-fall { animation: pdFall var(--pd-dur, .9s) cubic-bezier(.45,.05,.55,1) forwards; animation-delay: var(--pd-delay, 0s); }
+@keyframes pdFall {
+  0%   { transform: translateY(0) rotate(var(--pd-rot, 0deg)); opacity: .25; }
+  60%  { opacity: 1; }
+  100% { transform: translateY(var(--pd-end, 180px)) rotate(var(--pd-rot, 0deg)); opacity: 1; }
+}
+.paper-shred.is-static { animation: none; opacity: 1; transform: translateY(var(--pd-end,160px)) rotate(var(--pd-rot,0deg)); }
+
+/* ── ÁLLAPOT / VISSZAJELZÉS ── */
+.pd-feedback {
+  margin-top: 1.6rem; background: #fff; border: 1px solid var(--pd-line);
+  border-left: 5px solid var(--pd-line); border-radius: var(--pd-radius);
+  box-shadow: var(--pd-shadow); padding: 1.2rem 1.4rem;
+  opacity: 0; transform: translateY(8px); transition: opacity var(--pd-ease), transform var(--pd-ease), border-color var(--pd-ease);
+}
+.pd-feedback.is-show { opacity: 1; transform: none; }
+.pd-feedback.is-good { border-left-color: #4caf50; }
+.pd-feedback.is-wrong { border-left-color: var(--pd-orange-d); }
+.pd-feedback-verdict { font-size: 1.05rem; font-weight: 800; margin: 0 0 .6rem; display: flex; align-items: center; gap: .5rem; }
+.pd-feedback.is-good .pd-feedback-verdict { color: #2e7d32; }
+.pd-feedback.is-wrong .pd-feedback-verdict { color: var(--pd-orange-d); }
+.pd-fb-row { font-size: .9rem; margin: .25rem 0; color: var(--pd-ink); }
+.pd-fb-row strong { color: var(--pd-navy); }
+.pd-fb-lesson { margin-top: .7rem; padding-top: .7rem; border-top: 1px dashed var(--pd-line); font-style: italic; color: var(--pd-ink); line-height: 1.5; }
+
+.pd-scoreline { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 1rem; font-size: .85rem; color: var(--pd-muted); }
+.pd-scoreline b { color: var(--pd-navy); }
+
+/* ───────────────────── EREDMÉNYKÉPERNYŐ ───────────────────── */
+.pd-result {
+  background: #fff; border: 1px solid var(--pd-line); border-radius: var(--pd-radius);
+  box-shadow: var(--pd-shadow); padding: 2.2rem 1.8rem; text-align: center; max-width: 720px; margin: 0 auto;
+}
+.pd-result-badge { display: inline-flex; align-items: center; gap: .45rem; background: rgba(255,167,38,.14); border: 1px solid rgba(255,167,38,.4); color: var(--pd-orange-d); padding: .3rem .85rem; border-radius: 999px; font-size: .8rem; font-weight: 700; margin-bottom: 1rem; }
+.pd-result h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; color: var(--pd-navy); margin: 0 0 .5rem; }
+.pd-result-text { color: var(--pd-ink); line-height: 1.6; max-width: 560px; margin: 0 auto 1.4rem; }
+.pd-result-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.6rem; }
+.pd-stat { background: var(--pd-paper2); border: 1px solid var(--pd-line); border-radius: .8rem; padding: .8rem 1.1rem; min-width: 110px; }
+.pd-stat-num { font-size: 1.6rem; font-weight: 800; color: var(--pd-orange-d); line-height: 1; }
+.pd-stat-lab { font-size: .74rem; color: var(--pd-muted); margin-top: .3rem; }
+.pd-result-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
+.pd-result-cta .pd-btn { padding: .7rem 1.3rem; font-size: .95rem; }
+
+/* ───────────────────── ZÁRÓ CTA ───────────────────── */
+.pd-cta { margin-top: 2.6rem; text-align: center; background: #fff; border: 1px solid var(--pd-line); border-radius: var(--pd-radius); box-shadow: var(--pd-shadow); padding: 2rem 1.6rem; }
+.pd-cta h2 { font-size: 1.35rem; font-weight: 800; color: var(--pd-navy); margin: 0 0 .5rem; }
+.pd-cta p { max-width: 640px; margin: 0 auto 1.3rem; color: var(--pd-ink); line-height: 1.6; }
+.pd-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
+.pd-cta-btns .pd-btn { padding: .7rem 1.4rem; font-size: .95rem; }
+
+/* drop-hint a gépen, ha fölé húznak */
+.pd-shredder-col.is-dropzone .shredder-machine .pd-machine-top { box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 0 0 3px rgba(255,167,38,.6), var(--pd-shadow); }
+.pd-drop-hint { text-align: center; font-size: .82rem; color: var(--pd-muted); margin-top: .8rem; }
+
+.pd-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ───────────────────── RESPONSIVE ───────────────────── */
+@media (max-width: 860px) {
+  .paper-shredder-game { grid-template-columns: 1fr; gap: 1.8rem; }
+  .pd-stack-area { max-width: 300px; }
+  .document-stack { order: 1; }
+  .pd-shredder-col { order: 2; }
+}
+@media (max-width: 420px) {
+  .pd-stack-area { max-width: 240px; }
+  .pd-actions .pd-btn { min-width: 140px; font-size: .92rem; padding: .75rem 1rem; }
+  .shred-bin { height: 160px; }
+}
+
+/* ───────────────────── REDUCED MOTION ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .pd-feed, .pd-doc, .pd-feedback, .pd-btn, .pd-btn-ghost,
+  .shredder-machine .pd-teeth, .pd-led { transition: none !important; }
+  .pd-feed.is-feeding { animation: none !important; opacity: 0 !important; }
+  .shredder-machine.is-shredding .pd-teeth { animation: none !important; }
+  .paper-shred.is-fall { animation: none !important; opacity: 1 !important; transform: translateY(var(--pd-end,160px)) rotate(var(--pd-rot,0deg)) !important; }
+}
