@@ -54,11 +54,16 @@
   function iconFor(hint) { return ICONS[hint] || "fa-file-alt"; }
 
   var SHUFFLE_MS = 1100;
+  var ORDINAL = ["Első", "Második", "Harmadik", "Negyedik", "Ötödik"];
 
   /* DOM */
-  var page, btn, statusEl, deckStage, deck, deckHint, results, cardsEl, explainEl, live;
+  var page, btn, statusEl, deckStage, deck, deckHint, results, cardsEl, live;
   var state = "idle";
   var locked = false;
+
+  /* Kihúzott lapok + felfordítási állapot */
+  var drawn = [];
+  var flipped = null; /* Set, init()-ben jön létre */
 
   function reducedMotion() {
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -88,48 +93,67 @@
     return pool.slice(0, 3);
   }
 
-  function renderCards(drawn) {
+  /* ── KÁRTYÁK KIOSZTÁSA (lefelé fordítva) ─────────────────── */
+  function renderCards(cards) {
     var html = "";
-    for (var i = 0; i < drawn.length; i++) {
-      var c = drawn[i];
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i];
+      var ord = ORDINAL[i] || (i + 1) + ".";
       html +=
-        '<article class="bk-card d' + i + '">' +
-          '<div class="bk-card-visual">' +
-            '<span class="bk-card-cat">' + esc(c.category) + '</span>' +
-            '<i class="fa ' + iconFor(c.visualHint) + '" aria-hidden="true"></i>' +
-          '</div>' +
-          '<div class="bk-card-body">' +
-            '<h3 class="bk-card-name">' + esc(c.name) + '</h3>' +
-            '<p class="bk-card-sub">' + esc(c.subtitle) + '</p>' +
-            '<p class="bk-card-line">„' + esc(c.shortLine) + '”</p>' +
-          '</div>' +
-        '</article>';
-    }
-    cardsEl.innerHTML = html;
-  }
-
-  function renderExplanations(drawn) {
-    var html = "";
-    for (var i = 0; i < drawn.length; i++) {
-      var c = drawn[i];
-      html +=
-        '<section class="bk-explain d' + i + '">' +
-          '<div class="bk-explain-head">' +
-            '<span class="bk-explain-ico"><i class="fa ' + iconFor(c.visualHint) + '" aria-hidden="true"></i></span>' +
-            '<div class="bk-explain-titles">' +
-              '<h3>' + esc(c.name) + '</h3>' +
-              '<span>' + esc(c.category) + '</span>' +
+        '<div class="bk-draw d' + i + '">' +
+          '<div class="bk-flip" role="button" tabindex="0" aria-pressed="false"' +
+            ' data-idx="' + i + '"' +
+            ' aria-label="' + esc(ord) + ' kihúzott lap felfordítása">' +
+            '<div class="bk-flip-inner">' +
+              /* HÁTLAP */
+              '<div class="bk-flip-face bk-flip-back">' +
+                '<div class="bk-back-art" aria-hidden="true">' +
+                  '<span class="bk-back-pattern"></span>' +
+                  '<span class="bk-back-logo"><i class="fa fa-shield-alt"></i></span>' +
+                  '<span class="bk-back-label">Biztosítási lap</span>' +
+                  '<span class="bk-back-hint"><i class="fa fa-hand-pointer"></i> Kattints a felfordításhoz</span>' +
+                '</div>' +
+              '</div>' +
+              /* ELŐLAP */
+              '<div class="bk-flip-face bk-flip-front" aria-hidden="true">' +
+                '<div class="bk-card-visual">' +
+                  '<span class="bk-card-cat">' + esc(c.category) + '</span>' +
+                  '<i class="fa ' + iconFor(c.visualHint) + '" aria-hidden="true"></i>' +
+                '</div>' +
+                '<div class="bk-card-body">' +
+                  '<h3 class="bk-card-name">' + esc(c.name) + '</h3>' +
+                  '<p class="bk-card-sub">' + esc(c.subtitle) + '</p>' +
+                  '<p class="bk-card-line">„' + esc(c.shortLine) + '”</p>' +
+                '</div>' +
+              '</div>' +
             '</div>' +
           '</div>' +
-          '<dl class="bk-explain-grid">' +
-            block("fa-comment-dots", "Mit jelent ez a lap?", c.meaning, false) +
-            block("fa-exclamation-circle", "Mire figyelj?", c.watchOut, false) +
-            block("fa-search", "Mit érdemes most átnézni?", c.reviewNow, false) +
-            block("fa-lightbulb", "Biztor-tanulság", c.lesson, true) +
-          '</dl>' +
-        '</section>';
+          /* SAJÁT MAGYARÁZÓ BLOKK (a kártya alatt, felfordításig üres) */
+          '<div class="bk-explain-slot" data-idx="' + i + '"></div>' +
+        '</div>';
     }
-    explainEl.innerHTML = html;
+    cardsEl.innerHTML = html;
+    bindFlips();
+  }
+
+  /* ── EGY LAP SAJÁT MAGYARÁZATA ───────────────────────────── */
+  function explanationHTML(c) {
+    return '' +
+      '<section class="bk-explain" role="region" aria-label="' + esc(c.name) + ' – magyarázat">' +
+        '<div class="bk-explain-head">' +
+          '<span class="bk-explain-ico"><i class="fa ' + iconFor(c.visualHint) + '" aria-hidden="true"></i></span>' +
+          '<div class="bk-explain-titles">' +
+            '<h3>' + esc(c.name) + '</h3>' +
+            '<span>' + esc(c.category) + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<dl class="bk-explain-grid">' +
+          block("fa-comment-dots", "Mit jelent ez a lap?", c.meaning, false) +
+          block("fa-exclamation-circle", "Mire figyelj?", c.watchOut, false) +
+          block("fa-search", "Mit érdemes most átnézni?", c.reviewNow, false) +
+          block("fa-lightbulb", "Biztor-tanulság", c.lesson, true) +
+        '</dl>' +
+      '</section>';
   }
 
   function block(icon, title, text, isLesson) {
@@ -137,6 +161,39 @@
       '<dt><i class="fa ' + icon + '" aria-hidden="true"></i> ' + esc(title) + '</dt>' +
       '<dd>' + esc(text) + '</dd>' +
     '</div>';
+  }
+
+  /* ── FELFORDÍTÁS ─────────────────────────────────────────── */
+  function bindFlips() {
+    var flips = cardsEl.querySelectorAll(".bk-flip");
+    Array.prototype.forEach.call(flips, function (el) {
+      el.addEventListener("click", function () { flipCard(el); });
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+          e.preventDefault();
+          flipCard(el);
+        }
+      });
+    });
+  }
+
+  function flipCard(el) {
+    var idx = parseInt(el.getAttribute("data-idx"), 10);
+    if (isNaN(idx) || flipped.has(idx) || !drawn[idx]) return; /* már fel van fordítva */
+    flipped.add(idx);
+
+    var c = drawn[idx];
+    var ord = ORDINAL[idx] || (idx + 1) + ".";
+    el.classList.add("is-flipped");
+    el.setAttribute("aria-pressed", "true");
+    el.setAttribute("aria-label", ord + " kihúzott lap felfordítva: " + c.name);
+    var front = el.querySelector(".bk-flip-front");
+    if (front) front.removeAttribute("aria-hidden");
+
+    var slot = cardsEl.querySelector('.bk-explain-slot[data-idx="' + idx + '"]');
+    if (slot && !slot.innerHTML) slot.innerHTML = explanationHTML(c);
+
+    announce("A(z) " + c.name + " lap felfordítva, a magyarázat megjelent.");
   }
 
   function startShuffle() {
@@ -163,9 +220,9 @@
     deck.classList.remove("is-shuffling");
     page.classList.remove("is-shuffling");
 
-    var drawn = drawThree();
+    drawn = drawThree();
+    flipped.clear();           /* állapot nullázás minden húzásnál */
     renderCards(drawn);
-    renderExplanations(drawn);
 
     deckStage.hidden = true;
     results.hidden = false;
@@ -176,13 +233,11 @@
     setStatus("drawn");
     btn.innerHTML = '<i class="fa fa-redo" aria-hidden="true"></i> Új húzás';
 
-    var names = drawn.map(function (c) { return c.name; }).join(", ");
-    announce("Három lapot húztál: " + names + ". A magyarázatok a kártyák alatt olvashatók.");
+    announce("Három lapot húztál, mindegyik lefelé fordítva. Fordítsd fel a lapokat egyenként a magyarázatért.");
 
-    var firstName = cardsEl.querySelector(".bk-card-name");
-    if (firstName && firstName.focus) {
-      firstName.setAttribute("tabindex", "-1");
-      try { firstName.focus({ preventScroll: true }); } catch (e) { firstName.focus(); }
+    var firstFlip = cardsEl.querySelector(".bk-flip");
+    if (firstFlip && firstFlip.focus) {
+      try { firstFlip.focus({ preventScroll: true }); } catch (e) { firstFlip.focus(); }
     }
   }
 
@@ -195,10 +250,10 @@
     deckHint  = document.getElementById("bkDeckHint");
     results   = document.getElementById("bkResults");
     cardsEl   = document.getElementById("bkCards");
-    explainEl = document.getElementById("bkExplain");
     live      = document.getElementById("bkLive");
+    flipped   = (typeof Set === "function") ? new Set() : null;
 
-    if (!btn || !deck || !cardsEl || !explainEl || !CARDS.length) return;
+    if (!btn || !deck || !cardsEl || !flipped || !CARDS.length) return;
 
     setStatus("idle");
     btn.addEventListener("click", startShuffle);
