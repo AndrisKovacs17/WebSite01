@@ -2961,9 +2961,15 @@ html, body {
 /* ── 8. Service-item kártyák – jobb belépő shadow ────────────────────────── */
 .service-item {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.35s ease !important;
+  display: flex;
+  flex-direction: column;
 }
 .service-item:hover {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+}
+.service-item .btn {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 /* ── 9. Reszponzív kiigazítások ─────────────────────────────────────────── */
