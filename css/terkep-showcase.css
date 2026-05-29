@@ -117,6 +117,17 @@ body {
   box-shadow: 0 6px 28px rgba(255, 167, 38, .52);
   translate: 0 -2px;
 }
+.hero-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.hero-btn:hover svg {
+  transform: translateX(5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn svg { transition: none; }
+  .hero-btn:hover svg { transform: none; }
+}
 /* ─── NYÍREGYHÁZA "ITT VAGYUNK MI" MARKER ───────────────────── */
 @keyframes markerDraw {
   from { stroke-dashoffset: 1; }
