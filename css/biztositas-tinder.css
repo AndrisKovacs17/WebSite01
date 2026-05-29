@@ -1,0 +1,367 @@
+/* =========================================================
+   Biztosítás Tinder — page-specific stílus
+   Névtér: .bt-page  (nem írja felül a többi oldalt)
+   Brand: narancs (#FFA726/#FB8C00) + fehér + sötétkék (#1c1c2e)
+   ========================================================= */
+.bt-page {
+  --bt-orange:   #FFA726;
+  --bt-orange-d: #FB8C00;
+  --bt-navy:     #1c1c2e;
+  --bt-navy2:    #2a2a3e;
+  --bt-ink:      #1f2433;
+  --bt-muted:    #6b7280;
+  --bt-line:     #eef0f4;
+  --bt-radius:   1.25rem;
+  --bt-radius-sm:.85rem;
+  --bt-shadow:   0 10px 34px rgba(16,18,40,.12);
+  --bt-shadow-h: 0 20px 52px rgba(16,18,40,.20);
+  --bt-ease:     .34s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.bt-page .bt-hero {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2a2238 55%, #2a1f17 100%);
+  padding: 3.25rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.bt-page .bt-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 18% 85%, rgba(255,167,38,.14) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 82% 15%, rgba(251,140,0,.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bt-page .bt-back-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  color: rgba(255,255,255,.7);
+  font-size: .85rem; font-weight: 500;
+  text-decoration: none; margin-bottom: 1rem;
+  transition: color var(--bt-ease), transform var(--bt-ease);
+}
+.bt-page .bt-back-link:hover { color: var(--bt-orange); transform: translateX(-2px); text-decoration: none; }
+.bt-page .bt-breadcrumb {
+  list-style: none; display: flex; flex-wrap: wrap; align-items: center;
+  gap: .4rem; padding: 0; margin: 0 0 1rem; font-size: .8rem;
+}
+.bt-page .bt-breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; }
+.bt-page .bt-breadcrumb a:hover { color: var(--bt-orange); }
+.bt-page .bt-breadcrumb li[aria-current] { color: rgba(255,255,255,.92); }
+.bt-page .bt-breadcrumb-sep { color: rgba(255,255,255,.35); }
+.bt-page .bt-hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(255,167,38,.15);
+  border: 1px solid rgba(255,167,38,.35);
+  color: var(--bt-orange);
+  border-radius: 2rem; padding: .35rem 1rem;
+  font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; margin-bottom: 1.1rem;
+}
+.bt-page .bt-hero h1 {
+  font-family: 'Poppins', sans-serif; font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.9rem); color: #fff;
+  line-height: 1.15; margin-bottom: .6rem;
+}
+.bt-page .bt-hero h1 span { color: var(--bt-orange); }
+.bt-page .bt-hero-sub {
+  color: #fff; font-size: clamp(1rem,2.4vw,1.18rem);
+  font-weight: 600; margin-bottom: .5rem;
+}
+.bt-page .bt-hero p { color: rgba(255,255,255,.72); max-width: 560px; font-size: .95rem; margin: 0; }
+
+/* ── Játéktér ─────────────────────────────────────────── */
+.bt-page .bt-game-section { background: #f7f8fb; padding: 2.5rem 0 3.5rem; }
+.bt-page .bt-stage { max-width: 480px; margin: 0 auto; }
+
+/* Haladásjelző */
+.bt-page .bt-progress {
+  display: flex; align-items: center; justify-content: center;
+  gap: .35rem; margin-bottom: 1rem; flex-wrap: wrap;
+}
+.bt-page .bt-progress-text {
+  font-size: .82rem; color: var(--bt-muted); font-weight: 600;
+}
+.bt-page .bt-progress-bar {
+  flex: 1; height: 6px; max-width: 240px;
+  background: #e5e7ef; border-radius: 99px; overflow: hidden;
+}
+.bt-page .bt-progress-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--bt-orange), var(--bt-orange-d));
+  border-radius: 99px; transition: width var(--bt-ease);
+}
+
+/* ── Kártyapakli ──────────────────────────────────────── */
+.bt-page .bt-deck {
+  position: relative;
+  height: min(74vh, 580px);
+  min-height: 460px;
+  touch-action: pan-y;
+}
+.bt-page .bt-ghost,
+.bt-page .bt-card {
+  position: absolute; inset: 0;
+  background: var(--bt-navy);
+  border-radius: var(--bt-radius);
+  box-shadow: var(--bt-shadow);
+  overflow: hidden;
+}
+.bt-page .bt-ghost {
+  background: #fff;
+  border: 1px solid var(--bt-line);
+}
+.bt-page .bt-ghost.g1 { transform: translateY(14px) scale(.955); opacity: .7; }
+.bt-page .bt-ghost.g2 { transform: translateY(28px) scale(.91);  opacity: .45; }
+
+.bt-page .bt-card {
+  background: #fff;
+  display: flex; flex-direction: column;
+  cursor: grab;
+  will-change: transform;
+  transition: transform var(--bt-ease), box-shadow var(--bt-ease);
+}
+.bt-page .bt-card.dragging { cursor: grabbing; transition: none; }
+.bt-page .bt-card.is-leaving { transition: transform .42s cubic-bezier(.4,0,.2,1), opacity .42s; }
+.bt-page .bt-card.is-entering { animation: btEnter .4s cubic-bezier(.25,.46,.45,.94); }
+@keyframes btEnter {
+  from { transform: translateY(22px) scale(.94); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+/* Kép / placeholder terület */
+.bt-page .bt-card-photo {
+  position: relative; flex: 0 0 auto;
+  height: 150px;
+  background: linear-gradient(135deg, var(--bt-orange), var(--bt-orange-d));
+  background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.bt-page .bt-card-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.22) 0%, transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(0,0,0,.16) 0%, transparent 50%);
+  pointer-events: none;
+}
+.bt-page .bt-card-photo-ico {
+  font-size: 3.2rem; color: rgba(255,255,255,.92);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.22));
+  position: relative; z-index: 1;
+}
+.bt-page .bt-card-type {
+  position: absolute; top: .8rem; left: .8rem; z-index: 2;
+  background: rgba(28,28,46,.55); backdrop-filter: blur(4px);
+  color: #fff; font-size: .72rem; font-weight: 600;
+  padding: .28rem .7rem; border-radius: 99px;
+  letter-spacing: .02em;
+}
+.bt-page .bt-card-tone {
+  position: absolute; top: .8rem; right: .8rem; z-index: 2;
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; padding: .26rem .6rem; border-radius: 99px;
+  background: rgba(255,255,255,.92); color: var(--bt-navy);
+}
+.bt-page .bt-card-tone.tone-good    { color: #b45309; }
+.bt-page .bt-card-tone.tone-problem { color: #475569; }
+.bt-page .bt-card-tone.tone-neutral { color: #57534e; }
+
+/* Bélyegek (stamp) húzás közben */
+.bt-page .bt-stamp {
+  position: absolute; top: 1.4rem; z-index: 5;
+  font-family: 'Poppins', sans-serif; font-weight: 800;
+  font-size: 1.35rem; letter-spacing: .06em; text-transform: uppercase;
+  padding: .4rem 1rem; border-radius: .6rem;
+  border: 3px solid currentColor; opacity: 0; pointer-events: none;
+}
+.bt-page .bt-stamp-like { right: 1.2rem; color: var(--bt-orange-d); transform: rotate(12deg); }
+.bt-page .bt-stamp-skip { left: 1.2rem;  color: #64748b;          transform: rotate(-12deg); }
+
+/* Görgethető belső tartalom */
+.bt-page .bt-card-body {
+  flex: 1 1 auto; overflow-y: auto; overflow-x: hidden;
+  padding: 1.1rem 1.25rem 1.35rem;
+  -webkit-overflow-scrolling: touch;
+}
+.bt-page .bt-card-body::-webkit-scrollbar { width: 6px; }
+.bt-page .bt-card-body::-webkit-scrollbar-thumb { background: #d6dae3; border-radius: 99px; }
+.bt-page .bt-card-name {
+  font-family: 'Poppins', sans-serif; font-weight: 700;
+  font-size: 1.18rem; color: var(--bt-ink); line-height: 1.25; margin-bottom: .5rem;
+}
+.bt-page .bt-card-meta {
+  display: flex; flex-wrap: wrap; gap: .35rem .9rem;
+  font-size: .8rem; color: var(--bt-muted); margin-bottom: .85rem;
+}
+.bt-page .bt-card-meta span { display: inline-flex; align-items: center; gap: .35rem; }
+.bt-page .bt-card-meta i { color: var(--bt-orange-d); font-size: .82rem; }
+.bt-page .bt-card-bio {
+  font-size: .92rem; color: #374151; line-height: 1.5;
+  font-style: italic; border-left: 3px solid var(--bt-orange);
+  padding: .15rem 0 .15rem .75rem; margin-bottom: 1rem;
+}
+
+/* Mező-blokkok */
+.bt-page .bt-field { margin-bottom: .85rem; }
+.bt-page .bt-field-label {
+  display: flex; align-items: center; gap: .45rem;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--bt-muted); margin-bottom: .25rem;
+}
+.bt-page .bt-field-label i { font-size: .82rem; }
+.bt-page .bt-field-text { font-size: .9rem; color: var(--bt-ink); line-height: 1.45; }
+.bt-page .bt-field ul { margin: .1rem 0 0; padding-left: 1.05rem; }
+.bt-page .bt-field li { font-size: .9rem; color: var(--bt-ink); line-height: 1.4; margin-bottom: .12rem; }
+
+.bt-page .bt-field.flag-red   .bt-field-label { color: #b45309; }
+.bt-page .bt-field.flag-red   i { color: #d97706; }
+.bt-page .bt-field.flag-green .bt-field-label { color: #047857; }
+.bt-page .bt-field.flag-green i { color: #059669; }
+.bt-page .bt-field.field-rec {
+  background: #fff7ed; border: 1px solid #fed7aa;
+  border-radius: var(--bt-radius-sm); padding: .65rem .8rem;
+}
+.bt-page .bt-field.field-rec .bt-field-label { color: var(--bt-orange-d); }
+.bt-page .bt-field.field-explain {
+  background: #f8fafc; border-radius: var(--bt-radius-sm);
+  padding: .65rem .8rem;
+}
+.bt-page .bt-field.field-explain .bt-field-text { color: #475569; font-size: .86rem; }
+
+/* ── Akciógombok ──────────────────────────────────────── */
+.bt-page .bt-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: .9rem; margin-top: 1.25rem;
+}
+.bt-page .bt-act-btn {
+  border: none; cursor: pointer; background: #fff;
+  border-radius: 99px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .5rem;
+  transition: transform .2s, box-shadow .2s, background var(--bt-ease), color var(--bt-ease);
+  box-shadow: var(--bt-shadow);
+}
+.bt-page .bt-act-main {
+  padding: .8rem 1.5rem; font-size: .95rem;
+}
+.bt-page .bt-act-skip { color: #475569; border: 1.5px solid #e2e6ee; }
+.bt-page .bt-act-skip:hover { background: #f1f5f9; transform: translateY(-2px); box-shadow: var(--bt-shadow-h); }
+.bt-page .bt-act-like {
+  background: linear-gradient(90deg, var(--bt-orange), var(--bt-orange-d));
+  color: #fff;
+}
+.bt-page .bt-act-like:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(251,140,0,.35); }
+.bt-page .bt-act-undo {
+  width: 46px; height: 46px; justify-content: center; padding: 0;
+  color: var(--bt-muted); border: 1.5px solid #e2e6ee; font-size: 1rem;
+}
+.bt-page .bt-act-undo:hover:not(:disabled) { background: #f1f5f9; color: var(--bt-ink); transform: translateY(-2px); }
+.bt-page .bt-act-undo:disabled { opacity: .4; cursor: not-allowed; }
+.bt-page .bt-hint {
+  text-align: center; font-size: .78rem; color: var(--bt-muted);
+  margin-top: .9rem;
+}
+.bt-page .bt-hint kbd {
+  background: #fff; border: 1px solid #d6dae3; border-bottom-width: 2px;
+  border-radius: .35rem; padding: .05rem .4rem; font-size: .72rem; color: var(--bt-ink);
+}
+
+/* ── Eredmény képernyő ────────────────────────────────── */
+.bt-page .bt-result { display: none; }
+.bt-page .bt-result.visible { display: block; animation: btEnter .45s var(--bt-ease); }
+.bt-page .bt-result-card {
+  background: #fff; border-radius: var(--bt-radius);
+  box-shadow: var(--bt-shadow); padding: 1.75rem 1.5rem; text-align: center;
+}
+.bt-page .bt-result-ico {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--bt-orange), var(--bt-orange-d));
+  color: #fff; font-size: 1.6rem;
+}
+.bt-page .bt-result-card h2 {
+  font-family: 'Poppins', sans-serif; font-weight: 700;
+  font-size: 1.4rem; color: var(--bt-ink); margin-bottom: .5rem;
+}
+.bt-page .bt-result-lead { font-size: .95rem; color: #475569; line-height: 1.5; margin-bottom: 1.25rem; }
+.bt-page .bt-result-stats {
+  display: flex; justify-content: center; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.4rem;
+}
+.bt-page .bt-stat {
+  background: #f8fafc; border: 1px solid var(--bt-line);
+  border-radius: var(--bt-radius-sm); padding: .7rem 1rem; min-width: 92px;
+}
+.bt-page .bt-stat-num { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.45rem; color: var(--bt-orange-d); line-height: 1; }
+.bt-page .bt-stat-label { font-size: .72rem; color: var(--bt-muted); margin-top: .25rem; }
+
+.bt-page .bt-result-breakdown { text-align: left; margin-bottom: 1.5rem; }
+.bt-page .bt-breakdown-item {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .55rem .25rem; border-bottom: 1px solid var(--bt-line);
+  font-size: .88rem; color: var(--bt-ink);
+}
+.bt-page .bt-breakdown-item:last-child { border-bottom: none; }
+.bt-page .bt-bd-ico {
+  flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: .8rem;
+}
+.bt-page .bt-bd-like { background: #fff7ed; color: var(--bt-orange-d); }
+.bt-page .bt-bd-skip { background: #f1f5f9; color: #64748b; }
+.bt-page .bt-bd-name { flex: 1; }
+.bt-page .bt-bd-verdict { font-size: .76rem; font-weight: 600; color: var(--bt-muted); }
+
+/* Záró CTA (sötét panel) */
+.bt-page .bt-result-cta {
+  background: linear-gradient(135deg, #1c1c2e 0%, #2d2238 100%);
+  border-radius: var(--bt-radius); padding: 1.75rem 1.5rem; margin-top: 1.25rem;
+  color: #fff; text-align: center; position: relative; overflow: hidden;
+}
+.bt-page .bt-result-cta::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255,167,38,.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bt-page .bt-result-cta h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: .4rem; position: relative; }
+.bt-page .bt-result-cta p { color: rgba(255,255,255,.72); font-size: .9rem; margin-bottom: 1.3rem; position: relative; }
+.bt-page .bt-cta-btns { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; position: relative; }
+.bt-page .bt-cta-btn {
+  border-radius: 2rem; padding: .58rem 1.35rem; font-size: .88rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: .45rem; text-decoration: none;
+  transition: transform .2s, box-shadow .2s, background var(--bt-ease);
+}
+.bt-page .bt-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.25); text-decoration: none; }
+.bt-page .bt-cta-primary { background: linear-gradient(90deg, var(--bt-orange), var(--bt-orange-d)); color: #fff; }
+.bt-page .bt-cta-outline { background: transparent; border: 1.5px solid rgba(255,255,255,.4); color: #fff; }
+.bt-page .bt-cta-outline:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+/* aria-live státusz (vizuálisan rejtett) */
+.bt-page .bt-sr-status {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Reszponzív ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .bt-page .bt-deck { height: min(72vh, 540px); min-height: 430px; }
+  .bt-page .bt-card-photo { height: 124px; }
+  .bt-page .bt-card-photo-ico { font-size: 2.6rem; }
+  .bt-page .bt-act-main { padding: .72rem 1.15rem; font-size: .88rem; }
+  .bt-page .bt-actions { gap: .6rem; }
+}
+@media (max-width: 360px) {
+  .bt-page .bt-act-main span { display: none; }
+  .bt-page .bt-act-main { padding: .72rem 1rem; }
+}
+@media (min-width: 768px) {
+  .bt-page .bt-stage { max-width: 460px; }
+}
+
+/* ── Mozgáscsökkentés ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .bt-page .bt-card,
+  .bt-page .bt-card.is-leaving { transition: opacity .2s !important; }
+  .bt-page .bt-card.is-entering { animation: none !important; }
+  .bt-page .bt-result.visible { animation: none !important; }
+  .bt-page .bt-progress-fill { transition: none !important; }
+}
