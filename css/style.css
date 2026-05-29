@@ -1129,14 +1129,57 @@
   }
 
 .phone-link {
-    color: inherit; /* ÃrÃ¶kli az alapÃ©rtelmezett szÃ­nt */
-    text-decoration: none; /* Nincs alÃ¡hÃºzÃ¡s */
-    transition: color 0.3s ease; /* Sima szÃ­nvÃ¡ltÃ¡s */
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .phone-link:hover {
-    color: var(--dark); /* NarancssÃ¡rga szÃ­n hover Ã¡llapotban */
-    cursor: pointer; /* MutatÃ³ kurzor hover Ã¡llapotban */
+    color: var(--dark);
+    cursor: pointer;
+}
+
+/* Animated underline + lift for topbar/footer text links (not buttons) */
+a.phone-link:not(.btn) {
+    position: relative;
+    display: inline-block;
+}
+
+a.phone-link:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: width 0.22s ease;
+}
+
+a.phone-link:not(.btn):hover {
+    transform: translateY(-1px);
+}
+
+a.phone-link:not(.btn):hover::after {
+    width: 100%;
+}
+
+a.phone-link:not(.btn):focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Animate icon alongside link in topbar small containers */
+small:has(a.phone-link) i {
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+small:has(a.phone-link):hover i {
+    transform: scale(1.18) translateY(-1px);
+    color: var(--dark);
 }
 
 .contact-text {
