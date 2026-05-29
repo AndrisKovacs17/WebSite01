@@ -253,7 +253,7 @@ function footer() {
           <div class="col-lg-3 col-md-6">
             <h5 class="text-light mb-4">Elérhetőség</h5>
             <p><i class="fa fa-map-marker-alt me-3"></i>4400 Nyíregyháza Liliom utca 27/A.</p>
-            <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36425952480" class="text-light phone-link">+36 42 / 595 - 248</a></p>
+            <p><i class="fa fa-phone-alt me-3"></i><a href="tel:+36706258201" class="text-light phone-link">+36 70 625 8201</a></p>
             <p><i class="fa fa-envelope me-3"></i><a href="mailto:iroda@biztor.hu" class="text-light phone-link">iroda@biztor.hu</a></p>
           </div>
           <div class="col-lg-3 col-md-6">
