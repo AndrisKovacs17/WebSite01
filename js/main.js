@@ -1147,7 +1147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (parentFolder === "infok") {
       items.push({
         label: "Infók",
-        href: new URL("sites/infok.html", siteRootUrl).href,
+        href: new URL("infok/", siteRootUrl).href,
       });
       return items;
     }
@@ -1155,7 +1155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (parentFolder === "ajanlatok") {
       items.push({
         label: "Biztosítások",
-        href: new URL("sites/szolgaltatasok.html", siteRootUrl).href,
+        href: new URL("szolgaltatasok/", siteRootUrl).href,
       });
       items.push({
         label: "Ajánlatkérés",
@@ -1174,7 +1174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (infoCategoryPages.has(fileName)) {
       items.push({
         label: "Infók",
-        href: new URL("sites/infok.html", siteRootUrl).href,
+        href: new URL("infok/", siteRootUrl).href,
       });
       items.push({ label: currentLabel });
       return items;
@@ -1188,7 +1188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (segments.includes("sites")) {
       items.push({
         label: "Biztosítások",
-        href: new URL("sites/szolgaltatasok.html", siteRootUrl).href,
+        href: new URL("szolgaltatasok/", siteRootUrl).href,
       });
       items.push({ label: currentLabel });
       return items;
@@ -1412,4 +1412,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// Unobtrusive binding for the insurance type toggle (replaces inline onclick)
+(function () {
+  function bindInsuranceToggle() {
+    var tabButtons = document.querySelectorAll('.custom-tab-btn[data-filter]');
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof switchForm === 'function') {
+          switchForm(btn.getAttribute('data-filter'));
+        }
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindInsuranceToggle);
+  } else {
+    bindInsuranceToggle();
+  }
+}());
 
