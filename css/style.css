@@ -1139,30 +1139,9 @@
     cursor: pointer;
 }
 
-/* Animated underline + lift for topbar/footer text links (not buttons) */
-a.phone-link:not(.btn) {
-    position: relative;
-    display: inline-block;
-}
-
-a.phone-link:not(.btn)::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: currentColor;
-    border-radius: 1px;
-    transition: width 0.22s ease;
-}
-
+/* Lift for topbar/footer text links (not buttons) */
 a.phone-link:not(.btn):hover {
     transform: translateY(-1px);
-}
-
-a.phone-link:not(.btn):hover::after {
-    width: 100%;
 }
 
 a.phone-link:not(.btn):focus-visible {
