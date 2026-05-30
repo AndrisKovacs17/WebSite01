@@ -2627,7 +2627,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Kapcsolat / Időpont szekció – telített narancs ── */
 .appointment {
-  background: linear-gradient(180deg, #FFFDF9 0%, #FFF6EC 100%);
+  background:
+    linear-gradient(rgba(214, 107, 20, .90), rgba(255, 152, 0, .88)),
+    url(./../img/carousel-1.jpg) center center no-repeat;
   background-size: cover;
 }
 
