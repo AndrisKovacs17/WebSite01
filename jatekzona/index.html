@@ -464,6 +464,7 @@
 
       // ── Secret overlay – akadálymentes nyitás/zárás ──────────────────
       var lastFocusedBeforeSecret = null;
+      var ariaHiddenElements = [];
 
       function getSecretFocusable() {
         if (!secretOverlay) return [];
@@ -480,6 +481,14 @@
           document.activeElement && typeof document.activeElement.focus === 'function'
             ? document.activeElement
             : null;
+        document.body.style.overflow = 'hidden';
+        ariaHiddenElements = [];
+        Array.prototype.forEach.call(document.body.children, function(el) {
+          if (el !== secretOverlay && !el.getAttribute('aria-hidden')) {
+            el.setAttribute('aria-hidden', 'true');
+            ariaHiddenElements.push(el);
+          }
+        });
         secretOverlay.classList.add('visible');
         if (secretClose) { secretClose.focus(); }
       }
@@ -487,6 +496,9 @@
       function closeSecret() {
         if (!secretOverlay) return;
         secretOverlay.classList.remove('visible');
+        document.body.style.overflow = '';
+        ariaHiddenElements.forEach(function(el) { el.removeAttribute('aria-hidden'); });
+        ariaHiddenElements = [];
         if (lastFocusedBeforeSecret &&
             lastFocusedBeforeSecret !== document.body &&
             lastFocusedBeforeSecret.isConnected) {
