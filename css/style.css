@@ -2537,14 +2537,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ── Hero – tökéletes viewport kitöltés a sticky header alatt ── */
-/* Desktop: topbar (--topbar-h) + navbar (--navbar-h) együtt adja a teljes header magasságát */
+/* Desktop: topbar (--topbar-h) + navbar (--navbar-h) együtt adja a teljes header magasságát.
+   A 101.8svh a böngésző sub-pixel/kerekítési eltérését kompenzálja, hogy alul ne maradjon rés. */
 .home-map-showcase {
-  height: max(480px, calc(100svh - var(--topbar-h) - var(--navbar-h)));
+  height: max(480px, calc(101.8svh - var(--topbar-h) - var(--navbar-h)));
 }
 /* Mobilon a topbar d-none, csak a navbar marad */
 @media (max-width: 991.98px) {
   .home-map-showcase {
-    height: max(360px, calc(100svh - var(--navbar-h)));
+    height: max(360px, calc(101.8svh - var(--navbar-h)));
   }
 }
 
@@ -2829,7 +2830,10 @@ html, body {
 /* 7 – Mobile-action-bar: lábléc tartalom ne takarjon */
 @media (max-width: 991.98px) {
   body:has(.mobile-action-bar) {
-    padding-bottom: 88px;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-action-bar {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
@@ -2870,6 +2874,29 @@ html, body {
 @media (max-width: 374.98px) {
   .service-item {
     padding: 1.5rem !important;
+  }
+}
+
+/* 12 – Valós telefon (320–430 px) kiegészítő overflow-védelem.
+   A devtools mobil nézet nem adja vissza a valós telefonok szűkebb
+   hasznos szélességét, ezért defenzív, jól bevált guard-ok. */
+img, svg, video, iframe {
+  max-width: 100%;
+}
+@media (max-width: 575.98px) {
+  /* grid/flex gyerek ne feszítse szét a sort hosszú tartalomtól */
+  .row > [class*="col"] {
+    min-width: 0;
+  }
+  /* gombok ne lógjanak ki a viewportból */
+  .btn {
+    max-width: 100%;
+  }
+  /* hosszú elérhetőségek (email/telefon/URL) tördelése túlcsordulás helyett */
+  .phone-link,
+  .footer a[href^="mailto:"],
+  .footer a[href^="tel:"] {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -3356,6 +3383,36 @@ html, body {
   }
   .testi-card > p {
     font-size: .9rem;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   JÁTÉK CTA IKON ANIMÁCIÓK  —  jelentés szerinti irány
+   .cta-icon--down  → lefelé mutató nyíl finoman lefelé mozdul
+   .cta-icon--play  → play ikon finoman kiemelkedik (fel + scale)
+   ════════════════════════════════════════════════════════════════════ */
+.cta-icon {
+  display: inline-block;
+  transition: transform .25s ease;
+  will-change: transform;
+}
+:is(a, button):hover > .cta-icon--down,
+:is(a, button):focus-visible > .cta-icon--down {
+  transform: translateY(4px);
+}
+:is(a, button):hover > .cta-icon--play,
+:is(a, button):focus-visible > .cta-icon--play {
+  transform: translateY(-2px) scale(1.06);
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-icon {
+    transition: none;
+  }
+  :is(a, button):hover > .cta-icon--down,
+  :is(a, button):focus-visible > .cta-icon--down,
+  :is(a, button):hover > .cta-icon--play,
+  :is(a, button):focus-visible > .cta-icon--play {
+    transform: none;
   }
 }
 

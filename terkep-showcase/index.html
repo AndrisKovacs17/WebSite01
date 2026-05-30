@@ -729,6 +729,24 @@ d3.json(GEOJSON_URL)
     nodeEls = nodeSels.nodes();
     edgeEls = edgeSels.nodes();
 
+    // ── 5b/2. Nagyobb, átlátszó hit-area a megyeszékhelyekhez ──
+    // A seat markerek kicsik (r≈5-7), ezért az első hover gyakran lecsúszik róluk.
+    // Egy láthatatlan, nagyobb kör stabil találati felületet ad, így már az első
+    // pointerenterre megjelenik az időjárás panel. Az animáció a látható node-on fut.
+    gNodes.selectAll('circle.node-hit')
+      .data(allNodes.filter(d => d.isSeat))
+      .join('circle')
+        .attr('class', 'node-hit')
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y)
+        .attr('r', 14)
+        .attr('fill', 'transparent')
+        .attr('stroke', 'none')
+        .style('cursor', 'pointer')
+        .attr('pointer-events', 'all')
+        .on('mouseenter', function(ev, d) { nodeHoverEnter(ev, d, nodeEls[d.idx]); })
+        .on('mouseleave', function(ev, d) { nodeHoverLeave(d, nodeEls[d.idx]); });
+
     // ── 5c. Nyíregyháza "itt vagyunk mi" marker ───────────────
     {
       const [nx, ny] = projection([21.7167, 47.9500]);
@@ -921,7 +939,7 @@ function nodeHoverEnter(ev, d, el) {
 
   tooltipEl.textContent = d.county;
   if (d.isSeat) {
-    positionTooltipAtNode(ev.currentTarget || ev.target);
+    positionTooltipAtNode(el || ev.currentTarget || ev.target);
     tooltipEl.style.opacity = '1';
     showSeatPanel(d.county);
   } else {
