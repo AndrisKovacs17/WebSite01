@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════
+       HERO SPLIT – többtörésű vágóél + zoomolható térkép
+       ═══════════════════════════════════════════════════ */
+
+    .hero-split {
+      position: relative;
+      height: 88vh;
+      min-height: 580px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    /* ── Bal panel: térképpel ── */
+    .hero-split__left {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 59%;
+      background: #eef2ff;
+      z-index: 2;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      /* Többtörésű vágóél: 5 töréspont a jobb oldalon */
+      clip-path: polygon(
+        0 0,   100% 0,
+        97%  9%,
+        100% 19%,
+        94%  30%,
+        99%  41%,
+        93%  52%,
+        98%  63%,
+        92%  73%,
+        97%  84%,
+        93%  93%,
+        96%  100%,
+        0    100%
+      );
+    }
+    .hero-split__left:active { cursor: grabbing; }
+
+    /* SVG térkép konténer */
+    #map-container {
+      position: absolute;
+      inset: 0;
+    }
+    #map-svg-mount {
+      position: absolute;
+      inset: 0;
+    }
+    #map-svg-mount svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Zoom gombok */
+    .map-zoom-controls {
+      position: absolute;
+      bottom: 2rem;
+      right: 9%;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      z-index: 20;
+    }
+    .map-zoom-btn {
+      width: 34px; height: 34px;
+      border: 1.5px solid rgba(79,112,200,.3);
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      font-size: 1.1rem; font-weight: 700;
+      color: #2a3a6a;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .12s, color .12s;
+      line-height: 1;
+      padding: 0;
+    }
+    .map-zoom-btn:hover { background: #fff; color: #FFA726; border-color: #FFA726; }
+    #zoom-szabolcs {
+      width: auto; padding: 0 .6rem;
+      font-size: .62rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+
+    /* Drag hint */
+    .map-drag-hint {
+      position: absolute;
+      bottom: 1.1rem; left: 50%;
+      transform: translateX(-50%);
+      font-size: .64rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(30,50,130,.4);
+      pointer-events: none; white-space: nowrap;
+    }
+
+    /* Tooltip */
+    .map-tooltip {
+      position: absolute; top: 0; left: 0;
+      background: rgba(255,255,255,.93);
+      border: 1px solid rgba(200,130,0,.25);
+      color: #1e2a4a;
+      font-size: .7rem; font-weight: 600;
+      border-radius: 6px; padding: .3rem .7rem;
+      pointer-events: none; white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      backdrop-filter: blur(6px);
+      opacity: 0; transition: opacity .1s;
+      z-index: 30;
+    }
+
+    /* SVG megyestílusok */
+    .hu-county {
+      stroke-width: .8;
+      fill: rgba(30,50,130,.08);
+      stroke: rgba(30,50,130,.22);
+      cursor: default;
+    }
+    .hu-szabolcs {
+      fill: #FFA726 !important;
+      stroke: rgba(255,210,100,.55) !important;
+      stroke-width: 1.2 !important;
+      filter:
+        drop-shadow(1px 1px 0px #7a3000)
+        drop-shadow(2px 2px 0px #6B2800)
+        drop-shadow(3px 3px 0px #5C2200)
+        drop-shadow(4px 4px 0px #4D1C00)
+        drop-shadow(5px 5px 0px #3E1600)
+        drop-shadow(0px 0px 28px rgba(255,140,0,.55));
+    }
+    #points circle, #label_points circle { display: none; }
+
+    /* ── Jobb panel: szöveg ── */
+    .hero-split__right {
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      background: #ffffff;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 4%;
+      padding-top: 80px;
+    }
+    .hero-split__right-inner {
+      max-width: 500px;
+      width: min(500px, 43vw);
+    }
+    .hero-split__eyebrow {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: #FFA726; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .hero-split__eyebrow::before {
+      content: ''; width: 20px; height: 2px; background: #FFA726; flex-shrink: 0;
+    }

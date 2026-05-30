@@ -792,3 +792,11 @@
   buildSnow();
   draw();
 })();
+
+
+// Button bindings (moved from HTML onclick attributes)
+(function () {
+  function bind(id, fn) { var el = document.getElementById(id); if (el) el.addEventListener('click', fn); }
+  bind('sipalya-start-btn', window.sipalyaStart);
+  bind('sipalya-restart-btn', window.sipalyaRestart);
+}());

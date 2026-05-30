@@ -143,11 +143,11 @@
                 <span class="infohub-stat-label">Témakör</span>
               </div>
               <div class="d-flex flex-column infohub-stat-item">
-                <span class="infohub-stat-num" style="font-size:1.35rem">100%</span>
+                <span class="infohub-stat-num fs-135rem">100%</span>
                 <span class="infohub-stat-label">Ingyenes</span>
               </div>
               <div class="d-flex flex-column infohub-stat-item">
-                <span class="infohub-stat-num" style="font-size:1.35rem">2026</span>
+                <span class="infohub-stat-num fs-135rem">2026</span>
                 <span class="infohub-stat-label">Frissítve</span>
               </div>
             </div>
@@ -163,7 +163,7 @@
                     <div class="hc-card">
                       <div class="hc-img"><img src="/img/ajanlatok/kgfb2.jpg" alt="KGFB" loading="lazy"></div>
                       <div class="hc-ov"></div>
-                      <div class="hc-cat" style="background:rgba(255,167,38,.22);color:#FFA726">KGFB</div>
+                      <div class="hc-cat badge-orange-soft">KGFB</div>
                       <div class="hc-dur">3 perc</div>
                       <div class="hc-play"><i class="fa fa-play"></i></div>
                       <div class="hc-bd"><div class="hc-tt">Mennyibe kerül valójában a kötelező 2026-ban?</div><div class="hc-mt"><i class="fa fa-eye me-1"></i>1,2E olvasó</div></div>
@@ -174,7 +174,7 @@
                     <div class="hc-card">
                       <div class="hc-img"><img src="/img/ajanlatok/casco1.jpg" alt="Casco" loading="lazy"></div>
                       <div class="hc-ov"></div>
-                      <div class="hc-cat" style="background:rgba(255,167,38,.22);color:#FFA726">Casco</div>
+                      <div class="hc-cat badge-orange-soft">Casco</div>
                       <div class="hc-dur">4 perc</div>
                       <div class="hc-play"><i class="fa fa-play"></i></div>
                       <div class="hc-bd"><div class="hc-tt">Casco önrész – melyik verzió jár jobban?</div><div class="hc-mt"><i class="fa fa-eye me-1"></i>847 olvasó</div></div>
@@ -185,7 +185,7 @@
                     <div class="hc-card">
                       <div class="hc-img"><img src="/img/ajanlatok/casco2.jpg" alt="Ingatlan" loading="lazy"></div>
                       <div class="hc-ov"></div>
-                      <div class="hc-cat" style="background:rgba(74,222,128,.18);color:#4ade80">Ingatlan</div>
+                      <div class="hc-cat badge-green-soft">Ingatlan</div>
                       <div class="hc-dur">5 perc</div>
                       <div class="hc-play"><i class="fa fa-play"></i></div>
                       <div class="hc-bd"><div class="hc-tt">Alulbiztosítottság – 3 jel, hogy baj van</div><div class="hc-mt"><i class="fa fa-eye me-1"></i>2,1E olvasó</div></div>
@@ -218,7 +218,7 @@
                     <div class="hc-card">
                       <div class="hc-img"><img src="/img/biztor/biztorfront.jpg" alt="Bonus-malus" loading="lazy"></div>
                       <div class="hc-ov"></div>
-                      <div class="hc-cat" style="background:rgba(255,167,38,.22);color:#FFA726">KGFB</div>
+                      <div class="hc-cat badge-orange-soft">KGFB</div>
                       <div class="hc-dur">5 perc</div>
                       <div class="hc-play"><i class="fa fa-play"></i></div>
                       <div class="hc-bd"><div class="hc-tt">Bonus-malus rendszer közérthetően</div><div class="hc-mt"><i class="fa fa-eye me-1"></i>1,8E olvasó</div></div>
@@ -229,7 +229,7 @@
                     <div class="hc-card">
                       <div class="hc-img"><img src="/img/ajanlatok/lakas1.jpg" alt="Lakás" loading="lazy"></div>
                       <div class="hc-ov"></div>
-                      <div class="hc-cat" style="background:rgba(74,222,128,.18);color:#4ade80">Ingatlan</div>
+                      <div class="hc-cat badge-green-soft">Ingatlan</div>
                       <div class="hc-dur">6 perc</div>
                       <div class="hc-play"><i class="fa fa-play"></i></div>
                       <div class="hc-bd"><div class="hc-tt">Beázás és csőtörés – mit kell csinálni?</div><div class="hc-mt"><i class="fa fa-eye me-1"></i>1,4E olvasó</div></div>
@@ -284,7 +284,7 @@
           <i class="fa fa-search-minus d-block"></i>
           <h4 class="h5 mb-2">Nincs találat</h4>
           <p>Próbálja meg módosítani a keresést vagy válasszon másik kategóriát.</p>
-          <button class="btn btn-outline-primary btn-sm rounded-pill px-4" onclick="resetFilter()">Összes cikk</button>
+          <button id="infok-reset-btn" class="btn btn-outline-primary btn-sm rounded-pill px-4">Összes cikk</button>
         </div>
 
         <!-- Gépjármű szekció -->
@@ -292,28 +292,28 @@
           <div class="cat-section-label" style="background:#FFA72612;color:#7a4700;">
             <i class="fa fa-car" style="color:#FFA726;font-size:1.1rem;"></i>
             <span>Gépjármű</span>
-            <span class="ms-auto" style="font-size:.75rem;font-weight:500;color:#aaa;">6 cikk</span>
+            <span class="ms-auto text-meta">6 cikk</span>
           </div>
         </div>
         <div class="row g-4 mb-5" id="grid-gepjarmu">
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="kátyúkár lépésről lépésre" data-desc="mikor fizet a biztosítás és mikor az út kezelője? pontos lépések és dokumentumok listája.">
           <a href="/infok/katyukar-lepesrol-lepesre" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-road" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-road text-orange"></i>
                 </div>
                 <h3 class="ic-title">Kátyúkár lépésről lépésre</h3>
                 <p class="ic-desc">Mikor fizet a biztosítás és mikor az út kezelője? Pontos lépések és dokumentumok listája.</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -322,21 +322,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="vadelütés kezelése" data-desc="a rendőrségi igazolástól a kárbejelentésig: mit kell tenni az első percektől.">
           <a href="/infok/vadelutes-kezelese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-paw" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-paw text-orange"></i>
                 </div>
                 <h3 class="ic-title">Vadelütés kezelése</h3>
                 <p class="ic-desc">A rendőrségi igazolástól a kárbejelentésig: mit kell tenni az első percektől.</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -345,21 +345,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="rendszám nélküli károkozás" data-desc="futott a sofőr? parkolóban érte kár? a mabisz kártalanítási számla ebben segíthet.">
           <a href="/infok/rendszam-nelkuli-karokozas" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-question-circle" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-question-circle text-orange"></i>
                 </div>
                 <h3 class="ic-title">Rendszám nélküli károkozás</h3>
                 <p class="ic-desc">Futott a sofőr? Parkolóban érte kár? A MABISZ Kártalanítási Számla ebben segíthet.</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -368,21 +368,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="totálkár számítási alapok" data-desc="mikor minősül totálkárnak az autó és hogyan számítja ki a biztosító a kártérítést?">
           <a href="/infok/totalkar-szamitasi-alapok" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-calculator" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-calculator text-orange"></i>
                 </div>
                 <h3 class="ic-title">Totálkár számítási alapok</h3>
                 <p class="ic-desc">Mikor minősül totálkárnak az autó és hogyan számítja ki a biztosító a kártérítést?</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -391,21 +391,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="üvegkár és önrész" data-desc="szélvédő cserénél miért fizet sokszor a biztosító önrész nélkül? feltételek érthetően.">
           <a href="/infok/uvegkar-es-onresz" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-car" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-car text-orange"></i>
                 </div>
                 <h3 class="ic-title">Üvegkár és önrész</h3>
                 <p class="ic-desc">Szélvédő cserénél miért fizet sokszor a biztosító önrész nélkül? Feltételek érthetően.</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -414,21 +414,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="gepjarmu" data-title="bónusz-malus és díjhatás" data-desc="egy önhibás kár tartósan emelheti a díjat. mikor érdemes saját forrásból rendezni?">
           <a href="/infok/bonus-malus-es-dijhatas" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#FFA726;"></div>
+              <div class="ic-top bg-orange"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#FFA72622;color:#7a4700;">
-                    <i class="fa fa-car me-1" style="font-size:.7rem;"></i>Gépjármű
+                  <span class="ic-badge badge-orange">
+                    <i class="fa fa-car me-1 fs-070"></i>Gépjármű
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#FFA72618;">
-                  <i class="fa fa-chart-line" style="color:#FFA726;"></i>
+                <div class="ic-icon-wrap mb-3 bg-orange-18">
+                  <i class="fa fa-chart-line text-orange"></i>
                 </div>
                 <h3 class="ic-title">Bónusz-malus és díjhatás</h3>
                 <p class="ic-desc">Egy önhibás kár tartósan emelheti a díjat. Mikor érdemes saját forrásból rendezni?</p>
-                <div class="ic-link" style="color:#FFA726;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-orange">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -441,28 +441,28 @@
           <div class="cat-section-label" style="background:#22c55e12;color:#155724;">
             <i class="fa fa-home" style="color:#22c55e;font-size:1.1rem;"></i>
             <span>Ingatlan</span>
-            <span class="ms-auto" style="font-size:.75rem;font-weight:500;color:#aaa;">8 cikk</span>
+            <span class="ms-auto text-meta">8 cikk</span>
           </div>
         </div>
         <div class="row g-4 mb-5" id="grid-ingatlan">
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="alulbiztosítottság elkerülése" data-desc="ha a biztosítási összeg elmarad a valós értéktől, kár esetén arányosan kevesebbet kap. hogyan számítsa el?">
           <a href="/infok/alulbiztositottsag-elkerulese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-shield-alt" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-shield-alt text-green"></i>
                 </div>
                 <h3 class="ic-title">Alulbiztosítottság elkerülése</h3>
                 <p class="ic-desc">Ha a biztosítási összeg elmarad a valós értéktől, kár esetén arányosan kevesebbet kap. Hogyan számítsa el?</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -471,21 +471,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="beázás és csőtörés teendők" data-desc="fotók, szomszédok értesítése, hibaelhárítás: az első 24 óra lépései vízfedezetes kárhoz.">
           <a href="/infok/beazas-es-csotores-teendok" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-tint" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-tint text-green"></i>
                 </div>
                 <h3 class="ic-title">Beázás és csőtörés teendők</h3>
                 <p class="ic-desc">Fotók, szomszédok értesítése, hibaelhárítás: az első 24 óra lépései vízfedezetes kárhoz.</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -494,21 +494,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="betörési kár dokumentálása" data-desc="a biztosítói vizsgálat előtt mit szabad és mit nem szabad elmozdítani? dokumentumok listája.">
           <a href="/infok/betoresi-kar-dokumentalasa" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-user-secret" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-user-secret text-green"></i>
                 </div>
                 <h3 class="ic-title">Betörési kár dokumentálása</h3>
                 <p class="ic-desc">A biztosítói vizsgálat előtt mit szabad és mit nem szabad elmozdítani? Dokumentumok listája.</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -517,21 +517,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="villámkár és túlfeszültség" data-desc="villám közeli csapása elektronikát tett tönkre? melyik fedezet fizet és mit kell bizonyítani?">
           <a href="/infok/villamkar-es-tulfeszultseg" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-bolt" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-bolt text-green"></i>
                 </div>
                 <h3 class="ic-title">Villámkár és túlfeszültség</h3>
                 <p class="ic-desc">Villám közeli csapása elektronikát tett tönkre? Melyik fedezet fizet és mit kell bizonyítani?</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -540,21 +540,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="társasházi károk felelőssége" data-desc="ha felülről beázik, ki fizet? a közös képviselet, az szmsz és a saját biztosítás szerepe.">
           <a href="/infok/tarsashazi-karok-felelossege" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-building" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-building text-green"></i>
                 </div>
                 <h3 class="ic-title">Társasházi károk felelőssége</h3>
                 <p class="ic-desc">Ha felülről beázik, ki fizet? A közös képviselet, az SZMSZ és a saját biztosítás szerepe.</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -563,21 +563,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="melléképületek és kerti értékek" data-desc="a garázs, a nyárikonyha vagy a medence automatikusan benne van a lakásbiztosításban?">
           <a href="/infok/mellekepuletek-es-kerti-ertekek" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-tree" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-tree text-green"></i>
                 </div>
                 <h3 class="ic-title">Melléképületek és kerti értékek</h3>
                 <p class="ic-desc">A garázs, a nyárikonyha vagy a medence automatikusan benne van a lakásbiztosításban?</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -586,21 +586,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="ideiglenes lakhatási költségek" data-desc="ha lakhatatlanná válik az otthon, a biztosítás átvállalhat szállásköltségeket. mikor és mennyit?">
           <a href="/infok/ideiglenes-lakhatasi-koltsegek" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-bed" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-bed text-green"></i>
                 </div>
                 <h3 class="ic-title">Ideiglenes lakhatási költségek</h3>
                 <p class="ic-desc">Ha lakhatatlanná válik az otthon, a biztosítás átvállalhat szállásköltségeket. Mikor és mennyit?</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -609,21 +609,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="ingatlan" data-title="magánfelelősségi kár bejelentése" data-desc="megrongált szomszédi autó, megsérült vendég: a felelősségi fedezet pontosan mire terjed ki?">
           <a href="/infok/maganfelelossegi-kar-bejelentese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#22c55e;"></div>
+              <div class="ic-top bg-green"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#22c55e22;color:#155724;">
-                    <i class="fa fa-home me-1" style="font-size:.7rem;"></i>Ingatlan
+                  <span class="ic-badge badge-green">
+                    <i class="fa fa-home me-1 fs-070"></i>Ingatlan
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#22c55e18;">
-                  <i class="fa fa-user-check" style="color:#22c55e;"></i>
+                <div class="ic-icon-wrap mb-3 bg-green-18">
+                  <i class="fa fa-user-check text-green"></i>
                 </div>
                 <h3 class="ic-title">Magánfelelősségi kár bejelentése</h3>
                 <p class="ic-desc">Megrongált szomszédi autó, megsérült vendég: a felelősségi fedezet pontosan mire terjed ki?</p>
-                <div class="ic-link" style="color:#22c55e;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-green">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -636,28 +636,28 @@
           <div class="cat-section-label" style="background:#3b82f612;color:#1e3a8a;">
             <i class="fa fa-plane" style="color:#3b82f6;font-size:1.1rem;"></i>
             <span>Utazás & Élet</span>
-            <span class="ms-auto" style="font-size:.75rem;font-weight:500;color:#aaa;">8 cikk</span>
+            <span class="ms-auto text-meta">8 cikk</span>
           </div>
         </div>
         <div class="row g-4 mb-5" id="grid-utazas">
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="külföldi baleset teendői" data-desc="kórházi ellátás, biztosítói értesítés, hazaszállítás: a külföldi balesethez szükséges lépések sorban.">
           <a href="/infok/kulfoldi-baleset-teendoi" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-ambulance" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-ambulance text-blue"></i>
                 </div>
                 <h3 class="ic-title">Külföldi baleset teendői</h3>
                 <p class="ic-desc">Kórházi ellátás, biztosítói értesítés, hazaszállítás: a külföldi balesethez szükséges lépések sorban.</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -666,21 +666,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="külföldi káresemény menete" data-desc="elveszett csomag, betörés a bérelt autóba, lemondott járat: mit fizet a biztosítás?">
           <a href="/infok/kulfoldi-karesemeny-menete" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-plane" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-plane text-blue"></i>
                 </div>
                 <h3 class="ic-title">Külföldi káresemény menete</h3>
                 <p class="ic-desc">Elveszett csomag, betörés a bérelt autóba, lemondott járat: mit fizet a biztosítás?</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -689,21 +689,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="extrém sport fedezet" data-desc="sí, búvárkodás, ejtőernyőzés: az alap utasbiztosítás sokszor nem fedezi. mit kell hozzávenni?">
           <a href="/infok/extrem-sport-fedezet" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-running" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-running text-blue"></i>
                 </div>
                 <h3 class="ic-title">Extrém sport fedezet</h3>
                 <p class="ic-desc">Sí, búvárkodás, ejtőernyőzés: az alap utasbiztosítás sokszor nem fedezi. Mit kell hozzávenni?</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -712,21 +712,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="poggyászkár kezelése" data-desc="a légitársasági kárigazolástól a biztosítói bejelentésig: határidők és dokumentumok.">
           <a href="/infok/poggyaszkar-kezelese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-suitcase" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-suitcase text-blue"></i>
                 </div>
                 <h3 class="ic-title">Poggyászkár kezelése</h3>
                 <p class="ic-desc">A légitársasági kárigazolástól a biztosítói bejelentésig: határidők és dokumentumok.</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -735,21 +735,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="kórházi napi térítés" data-desc="mennyi időre fizet a biztosítás kórházi tartózkodás esetén és hogyan kell bejelenteni?">
           <a href="/infok/korhazi-napi-terites" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-hospital" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-hospital text-blue"></i>
                 </div>
                 <h3 class="ic-title">Kórházi napi térítés</h3>
                 <p class="ic-desc">Mennyi időre fizet a biztosítás kórházi tartózkodás esetén és hogyan kell bejelenteni?</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -758,21 +758,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="életbiztosítás élethelyzetre" data-desc="gyermekszületés, hitelszerződés, válás: mikor érdemes felülvizsgálni az életbiztosítást?">
           <a href="/infok/eletbiztositas-elethelyzetre" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-heartbeat" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-heartbeat text-blue"></i>
                 </div>
                 <h3 class="ic-title">Életbiztosítás élethelyzetre</h3>
                 <p class="ic-desc">Gyermekszületés, hitelszerződés, válás: mikor érdemes felülvizsgálni az életbiztosítást?</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -781,21 +781,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="hitelvédelem összehasonlítás" data-desc="banki hitelvédelmi csomag vagy önálló életbiztosítás? az összehasonlítás szempontjai érthetően.">
           <a href="/infok/hitelvedelem-osszehasonlitas" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-credit-card" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-credit-card text-blue"></i>
                 </div>
                 <h3 class="ic-title">Hitelvédelem összehasonlítás</h3>
                 <p class="ic-desc">Banki hitelvédelmi csomag vagy önálló életbiztosítás? Az összehasonlítás szempontjai érthetően.</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -804,21 +804,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="utazas" data-title="adójóváírás tervezése" data-desc="nyugdíjbiztosítás után akár évi 130 000 ft adójóváírás jár. mikor és hogyan kell igényelni?">
           <a href="/infok/adojovairas-tervezese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#3b82f6;"></div>
+              <div class="ic-top bg-blue"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#3b82f622;color:#1e3a8a;">
-                    <i class="fa fa-plane me-1" style="font-size:.7rem;"></i>Utazás & Élet
+                  <span class="ic-badge badge-blue">
+                    <i class="fa fa-plane me-1 fs-070"></i>Utazás & Élet
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#3b82f618;">
-                  <i class="fa fa-percentage" style="color:#3b82f6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-blue-18">
+                  <i class="fa fa-percentage text-blue"></i>
                 </div>
                 <h3 class="ic-title">Adójóváírás tervezése</h3>
                 <p class="ic-desc">Nyugdíjbiztosítás után akár évi 130 000 Ft adójóváírás jár. Mikor és hogyan kell igényelni?</p>
-                <div class="ic-link" style="color:#3b82f6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-blue">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -831,28 +831,28 @@
           <div class="cat-section-label" style="background:#8b5cf612;color:#4c1d95;">
             <i class="fa fa-cogs" style="color:#8b5cf6;font-size:1.1rem;"></i>
             <span>Adminisztráció</span>
-            <span class="ms-auto" style="font-size:.75rem;font-weight:500;color:#aaa;">10 cikk</span>
+            <span class="ms-auto text-meta">10 cikk</span>
           </div>
         </div>
         <div class="row g-4 mb-5" id="grid-admin">
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="évfordulós váltás" data-desc="csak az évfordulón mondható fel a kgfb és a lakásbiztosítás. mikor kell cselekedni és mit kell küldeni?">
           <a href="/infok/evfordulos-valtas" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-calendar-alt" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-calendar-alt text-violet"></i>
                 </div>
                 <h3 class="ic-title">Évfordulós váltás</h3>
                 <p class="ic-desc">Csak az évfordulón mondható fel a KGFB és a lakásbiztosítás. Mikor kell cselekedni és mit kell küldeni?</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -861,21 +861,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="díjnemfizetés következményei" data-desc="a biztosítás nem szűnik meg azonnal: türelmi idő, fizetési felszólítás és fedezetlenség sorrendje.">
           <a href="/infok/dijnemfizetes-kovetkezmenyei" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-exclamation-triangle" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-exclamation-triangle text-violet"></i>
                 </div>
                 <h3 class="ic-title">Díjnemfizetés következményei</h3>
                 <p class="ic-desc">A biztosítás nem szűnik meg azonnal: türelmi idő, fizetési felszólítás és fedezetlenség sorrendje.</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -884,21 +884,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="fedezetlenségi díj" data-desc="ha lejár a kgfb és nem köt újat, napi díjat kell fizetni. mennyi ez és hogyan kerülhető el?">
           <a href="/infok/fedezetlensegi-dij" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-ban" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-ban text-violet"></i>
                 </div>
                 <h3 class="ic-title">Fedezetlenségi díj</h3>
                 <p class="ic-desc">Ha lejár a KGFB és nem köt újat, napi díjat kell fizetni. Mennyi ez és hogyan kerülhető el?</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -907,21 +907,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="alkusz és ügynök szerepe" data-desc="miért más egy alkusz, mint a biztosítói ügynök? függetlenség, felelősség és az ügyfél érdeke.">
           <a href="/infok/alkusz-es-ugynok-szerepe" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-briefcase" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-briefcase text-violet"></i>
                 </div>
                 <h3 class="ic-title">Alkusz és ügynök szerepe</h3>
                 <p class="ic-desc">Miért más egy alkusz, mint a biztosítói ügynök? Függetlenség, felelősség és az ügyfél érdeke.</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -930,21 +930,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="szerződés előtti ellenőrzés" data-desc="mit nézzen meg, mielőtt aláír? a leggyakrabban félreolvasott biztosítási feltételek összefoglalója.">
           <a href="/infok/szerzodes-elotti-ellenorzes" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>4 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-file-alt" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-file-alt text-violet"></i>
                 </div>
                 <h3 class="ic-title">Szerződés előtti ellenőrzés</h3>
                 <p class="ic-desc">Mit nézzen meg, mielőtt aláír? A leggyakrabban félreolvasott biztosítási feltételek összefoglalója.</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -953,21 +953,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="szerződéskötés előtti ellenőrzés" data-desc="egy ellenőrzőlista kötés előtt: fedezet, önrész, kizárások és az ipid tájékoztató szerepe.">
           <a href="/infok/szerzodeskotes-elotti-ellenorzes" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-search" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-search text-violet"></i>
                 </div>
                 <h3 class="ic-title">Szerződéskötés előtti ellenőrzés</h3>
                 <p class="ic-desc">Egy ellenőrzőlista kötés előtt: fedezet, önrész, kizárások és az IPID tájékoztató szerepe.</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -976,21 +976,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="meghatalmazás és ügyintézés" data-desc="ha valaki más intézi a biztosítást: milyen meghatalmazás kell és hogyan kell átadni?">
           <a href="/infok/meghatalmazas-es-ugyintezes" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-pen" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-pen text-violet"></i>
                 </div>
                 <h3 class="ic-title">Meghatalmazás és ügyintézés</h3>
                 <p class="ic-desc">Ha valaki más intézi a biztosítást: milyen meghatalmazás kell és hogyan kell átadni?</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -999,21 +999,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="hivatalos értesítések kezelése" data-desc="díjközlő, kötvény, évfordulós értesítő: mit kell elolvasni és mire kell reagálni határidőn belül?">
           <a href="/infok/hivatalos-ertesitesek-kezelese" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>2 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-envelope-open" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-envelope-open text-violet"></i>
                 </div>
                 <h3 class="ic-title">Hivatalos értesítések kezelése</h3>
                 <p class="ic-desc">Díjközlő, kötvény, évfordulós értesítő: mit kell elolvasni és mire kell reagálni határidőn belül?</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -1022,21 +1022,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="kárbejelentő ellenőrzőlista" data-desc="összefoglaló azoknak, akik most jelentenek be először kárt: mi kell és mire kell figyelni.">
           <a href="/infok/karbejelento-ellenorzolista" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-list" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-list text-violet"></i>
                 </div>
                 <h3 class="ic-title">Kárbejelentő ellenőrzőlista</h3>
                 <p class="ic-desc">Összefoglaló azoknak, akik most jelentenek be először kárt: mi kell és mire kell figyelni.</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -1045,21 +1045,21 @@
         <div class="col-md-6 col-lg-4 info-card-wrap" data-cat="admin" data-title="kárrendezési dokumentumok" data-desc="biztosítótól, hatóságtól, szakértőktől: mely dokumentumokra lehet szükség egy kárrendezés során?">
           <a href="/infok/karrendezesi-dokumentumok" class="text-decoration-none d-block h-100">
             <article class="info-card h-100">
-              <div class="ic-top" style="background:#8b5cf6;"></div>
+              <div class="ic-top bg-violet"></div>
               <div class="ic-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <span class="ic-badge" style="background:#8b5cf622;color:#4c1d95;">
-                    <i class="fa fa-cogs me-1" style="font-size:.7rem;"></i>Adminisztráció
+                  <span class="ic-badge badge-violet">
+                    <i class="fa fa-cogs me-1 fs-070"></i>Adminisztráció
                   </span>
                   <span class="ic-read"><i class="far fa-clock me-1"></i>3 perc</span>
                 </div>
-                <div class="ic-icon-wrap mb-3" style="background:#8b5cf618;">
-                  <i class="fa fa-folder-open" style="color:#8b5cf6;"></i>
+                <div class="ic-icon-wrap mb-3 bg-violet-18">
+                  <i class="fa fa-folder-open text-violet"></i>
                 </div>
                 <h3 class="ic-title">Kárrendezési dokumentumok</h3>
                 <p class="ic-desc">Biztosítótól, hatóságtól, szakértőktől: mely dokumentumokra lehet szükség egy kárrendezés során?</p>
-                <div class="ic-link" style="color:#8b5cf6;">
-                  Elolvasom <i class="fa fa-arrow-right ms-1" style="font-size:.75rem;"></i>
+                <div class="ic-link text-violet">
+                  Elolvasom <i class="fa fa-arrow-right ms-1 fs-075"></i>
                 </div>
               </div>
             </article>
@@ -1168,223 +1168,6 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <script>
-      // ── ic-link saját szín hover ──
-      document.querySelectorAll('.ic-link').forEach(function(el) {
-        el.style.setProperty('--ic-clr', el.style.color);
-      });
-
-      // ── Info Hub filter & search ──
-      (function () {
-        var allWraps = document.querySelectorAll('.info-card-wrap');
-        var tabs = document.querySelectorAll('.filter-tab');
-        var searchDesktop = document.getElementById('infoSearch');
-        var searchMobile = document.getElementById('infoSearchMobile');
-        var resultCount = document.getElementById('resultCount');
-        var emptyState = document.getElementById('emptyState');
-        var sectionLabels = document.querySelectorAll('.cat-section-label').forEach;
-
-        // Category section containers
-        var sections = {
-          gepjarmu: { grid: document.getElementById('grid-gepjarmu'), label: document.querySelector('#gepjarmu .cat-section-label') ? document.querySelector('#gepjarmu') : null },
-          ingatlan: { grid: document.getElementById('grid-ingatlan'), label: document.querySelector('#ingatlan') },
-          utazas:   { grid: document.getElementById('grid-utazas'),   label: document.querySelector('#utazas') },
-          admin:    { grid: document.getElementById('grid-admin'),     label: document.querySelector('#admin') }
-        };
-
-        var currentCat = 'all';
-        var currentQ = '';
-
-        function applyFilter() {
-          var visible = 0;
-          allWraps.forEach(function (wrap) {
-            var cat = wrap.dataset.cat;
-            var title = wrap.dataset.title || '';
-            var desc = wrap.dataset.desc || '';
-            var catOk = currentCat === 'all' || cat === currentCat;
-            var qOk = currentQ === '' || title.includes(currentQ) || desc.includes(currentQ);
-            if (catOk && qOk) {
-              wrap.classList.remove('hidden');
-              visible++;
-            } else {
-              wrap.classList.add('hidden');
-            }
-          });
-
-          // Show/hide section headers based on visibility
-          ['gepjarmu', 'ingatlan', 'utazas', 'admin'].forEach(function (key) {
-            var grid = document.getElementById('grid-' + key);
-            var anchor = document.getElementById(key);
-            var headLabel = anchor ? anchor.nextElementSibling : null;
-            // check if any card in this grid is visible
-            var anyVisible = grid && grid.querySelector('.info-card-wrap:not(.hidden)');
-            if (grid) grid.style.display = anyVisible ? '' : 'none';
-            // find the cat-section-label preceding the grid
-            if (anchor) {
-              anchor.style.display = anyVisible ? '' : 'none';
-            }
-          });
-
-          resultCount.textContent = visible + ' cikk';
-          emptyState.style.display = visible === 0 ? 'block' : 'none';
-        }
-
-        tabs.forEach(function (tab) {
-          tab.addEventListener('click', function () {
-            tabs.forEach(function (t) { t.classList.remove('active'); });
-            tab.classList.add('active');
-            currentCat = tab.dataset.cat;
-            applyFilter();
-            // Scroll to cards
-            if (currentCat !== 'all') {
-              var anchor = document.getElementById(currentCat);
-              if (anchor) { setTimeout(function() { anchor.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50); }
-            }
-          });
-        });
-
-        function onSearch(e) {
-          currentQ = e.target.value.toLowerCase().trim();
-          // sync both search inputs
-          if (searchDesktop) searchDesktop.value = e.target.value;
-          if (searchMobile) searchMobile.value = e.target.value;
-          // reset cat filter to all when typing
-          if (currentQ) {
-            tabs.forEach(function (t) { t.classList.remove('active'); });
-            document.querySelector('[data-cat="all"]').classList.add('active');
-            currentCat = 'all';
-          }
-          applyFilter();
-        }
-
-        if (searchDesktop) searchDesktop.addEventListener('input', onSearch);
-        if (searchMobile) searchMobile.addEventListener('input', onSearch);
-
-        // Global reset
-        window.resetFilter = function () {
-          currentCat = 'all';
-          currentQ = '';
-          if (searchDesktop) searchDesktop.value = '';
-          if (searchMobile) searchMobile.value = '';
-          tabs.forEach(function (t) { t.classList.remove('active'); });
-          document.querySelector('[data-cat="all"]').classList.add('active');
-          applyFilter();
-        };
-
-        // ── Hero carousel ──
-        (function () {
-          var strip = document.getElementById('hero-strip');
-          if (!strip) return;
-          var cards = Array.from(strip.querySelectorAll('[data-hc]'));
-          var spacers = Array.from(strip.querySelectorAll('[data-hcsp]'));
-          var dotsEl = document.getElementById('hero-dots');
-
-          cards.forEach(function (_, i) {
-            var d = document.createElement('div');
-            d.className = 'hc-dot';
-            d.addEventListener('click', function () { scrollToCard(i); });
-            dotsEl.appendChild(d);
-          });
-
-          function updateSpacer() {
-            if (!cards.length) return;
-            var pad = Math.max(20, strip.clientWidth / 2 - cards[0].offsetWidth / 2);
-            spacers.forEach(function (s) { s.style.minWidth = pad + 'px'; s.style.flexShrink = '0'; });
-          }
-
-          function findCenter() {
-            var cx = strip.scrollLeft + strip.clientWidth / 2;
-            var best = null, bestDist = Infinity;
-            cards.forEach(function (c) {
-              var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - cx);
-              if (d < bestDist) { bestDist = d; best = c; }
-            });
-            cards.forEach(function (c, i) {
-              var on = c === best;
-              c.classList.toggle('is-center', on);
-              if (dotsEl.children[i]) dotsEl.children[i].classList.toggle('on', on);
-            });
-          }
-
-          function scrollToCard(i) {
-            var c = cards[i];
-            if (!c) return;
-            smoothScrollTo(c.offsetLeft - strip.clientWidth / 2 + c.offsetWidth / 2);
-          }
-
-          var _target = 0, _raf = null;
-          function smoothScrollTo(dest) {
-            var max = strip.scrollWidth - strip.clientWidth;
-            _target = Math.max(0, Math.min(dest, max));
-            if (!_raf) _raf = requestAnimationFrame(_tick);
-          }
-          function _tick() {
-            var diff = _target - strip.scrollLeft;
-            if (Math.abs(diff) < 0.6) {
-              strip.scrollLeft = _target; findCenter(); _raf = null; return;
-            }
-            strip.scrollLeft += diff * 0.13;
-            findCenter();
-            _raf = requestAnimationFrame(_tick);
-          }
-
-          strip.addEventListener('wheel', function (e) {
-            var max = strip.scrollWidth - strip.clientWidth;
-            if (max <= 0) return; // nincs scrollolható tartalom
-            var next = Math.max(0, Math.min(_target + e.deltaY * 1.1, max));
-            // Ha már a szélén vagyunk és ugyanabba az irányba görgetnek → átadjuk az oldalnak
-            if (next === _target) return;
-            e.preventDefault();
-            _target = next;
-            if (!_raf) _raf = requestAnimationFrame(_tick);
-          }, { passive: false });
-
-          var drag = false, startX = 0, startSL = 0;
-          strip.addEventListener('mousedown', function (e) {
-            drag = true; startX = e.clientX; startSL = strip.scrollLeft;
-            _target = strip.scrollLeft;
-            if (_raf) { cancelAnimationFrame(_raf); _raf = null; }
-            strip.classList.add('grabbing'); e.preventDefault();
-          });
-          document.addEventListener('mouseup', function () {
-            if (!drag) return; drag = false; strip.classList.remove('grabbing');
-          });
-          strip.addEventListener('mousemove', function (e) {
-            if (!drag) return;
-            var nx = startSL - (e.clientX - startX);
-            strip.scrollLeft = nx; _target = nx;
-          });
-
-          strip.addEventListener('scroll', findCenter, { passive: true });
-
-          requestAnimationFrame(function () {
-            updateSpacer();
-            requestAnimationFrame(function () {
-              _target = cards[0]
-                ? cards[0].offsetLeft - strip.clientWidth / 2 + cards[0].offsetWidth / 2
-                : 0;
-              strip.scrollLeft = _target;
-              findCenter();
-            });
-          });
-          window.addEventListener('resize', function () { updateSpacer(); findCenter(); });
-        })();
-
-        // Anchor hash navigation → activate corresponding tab
-        function checkHash() {
-          var hash = window.location.hash.replace('#', '');
-          var hashToCat = { gepjarmu: 'gepjarmu', ingatlan: 'ingatlan', utazas: 'utazas', admin: 'admin' };
-          if (hashToCat[hash]) {
-            tabs.forEach(function (t) { t.classList.remove('active'); });
-            var matchTab = document.querySelector('[data-cat="' + hashToCat[hash] + '"]');
-            if (matchTab) matchTab.classList.add('active');
-            currentCat = hashToCat[hash];
-            applyFilter();
-          }
-        }
-        window.addEventListener('hashchange', checkHash);
-        checkHash();
-      })();
-    </script>
+    <script defer src="../js/infok-filter.js"></script>
   </body>
 </html>

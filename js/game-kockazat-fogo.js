@@ -367,3 +367,11 @@
   };
 
 })();
+
+
+// Button bindings (moved from HTML onclick attributes)
+(function () {
+  function bind(id, fn) { var el = document.getElementById(id); if (el) el.addEventListener('click', fn); }
+  bind('kockazat-start-btn', window.kockazatStart);
+  bind('kockazat-restart-btn', window.kockazatRestart);
+}());
