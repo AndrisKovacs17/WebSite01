@@ -939,6 +939,10 @@
   display: flex; align-items: center; justify-content: center;
 }
 .jz-secret-close:hover { background: rgba(255,255,255,.2); }
+.jz-secret-close:focus-visible {
+  outline: 2px solid #FFA726;
+  outline-offset: 2px;
+}
 
 /* ================================================================
    NAVIGÁCIÓ VISSZA A JÁTÉKZÓNÁHOZ
@@ -1161,8 +1165,15 @@
   opacity: .65;
 }
 
-/* ── Trigger span ── */
+/* ── Trigger (natív button, a környező szöveg stílusát örökli) ── */
 .museum-ghost-trigger {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
   cursor: pointer;
   display: inline-block;
   border-radius: 4px;

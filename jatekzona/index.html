@@ -237,9 +237,9 @@
 
         <!-- Easter egg hint (only visible on hover over empty area) -->
         <div id="jz-egg-hint-wrap" class="jz-egg-hint-wrap text-center mt-5">
-          <span id="jz-egg-hint" class="museum-ghost-trigger" role="button" tabindex="0" aria-label="Titkos tipp – kattints a felfedezéshez">
+          <button type="button" id="jz-egg-hint" class="museum-ghost-trigger" aria-label="Titkos tipp – kattints a felfedezéshez">
             Psszt... van valami elrejtve a Kötvénymúzeumban. <i class="fas fa-ghost" aria-hidden="true" style="color:var(--jz-orange,#FFA726);"></i>
-          </span>
+          </button>
           <p id="jz-egg-msg" class="jz-egg-msg" aria-live="polite"></p>
         </div>
         <div id="jz-ghost-announce" class="visually-hidden" aria-live="assertive" aria-atomic="true"></div>
@@ -325,11 +325,11 @@
     </div>
 
     <!-- Titkos kártya overlay (easter egg) -->
-    <div class="jz-secret-overlay" id="jzSecretOverlay" role="dialog" aria-modal="true" aria-label="Titkos kártya">
+    <div class="jz-secret-overlay" id="jzSecretOverlay" role="dialog" aria-modal="true" aria-labelledby="jzSecretTitle">
       <div class="jz-secret-card">
-        <button class="jz-secret-close" id="jzSecretClose" aria-label="Bezárás">✕</button>
+        <button type="button" class="jz-secret-close" id="jzSecretClose" aria-label="Bezárás">✕</button>
         <div style="font-size:3rem;margin-bottom:.75rem;color:#FFA726;"><i class="fas fa-gift"></i></div>
-        <h3>Titkos kártya</h3>
+        <h3 id="jzSecretTitle">Titkos kártya</h3>
         <p>Megtaláltad! Ez a rejtett kártya azt üzeni: a legjobb biztosítás az, amelyet tényleg értesz. Hívj minket – megmagyarázunk mindent, amit a kisnyomtatott elrejt.</p>
         <a href="tel:+36706258201" class="btn btn-cta-primary mt-3 rounded-pill px-4">
           <i class="fa fa-phone-alt me-2"></i> Felhívom a Biztort
@@ -399,9 +399,6 @@
 
       if (eggHint) {
         eggHint.addEventListener('click', handleEggActivation);
-        eggHint.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleEggActivation(); }
-        });
       }
 
       // ── Kötvényszellem animáció ──────────────────────────────────────
@@ -452,13 +449,65 @@
         setTimeout(function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); }, (duration + 0.3) * 1000);
       }
 
-      // ── Secret overlay close ─────────────────────────────────────────
+      // ── Secret overlay – akadálymentes nyitás/zárás ──────────────────
+      var lastFocusedBeforeSecret = null;
+
+      function getSecretFocusable() {
+        if (!secretOverlay) return [];
+        return Array.prototype.slice.call(
+          secretOverlay.querySelectorAll(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter(function (el) { return el.offsetParent !== null; });
+      }
+
+      function openSecret() {
+        if (!secretOverlay) return;
+        lastFocusedBeforeSecret =
+          document.activeElement && typeof document.activeElement.focus === 'function'
+            ? document.activeElement
+            : null;
+        secretOverlay.classList.add('visible');
+        if (secretClose) { secretClose.focus(); }
+      }
+
+      function closeSecret() {
+        if (!secretOverlay) return;
+        secretOverlay.classList.remove('visible');
+        if (lastFocusedBeforeSecret &&
+            lastFocusedBeforeSecret !== document.body &&
+            lastFocusedBeforeSecret.isConnected) {
+          lastFocusedBeforeSecret.focus();
+        }
+        lastFocusedBeforeSecret = null;
+      }
+
       if (secretClose) {
-        secretClose.addEventListener('click', function () { secretOverlay.classList.remove('visible'); });
+        secretClose.addEventListener('click', closeSecret);
       }
       if (secretOverlay) {
         secretOverlay.addEventListener('click', function (e) {
-          if (e.target === secretOverlay) secretOverlay.classList.remove('visible');
+          if (e.target === secretOverlay) closeSecret();
+        });
+        secretOverlay.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' || e.key === 'Esc') {
+            e.preventDefault();
+            closeSecret();
+            return;
+          }
+          if (e.key === 'Tab') {
+            var f = getSecretFocusable();
+            if (!f.length) { e.preventDefault(); return; }
+            var first = f[0];
+            var last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
         });
       }
 
@@ -472,7 +521,7 @@
             konamiIdx = 0;
             konamiFlash.style.display = 'block';
             setTimeout(function () { konamiFlash.style.display = 'none'; }, 700);
-            secretOverlay.classList.add('visible');
+            openSecret();
           }
         } else { konamiIdx = 0; }
       });

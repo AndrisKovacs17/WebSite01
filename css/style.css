@@ -2627,10 +2627,101 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Kapcsolat / Időpont szekció – telített narancs ── */
 .appointment {
-  background:
-    linear-gradient(rgba(214, 107, 20, .90), rgba(255, 152, 0, .88)),
-    url(./../img/carousel-1.jpg) center center no-repeat;
+  background: linear-gradient(180deg, #FFFDF9 0%, #FFF6EC 100%);
   background-size: cover;
+}
+
+/* ================================================================
+   Prémium kapcsolati CTA kártyák (.contact-cta-cards)
+   Világos kártyák narancs akcentussal – kezdőlap + aloldalak
+   ================================================================ */
+.contact-cta-cards {
+  display: grid;
+  gap: 1rem;
+}
+.contact-cta-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid rgba(255, 167, 38, .22);
+  border-radius: 1rem;
+  padding: 1.05rem 1.2rem;
+  box-shadow: 0 6px 22px rgba(28, 28, 46, .06);
+  text-decoration: none;
+  color: #1c1c2e;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.contact-cta-card:hover,
+.contact-cta-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(214, 107, 20, .16);
+  border-color: rgba(255, 152, 0, .55);
+  color: #1c1c2e;
+  outline: none;
+}
+.contact-cta-card:focus-visible {
+  outline: 2px solid #FF9800;
+  outline-offset: 3px;
+}
+.contact-cta-card--primary {
+  border-color: rgba(255, 152, 0, .45);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF8EE 100%);
+}
+.contact-cta-card__icon {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB347, #FF9800);
+  color: #fff;
+  font-size: 1.2rem;
+}
+.contact-cta-card__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.contact-cta-card__label {
+  font-size: .72rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.contact-cta-card__value {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1c1c2e;
+  word-break: break-word;
+}
+.contact-cta-card__arrow {
+  margin-left: auto;
+  flex: 0 0 auto;
+  color: #FF9800;
+  transition: transform .2s ease;
+}
+.contact-cta-card:hover .contact-cta-card__arrow,
+.contact-cta-card:focus-visible .contact-cta-card__arrow {
+  transform: translateX(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-cta-card,
+  .contact-cta-card__arrow {
+    transition: none;
+  }
+  .contact-cta-card:hover,
+  .contact-cta-card:focus-visible {
+    transform: none;
+  }
+  .contact-cta-card:hover .contact-cta-card__arrow,
+  .contact-cta-card:focus-visible .contact-cta-card__arrow {
+    transform: none;
+  }
 }
 
 /* ── Form input fókusz – finom semleges stílus ── */

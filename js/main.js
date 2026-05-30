@@ -477,6 +477,7 @@ function switchForm(type) {
     "contact-phone-container"
   );
   const contactPhoneLink = document.getElementById("contact-phone-link");
+  const contactPhoneValue = document.getElementById("contact-phone-value");
 
   if (!personalForm || !corporateForm || !personalBtn || !corporateBtn) {
     console.error("Form elements not found");
@@ -509,10 +510,12 @@ function switchForm(type) {
         contactTitle.textContent = "Biztosítás, ahogy Önnek kényelmes";
         contactDescription.textContent =
           "Személyre szabott biztosítási megoldásokat kínálunk – gyorsan, érthetően, rejtett költségek nélkül. Legyen szó gépjárműről, lakásról, vállalkozásról vagy nyugdíjról, nálunk mindig az Ön érdeke az első. Kérjen időpontot, és segítünk megtalálni a legjobb megoldást!";
-        contactPhoneLink.textContent = "Hívjon minket: +36 70 625 8201";
+        if (contactPhoneValue) {
+          contactPhoneValue.textContent = "Hívjon minket: +36 70 625 8201";
+        } else {
+          contactPhoneLink.textContent = "Hívjon minket: +36 70 625 8201";
+        }
         contactPhoneLink.href = "tel:+36706258201";
-
-        // Fade in
         contactTitle.style.opacity = "1";
         contactDescription.style.opacity = "1";
         contactPhoneContainer.style.opacity = "1";
@@ -544,7 +547,11 @@ function switchForm(type) {
         contactTitle.textContent = "Vállalati konzultáció időpontfoglalás";
         contactDescription.textContent =
           "Szeretettel várjuk irodánkban személyes konzultációra! Foglaljon időpontot, és kollégánk készséggel áll rendelkezésére a cégre szabott biztosítási megoldásokkal kapcsolatban.";
-        contactPhoneLink.textContent = "Időpont egyeztetés: +36 70 319 6501";
+        if (contactPhoneValue) {
+          contactPhoneValue.textContent = "Időpont egyeztetés: +36 70 319 6501";
+        } else {
+          contactPhoneLink.textContent = "Időpont egyeztetés: +36 70 319 6501";
+        }
         contactPhoneLink.href = "tel:+36703196501";
 
         // Fade in
