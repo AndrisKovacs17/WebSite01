@@ -436,3 +436,13 @@
   });
 
 })();
+
+
+// Button bindings (moved from HTML onclick attributes)
+(function () {
+  function bind(id, fn) { var el = document.getElementById(id); if (el) el.addEventListener('click', fn); }
+  bind('hazadat-start-btn', window.hazadatStart);
+  bind('hazadat-restart-btn', window.hazadatRestart);
+  bind('hazadat-show-calc-btn', window.hazadatShowCalc);
+  bind('hazadat-calc-btn', window.hazadatCalc);
+}());

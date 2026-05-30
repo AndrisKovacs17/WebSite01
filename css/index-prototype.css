@@ -1,0 +1,96 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: .72rem;
+      font-weight: 700;
+      color: rgba(0,0,0,0.28);
+      margin-bottom: 1.2rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .map-wrap {
+      width: 100%;
+      max-width: 860px;
+      background: transparent;
+      position: relative;
+    }
+    /* ── Összes megye: tömör kékes-szürke slab ── */
+    .hu-county {
+      fill: rgba(15,30,80,0.08);
+      stroke: rgba(15,30,80,0.20);
+      stroke-width: 0.8;
+      cursor: default;
+      transition: fill .2s;
+    }
+    /* ── Szabolcs: 3D kiemelés rétegzett drop-shadow-val ── */
+    .hu-szabolcs {
+      fill: #FFA726 !important;
+      stroke: rgba(255,210,100,0.55) !important;
+      stroke-width: 1.2 !important;
+      cursor: pointer;
+      filter:
+        drop-shadow(1px 1px 0px #7a3000)
+        drop-shadow(2px 2px 0px #6B2800)
+        drop-shadow(3px 3px 0px #5C2200)
+        drop-shadow(4px 4px 0px #4D1C00)
+        drop-shadow(5px 5px 0px #3E1600)
+        drop-shadow(6px 6px 0px #2F1000)
+        drop-shadow(0px 0px 28px rgba(255,140,0,0.55));
+    }
+    /* ── SVG belső körök és pontok elrejtése ── */
+    #points circle, #label_points circle { display: none; }
+
+    /* ── Tooltip ── */
+    .map-tooltip {
+      position: absolute;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(200,130,0,0.35);
+      color: rgba(20,30,60,0.9);
+      font-size: .72rem;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: .35rem .75rem;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transition: opacity .12s;
+      z-index: 20;
+      top: 0; left: 0;
+    }
+
+    /* ── Jelmagyarázat ── */
+    .map-legend {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: .8rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .map-legend span {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .legend-swatch {
+      width: 12px; height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.15);
+    }

@@ -2933,9 +2933,7 @@ html, body {
   body:has(.mobile-action-bar) {
     padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
-  .mobile-action-bar {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
+  
 }
 
 /* 8 – Custom form-toggle gombok wrapelése nagyon kis képernyőn */
@@ -3517,3 +3515,65 @@ img, svg, video, iframe {
   }
 }
 
+
+
+/* ── Inline style utilities (refactored from HTML attributes) ─────── */
+.obj-cover { object-fit: cover; }
+.mw-400 { max-width: 400px; }
+.mw-500 { max-width: 500px; }
+.mw-600 { max-width: 600px; }
+.mw-640 { max-width: 640px; }
+.mw-680 { max-width: 680px; }
+.mw-720 { max-width: 720px; }
+.mw-760 { max-width: 760px; }
+.w-110 { width: 110px; }
+.min-h-360 { min-height: 360px; }
+.min-h-400 { min-height: 400px; }
+.min-h-420 { min-height: 420px; }
+.sq-56 { width: 56px; height: 56px; }
+.img-88-cover { width: 88px; height: 88px; object-fit: cover; }
+.fs-070 { font-size: .7rem; }
+.fs-075 { font-size: .75rem; }
+.fs-090 { font-size: .9rem; }
+.ls-008 { letter-spacing: .08em; }
+.border-top-primary { border-top: 4px solid var(--primary); }
+.text-violet { color: #8b5cf6; }
+.text-green  { color: #22c55e; }
+.text-blue   { color: #3b82f6; }
+.text-orange { color: #FFA726; }
+.text-dark-brand { color: #15233C; }
+.bg-violet   { background: #8b5cf6; }
+.bg-violet-18 { background: #8b5cf618; }
+.bg-green-18 { background: #22c55e18; }
+.badge-violet { background: #8b5cf622; color: #4c1d95; }
+.badge-green  { background: #22c55e22; color: #155724; }
+.badge-blue   { background: #3b82f622; color: #1e3a8a; }
+.sr-only-abs { position: absolute; left: -9999px; height: 1px; width: 1px; opacity: 0; }
+
+/* ── Additional inline style utilities (second pass) ──────────────── */
+.bg-blue-18  { background: #3b82f618; }
+.bg-green    { background: #22c55e; }
+.bg-blue     { background: #3b82f6; }
+.bg-orange   { background: #FFA726; }
+.bg-orange-18 { background: #FFA72618; }
+.badge-orange { background: #FFA72622; color: #7a4700; }
+.mw-620 { max-width: 620px; }
+.mw-700 { max-width: 700px; }
+.fs-095 { font-size: .95rem; }
+.fs-2rem { font-size: 2rem; }
+.fs-25rem { font-size: 2.5rem; }
+.fs-26rem { font-size: 2.6rem; }
+.ar-16-10 { aspect-ratio: 16/10; }
+.icon-accent { font-size: 1.75rem; color: #FFA726; }
+.text-meta { font-size: .75rem; font-weight: 500; color: #aaa; }
+
+/* ── Final inline style utilities (third pass) ──────────────────── */
+.err-txt { font-size:.75rem; color:#92400e; font-weight:700; margin-top:.4rem; }
+.badge-orange-soft { background:rgba(255,167,38,.22); color:#FFA726; }
+.badge-green-soft { background:rgba(74,222,128,.18); color:#4ade80; }
+.hero-num { font-size:3rem; line-height:1.1; }
+.hero-num-lg { font-size:3.5rem; line-height:1.1; }
+.fs-135rem { font-size:1.35rem; }
+.card-subtitle { font-size:1.25rem; margin-bottom:.75rem; }
+.game-overlay { background:rgba(21,35,60,0.82); backdrop-filter:blur(3px); z-index:10; }
+.game-overlay-72 { background:rgba(21,35,60,0.72); backdrop-filter:blur(3px); z-index:10; }

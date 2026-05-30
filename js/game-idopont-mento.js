@@ -517,3 +517,11 @@
 
   drawIdle();
 })();
+
+
+// Button bindings (moved from HTML onclick attributes)
+(function () {
+  function bind(id, fn) { var el = document.getElementById(id); if (el) el.addEventListener('click', fn); }
+  bind('idopont-start-btn', window.idopontStart);
+  bind('idopont-restart-btn', window.idopontRestart);
+}());

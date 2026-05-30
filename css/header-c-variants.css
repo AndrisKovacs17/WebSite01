@@ -1,0 +1,275 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #e8ecf0;
+    }
+
+    /* ── Szekció felirat ── */
+    .section-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: #555e78;
+      background: #dde1ea; padding: 1rem 2.5rem;
+      border-bottom: 1px solid #c8cdd8;
+    }
+
+    /* ════════════════════════════════════════
+       KÖZÖS HERO-C ALAP (split layout)
+       ════════════════════════════════════════ */
+    .hero-c {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ── Bal panel: térkép ── */
+    .hero-c__left {
+      flex: 0 0 54%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      /* cursor húzáshoz */
+      cursor: grab;
+      user-select: none;
+    }
+    .hero-c__left:active { cursor: grabbing; }
+
+    /* A térképet egy overflow:hidden konténer fogja, és azon belül húzható */
+    .map-drag-track {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .map-drag-inner {
+      position: absolute;
+      top: 50%;
+      /* szélességet JS állítja, kezdő translateX = 0 */
+      transform: translateY(-50%) translateX(0px);
+      width: 160%;   /* nagyobb mint a panel → húzható */
+      will-change: transform;
+      pointer-events: none; /* az SVG-n belüli interakciók a wrapper div-en keresztül */
+    }
+    /* de a tooltip és az egér-spotlight az SVG-n kell hogy menjen */
+    .map-drag-inner.interactive { pointer-events: auto; }
+
+    .map-drag-inner svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Drag hint felirat */
+    .drag-hint {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .45;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .drag-hint::before,
+    .drag-hint::after {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* Rézsútos jobb él (skew vágás) */
+    .hero-c__left::after {
+      content: '';
+      position: absolute;
+      top: 0; right: -28px; bottom: 0;
+      width: 56px;
+      background: inherit;
+      transform: skewX(-3deg);
+      z-index: 2;
+    }
+
+    /* ── Jobb panel: szöveg ── */
+    .hero-c__right {
+      flex: 1;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 5.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-c__right-inner { max-width: 500px; }
+
+    /* Nav overlay */
+    .hero-c__nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+    }
+    .hero-c__nav--left { justify-content: flex-start; gap: 2.5rem; }
+    .nav-logo { height: 36px; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      color: inherit;
+      opacity: .7;
+      transition: opacity .12s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      padding: .5rem 1.4rem;
+      border-radius: 50px;
+      font-size: .85rem; font-weight: 700;
+      text-decoration: none;
+      background: #FFA726; color: #1a0a00;
+      transition: transform .12s, box-shadow .12s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,167,38,.35); }
+
+    /* ── Szöveg elemek ── */
+    .hero-c__eyebrow {
+      font-size: .72rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: .7rem;
+      color: #c45c00;
+    }
+    .hero-c__eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 2px; background: #FFA726;
+      flex-shrink: 0;
+    }
+    .hero-c h1 {
+      font-size: clamp(1.8rem, 2.8vw, 2.9rem);
+      font-weight: 800; line-height: 1.12;
+      color: #0f172a; letter-spacing: -.03em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-c h1 span { color: #FFA726; }
+    .hero-c__lead {
+      font-size: .97rem; color: #475569; line-height: 1.68;
+      margin-bottom: 1.8rem; max-width: 440px;
+    }
+    .hero-c__chips {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem;
+    }
+    .chip {
+      border-radius: 50px;
+      padding: .3rem .85rem;
+      font-size: .73rem; font-weight: 600;
+    }
+
+    /* Gombok */
+    .hero-c__actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-main {
+      display: inline-flex; align-items: center;
+      padding: .85rem 2rem; border-radius: 50px;
+      font-weight: 700; font-size: .92rem; text-decoration: none;
+      transition: transform .12s, box-shadow .12s;
+    }
+    .btn-main:hover { transform: translateY(-2px); }
+    .btn-link {
+      font-size: .88rem; font-weight: 500; color: #475569;
+      text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-color: rgba(100,116,139,.35);
+    }
+
+    /* Trust sor */
+    .hero-c__trust {
+      display: flex; gap: 1.8rem; flex-wrap: wrap;
+      padding-top: 1.8rem; border-top: 1px solid rgba(0,0,0,.07);
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; color: #64748b;
+    }
+    .trust-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #FFA726; flex-shrink: 0;
+    }
+
+    /* ── SVG megye stílusok ── */
+    .hu-county {
+      stroke-width: 0.8;
+      cursor: default;
+    }
+    .hu-szabolcs {
+      fill: #FFA726 !important;
+      stroke: rgba(255,210,100,0.55) !important;
+      stroke-width: 1.2 !important;
+      filter:
+        drop-shadow(1px 1px 0px #7a3000)
+        drop-shadow(2px 2px 0px #6B2800)
+        drop-shadow(3px 3px 0px #5C2200)
+        drop-shadow(4px 4px 0px #4D1C00)
+        drop-shadow(5px 5px 0px #3E1600)
+        drop-shadow(0px 0px 28px rgba(255,140,0,0.55));
+    }
+    #points circle, #label_points circle { display: none; }
+
+    /* Tooltip */
+    .map-tooltip {
+      position: absolute;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(200,130,0,0.3);
+      color: rgba(20,30,60,0.9);
+      font-size: .7rem; font-weight: 600;
+      border-radius: 6px; padding: .3rem .7rem;
+      pointer-events: none; white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      backdrop-filter: blur(6px);
+      opacity: 0; transition: opacity .12s;
+      z-index: 30; top: 0; left: 0;
+    }
+
+    /* ════════════════════
+       VARIÁNS-SPECIFIKUS
+       ════════════════════ */
+
+    /* C1 – Hűvös kék árnyalat */
+    .hero-c1 .hero-c__left { background: #eef2ff; }
+    .hero-c1 .hero-c__left::after { background: #eef2ff; }
+    .hero-c1 .drag-hint { color: #4f6080; }
+    .hero-c1 .hu-county { fill: rgba(30,50,130,0.09); stroke: rgba(30,50,130,0.22); }
+    .hero-c1 .chip { background: rgba(79,112,200,.09); border: 1px solid rgba(79,112,200,.22); color: #1e3580; }
+    .hero-c1 .btn-main { background: #FFA726; color: #1a0a00; box-shadow: 0 4px 20px rgba(255,167,38,.3); }
+    .hero-c1 .btn-main:hover { box-shadow: 0 8px 28px rgba(255,167,38,.42); }
+
+    /* C2 – Meleg krém/homok */
+    .hero-c2 .hero-c__left { background: #fdf5e8; }
+    .hero-c2 .hero-c__left::after { background: #fdf5e8; }
+    .hero-c2 .drag-hint { color: #7a5c30; }
+    .hero-c2 .hu-county { fill: rgba(120,80,20,0.08); stroke: rgba(120,80,20,0.20); }
+    .hero-c2 .chip { background: rgba(255,167,38,.1); border: 1px solid rgba(255,167,38,.28); color: #7a4000; }
+    .hero-c2 .btn-main { background: #0f172a; color: #ffffff; box-shadow: 0 4px 20px rgba(15,23,42,.2); }
+    .hero-c2 .btn-main:hover { background: #FFA726; color: #1a0a00; box-shadow: 0 8px 28px rgba(255,167,38,.4); }
+    .hero-c2 .hero-c__right { background: #fffcf7; }
+
+    /* C3 – Halvány sage/zöld */
+    .hero-c3 .hero-c__left { background: #f0f6f1; }
+    .hero-c3 .hero-c__left::after { background: #f0f6f1; }
+    .hero-c3 .drag-hint { color: #3d6050; }
+    .hero-c3 .hu-county { fill: rgba(20,80,50,0.08); stroke: rgba(20,80,50,0.20); }
+    .hero-c3 .chip { background: rgba(20,120,70,.09); border: 1px solid rgba(20,120,70,.22); color: #0d4a28; }
+    .hero-c3 .btn-main { background: #FFA726; color: #1a0a00; box-shadow: 0 4px 20px rgba(255,167,38,.3); }
+    .hero-c3 .btn-main:hover { box-shadow: 0 8px 28px rgba(255,167,38,.42); }
+    .hero-c3 .hero-c__eyebrow { color: #0d6640; }
+    .hero-c3 .hero-c__eyebrow::before { background: #2da868; }

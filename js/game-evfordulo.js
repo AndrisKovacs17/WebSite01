@@ -334,3 +334,11 @@
   showPanel('evfordulo-panel-start');
 
 })();
+
+// Button bindings (moved from HTML onclick attributes)
+(function () {
+  function bind(id, fn) { var el = document.getElementById(id); if (el) el.addEventListener('click', fn); }
+  bind('evford-start-btn', window.evfordStart);
+  bind('evfordulo-felmond-btn', window.evfordFelmond);
+  bind('evford-restart-btn', window.evfordRestart);
+}());
