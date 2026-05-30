@@ -1979,14 +1979,22 @@ small:has(a.phone-link):hover i {
   align-items: center;
   justify-content: center;
   min-height: 48px;
+  line-height: 1;
   border-radius: 50rem;
   font-weight: 700;
   text-decoration: none;
 }
 
+.mobile-action-bar__primary .fa,
+.mobile-action-bar__secondary .fa {
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .mobile-action-bar__primary {
   flex: 1;
   gap: .5rem;
+  padding: 0 1.1rem;
   background: var(--primary);
   color: #fff;
 }
