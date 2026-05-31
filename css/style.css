@@ -3577,3 +3577,8 @@ img, svg, video, iframe {
 .card-subtitle { font-size:1.25rem; margin-bottom:.75rem; }
 .game-overlay { background:rgba(21,35,60,0.82); backdrop-filter:blur(3px); z-index:10; }
 .game-overlay-72 { background:rgba(21,35,60,0.72); backdrop-filter:blur(3px); z-index:10; }
+
+/* ── Repeated component classes (extracted from inline styles) ── */
+.media-frame { border-radius:20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.10); width:fit-content; margin:0 auto; }
+.jz-soft-card { background:rgba(255,255,255,.85); border:1px solid rgba(255,167,38,.3); border-radius:1rem; padding:1.25rem; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,.07); }
+.jz-soft-card--mt { margin-top:1.5rem; }
