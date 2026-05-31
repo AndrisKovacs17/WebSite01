@@ -468,7 +468,14 @@
 
     } else {
       /* -- API fetch path -- */
-      fetch(this.form.action, {
+      var actionAttr = this.form.getAttribute('action');
+      var metaBase = document.querySelector('meta[name="biztor-api-base"]');
+      var apiBase = (metaBase && metaBase.getAttribute('content')) || 'https://weblap.biztorszerver.synology.me';
+      var resolvedAction = /^https?:\/\//.test(actionAttr)
+        ? actionAttr
+        : apiBase.replace(/\/$/, '') + actionAttr;
+
+      fetch(resolvedAction, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(this._buildPayload())

@@ -1,10 +1,21 @@
 # ============================================================
+# Directory index – mappa/index.html automatikus kiszolgálása
+# ============================================================
+DirectoryIndex index.html
+Options -Indexes
+
+# ============================================================
 # Clean URL rewrites – /oldalcim → /sites/fajl.html
 # Működéshez szükséges: Apache mod_rewrite
 # ============================================================
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Ha a kért útvonal létező mappa (új folder/index.html struktúra),
+  # a DirectoryIndex automatikusan kiszolgálja – ne írjuk felül.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
   # -------------------------------------------------------
   # 301 redirect: /sites/fajl.html → kanonikus clean URL

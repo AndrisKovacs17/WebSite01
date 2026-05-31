@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  weblap:
+    image: node:18-alpine
+    container_name: weblap_node
+    restart: always
+
+    working_dir: /app
+
+    # Reverse proxyhoz kötelező: ne localhostra
+    ports:
+      - "1212:1212"
+
+    # .env automatikus betöltése
+    env_file:
+      - .env
+
+    environment:
+      - NODE_ENV=production
+      - TZ=Europe/Budapest
+
+    volumes:
+      - ./:/app
+      - weblap_node_modules:/app/node_modules
+
+    command: sh -c "npm install --production && node server.js"
+
+volumes:
+  weblap_node_modules:
