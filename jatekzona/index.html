@@ -122,7 +122,7 @@
         <div class="jz-shape"></div>
         <div class="jz-shape"></div>
       </div>
-      <div class="container position-relative" style="z-index:2;">
+      <div class="container position-relative z-idx-2">
         <div class="row align-items-center g-4">
           <div class="col-lg-7">
             <div class="jz-hero-badge">
@@ -135,7 +135,7 @@
             </a>
           </div>
           <div class="col-lg-5 d-none d-lg-flex justify-content-end align-items-center">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;transform:rotate(-4deg);">
+            <div class="jz-hero-grid">
               <div class="jz-soft-card">
                 <div><i class="fas fa-heart"></i></div>
                 <div>Tinder</div>
@@ -162,7 +162,7 @@
     <section class="jz-grid" id="jatekok">
       <div class="container">
         <div class="text-center mb-5">
-          <h2 class="fw-700" style="font-size:clamp(1.5rem,3vw,2rem);color:#1c1c2e;">Válassz játékot</h2>
+          <h2 class="fw-700 jz-section-title">Válassz játékot</h2>
           <p class="text-muted">Próbáld ki az Országban nálunk elsőnek!</p>
         </div>
 
@@ -251,7 +251,7 @@
         <!-- Easter egg hint (only visible on hover over empty area) -->
         <div id="jz-egg-hint-wrap" class="jz-egg-hint-wrap text-center mt-5">
           <button type="button" id="jz-egg-hint" class="museum-ghost-trigger" aria-label="Titkos tipp – kattints a felfedezéshez">
-            Psszt... van valami elrejtve a Kötvénymúzeumban. <i class="fas fa-ghost" aria-hidden="true" style="color:var(--jz-orange,#FFA726);"></i>
+            Psszt... van valami elrejtve a Kötvénymúzeumban. <i class="fas fa-ghost jz-ghost-icon" aria-hidden="true"></i>
           </button>
           <p id="jz-egg-msg" class="jz-egg-msg" aria-live="polite"></p>
         </div>
@@ -260,10 +260,10 @@
     </section>
 
     <!-- CTA sáv -->
-    <section style="background:#fff;padding:4rem 0;border-top:1px solid #f0f0f0;">
+    <section class="jz-serious-section">
       <div class="container text-center">
-        <h3 class="fw-700 mb-2" style="color:#1c1c2e;">Komolyra fordítva:</h3>
-        <p class="text-muted mb-4" style="max-width:480px;margin:0 auto .5rem;">Egy ingyenes konzultáció alatt megmutatjuk, mi az, amit érdemes valóban rendbe tenni.</p>
+        <h3 class="fw-700 mb-2 jz-text-dark">Komolyra fordítva:</h3>
+        <p class="text-muted mb-4 jz-serious-lead">Egy ingyenes konzultáció alatt megmutatjuk, mi az, amit érdemes valóban rendbe tenni.</p>
         <div class="d-flex flex-wrap gap-3 justify-content-center mt-3">
           <a href="/kapcsolat" class="btn btn-primary rounded-pill px-4 py-2 fw-600 d-inline-flex align-items-center gap-2">
             Ajánlatkérés <i class="fa fa-arrow-right"></i>
@@ -341,7 +341,7 @@
     <div class="jz-secret-overlay" id="jzSecretOverlay" role="dialog" aria-modal="true" aria-labelledby="jzSecretTitle">
       <div class="jz-secret-card">
         <button type="button" class="jz-secret-close" id="jzSecretClose" aria-label="Bezárás">✕</button>
-        <div style="font-size:3rem;margin-bottom:.75rem;color:#FFA726;"><i class="fas fa-gift"></i></div>
+        <div class="jz-gift-icon"><i class="fas fa-gift"></i></div>
         <h3 id="jzSecretTitle">Titkos kártya</h3>
         <p>Megtaláltad! Ez a rejtett kártya azt üzeni: a legjobb biztosítás az, amelyet tényleg értesz. Hívj minket – megmagyarázunk mindent, amit a kisnyomtatott elrejt.</p>
         <a href="tel:+36706258201" class="btn btn-cta-primary mt-3 rounded-pill px-4">

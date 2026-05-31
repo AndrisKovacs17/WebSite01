@@ -776,7 +776,7 @@
           <!-- Canvas – aspect-ratio wrapper = nincs pop -->
           <div class="col-lg-6 col-md-8">
             <div class="position-relative rounded-4 overflow-hidden shadow-sm ar-16-10">
-              <canvas id="evfordulo-canvas" style="position:absolute;inset:0;width:100%;height:100%;display:block;background:#f0f4ff;"></canvas>
+              <canvas id="evfordulo-canvas" class="game-canvas game-canvas--evfordulo"></canvas>
             </div>
             <div id="evfordulo-feedback" class="alert mt-3 small mb-0 rounded-3" hidden></div>
           </div>
@@ -791,7 +791,7 @@
               <p class="text-muted small mb-3">A mutató körbe forog. Nyomja meg a „Felmondás" gombot a <span class="text-success fw-semibold">zöld 30 napos ablakban</span>!</p>
               <ul class="list-unstyled text-start small mb-4 ps-2">
                 <li class="mb-1"><span class="text-success fw-bold">Zöld</span> = 30 napos ablak ✓</li>
-                <li class="mb-1"><span style="color:#b57a00;" class="fw-bold">Sárga</span> = közeledik, még korai</li>
+                <li class="mb-1"><span class="fw-bold text-amber">Sárga</span> = közeledik, még korai</li>
                 <li class="mb-1"><span class="text-danger fw-bold">Piros</span> = lekéste</li>
               </ul>
               <button id="evford-start-btn" class="btn btn-primary btn-lg rounded-pill px-5 hover-lift">
@@ -801,12 +801,10 @@
 
             <!-- Játék közben -->
             <div id="evfordulo-panel-play" class="d-none text-center">
-              <div id="evfordulo-hud-stars" class="mb-1" style="font-size:1.5rem;min-height:2rem;"></div>
+              <div id="evfordulo-hud-stars" class="mb-1 fs-15rem min-h-2rem"></div>
               <div id="evfordulo-hud-round" class="text-muted small fw-semibold mb-4">1 / 3. kör</div>
-              <button class="btn btn-danger btn-lg rounded-pill px-4 py-3 hover-lift w-100 mb-2"
-                      id="evfordulo-felmond-btn"
-                      
-                      style="font-size:1.1rem;">
+              <button class="btn btn-danger btn-lg rounded-pill px-4 py-3 hover-lift w-100 mb-2 fs-11rem"
+                      id="evfordulo-felmond-btn">
                 <i class="fa fa-times-circle me-2"></i>Felmondás!
               </button>
               <p class="text-muted small mt-1 mb-0">
@@ -817,7 +815,7 @@
             <!-- Eredmény -->
             <div id="evfordulo-panel-result" class="d-none text-center">
               <div class="evf-r-emoji mb-1 fs-25rem"></div>
-              <div class="evf-r-stars mb-3" style="font-size:1.5rem;"></div>
+              <div class="evf-r-stars mb-3 fs-15rem"></div>
               <h5 class="mb-2 evf-r-title"></h5>
               <p class="text-muted small mb-4 evf-r-desc"></p>
               <div class="d-flex gap-2 justify-content-center flex-column">
