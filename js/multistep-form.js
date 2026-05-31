@@ -46,7 +46,7 @@
   MSF.prototype._init = function () {
     var self = this;
 
-    this._showStep(0, 'forward');
+    this._showStep(0, 'forward', true); // skipFocus=true: don't auto-scroll to form on page load
 
     // Back / Next buttons
     var backBtn = this.wrapper.querySelector('.msf-btn-back');
@@ -109,7 +109,7 @@
   };
 
   /* ---- Show Step ---- */
-  MSF.prototype._showStep = function (index, direction) {
+  MSF.prototype._showStep = function (index, direction, skipFocus) {
     var prev = this.steps[this.current];
     var next = this.steps[index];
     var wrapper = this.wrapper;
@@ -163,13 +163,15 @@
       });
     }
 
-    // Focus first editable field after animation
-    setTimeout(function () {
-      var first = next.querySelector(
-        'input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]), textarea, select'
-      );
-      if (first) { try { first.focus(); } catch (ex) { /* ignore */ } }
-    }, 360);
+    // Focus first editable field after animation (skip on initial page load)
+    if (!skipFocus) {
+      setTimeout(function () {
+        var first = next.querySelector(
+          'input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]), textarea, select'
+        );
+        if (first) { try { first.focus(); } catch (ex) { /* ignore */ } }
+      }, 360);
+    }
   };
 
   /* ---- Progress & Nav ---- */

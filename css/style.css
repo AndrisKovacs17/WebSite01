@@ -3582,3 +3582,51 @@ img, svg, video, iframe {
 .media-frame { border-radius:20px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.10); width:fit-content; margin:0 auto; }
 .jz-soft-card { background:rgba(255,255,255,.85); border:1px solid rgba(255,167,38,.3); border-radius:1rem; padding:1.25rem; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,.07); }
 .jz-soft-card--mt { margin-top:1.5rem; }
+
+/* ── Inline style utilities (fourth pass: SEO/inline-debt cleanup) ── */
+.mw-540 { max-width: 540px; }
+.mw-660 { max-width: 660px; }
+.mw-100pct { max-width: 100%; }
+.sq-200 { width: 200px; height: 200px; }
+.mt-2rem-inline { margin-top: 2rem; display: inline-block; }
+.h-350 { height: 350px; }
+.z-idx-2 { z-index: 2; }
+.lh-11 { line-height: 1.1; }
+.fs-11rem { font-size: 1.1rem; }
+.fs-15rem { font-size: 1.5rem; }
+.fs-16rem { font-size: 1.6rem; }
+.fs-21rem { font-size: 2.1rem; }
+.min-h-2rem { min-height: 2rem; }
+.ls-015 { letter-spacing: .15rem; }
+.text-1a { color: #1a1a1a; }
+.text-purple { color: #6f42c1; }
+.text-success-2 { color: #198754; }
+.text-orange-2 { color: #fd7e14; }
+.text-amber { color: #b57a00; }
+.overlay-dark-70 { background: rgba(0, 0, 0, 0.7); }
+
+/* Mini-game canvases (service-page interactive widgets) */
+.game-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.game-canvas--sipalya { background: #eef8ff; touch-action: none; }
+.game-canvas--evfordulo { background: #f0f4ff; }
+.game-canvas--idopont { background: #eef8f6; }
+
+/* Megtakarítás page */
+.savings-cta-bg { background: linear-gradient(135deg, #eef3ff 0%, #f3fff7 100%); }
+.savings-bar-track { height: 18px; background: #dee2e6; }
+.progress-10 { height: 10px; }
+
+/* Info Hub hero + card category badges */
+.info-hero-badge { background: rgba(255,167,38,.15); color: #d97706; }
+.info-hero-lead { color: #555; font-size: .94rem; line-height: 1.72; max-width: 440px; }
+.hc-cat--elet { background: rgba(96,165,250,.18); color: #60a5fa; }
+.hc-cat--admin { background: rgba(196,181,253,.18); color: #c4b5fd; }
+
+/* Játékzóna page */
+.jz-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; transform: rotate(-4deg); }
+.jz-section-title { font-size: clamp(1.5rem, 3vw, 2rem); color: #1c1c2e; }
+.jz-text-dark { color: #1c1c2e; }
+.jz-ghost-icon { color: var(--jz-orange, #FFA726); }
+.jz-serious-section { background: #fff; padding: 4rem 0; border-top: 1px solid #f0f0f0; }
+.jz-serious-lead { max-width: 480px; margin: 0 auto .5rem; }
+.jz-gift-icon { font-size: 3rem; margin-bottom: .75rem; color: #FFA726; }

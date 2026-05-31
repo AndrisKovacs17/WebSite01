@@ -446,6 +446,24 @@ z-index: 102;
   animation: nodePulse .45s ease-in-out;
 }
 
+/* ─── MOBILE: hide map controls ────────────────────────────── */
+@media (max-width: 768px) {
+  #controls {
+    display: none !important;
+  }
+}
+
+/* ─── HERO RATING FIXED POSITION ───────────────────────────── */
+#hero-rating-fixed {
+  top: 18%;
+}
+
+@media (max-width: 430px) {
+  #hero-rating-fixed {
+    top: 10%;
+  }
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   #hero-text {
