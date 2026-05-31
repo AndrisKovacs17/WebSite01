@@ -337,3 +337,14 @@
 /* ── Kártya rejtés animáció ── */
 .info-card-wrap { transition: opacity .25s; }
 .info-card-wrap.hidden { display: none !important; }
+
+
+/* ── Info Hub category color modifiers (extracted from inline styles) ── */
+.cat-section-label--gepjarmu { background:#FFA72612; color:#7a4700; }
+.cat-section-label--ingatlan { background:#22c55e12; color:#155724; }
+.cat-section-label--utazas   { background:#3b82f612; color:#1e3a8a; }
+.cat-section-label--admin    { background:#8b5cf612; color:#4c1d95; }
+.cat-icon--gepjarmu { color:#FFA726; font-size:1.1rem; }
+.cat-icon--ingatlan { color:#22c55e; font-size:1.1rem; }
+.cat-icon--utazas   { color:#3b82f6; font-size:1.1rem; }
+.cat-icon--admin    { color:#8b5cf6; font-size:1.1rem; }
