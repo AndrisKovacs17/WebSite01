@@ -3610,6 +3610,12 @@ img, svg, video, iframe {
 .game-canvas--sipalya { background: #eef8ff; touch-action: none; }
 .game-canvas--evfordulo { background: #f0f4ff; }
 .game-canvas--idopont { background: #eef8f6; }
+/* Standalone interactive canvas (kockázat-fogó, házadat) */
+.game-canvas-interactive { display: block; width: 100%; cursor: pointer; touch-action: none; border-radius: 20px; }
+/* Megtakarítás kamatos kalkulátor sávdiagram */
+.kk-bar { height: 100%; float: left; transition: width .6s ease; }
+.kk-bar--deposit { background: #0d6efd; }
+.kk-bar--yield { background: #198754; }
 
 /* Megtakarítás page */
 .savings-cta-bg { background: linear-gradient(135deg, #eef3ff 0%, #f3fff7 100%); }
